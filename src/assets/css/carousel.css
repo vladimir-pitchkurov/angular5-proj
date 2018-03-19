@@ -1,0 +1,81 @@
+.carousel {
+    height: 605px;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.carousel .wrap {
+    height: 605px;
+}
+
+.carousel .wrap .item {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 605px;
+    position: relative;
+    float: left;
+}
+
+.left-arrow {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 100%;
+    padding-top: 265px;
+}
+
+.right-arrow {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    height: 100%;
+    padding-top: 265px;
+}
+
+.left-arr, .right-arr {
+    cursor: pointer;
+}
+
+.right-arrow img {
+    transform: scale(-1, 1);
+}
+
+.item .cent-text {
+    margin-top: 133px;
+}
+
+.dots-contain {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+}
+
+.dots {
+    display: inline-block;
+}
+
+.dot {
+    position: relative;
+    float: left;
+    width: 9px;
+    height: 9px;
+    background-color: #88847b;
+    border: 1px solid #88847b;
+    border-radius: 10px;
+    margin-right: 10px;
+    -moz-transition: background-color 0.3s 0.1s ease, border-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease, border-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease, border-color 0.3s 0.1s ease;
+    transition: background-color 0.3s 0.1s ease, border-color 0.3s 0.1s ease;
+}
+
+.dot:last-child {
+    margin-right: 0;
+}
+
+.dot.cur {
+    background-color: #fff;
+    border: 1px solid #fff;
+}

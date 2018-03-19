@@ -1,0 +1,202 @@
+
+<app-main-slider [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">
+
+    <div trampolinePane class="block-one">
+
+        <div class="container">
+            <div class="desc_slider">
+                <h3>come visit us at</h3>
+                <h1>Trampoline parks</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="left-rect slideUp">-->
+        <!--<h3>escape rooms</h3>-->
+        <!--<p>With nothing but your teammates and the clues inside, see if you can escape the room.</p>-->
+        <!--<a href="escape-room">Enter</a>-->
+        <!--</div>-->
+        <!--<div class="right-rect slideUp-right">-->
+        <!--<h3>Trampoline park</h3>-->
+        <!--<p>Feel the adrenaline rush! We offer fun games and activities for kids and adults alike.</p>-->
+        <!--<a href="/trampoline-park/">Enter</a>-->
+        <!--</div>-->
+        <div class="home-arrow floating">
+            <img id="arrow" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="block-two" escapePane>
+        <div class="container">
+            <div class="desc_slider gold">
+                <h3>come visit us at</h3>
+                <h1>Escape rooms</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="home-arrow floating">
+            <img id="arrow2" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>-->
+    </div>
+    <div class="block-three" virtualPane>
+        <div class="container">
+            <div class="desc_slider gold">
+                <h3>come visit us at</h3>
+                <h1>Virtual reality</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="home-arrow floating">
+            <img id="arrow2" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>-->
+    </div>
+
+</app-main-slider>
+<div id="homepage-gaiety" class="homepage-gaiety  ">
+    <div id="homepage-block-blackout" class="homepage-block-blackout pv-40">
+
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center">
+                <div class="gaiety-button my-auto col-3" id="but_trampoline" (click)="isLeftVisible = 0">
+                    <!--<img src="/assets/img/homepage-trampoline.png">-->
+                    <div class="img_main img_homepage_trampoline"></div>
+                    <p class="homepage-gaiety-button-text">trampoline<br>park</p>
+                </div>
+                <div class="gaiety-button my-auto col-3" id="but_escape" (click)="isLeftVisible = 1">
+                    <!--<img src="/assets/img/homepage-escape.png">-->
+                    <div class="img_main img_homepage_escape"></div>
+                    <p class="homepage-gaiety-button-text">escape<br>rooms</p>
+                </div>
+                <div class="gaiety-button my-auto col-3" id="but_virtual" (click)="isLeftVisible = 2">
+                    <!--<img src="/assets/img/homepage-virtual.png">-->
+                    <div class="img_main img_homepage_virtual"></div>
+                    <p class="homepage-gaiety-button-text">virtual<br>reality</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<a name="locations"></a>
+<div class="block-loc">
+    <p class="loc-one">Nearest park to your location</p>
+    <p class="loc-name loc-two" link="/"><img src="/assets/img/loc-icon.png">Vista, California</p>
+    <p class="loc-three">
+        <img src="/assets/img/loc-icon.png">
+        <span id="click-find">Find your park</span>
+        <!--
+        <span class="loc-zip">
+            Input your zip
+            <input class="input-zip" list="zip" maxlength="5">
+            <datalist id="zip">
+                <option>90001</option>
+                <option>90002</option>
+                <option>90003</option>
+                <option>90004</option>
+                <option>90005</option>
+                <option>90006</option>
+            </datalist>
+        </span>
+        <span class="loc-city">
+            or city
+            <input class="input-city" list="city" maxlength="25">
+            <datalist id="city">
+                <option>Vista</option>
+                <option>New Jersey</option>
+                <option>New York</option>
+                <option>Boston</option>
+                <option>Memphis</option>
+            </datalist>
+        </span>
+        <button class="button-find">Find</button>
+        -->
+    </p>
+    <p class="loc-four"><img src="/assets/img/loc-icon.png">Please, allow to use your location</p>
+</div>
+
+<!--<div class="block-all-loc">-->
+<!--<div class="all-loc&#45;&#45;green open">-->
+<!--<img src="/assets/img/all-loc-arrow.png">-->
+<!--<p>All locations</p>-->
+<!--</div>-->
+<!--<div class="all-loc&#45;&#45;contents locEntrance">-->
+<!--<div class="container">-->
+<!--<div class="all-loc&#45;&#45;content">-->
+<!--<p class="loc-name" link="/lake-worth/">Lake Worth, FL</p>-->
+<!--<p class="loc-addr"><img src="/assets/img/icon-loc.png">7645 Lake Worth Rd.</p>-->
+<!--<p class="loc-phone"><img src="/assets/img/icon-phone.png">(561) 440-1400</p>-->
+<!--</div>-->
+<!--<div class="all-loc&#45;&#45;content">-->
+<!--<p class="loc-name" link="/">York, PA</p>-->
+<!--<p class="loc-addr"><img src="/assets/img/icon-loc.png">1235 Carlisle Rd.</p>-->
+<!--<p class="loc-phone"><img src="/assets/img/icon-phone.png">(717) 316-0300</p>-->
+<!--</div>-->
+<!--<div class="all-loc&#45;&#45;content">-->
+<!--<p class="loc-name" link="/">Columbia, SC</p>-->
+<!--<p class="loc-addr"><img src="/assets/img/icon-loc.png">7451 Garners Ferry Rd.</p>-->
+<!--<p class="loc-phone"><img src="/assets/img/icon-phone.png">(803) 560-6600</p>-->
+<!--</div>-->
+<!--<div class="all-loc&#45;&#45;content">-->
+<!--<p class="loc-name" link="/">Cincinnati, OH</p>-->
+<!--<p class="loc-addr"><img src="/assets/img/icon-loc.png">4786 Fields Ertel Rd.</p>-->
+<!--<p class="loc-phone"><img src="/assets/img/icon-phone.png">(513) 816-0004</p>-->
+<!--</div>-->
+<!--<div class="all-loc&#45;&#45;content">-->
+<!--<p class="loc-name" link="/">Lexington, KY</p>-->
+<!--<p class="loc-addr"><img src="/assets/img/icon-loc.png">1937 Star Shoot Pkwy.</p>-->
+<!--&lt;!&ndash; <p class="loc-phone"><img src="/assets/img/icon-phone.png">123-456-7890</p> &ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="block-all-loc">
+    <div class="all-loc--green">
+        <img src="/assets/img/all-loc-arrow.png">
+        <p>All locations</p>
+    </div>
+    <div class="all-loc--contents ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-auto location_block">
+                    <p class="loc-name" link="/">LAKE WORTH, FL</p>
+                    <p class="loc-addr"><img src="/assets/img/icon-loc.png"> 7645 Lake Worth Rd, Lake Worth, FL 33467</p>
+                    <p class="loc-phone"><img src="/assets/img/icon-phone.png">(561) 440-1400</p>
+                </div>
+                <div class="col-md-auto location_block">
+                    <p class="loc-name" link="/">YORK, PA</p>
+                    <p class="loc-addr"><img src="/assets/img/icon-loc.png">2150 White St, York, PA 17404</p>
+                    <p class="loc-phone"><img src="/assets/img/icon-phone.png">(717) 316-0300</p>
+                </div>
+                <div class="col-md-auto location_block">
+                    <p class="loc-name" link="/">CINCINNATI, OH</p>
+                    <p class="loc-addr"><img src="/assets/img/icon-loc.png">4786 Fields Ertel Rd, Cincinnati, OH 45249</p>
+                    <p class="loc-phone"><img src="/assets/img/icon-phone.png">(513) 816-0004</p>
+                </div>
+                <div class="col-md-auto location_block">
+                    <p class="loc-name" link="/">COLUMBIA, SC</p>
+                    <p class="loc-addr"><img src="/assets/img/icon-loc.png">7451 Garner Ferry Rd, Columbia, SC 29209</p>
+                    <p class="loc-phone"><img src="/assets/img/icon-phone.png">(803) 560-6600</p>
+                </div>
+                <div class="col-md-auto location_block">
+                    <p class="loc-name" link="/">LEXINGTON, KY</p>
+                    <p class="loc-addr"><img src="/assets/img/icon-loc.png">1937 Star Shoot Pkwy, Lexington, KY 40509</p>
+                    <p class="loc-phone"><img src="/assets/img/icon-phone.png">123-456-7890</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

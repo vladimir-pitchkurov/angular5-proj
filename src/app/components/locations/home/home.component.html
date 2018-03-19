@@ -1,0 +1,105 @@
+
+<app-main-slider [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">
+
+  <div trampolinePane class="block-one">
+
+    <div class="container">
+      <div class="desc_slider">
+        <h3>come visit us at</h3>
+        <h1>Lake Worth</h1>
+        <button type="button">I’m ready</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="block-two" escapePane>
+    <div class="container">
+      <div class="desc_slider gold">
+        <h3>come visit us at</h3>
+        <h1>Lake Worth  </h1>
+        <button type="button">I’m ready</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="block-three" virtualPane>
+    <div class="container">
+      <div class="desc_slider gold">
+        <h3>come visit us at</h3>
+        <h1>Lake Worth</h1>
+        <button type="button">I’m ready</button>
+      </div>
+    </div>
+
+  </div>
+
+</app-main-slider>
+
+<div id="homepage-gaiety" class="homepage-gaiety  ">
+  <div id="homepage-block-blackout" class="homepage-block-blackout pv-40">
+
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center">
+        <div class="gaiety-button my-auto col-3" id="but_trampoline" (click)="isLeftVisible = 0">
+          <!--<img src="/assets/img/homepage-trampoline.png">-->
+          <div class="img_main img_homepage_trampoline"></div>
+          <p class="homepage-gaiety-button-text">trampoline<br>park</p>
+        </div>
+        <div class="gaiety-button my-auto col-3" id="but_escape" (click)="isLeftVisible = 1">
+          <!--<img src="/assets/img/homepage-escape.png">-->
+          <div class="img_main img_homepage_escape"></div>
+          <p class="homepage-gaiety-button-text">escape<br>rooms</p>
+        </div>
+        <div class="gaiety-button my-auto col-3" id="but_virtual" (click)="isLeftVisible = 2">
+          <!--<img src="/assets/img/homepage-virtual.png">-->
+          <div class="img_main img_homepage_virtual"></div>
+          <p class="homepage-gaiety-button-text">virtual<br>reality</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<section class="homepage-locations-blue pv-40">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-3">
+        <h2 class="green_up">Open Hours</h2>
+        <ul class="list-unstyled open_hours text-uppercase">
+          <li class="  ">Mon-Thurs</li>
+          <li class="  txt_col ">10 AM - 9 PM</li>
+            <li class=" ">Fri</li>
+            <li class="  txt_col">10 AM - 11 PM</li>
+            <li class=" ">Sat</li>
+            <li class=" txt_col">9 AM - 11 PM</li>
+            <li class=" ">Sun</li>
+            <li class=" txt_col">11 AM - 8 PM</li>
+        </ul>
+      </div>
+      <div class="col-md-8">
+        <h2 class="green_up">Lorem Ipsum</h2>
+        <p>
+          Suspendisse sagittis nunc id risus facilisis, vel venenatis ex tincidunt. Morbi vel laoreet nisl. Duis pulvinar leo quis mauris cursus mollis.
+          Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
+        </p>
+        <h3 class="green_up text-center">Call us right now: (561) 440-1400</h3>
+        <p>
+          Duis pulvinar leo quis mauris cursus mollis.
+          Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="homepage-locations-dark pv-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="green_up">Instant Coupons?</h1>
+        <h2 class="text-uppercase">Receive 10% off your next party</h2>
+        <a class="green_up btn mt-80 theme_a_btn" href="/">Sing UP</a>
+      </div>
+
+    </div>
+  </div>
+</section>

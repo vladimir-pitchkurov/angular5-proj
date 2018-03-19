@@ -1,0 +1,153 @@
+<app-main-slider [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">
+
+    <div trampolinePane class="block-one">
+
+        <div class="container">
+            <div class="desc_slider">
+                <h3>come visit us at</h3>
+                <h1>Trampoline parks</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="left-rect slideUp">-->
+        <!--<h3>escape rooms</h3>-->
+        <!--<p>With nothing but your teammates and the clues inside, see if you can escape the room.</p>-->
+        <!--<a href="escape-room">Enter</a>-->
+        <!--</div>-->
+        <!--<div class="right-rect slideUp-right">-->
+        <!--<h3>Trampoline park</h3>-->
+        <!--<p>Feel the adrenaline rush! We offer fun games and activities for kids and adults alike.</p>-->
+        <!--<a href="/trampoline-park/">Enter</a>-->
+        <!--</div>-->
+        <div class="home-arrow floating">
+            <img id="arrow" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>
+    </div>
+
+
+
+
+
+    <div class="block-two" escapePane>
+        <div class="container">
+            <div class="desc_slider gold">
+                <h3>come visit us at</h3>
+                <h1>Escape rooms</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="home-arrow floating">
+            <img id="arrow2" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>-->
+    </div>
+    <div class="block-three" virtualPane>
+        <div class="container">
+            <div class="desc_slider gold">
+                <h3>come visit us at</h3>
+                <h1>Virtual reality</h1>
+                <button type="button">I’m ready</button>
+            </div>
+        </div>
+
+        <!--<div class="block-one-mob"></div>
+        <div class="block-one-mob-up"></div>-->
+        <!--<div class="home-arrow floating">
+            <img id="arrow2" class="anim-op" src="/assets/img/home-arrow.svg">
+        </div>-->
+    </div>
+
+</app-main-slider>
+<div id="homepage-gaiety" class="homepage-gaiety  ">
+    <div id="homepage-block-blackout" class="homepage-block-blackout pv-40">
+
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center">
+                <div class="gaiety-button my-auto col-3" id="but_trampoline" (click)="isLeftVisible = 0">
+                    <!--<img src="/assets/img/homepage-trampoline.png">-->
+                    <div class="img_main img_homepage_trampoline"></div>
+                    <p class="homepage-gaiety-button-text">trampoline<br>park</p>
+                </div>
+                <div class="gaiety-button my-auto col-3" id="but_escape" (click)="isLeftVisible = 1">
+                    <!--<img src="/assets/img/homepage-escape.png">-->
+                    <div class="img_main img_homepage_escape"></div>
+                    <p class="homepage-gaiety-button-text">escape<br>rooms</p>
+                </div>
+                <div class="gaiety-button my-auto col-3" id="but_virtual" (click)="isLeftVisible = 2">
+                    <!--<img src="/assets/img/homepage-virtual.png">-->
+                    <div class="img_main img_homepage_virtual"></div>
+                    <p class="homepage-gaiety-button-text">virtual<br>reality</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<div class="mob_slider">
+    <div class="block-one">
+
+        <div class="container">
+            <div class="desc_slider">
+                <h3>coming soon</h3>
+                <h1>lake worth</h1>
+                <h3>are you ready to jump with adrenaline?</h3>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div  class="homepage-gaiety coming-soon-email">
+    <div  class="homepage-block-blackout pv-40">
+
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center">
+                <div class="col">
+                    <p>Enter your email address below</p>
+                    <p>and get notified about Adrenaline Entertainment Centers</p>
+                    <p>launch events and promotions.</p>
+                    <form id="coming-soon-form" class="form-inline justify-content-center coming-soon-form" action="#">
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit">subscribe</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--<div id="coming-soon-banner">
+    <div id="lake-worth" class="container">
+        <p>coming soon</p>
+        <p>lake worth</p>
+        <p>are you ready to jump with adrenaline?</p>
+    </div>
+</div>-->
+<!--
+<div id="coming-soon-email">
+    <div id="block-blackout">
+
+        <div class="container">
+            <p>Enter your email address below</p>
+            <p>and get notified about Adrenaline Entertainment Centers</p>
+            <p>launch events and promotions.</p>
+
+            <form id="coming-soon-form" class="form-inline justify-content-center" action="#">
+                <label for="email"></label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email">
+
+                <button type="submit">subscribe</button>
+            </form>
+        </div>
+
+    </div>
+</div>-->
+
