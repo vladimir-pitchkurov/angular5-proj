@@ -12,9 +12,12 @@ type PaneType = 'trampoline' | 'escape' | 'virtual';
             state('trampoline', style({ transform: 'translateX(0)' })),
             state('escape', style({ transform: 'translateX(-33.33%)' })),
             state('virtual', style({ transform: 'translateX(-66.66%)' })),
-            transition('* => *', animate(300))
+            transition('* => *', [animate('1.0s 3.1s ease-in', style({transform: 'translateX(-33.33%)'})),
+              animate('1.0s 3.1s ease-in', style({transform: 'translateX(-66.66%)'})),
+                animate('1.0s 3.1s ease-in', style({transform: 'translateX(0%)'}))
+
         ])
-    ]
+])]
 })
 export class MainSliderComponent implements OnInit {
     @Input () activePane: PaneType = 'trampoline';
