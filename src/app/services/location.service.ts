@@ -6,7 +6,7 @@ export class LocationService {
 
   constructor(private http: BaseHttpService) { }
 
-  public domain: string = 'https://localhost/api/website';
+  public domain: string = 'https://dashboard.sem.run/api/website';
 
   /* for local testing
 
