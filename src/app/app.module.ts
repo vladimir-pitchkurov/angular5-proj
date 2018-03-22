@@ -27,6 +27,9 @@ import { GroupsComponent } from './components/locations/groups/groups.component'
 import { TrampolinesHomepageComponent } from './components/locations/trampolines-homepage/trampolines-homepage.component';
 import { PassComponent } from './components/locations/pass/pass.component';
 import { PartiesComponent } from './components/locations/parties/parties.component';
+import {BaseHttpService} from './services/base-http.service';
+import {LocationService} from './services/location.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -56,10 +59,13 @@ import { PartiesComponent } from './components/locations/parties/parties.compone
     imports: [
         BrowserModule,
         AppRoutingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        HttpClientModule,
     ],
     providers: [
-        InitJsService
+        InitJsService,
+        BaseHttpService,
+        LocationService
     ],
     bootstrap: [AppComponent]
 })
