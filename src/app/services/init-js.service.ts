@@ -59,7 +59,7 @@ export class InitJsService {
                         };
                     }
 
-                
+
             })();
         }, 0);
     }
