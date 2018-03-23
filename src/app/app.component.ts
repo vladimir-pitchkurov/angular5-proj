@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
 import {NavigationEnd, Router} from '@angular/router';
+import {LocationService} from './services/location.service';
 
 declare var window: any;
 
@@ -11,16 +12,22 @@ declare var window: any;
 })
 export class AppComponent implements OnInit, AfterViewInit{
   title = 'app';
-
+  locations: any;
+  service: LocationService;
+  activeLocationId: any;
+  locationInf: any[];
+  socialInf: any[];
   isDarkFooter: boolean = false;
+  facebook_link: any[];
+  twitter_link: any[];
+  instagram_link: any[];
+  google_link: any[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: LocationService) { }
 
-  }
+  ngOnInit() {
+    this.activeLocationId = this.service.getActiveLocationId();
 
-
-  ngOnInit()
-  {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
@@ -29,8 +36,43 @@ export class AppComponent implements OnInit, AfterViewInit{
       // this.getAddressInfoByZip('72223', 'desktop');
       this.defineIsFooterDark();
     });
-  }
 
+    this.service.getAllLocations()
+      .then((data: any[]) => {
+        this.locations = data;
+      });
+
+    this.service.getLocationById(this.activeLocationId)
+      .then((data: any[]) => {
+        this.locationInf = data;
+      });
+
+    this.service.getLocationSocial(this.activeLocationId)
+      .then((data: any[]) => {
+        this.socialInf = data;
+      });
+
+    this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+      .then((data: any[]) => {
+        this.facebook_link = data;
+      });
+
+    this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+      .then((data: any[]) => {
+        this.twitter_link = data;
+      });
+
+    this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+      .then((data: any[]) => {
+        this.instagram_link = data;
+      });
+
+    this.service.getLocationSocialByName(this.activeLocationId, 'google')
+      .then((data: any[]) => {
+        this.google_link = data;
+      });
+
+  }
 
   ngAfterViewInit ()
   {
@@ -50,6 +92,15 @@ export class AppComponent implements OnInit, AfterViewInit{
 
     this.isDarkFooter = pagesWithDarkFooter.indexOf(this.router.url) !== -1 || this.router.url.indexOf('/blog/') !== -1;
   }
+
+  setLocationById(id: any) {
+    /*this.activeLocationId = id;*/
+    this.service.setActiveLocationId(id);
+    this.activeLocationId = this.service.getActiveLocationId();
+    console.log(this.activeLocationId);
+  }
+
+  refreshId(){}
 
   // getAddressInfoByZip(zip, device) {
   //     if (zip.length >= 5 && typeof google != 'undefined') {
@@ -102,10 +153,10 @@ export class AppComponent implements OnInit, AfterViewInit{
   //                           column.appendChild(aTag);
   //                           console.log('done');
   //                       }
-                        
-                      
 
-                      
+
+
+
   //                 } else {
   //                     response({
   //                         success: false

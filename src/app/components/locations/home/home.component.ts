@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
-import {LocationService} from '../../../services/location.service';
+import { LocationService } from '../../../services/location.service';
 
 @Component({
   selector: 'app-home',
@@ -9,31 +9,35 @@ import {LocationService} from '../../../services/location.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+
     isLeftVisible = 0;
+    service: LocationService;
+    locationHours: any[];
+    activeLocationId: any;
+    locationInf: any[];
 
-    locations:any[];
-    linksByField: any;
 
-    constructor(private meta: Meta, private titleService: Title/* for local testings, private locationService: LocationService*/) {
+    constructor(private meta: Meta
+                , private titleService: Title
+                , private service: LocationService) {
     }
 
     ngOnInit() {
+        this.activeLocationId = this.service.getActiveLocationId();
         this.titleService.setTitle('Home title');
         this.meta.addTag({ name: 'meta-description', content: 'description' });
 
-      /* for local service testing methods
+        this.service.getLocationHours(this.activeLocationId)
+          .then((data: any[]) => {
+            this.locationHours = data;
+          });
 
-      this.locationService.getLocations()
+      this.service.getLocationById(this.activeLocationId)
         .then((data: any[]) => {
-          this.locations = data;
-          console.log('this.locations', this.locations);
-        })
+          this.locationInf = data;
+        });
 
-      this.locationService.getLocationLinksByField(13, 'facebook')
-        .then((data: any[]) => {
-          this.linksByField = data;
-          console.log('linksByField', this.linksByField)
-        })*/
     }
 
 }

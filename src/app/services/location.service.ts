@@ -4,21 +4,19 @@ import {BaseHttpService} from './base-http.service';
 @Injectable()
 export class LocationService {
 
-  constructor(private http: BaseHttpService) { }
+  constructor(private http: BaseHttpService ) { }
+
+  public activeLocationId: any;
+
+  getActiveLocationId(): any {
+    return this.activeLocationId == undefined?13:this.activeLocationId;
+  }
+
+  setActiveLocationId(value: any) {
+    this.activeLocationId = value;
+  }
 
   public domain: string = 'https://dashboard.sem.run/api/website';
-
-  /* for local testing
-
-  getLocations() {
-
-      let locationsData: any[] = [
-        {city: 'New York'},{city: 'Los Angeles'},{name: 'Sitka'}
-      ];
-
-      return Promise.resolve(locationsData);
-
-  }*/
 
   getAllLocations() {
     let url: string = this.domain + '/main/locations';
@@ -82,7 +80,6 @@ export class LocationService {
 
   getLocationLinksByField(id: any, field: string) {
     let url: string = this.domain + '/location/' + id + '/links/' + field;
-    /*return Promise.resolve(url.split('/'));    this method for testing correctly work local*/
     return this.http.get(url);
   }
 

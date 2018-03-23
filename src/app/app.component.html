@@ -34,7 +34,6 @@
             </div>
             <!--<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>-->
 
-
             <div class="menu-about" routerLinkActive="active">
                 About us
                 <div class="about-list">
@@ -52,6 +51,30 @@
                     </div>
                 </div>
             </div>
+
+          <div  class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+            Locations
+            <div class="location-list">
+              <div class="tramp-list--item " *ngFor="let loc of locations" >
+                <a (click)="setLocationById(loc.id)" routerLink="location/{{loc.id}}" routerLinkActive="active" >{{loc.name}}</a>
+              </div>
+            </div>
+            <!--<div class="loc-list">
+              <div id="find-park" class="loc-list&#45;&#45;item" link="/">FIND A PARK</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/home">Home</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/join-our-team">join our team</div>
+              <div class="loc-list&#45;&#45;item" link="/cincinnati/">CINCINNATI</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/about/">About</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/gallery/">Gallery</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/contact/">Contact</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/activities">activities</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/waiver">waiver</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/groups">groups</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/trampolines-homepage">trampolines-homepage</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/pass">pass</div>
+              <div class="loc-list&#45;&#45;item" link="/locations/parties">parties</div>
+            </div>-->
+          </div>
              <div><a routerLink="/blog/" routerLinkActive="active">Blog</a></div>
         </div>
         <div id="ask">
@@ -107,7 +130,6 @@
     </div>
 </header>
 
-
 <router-outlet></router-outlet>
 
 <footer [ngClass]="{'footer-dark': isDarkFooter}">
@@ -115,14 +137,13 @@
         <div class="footer-logo">
             <img src="/assets/img/footer-logo.png">
         </div>
-
-        <div class="footer-text row">
+        <div *ngFor="let locInf of locationInf" class="footer-text row">
             <div class="col-md-4">
                 <p class="footer-name">Adrenaline Entertainment Centers
                     CORPORATE HEADQUARTERS</p>
-                <p class="footer-contact"><img src="/assets/img/icon-loc.png">1234 Lorem St., Suite 58</p>
-                <p class="footer-contact-add-line">Beaverville, Florida 12345</p>
-                <p class="footer-contact"><img src="/assets/img/icon-phone.png">123-456-7890</p>
+                <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{locInf.address_street}}</p>
+                <p class="footer-contact-add-line">{{locInf.address_city}}, {{locInf.address_state}} {{locInf.address_zip}}</p>
+                <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{locInf.phone}}</p>
                 <p class="footer-contact"><img src="/assets/img/icon-email.png">email@domain.com</p>
             </div>
             <div class="col-md-2">
@@ -145,35 +166,33 @@
                 neque odio porttitor purus.</p>
             </div>
         </div>
-
     </div>
 </footer>
 <div class="copyright">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12" >
-                <ul class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
-                    <li class="list-inline-item facebook">
-                        <a href="#" target="_blank">
+                <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
+                    <li *ngFor="let f of facebook_link" class="list-inline-item facebook">
+                        <a  href="{{f.url}}" target="_blank">
                         <i class="fa fa-facebook"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item twitter">
-                        <a href="#" target="_blank">
+                    <li *ngFor="let t of twitter_link" class="list-inline-item twitter">
+                        <a href="{{t.url}}" target="_blank">
                             <i class="fa fa-twitter"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item instagram">
-                        <a href="#" target="_blank">
+                    <li *ngFor="let i of instagram_link" class="list-inline-item instagram">
+                        <a href="{{i.url}}" target="_blank">
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li>
-                    <li class="list-inline-item youtube">
-                        <a href="#" target="_blank">
-                            <i class="fa fa-youtube"></i>
+                    <li *ngFor="let g of google_link" class="list-inline-item youtube">
+                        <a href="{{g.url}}" target="_blank">
+                            <i class="fa fa-google-plus"></i>
                         </a>
                     </li>
-
                 </ul>
             </div>
           <div class="col-md-6 col-sm-12 col-xs-12 cus-cent">

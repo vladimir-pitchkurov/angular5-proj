@@ -30,6 +30,7 @@ import { PartiesComponent } from './components/locations/parties/parties.compone
 import {BaseHttpService} from './services/base-http.service';
 import {LocationService} from './services/location.service';
 import {HttpClientModule} from '@angular/common/http';
+import { LocationComponent } from './location/location.component';
 
 
 @NgModule({
@@ -54,13 +55,14 @@ import {HttpClientModule} from '@angular/common/http';
         GroupsComponent,
         TrampolinesHomepageComponent,
         PassComponent,
-        PartiesComponent
+        PartiesComponent,
+        LocationComponent,
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        AppRoutingModule,
     ],
     providers: [
         InitJsService,

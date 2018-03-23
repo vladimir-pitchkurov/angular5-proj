@@ -19,6 +19,7 @@ import {GroupsComponent} from './components/locations/groups/groups.component';
 import {TrampolinesHomepageComponent} from './components/locations/trampolines-homepage/trampolines-homepage.component';
 import {PassComponent} from './components/locations/pass/pass.component';
 import {PartiesComponent} from './components/locations/parties/parties.component';
+import {LocationComponent} from './location/location.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,6 @@ const routes: Routes = [
 
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
-
   { path: '', component: HomeComponent },
   { path: 'about/join-our-team', component: JoinourteamComponent },
   { path: 'about/gallery', component: GalleryComponent },
@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:post', component: BlogPostComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
+  { path: 'location/:id', component: LocationComponent },
 ];
 
 @NgModule({

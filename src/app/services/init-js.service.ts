@@ -105,9 +105,21 @@ export class InitJsService {
                     aboutList: any = document.getElementsByClassName('about-list')[0],
                     abouts: any = document.getElementsByClassName('about-list--item'),
 
+                  /*menu-locations*/
+
+                    menuLocations: any = document.getElementsByClassName('menu-locations')[0],
+                    locationsList: any = document.getElementsByClassName('location-list')[0],
+                    locations: any = document.getElementsByClassName('location-list--item'),
+
+
                     menuTramp: any = document.getElementsByClassName('menu-tramp')[0],
                     trampList: any = document.getElementsByClassName('tramp-list')[0],
                     tramps: any = document.getElementsByClassName('tramp-list--item');
+
+              var pseudoDiv = document.createElement('div');
+              pseudoDiv.className = 'pseudo-div';
+              header.firstElementChild.appendChild(pseudoDiv);
+
                 // active.pseudoStyle("after", "width", active.clientWidth + 22 + "px");
                 // active.pseudoStyle("after", "left", "-11px");
                 // menuLoc.onmouseover = function (ev) {
@@ -115,23 +127,45 @@ export class InitJsService {
                 //     locList.style.width = menuLoc.clientWidth + 44 + 'px';
                 //     locList.style.left = '-20px';
                 // };
+
                 menuAbout.onmouseover = function (ev) {
                     aboutList.style.display = 'block';
                     aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
                     aboutList.style.left = '-20px';
                     trampList.style.display = 'none';
+                    locationsList.style.display = 'none';
                 };
+
+              menuLocations.onmouseover = function (ev) {
+                locationsList.style.display = 'block';
+                locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
+                locationsList.style.left = '-20px';
+                trampList.style.display = 'none';
+                aboutList.style.display = 'none';
+              };
+
                 menuTramp.onmouseover = function (ev) {
                     trampList.style.display = 'block';
                     trampList.style.width = menuTramp.clientWidth + 44 + 'px';
                     trampList.style.left = '-20px';
                     aboutList.style.display = 'none';
+                    locationsList.style.display = 'none';
                 };
-                header.onmouseout = function (ev) {
-                    // locList.style.display = 'none';
-                    trampList.style.display = 'none';
-                    aboutList.style.display = 'none';
-                };
+
+
+              pseudoDiv.onmouseout = function (ev) {
+                // locList.style.display = 'none';
+                trampList.style.display = 'none';
+                aboutList.style.display = 'none';
+                locationsList.style.display = 'none';
+              };
+
+
+
+
+
+
+
                 // for (var i = 0; i < locs.length; i++) {
                 //     locs[i].onclick = function (ev: any) {
                 //         askContain.getElementsByTagName('h3')[0].innerHTML = 'Go to Adrenaline ' + ev.target.innerHTML + '?';
@@ -527,11 +561,13 @@ export class InitJsService {
                 document.getElementsByTagName('head')[0].innerHTML += '<meta name="viewport" content="width=device-width, initial-scale=1">';
 
                 //header.firstElementChild.innerHTML += '<a href="#" class="toggle-mnu hidden-lg"><span></span></a>';
+
                 var a = document.createElement('a');
                 a.setAttribute('href', 'javascript:void(0)');
                 a.className = 'toggle-mnu hidden-lg';
                 a.appendChild(document.createElement('span'));
                 header.firstElementChild.appendChild(a);
+
                 menu();
 
                 function menu() {

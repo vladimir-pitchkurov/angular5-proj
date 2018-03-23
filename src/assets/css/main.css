@@ -130,11 +130,18 @@ div.menu-active:after {
     background-color: #92dd02;
 }
 
-.menu-loc, .menu-tramp{
+.menu-loc, .menu-tramp, .menu-locations{
     cursor: pointer;
 }
 
-.loc-list, .tramp-list, .about-list  {
+.menu-locations{
+  margin-left: 24px;
+  padding-left: 11px;
+  padding-right: 11px;
+
+}
+
+.loc-list, .tramp-list, .about-list, .location-list  {
     position: absolute;
     top: 30px;
     text-align: center;
@@ -148,7 +155,7 @@ div.menu-active:after {
     padding-right:  20px;
 }
 
-.loc-list--item, .tramp-list--item, .about-list--item {
+.loc-list--item, .tramp-list--item, .about-list--item, .location-list--item {
     margin-bottom: 10px;
     cursor: pointer;
 }
@@ -2866,3 +2873,14 @@ a.btn_pad_20 {
     height: 694px;
 }
 
+@media (max-width: 799px) {
+  .pseudo-div{
+    display: none;
+  }
+}
+
+.pseudo-div{
+  background-color: #00000000;
+  height: 500px;
+  width: 100%;
+}
