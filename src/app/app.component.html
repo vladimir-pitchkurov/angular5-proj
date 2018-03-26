@@ -3,63 +3,93 @@
     <div class="logo">
       <a routerLink="/"><img src="/assets/img/logo.png"></a>
     </div>
-    <div class="menu">
+    <div class="menu" id='cssmenu1'>
+      <ul>
+        <li class='active'><a routerLink="{{activeLocationId}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home</span></a></li>
+        <li class='has-sub'><a routerLinkActive="active" >Trampoline park</a>
+          <ul>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a></li>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a></li>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/groups/" routerLinkActive="active">Groups</a></li>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/activities/" routerLinkActive="active">Activities</a></li>
+            <li><a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a></li>
+            <li class='last' ><a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a></li>
+          </ul>
+        </li>
+        <li class='has-sub'><a routerLinkActive="active" ><span>About us</span></a>
+          <ul>
+            <li><a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a></li>
+            <li><a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a></li>
+            <li><a routerLink="{{activeLocationId}}/about/about/" routerLinkActive="active">Why us</a></li>
+            <li class='last' ><a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active">Contact</a></li>
+          </ul>
+        </li>
+        <li class='has-sub'><a routerLinkActive="active" ><span>Locations</span></a>
+          <ul>
+            <li class='last'*ngFor="let loc of locations" ><a (click)="setLocationById(loc.id)" routerLink="{{loc.id}}" routerLinkActive="active" >{{loc.name}}</a></li>
+          </ul>
+        </li>
+        <li ><a routerLink="/blog/" routerLinkActive="active"><span>Blog</span></a></li>
+      </ul>
+    </div>
+      <!--<div class="menu ">
       <div><a routerLink="{{activeLocationId}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></div>
-      <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
+      &lt;!&ndash;<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>&ndash;&gt;
       <div class="menu-tramp" routerLinkActive="active">
         Trampoline park
         <div class="tramp-list">
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/groups/" routerLinkActive="active">Groups</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/activities/" routerLinkActive="active">Activities</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a>
           </div>
-          <div class="tramp-list--item">
+          <div class="tramp-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a>
           </div>
         </div>
       </div>
-      <!--<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>-->
+      &lt;!&ndash;<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>&ndash;&gt;
 
       <div class="menu-about" routerLinkActive="active">
         About us
         <div class="about-list">
-          <div class="about-list--item">
+          <div class="about-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>
           </div>
-          <div class="about-list--item">
+          <div class="about-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a>
           </div>
-          <div class="about-list--item">
+          <div class="about-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/about/about/" routerLinkActive="active">Why us</a>
           </div>
-          <div class="about-list--item">
+          <div class="about-list&#45;&#45;item">
             <a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active">Contact</a>
           </div>
         </div>
       </div>
 
-      <div  class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+      <div  class="menu-locations" routerLinkActive="active">  &lt;!&ndash;class="menu-loc" (click)="toggleState()"&ndash;&gt;
         Locations
         <div class="location-list">
-          <div class="tramp-list--item " *ngFor="let loc of locations" >
+          <div class="tramp-list&#45;&#45;item " *ngFor="let loc of locations" >
             <a (click)="setLocationById(loc.id)" routerLink="{{loc.id}}" routerLinkActive="active" >{{loc.name}}</a>
           </div>
         </div>
-        <!--<div class="loc-list">
+        &lt;!&ndash;<div class="loc-list">
           <div id="find-park" class="loc-list&#45;&#45;item" link="/">FIND A PARK</div>
           <div class="loc-list&#45;&#45;item" link="/locations/home">Home</div>
           <div class="loc-list&#45;&#45;item" link="/locations/join-our-team">join our team</div>
@@ -73,10 +103,10 @@
           <div class="loc-list&#45;&#45;item" link="/locations/trampolines-homepage">trampolines-homepage</div>
           <div class="loc-list&#45;&#45;item" link="/locations/pass">pass</div>
           <div class="loc-list&#45;&#45;item" link="/locations/parties">parties</div>
-        </div>-->
+        </div>&ndash;&gt;
       </div>
       <div><a routerLink="/blog/" routerLinkActive="active">Blog</a></div>
-    </div>
+    </div>-->
     <div id="ask">
       <div id="ask-contain" class="">
         <h3></h3>

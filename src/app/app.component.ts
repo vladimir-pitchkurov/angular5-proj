@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
+import * as $ from 'jquery';
 
 declare var window: any;
 
@@ -18,8 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   isDarkFooter = false;
 
   constructor(private router: Router
-    , private service: LocationService
-    , private activatedRoute: ActivatedRoute) {
+    , private service: LocationService) {
   }
 
   ngOnInit() {
@@ -43,10 +43,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       .then((data: any[]) => {
         this.locationInf = data;
       });
+
   }
 
+
+
   ngAfterViewInit() {
-    InitJsService.initMenu();
+    //InitJsService.initMenu();
     // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
     //InitJsService.initEscape();
