@@ -30,45 +30,45 @@ import { PartiesComponent } from './components/locations/parties/parties.compone
 import {BaseHttpService} from './services/base-http.service';
 import {LocationService} from './services/location.service';
 import {HttpClientModule} from '@angular/common/http';
-import { LocationComponent } from './location/location.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponentComponent,
-        TrampolineParkComponent,
-        EscapeRoomComponent,
-        BlogComponent,
-        BlogPostComponent,
-        TrampolinePartiesComponent,
-        ComingSoonComponent,
-        MainSliderComponent,
-        HomeComponent,
-        JoinourteamComponent,
-        GalleryComponent,
-        RulesComponent,
-        AboutComponent,
-        ContactComponent,
-        ActivitiesComponent,
-        WaiverComponent,
-        GroupsComponent,
-        TrampolinesHomepageComponent,
-        PassComponent,
-        PartiesComponent,
-        LocationComponent,
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        AppRoutingModule,
-    ],
-    providers: [
-        InitJsService,
-        BaseHttpService,
-        LocationService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HomeComponentComponent,
+    TrampolineParkComponent,
+    EscapeRoomComponent,
+    BlogComponent,
+    BlogPostComponent,
+    TrampolinePartiesComponent,
+    ComingSoonComponent,
+    MainSliderComponent,
+    HomeComponent,
+    JoinourteamComponent,
+    GalleryComponent,
+    RulesComponent,
+    AboutComponent,
+    ContactComponent,
+    ActivitiesComponent,
+    WaiverComponent,
+    GroupsComponent,
+    TrampolinesHomepageComponent,
+    PassComponent,
+    PartiesComponent,
+    FooterComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+  ],
+  providers: [
+    InitJsService,
+    BaseHttpService,
+    LocationService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

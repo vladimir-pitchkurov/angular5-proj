@@ -9,7 +9,7 @@ export class LocationService {
   public activeLocationId: any;
 
   getActiveLocationId(): any {
-    return this.activeLocationId == undefined?13:this.activeLocationId;
+    return this.activeLocationId == undefined?1:this.activeLocationId;
   }
 
   setActiveLocationId(value: any) {

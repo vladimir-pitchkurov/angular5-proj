@@ -1,97 +1,97 @@
 <header>
-    <div class="container">
-        <div class="logo">
-            <a routerLink="/"><img src="/assets/img/logo.png"></a>
-        </div>
-        <div class="menu">
-            <div><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></div>
-            <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
-            <div class="menu-tramp" routerLinkActive="active">
-                Trampoline park
-                <div class="tramp-list">
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/" routerLinkActive="active">Home</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/groups/" routerLinkActive="active">Groups</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/activities/" routerLinkActive="active">Activities</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/rules" routerLinkActive="active">Rules</a>
-                    </div>
-                    <div class="tramp-list--item">
-                        <a routerLink="/trampoline-park/waiver" routerLinkActive="active">Waiver</a>
-                    </div>
-                </div>
-            </div>
-            <!--<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>-->
-
-            <div class="menu-about" routerLinkActive="active">
-                About us
-                <div class="about-list">
-                    <div class="about-list--item">
-                        <a routerLink="/about/join-our-team" routerLinkActive="active">join our team</a>
-                    </div>
-                    <div class="about-list--item">
-                        <a routerLink="/about/gallery/" routerLinkActive="active">Gallery</a>
-                    </div>
-                    <div class="about-list--item">
-                        <a routerLink="/about/about/" routerLinkActive="active">Why us</a>
-                    </div>
-                    <div class="about-list--item">
-                        <a routerLink="/about/contact/" routerLinkActive="active">Contact</a>
-                    </div>
-                </div>
-            </div>
-
-          <div  class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
-            Locations
-            <div class="location-list">
-              <div class="tramp-list--item " *ngFor="let loc of locations" >
-                <a (click)="setLocationById(loc.id)" routerLink="location/{{loc.id}}" routerLinkActive="active" >{{loc.name}}</a>
-              </div>
-            </div>
-            <!--<div class="loc-list">
-              <div id="find-park" class="loc-list&#45;&#45;item" link="/">FIND A PARK</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/home">Home</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/join-our-team">join our team</div>
-              <div class="loc-list&#45;&#45;item" link="/cincinnati/">CINCINNATI</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/about/">About</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/gallery/">Gallery</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/contact/">Contact</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/activities">activities</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/waiver">waiver</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/groups">groups</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/trampolines-homepage">trampolines-homepage</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/pass">pass</div>
-              <div class="loc-list&#45;&#45;item" link="/locations/parties">parties</div>
-            </div>-->
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/"><img src="/assets/img/logo.png"></a>
+    </div>
+    <div class="menu">
+      <div><a routerLink="{{activeLocationId}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></div>
+      <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
+      <div class="menu-tramp" routerLinkActive="active">
+        Trampoline park
+        <div class="tramp-list">
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
           </div>
-             <div><a routerLink="/blog/" routerLinkActive="active">Blog</a></div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/groups/" routerLinkActive="active">Groups</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/activities/" routerLinkActive="active">Activities</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a>
+          </div>
         </div>
-        <div id="ask">
-            <div id="ask-contain" class="">
-                <h3></h3>
-                <div style="width: 100%; text-align: center;">
-                    <div style="display: inline-block">
-                        <div id="ask-no">No</div>
-                        <a id="ask-yes" href="/">Yes</a>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <!--<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>-->
+
+      <div class="menu-about" routerLinkActive="active">
+        About us
+        <div class="about-list">
+          <div class="about-list--item">
+            <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>
+          </div>
+          <div class="about-list--item">
+            <a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a>
+          </div>
+          <div class="about-list--item">
+            <a routerLink="{{activeLocationId}}/about/about/" routerLinkActive="active">Why us</a>
+          </div>
+          <div class="about-list--item">
+            <a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active">Contact</a>
+          </div>
         </div>
-        <div id="ask-loc">
-            <div id="ask-loc-contain" class="col-md-12">
-                <h3>Help us find the nearest park to your location</h3>
-                <h2>
+      </div>
+
+      <div  class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+        Locations
+        <div class="location-list">
+          <div class="tramp-list--item " *ngFor="let loc of locations" >
+            <a (click)="setLocationById(loc.id)" routerLink="{{loc.id}}" routerLinkActive="active" >{{loc.name}}</a>
+          </div>
+        </div>
+        <!--<div class="loc-list">
+          <div id="find-park" class="loc-list&#45;&#45;item" link="/">FIND A PARK</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/home">Home</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/join-our-team">join our team</div>
+          <div class="loc-list&#45;&#45;item" link="/cincinnati/">CINCINNATI</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/about/">About</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/gallery/">Gallery</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/contact/">Contact</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/activities">activities</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/waiver">waiver</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/groups">groups</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/trampolines-homepage">trampolines-homepage</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/pass">pass</div>
+          <div class="loc-list&#45;&#45;item" link="/locations/parties">parties</div>
+        </div>-->
+      </div>
+      <div><a routerLink="/blog/" routerLinkActive="active">Blog</a></div>
+    </div>
+    <div id="ask">
+      <div id="ask-contain" class="">
+        <h3></h3>
+        <div style="width: 100%; text-align: center;">
+          <div style="display: inline-block">
+            <div id="ask-no">No</div>
+            <a id="ask-yes" href="/">Yes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="ask-loc">
+      <div id="ask-loc-contain" class="col-md-12">
+        <h3>Help us find the nearest park to your location</h3>
+        <h2>
                     <span class="ask-loc-zip">
                         Input your zip
                         <input class="input-zip" list="zip" maxlength="5">
@@ -104,7 +104,7 @@
                             <option>90006</option>
                         </datalist>
                     </span>
-                    <span class="ask-loc-city">
+          <span class="ask-loc-city">
                         or city
                         <input class="input-city" list="city" maxlength="25">
                         <datalist id="city">
@@ -115,23 +115,25 @@
                             <option>Memphis</option>
                         </datalist>
                     </span>
-                    <span class="ask-loc-buttons">
+          <span class="ask-loc-buttons">
                         <button id="ask-button-close">Close</button>
                         <button id="ask-button-find">Find</button>
                     </span>
-                </h2>
-            </div>
-        </div>
+        </h2>
+      </div>
     </div>
-    <div style="display: none">
-        <div id="startLat"></div>
-        <div id="startLon"></div>
-        <div id="startCity"></div>
-    </div>
+  </div>
+  <div style="display: none">
+    <div id="startLat"></div>
+    <div id="startLon"></div>
+    <div id="startCity"></div>
+  </div>
 </header>
 
 <router-outlet></router-outlet>
-
+<app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId" ></app-footer>
+<!--
+<h1 color="red">Active location = {{activeLocationId}}</h1>
 <footer [ngClass]="{'footer-dark': isDarkFooter}">
     <div class="container">
         <div class="footer-logo">
@@ -192,6 +194,8 @@
                         <a href="{{g.url}}" target="_blank">
                             <i class="fa fa-google-plus"></i>
                         </a>
+                      <p color="white">{{instagram_link | json }}{{instagram_link[0].url}}
+                        instagram link::    {{instagram_link[0].url }}</p>
                     </li>
                 </ul>
             </div>
@@ -201,3 +205,4 @@
         </div>
     </div>
 </div>
+-->

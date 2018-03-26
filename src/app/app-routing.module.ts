@@ -19,30 +19,30 @@ import {GroupsComponent} from './components/locations/groups/groups.component';
 import {TrampolinesHomepageComponent} from './components/locations/trampolines-homepage/trampolines-homepage.component';
 import {PassComponent} from './components/locations/pass/pass.component';
 import {PartiesComponent} from './components/locations/parties/parties.component';
-import {LocationComponent} from './location/location.component';
 
 
 const routes: Routes = [
-
-
+  { path: '',
+    redirectTo: '1',
+    pathMatch: 'full'
+  },
+  { path: ':id', component: HomeComponent },
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
-  { path: '', component: HomeComponent },
-  { path: 'about/join-our-team', component: JoinourteamComponent },
-  { path: 'about/gallery', component: GalleryComponent },
-  { path: 'about/about', component: AboutComponent },
-  { path: 'about/contact', component: ContactComponent },
-  { path: 'trampoline-park', component: TrampolinesHomepageComponent },
-  { path: 'trampoline-park/rules', component: RulesComponent },
-  { path: 'trampoline-park/activities', component: ActivitiesComponent },
-  { path: 'trampoline-park/waiver', component: WaiverComponent },
-  { path: 'trampoline-park/groups', component: GroupsComponent },
-  { path: 'trampoline-park/buy-a-pass', component: PassComponent },
-  { path: 'trampoline-park/birthday-parties', component: PartiesComponent },
+  { path: ':id/about/join-our-team', component: JoinourteamComponent },
+  { path: ':id/about/gallery', component: GalleryComponent },
+  { path: ':id/about/about', component: AboutComponent },
+  { path: ':id/about/contact', component: ContactComponent },
+  { path: ':id/trampoline-park', component: TrampolinesHomepageComponent },
+  { path: ':id/trampoline-park/rules', component: RulesComponent },
+  { path: ':id/trampoline-park/activities', component: ActivitiesComponent },
+  { path: ':id/trampoline-park/waiver', component: WaiverComponent },
+  { path: ':id/trampoline-park/groups', component: GroupsComponent },
+  { path: ':id/trampoline-park/buy-a-pass', component: PassComponent },
+  { path: ':id/trampoline-park/birthday-parties', component: PartiesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:post', component: BlogPostComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
-  { path: 'location/:id', component: LocationComponent },
 ];
 
 @NgModule({

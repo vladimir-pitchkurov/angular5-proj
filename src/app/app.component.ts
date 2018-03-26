@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
-import {NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
 
 declare var window: any;
@@ -10,20 +10,17 @@ declare var window: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'app';
-  locations: any;
-  service: LocationService;
+  locations: any[];
   activeLocationId: any;
   locationInf: any[];
-  socialInf: any[];
-  isDarkFooter: boolean = false;
-  facebook_link: any[];
-  twitter_link: any[];
-  instagram_link: any[];
-  google_link: any[];
+  isDarkFooter = false;
 
-  constructor(private router: Router, private service: LocationService) { }
+  constructor(private router: Router
+    , private service: LocationService
+    , private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.activeLocationId = this.service.getActiveLocationId();
@@ -46,46 +43,17 @@ export class AppComponent implements OnInit, AfterViewInit{
       .then((data: any[]) => {
         this.locationInf = data;
       });
-
-    this.service.getLocationSocial(this.activeLocationId)
-      .then((data: any[]) => {
-        this.socialInf = data;
-      });
-
-    this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-      .then((data: any[]) => {
-        this.facebook_link = data;
-      });
-
-    this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-      .then((data: any[]) => {
-        this.twitter_link = data;
-      });
-
-    this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-      .then((data: any[]) => {
-        this.instagram_link = data;
-      });
-
-    this.service.getLocationSocialByName(this.activeLocationId, 'google')
-      .then((data: any[]) => {
-        this.google_link = data;
-      });
-
   }
 
-  ngAfterViewInit ()
-  {
+  ngAfterViewInit() {
     InitJsService.initMenu();
     // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
     //InitJsService.initEscape();
   }
 
-
-  defineIsFooterDark()
-  {
-    let pagesWithDarkFooter: string[] = [
+  defineIsFooterDark() {
+    const pagesWithDarkFooter: string[] = [
       '/escape-room',
       'trampoline-parties'
     ];
@@ -94,13 +62,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   setLocationById(id: any) {
-    /*this.activeLocationId = id;*/
     this.service.setActiveLocationId(id);
     this.activeLocationId = this.service.getActiveLocationId();
-    console.log(this.activeLocationId);
   }
-
-  refreshId(){}
 
   // getAddressInfoByZip(zip, device) {
   //     if (zip.length >= 5 && typeof google != 'undefined') {
@@ -153,8 +117,6 @@ export class AppComponent implements OnInit, AfterViewInit{
   //                           column.appendChild(aTag);
   //                           console.log('done');
   //                       }
-
-
 
 
   //                 } else {

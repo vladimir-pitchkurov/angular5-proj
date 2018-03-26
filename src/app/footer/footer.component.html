@@ -1,0 +1,70 @@
+<footer [ngClass]="{'footer-dark': isDarkFooter}">
+  <div class="container">
+    <div class="footer-logo">
+      <img src="/assets/img/footer-logo.png">
+    </div>
+    <div *ngFor="let locInf of locationInf" class="footer-text row">
+      <div class="col-md-4">
+        <p class="footer-name">Adrenaline Entertainment Centers
+          CORPORATE HEADQUARTERS</p>
+        <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{locInf.address_street}}</p>
+        <p class="footer-contact-add-line">{{locInf.address_city}}, {{locInf.address_state}} {{locInf.address_zip}}</p>
+        <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{locInf.phone}}</p>
+        <p class="footer-contact"><img src="/assets/img/icon-email.png">email@domain.com</p>
+      </div>
+      <div class="col-md-2">
+        <p>home</p>
+        <p>trampoline park</p>
+        <p>escape rooms</p>
+        <p>locations</p>
+        <p>blog</p>
+      </div>
+      <div class="col-md-2">
+        <p>lorem ad astra</p>
+        <p>dolor elit</p>
+        <p>consectetuer</p>
+        <p>ipsum per</p>
+        <p>dura lex</p>
+      </div>
+      <div class="col-md-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor quis ante porta
+          venenatis. Suspendisse sollicitudin, dolor sed dignissim bibendum, sapien sem laoreet arcu, non mollis
+          neque odio porttitor purus.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12" >
+        <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
+          <li *ngFor="let f of facebook_link" class="list-inline-item facebook">
+            <a  href="{{f.url}}" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li *ngFor="let t of twitter_link" class="list-inline-item twitter">
+            <a href="{{t.url}}" target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li *ngFor="let i of instagram_link" class="list-inline-item instagram">
+            <a href="{{i.url}}" target="_blank">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+          <li *ngFor="let g of google_link" class="list-inline-item youtube">
+            <a href="{{g.url}}" target="_blank">
+              <i class="fa fa-google-plus"></i>
+            </a>
+            <p color="white">
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12 cus-cent">
+        <p class="cus-cent" >Adrenaline Entertainment Centers © 2018</p>
+      </div>
+    </div>
+  </div>
+</div>
