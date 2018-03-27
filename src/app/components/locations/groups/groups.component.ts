@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {LocationService} from '../../../services/location.service';
 
 @Component({
   selector: 'app-groups',
@@ -8,13 +10,30 @@ import { Title }     from '@angular/platform-browser';
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent implements OnInit {
+  locationInf: any;
+  activeLocationId: any;
 
-    constructor(private meta: Meta, private titleService: Title) {
+    constructor(private meta: Meta,
+                private titleService: Title,
+                private route: Router
+      , private activatedRoute: ActivatedRoute
+      , private service: LocationService) {
     }
 
     ngOnInit() {
         this.titleService.setTitle('Groups');
         this.meta.addTag({ name: 'meta-description', content: 'Groups description' });
+
+      this.activatedRoute.params.forEach((params: Params) => {
+        /*this.activeLocationId = this.service.getActiveLocationId();*/
+        let id = params["id"]; this.activeLocationId = id;
+
+        this.service
+          .getLocationById(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
+          .then(result => this.locationInf = result);
+
+      });
+
     }
 
 }

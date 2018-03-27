@@ -15,7 +15,7 @@
 </div>
 <!--trampolines-homepage-->
 
-<section class="homepage-locations-blue homepage-locations-dark2 pv-40">
+<section *ngIf="activeLocationId != 0" class="homepage-locations-blue homepage-locations-dark2 pv-40">
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-md-3">
@@ -167,7 +167,7 @@
       <div class="col-md-12 text-center">
         <h1 class="green_up">Instance coupons?</h1>
         <h2 class="text-uppercase text_white_n">Receive 10% off your next party</h2>
-        <a class="green_up btn mt-30 theme_a_btn btn_pad" href="/">Contact us</a>
+        <a class="green_up btn mt-30 theme_a_btn btn_pad" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Contact us</a>
       </div>
 
     </div>
@@ -244,7 +244,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" href="/">Book your party</a>
+        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book your party</a>
         <p class="text-muted fs_12">Jumpers are required to wear Altitude Trampoline Socks for sanitation
           adn safety purpose. You are also allowed to reuse your socks.</p>
       </div>

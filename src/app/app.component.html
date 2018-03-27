@@ -5,6 +5,18 @@
       <div class="menu " >
         <div><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
+
+        <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
+          Trampoline park
+          <div class="tramp-list" >
+            <div class="tramp-list--item">
+              <a routerLink="0/trampoline-park/" routerLinkActive="active">Park</a>
+            </div>
+          </div>
+
+        </div>
+
+
       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
         <a >Trampoline park</a>
         <div class="tramp-list" >
@@ -31,7 +43,8 @@
           </div>
         </div>
       </div>
-      <div (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>
+      <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
+        <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual RealityREALITY</a></div>
 
       <div (click)="toggleState()" class="menu-about" routerLinkActive="active">
         About us
@@ -51,7 +64,7 @@
         </div>
       </div>
 
-      <div *ngIf="!activeLocationId" (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+      <div (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
         Locations
         <div class="location-list">
           <div class="tramp-list--item " *ngFor="let loc of locations" >

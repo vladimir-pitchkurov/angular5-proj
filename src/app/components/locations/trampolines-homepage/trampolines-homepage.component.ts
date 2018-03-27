@@ -27,15 +27,18 @@ export class TrampolinesHomepageComponent implements OnInit {
         this.meta.addTag({ name: 'meta-description', content: 'Trampolines Homepage description' });
 
       this.activatedRoute.params.forEach((params: Params) => {
-        /*this.activeLocationId = this.service.getActiveLocationId();*/
-        let id = params["id"]; this.activeLocationId = id;
-        this.service
-          .getLocationHours(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
-          .then(result => this.locationHours = result);  // как только Promise перейдет в состояние resolved присваиваем его значение свойству phrase
 
-        this.service
-          .getLocationById(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
-          .then(result => this.locationInf = result);
+        let id = params["id"]; this.activeLocationId = id;
+
+        if(!this.activeLocationId && this.activeLocationId != 0 && this.activeLocationId != '0') {
+          this.service
+            .getLocationHours(id)
+            .then(result => this.locationHours = result);
+
+          this.service
+            .getLocationById(id)
+            .then(result => this.locationInf = result);
+        }
 
       });
     }
