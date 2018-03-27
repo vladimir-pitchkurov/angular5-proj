@@ -22,8 +22,7 @@ export class HomeComponent implements OnInit {
     , private activatedRoute: ActivatedRoute,
     private meta: Meta
     , private titleService: Title
-    , private service: LocationService
-    , ) {
+    , private service: LocationService ) {
   }
 
   ngOnInit() {

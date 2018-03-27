@@ -75,7 +75,6 @@ export class InitJsService {
                         return this._current;
                     }
                 };
-
                 HTMLElement.prototype.pseudoStyle = function (element: any, prop: any, value: any) {
                     var _this: any = this;
                     var _sheetId: any = 'pseudoStyles';
@@ -105,40 +104,29 @@ export class InitJsService {
                     aboutList: any = document.getElementsByClassName('about-list')[0],
                     abouts: any = document.getElementsByClassName('about-list--item'),
 
-                  /*menu-locations*/
-
                     menuLocations: any = document.getElementsByClassName('menu-locations')[0],
                     locationsList: any = document.getElementsByClassName('location-list')[0],
                     locations: any = document.getElementsByClassName('location-list--item'),
-
 
                     menuTramp: any = document.getElementsByClassName('menu-tramp')[0],
                     trampList: any = document.getElementsByClassName('tramp-list')[0],
                     tramps: any = document.getElementsByClassName('tramp-list--item');
 
-              /*var pseudoDiv = document.createElement('div');
-              pseudoDiv.className = 'pseudo-div';
-              header.firstElementChild.appendChild(pseudoDiv);*/
-
-                // active.pseudoStyle("after", "width", active.clientWidth + 22 + "px");
-                // active.pseudoStyle("after", "left", "-11px");
-                // menuLoc.onmouseover = function (ev) {
-                //     locList.style.display = 'block';
-                //     locList.style.width = menuLoc.clientWidth + 44 + 'px';
-                //     locList.style.left = '-20px';
-                // };
+              // active.pseudoStyle("after", "width", active.clientWidth + 22 + "px");
+              // active.pseudoStyle("after", "left", "-11px");
+              // menuLoc.onmouseover = function (ev) {
+              //     locList.style.display = 'block';
+              //     locList.style.width = menuLoc.clientWidth + 44 + 'px';
+              //     locList.style.left = '-20px';
+              // };
 
               if(menuAbout) {
                 menuAbout.onmouseover = function (ev) {
                   aboutList.style.display = 'block';
                   aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
                   aboutList.style.left = '-20px';
-                  if (trampList) {
-                    trampList.style.display = 'none';
-                  }
-                  if (locationsList) {
-                    locationsList.style.display = 'none';
-                  }
+                  if (trampList) { trampList.style.display = 'none'; }
+                  if (locationsList) { locationsList.style.display = 'none'; }
                 };
               }
 
@@ -147,12 +135,8 @@ export class InitJsService {
                   locationsList.style.display = 'block';
                   locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
                   locationsList.style.left = '-20px';
-                  if (trampList) {
-                    trampList.style.display = 'none';
-                  }
-                  if (aboutList) {
-                    aboutList.style.display = 'none';
-                  }
+                  if (trampList) { trampList.style.display = 'none'; }
+                  if (aboutList) { aboutList.style.display = 'none'; }
                 };
               }
 
@@ -161,12 +145,8 @@ export class InitJsService {
                   trampList.style.display = 'block';
                   trampList.style.width = menuTramp.clientWidth + 44 + 'px';
                   trampList.style.left = '-20px';
-                  if (aboutList) {
-                    aboutList.style.display = 'none';
-                  }
-                  if (locationsList) {
-                    locationsList.style.display = 'none';
-                  }
+                  if (aboutList) { aboutList.style.display = 'none'; }
+                  if (locationsList) { locationsList.style.display = 'none'; }
                 };
               }
 
@@ -176,13 +156,6 @@ export class InitJsService {
                 if(aboutList){aboutList.style.display = 'none';}
                 if(locationsList){locationsList.style.display = 'none';}
               };
-
-
-
-
-
-
-
                 // for (var i = 0; i < locs.length; i++) {
                 //     locs[i].onclick = function (ev: any) {
                 //         askContain.getElementsByTagName('h3')[0].innerHTML = 'Go to Adrenaline ' + ev.target.innerHTML + '?';
@@ -208,11 +181,12 @@ export class InitJsService {
                             menu.style.display = 'none';
                         }
                         if(aboutList){aboutList.style.display = 'none';}
+                      if(locationsList){locationsList.style.display = 'none';}
                         // locList.style.display = 'none';
                     };
                 }
 
-              for (var i = 0; i < tramps.length; i++) {
+              for (var i = 0; i < locations.length; i++) {
                 locations[i].onclick = function (ev: any) {
                   var toggle: any = document.getElementsByClassName('toggle-mnu')[0];
                   if (toggle && toggle.classList.contains('on')) {
@@ -220,10 +194,10 @@ export class InitJsService {
                     menu.style.display = 'none';
                   }
                   if(aboutList){aboutList.style.display = 'none';}
+                  if(trampList){trampList.style.display = 'none';}
                   // locList.style.display = 'none';
                 };
               }
-
 
                 for (var i = 0; i < abouts.length; i++) {
                     abouts[i].onclick = function (ev: any) {
@@ -233,6 +207,7 @@ export class InitJsService {
                             menu.style.display = 'none';
                         }
                       if(trampList){trampList.style.display = 'none';}
+                      if(locationsList){locationsList.style.display = 'none';}
                         // locList.style.display = 'none';
                     };
                 };
@@ -253,6 +228,139 @@ export class InitJsService {
             })();
         }, 0);
     }
+
+  static afterViewMenuTramp(){
+    setTimeout(function () {
+      (function () {
+
+        var active: any = document.getElementsByClassName('menu-active')[0],
+          // locList: any = document.getElementsByClassName('loc-list')[0],
+          askContain: any = document.getElementById('ask-contain'),
+          askNo: any = document.getElementById('ask-no'),
+          // menuLoc: any = document.getElementsByClassName('menu-loc')[0],
+          header: any = document.getElementsByTagName('header')[0],
+          // locs: any = document.getElementsByClassName('loc-list--item'),
+          menu: any = document.getElementsByClassName('menu')[0],
+          menuLinks: any = document.getElementsByTagName('a'),
+
+          menuAbout: any = document.getElementsByClassName('menu-about')[0],
+          aboutList: any = document.getElementsByClassName('about-list')[0],
+          abouts: any = document.getElementsByClassName('about-list--item'),
+
+          menuLocations: any = document.getElementsByClassName('menu-locations')[0],
+          locationsList: any = document.getElementsByClassName('location-list')[0],
+          locations: any = document.getElementsByClassName('location-list--item'),
+
+          menuTramp: any = document.getElementsByClassName('menu-tramp')[0],
+          trampList: any = document.getElementsByClassName('tramp-list')[0],
+          tramps: any = document.getElementsByClassName('tramp-list--item');
+
+        if(menuTramp) {
+          menuTramp.onmouseover = function (ev) {
+            trampList.style.display = 'block';
+            trampList.style.width = menuTramp.clientWidth + 44 + 'px';
+            trampList.style.left = '-20px';
+            if (aboutList) { aboutList.style.display = 'none'; }
+            if (locationsList) { locationsList.style.display = 'none'; }
+          };
+        }
+
+        if(menuAbout) {
+          menuAbout.onmouseover = function (ev) {
+            aboutList.style.display = 'block';
+            aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
+            aboutList.style.left = '-20px';
+            if (trampList) { trampList.style.display = 'none'; }
+            if (locationsList) { locationsList.style.display = 'none'; }
+          };
+        }
+
+        if(menuLocations) {
+          menuLocations.onmouseover = function (ev) {
+            locationsList.style.display = 'block';
+            locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
+            locationsList.style.left = '-20px';
+            if (trampList) { trampList.style.display = 'none'; }
+            if (aboutList) { aboutList.style.display = 'none'; }
+          };
+        }
+        header.onmouseout = function (ev) {
+          // locList.style.display = 'none';
+          if(trampList){trampList.style.display = 'none';}
+          if(aboutList){aboutList.style.display = 'none';}
+          if(locationsList){locationsList.style.display = 'none';}
+        };
+
+      })();
+    },0)
+  }
+
+  static afterViewMenuLocations(){
+    setTimeout(function () {
+      (function () {
+
+        var active: any = document.getElementsByClassName('menu-active')[0],
+          // locList: any = document.getElementsByClassName('loc-list')[0],
+          askContain: any = document.getElementById('ask-contain'),
+          askNo: any = document.getElementById('ask-no'),
+          // menuLoc: any = document.getElementsByClassName('menu-loc')[0],
+          header: any = document.getElementsByTagName('header')[0],
+          // locs: any = document.getElementsByClassName('loc-list--item'),
+          menu: any = document.getElementsByClassName('menu')[0],
+          menuLinks: any = document.getElementsByTagName('a'),
+
+          menuAbout: any = document.getElementsByClassName('menu-about')[0],
+          aboutList: any = document.getElementsByClassName('about-list')[0],
+          abouts: any = document.getElementsByClassName('about-list--item'),
+
+          menuLocations: any = document.getElementsByClassName('menu-locations')[0],
+          locationsList: any = document.getElementsByClassName('location-list')[0],
+          locations: any = document.getElementsByClassName('location-list--item'),
+
+          menuTramp: any = document.getElementsByClassName('menu-tramp')[0],
+          trampList: any = document.getElementsByClassName('tramp-list')[0],
+          tramps: any = document.getElementsByClassName('tramp-list--item');
+
+        if(menuTramp) {
+          menuTramp.onmouseover = function (ev) {
+            trampList.style.display = 'block';
+            trampList.style.width = menuTramp.clientWidth + 44 + 'px';
+            trampList.style.left = '-20px';
+            if (aboutList) { aboutList.style.display = 'none'; }
+            if (locationsList) { locationsList.style.display = 'none'; }
+          };
+        }
+
+        if(menuAbout) {
+          menuAbout.onmouseover = function (ev) {
+            aboutList.style.display = 'block';
+            aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
+            aboutList.style.left = '-20px';
+            if (trampList) { trampList.style.display = 'none'; }
+            if (locationsList) { locationsList.style.display = 'none'; }
+          };
+        }
+
+        if(menuLocations) {
+          menuLocations.onmouseover = function (ev) {
+            locationsList.style.display = 'block';
+            locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
+            locationsList.style.left = '-20px';
+            if (trampList) { trampList.style.display = 'none'; }
+            if (aboutList) { aboutList.style.display = 'none'; }
+          };
+        }
+        header.onmouseout = function (ev) {
+          // locList.style.display = 'none';
+          if(trampList){trampList.style.display = 'none';}
+          if(aboutList){aboutList.style.display = 'none';}
+          if(locationsList){locationsList.style.display = 'none';}
+        };
+
+      })();
+    },0)
+  }
+
 
 
     static initBlockOne() {

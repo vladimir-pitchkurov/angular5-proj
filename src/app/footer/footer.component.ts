@@ -29,35 +29,39 @@ export class FooterComponent implements OnInit, OnChanges {
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"]; this.activeLocationId = id;
 
-      this.service.getLocationById(this.activeLocationId)
-        .then((data: any[]) => {
-          this.locationInf = data;
-        });
+      if(this.activeLocationId) {
 
-      this.service.getLocationSocial(this.activeLocationId)
-        .then((data: any[]) => {
-          this.socialInf = data;
-        });
+        this.service.getLocationById(this.activeLocationId)
+          .then((data: any[]) => {
+            this.locationInf = data;
+          });
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-        .then((data: any[]) => {
-          this.facebook_link = data;
-        });
+        this.service.getLocationSocial(this.activeLocationId)
+          .then((data: any[]) => {
+            this.socialInf = data;
+          });
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-        .then((data: any[]) => {
-          this.twitter_link = data;
-        });
+        this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+          .then((data: any[]) => {
+            this.facebook_link = data;
+          });
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-        .then((data: any[]) => {
-          this.instagram_link = data;
-        });
+        this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+          .then((data: any[]) => {
+            this.twitter_link = data;
+          });
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'google')
-        .then((data: any[]) => {
-          this.google_link = data;
-        });
+        this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+          .then((data: any[]) => {
+            this.instagram_link = data;
+          });
+
+        this.service.getLocationSocialByName(this.activeLocationId, 'google')
+          .then((data: any[]) => {
+            this.google_link = data;
+          });
+      }
+
     });
   }
 
@@ -65,6 +69,7 @@ export class FooterComponent implements OnInit, OnChanges {
 
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"]; this.activeLocationId = this.service.activeLocationId;
+      if(this.activeLocationId){
       this.service.getLocationById(this.activeLocationId)
         .then((data: any[]) => {
           this.locationInf = data;
@@ -94,6 +99,7 @@ export class FooterComponent implements OnInit, OnChanges {
         .then((data: any[]) => {
           this.google_link = data;
         });
+      }
     });
   }
 }

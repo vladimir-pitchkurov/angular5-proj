@@ -2,12 +2,12 @@
   <div class="container">
     <div class="logo">
     </div>
-      <div class="menu ">
-        <div><a routerLink="" routerLinkActive="active" (click)="nullLocation()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
+      <div class="menu " >
+        <div><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
-      <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active">
+      <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
         <a >Trampoline park</a>
-        <div class="tramp-list">
+        <div class="tramp-list" >
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
           </div>
@@ -31,9 +31,9 @@
           </div>
         </div>
       </div>
-      <div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>
+      <div (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>
 
-      <div  class="menu-about" routerLinkActive="active">
+      <div (click)="toggleState()" class="menu-about" routerLinkActive="active">
         About us
         <div class="about-list">
           <div class="about-list--item">
@@ -51,11 +51,11 @@
         </div>
       </div>
 
-      <div  class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+      <div *ngIf="!activeLocationId" (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
         Locations
         <div class="location-list">
           <div class="tramp-list--item " *ngFor="let loc of locations" >
-            <a (click)="setLocationById(loc.nameUrl); initMenu()" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
+            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
           </div>
         </div>
         <!--<div class="loc-list">
@@ -74,7 +74,7 @@
           <div class="loc-list--item" link="/locations/parties">parties</div>
         </div>-->
       </div>
-      <div><a routerLink="/blog/" routerLinkActive="active">Blog</a></div>
+      <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active">Blog</a></div>
     </div>
     <div id="ask">
       <div id="ask-contain" class="">

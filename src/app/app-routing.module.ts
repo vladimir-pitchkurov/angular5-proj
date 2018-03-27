@@ -38,8 +38,8 @@ const routes: Routes = [
   { path: ':id/trampoline-park/groups', component: GroupsComponent },
   { path: ':id/trampoline-park/buy-a-pass', component: PassComponent },
   { path: ':id/trampoline-park/birthday-parties', component: PartiesComponent },
-  { path: ':id/blog', component: BlogComponent },
-  { path: ':id/blog/:post', component: BlogPostComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:post', component: BlogPostComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
 ];
 

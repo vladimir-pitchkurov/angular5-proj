@@ -20,15 +20,9 @@
     <div class="row justify-content-between">
       <div class="col-md-3">
         <h2 class="green_up">Open Hours</h2>
-        <ul class="list-unstyled open_hours text-uppercase">
-          <li class="  ">Mon-Thurs</li>
-          <li class="  txt_col ">10 AM - 9 PM</li>
-          <li class=" ">Fri</li>
-          <li class="  txt_col">10 AM - 11 PM</li>
-          <li class=" ">Sat</li>
-          <li class=" txt_col">9 AM - 11 PM</li>
-          <li class=" ">Sun</li>
-          <li class=" txt_col">11 AM - 8 PM</li>
+        <ul *ngFor="let hour of locationHours" class="list-unstyled open_hours text-uppercase">
+          <li class=" cus-lft ">{{hour.label}}</li>
+          <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
         </ul>
       </div>
       <div class="col-md-8">
@@ -37,7 +31,7 @@
           Suspendisse sagittis nunc id risus facilisis, vel venenatis ex tincidunt. Morbi vel laoreet nisl. Duis pulvinar leo quis mauris cursus mollis.
           Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
         </p>
-        <h3 class="green_up text-center">Call us right now: (561) 440-1400</h3>
+        <h3 *ngFor="let locationI of locationInf " class="green_up text-center">Call us right now: {{locationI.phone}}</h3>
         <p>
           Duis pulvinar leo quis mauris cursus mollis.
           Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.

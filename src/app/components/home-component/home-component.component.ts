@@ -24,7 +24,7 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         InitJsService.initScroll();
         InitJsService.initBlockOne();
-        // InitJsService.initLoc();
+        //InitJsService.initLoc();
     }
 
 }

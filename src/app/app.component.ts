@@ -32,6 +32,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       window.scrollTo(0, 0);
       // this.getAddressInfoByZip('72223', 'desktop');
       this.defineIsFooterDark();
+
+      if(this.activeLocationId) {
+        this.service.getLocationById(this.activeLocationId)
+          .then((data: any[]) => {
+            this.locationInf = data;
+          });
+      }
     });
 
     this.locations = this.service.getLocationMap();
@@ -42,21 +49,27 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.locations = data;
       });*/
 
-    this.service.getLocationById(this.activeLocationId)
-      .then((data: any[]) => {
-        this.locationInf = data;
-      });
+
 
   }
 
 nullLocation(){
     this.activeLocationId = null;
 }
+isMenuInit: boolean = false;
+  isMobileMenuInit: boolean = false;
 
 initMenu(){
-  InitJsService.initMenu();
-  InitJsService.initMobileMenu();
+  //if(!this.isMenuInit){ InitJsService.initMenu(); this.isMenuInit = true;}
+  //if(!this.isMobileMenuInit){InitJsService.initMobileMenu(); this.isMobileMenuInit = true;}
+  InitJsService.afterViewMenuTramp();
 }
+
+  isIn = false;   // store state
+  toggleState() { // click handler
+    let bool = this.isIn;
+    this.isIn = bool === false ? true : false;
+  }
 
   ngAfterViewInit() {
     InitJsService.initMenu();
@@ -148,4 +161,10 @@ initMenu(){
 
 }
 
-
+export const activeAttract: any =
+  {
+    trampoline : false,
+    escape: false,
+    vr: false
+  }
+;
