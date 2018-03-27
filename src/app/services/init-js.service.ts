@@ -170,7 +170,6 @@ export class InitJsService {
                 };
               }
 
-
               header.onmouseout = function (ev) {
                 // locList.style.display = 'none';
                 if(trampList){trampList.style.display = 'none';}
@@ -197,6 +196,9 @@ export class InitJsService {
                 //         askContain.classList.add('slideDown');
                 //     };
                 // }
+              askNo.onclick = function (ev: any) {
+                askContain.classList.remove('slideDown');
+              };
 
                 for (var i = 0; i < tramps.length; i++) {
                     tramps[i].onclick = function (ev: any) {
@@ -209,9 +211,20 @@ export class InitJsService {
                         // locList.style.display = 'none';
                     };
                 }
-                askNo.onclick = function (ev: any) {
-                    askContain.classList.remove('slideDown');
+
+              for (var i = 0; i < tramps.length; i++) {
+                locations[i].onclick = function (ev: any) {
+                  var toggle: any = document.getElementsByClassName('toggle-mnu')[0];
+                  if (toggle && toggle.classList.contains('on')) {
+                    toggle.classList.remove('on');
+                    menu.style.display = 'none';
+                  }
+                  if(aboutList){aboutList.style.display = 'none';}
+                  // locList.style.display = 'none';
                 };
+              }
+
+
                 for (var i = 0; i < abouts.length; i++) {
                     abouts[i].onclick = function (ev: any) {
                         var toggle: any = document.getElementsByClassName('toggle-mnu')[0];
@@ -223,6 +236,7 @@ export class InitJsService {
                         // locList.style.display = 'none';
                     };
                 };
+
                 for (i = 0; i < menuLinks.length; i++) {
                     menuLinks[i].onclick = function (ev: any) {
                         var toggle: any = document.getElementsByClassName('toggle-mnu')[0];
@@ -235,6 +249,7 @@ export class InitJsService {
                         if(aboutList){aboutList.style.display = 'none';}
                     };
                 }
+
             })();
         }, 0);
     }

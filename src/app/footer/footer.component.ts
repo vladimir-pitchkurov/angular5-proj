@@ -3,7 +3,6 @@ import {LocationService} from "../services/location.service";
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 
-
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
@@ -24,7 +23,7 @@ export class FooterComponent implements OnInit, OnChanges {
   constructor(private service: LocationService
     , private route: Router
     , private activatedRoute: ActivatedRoute) {  }
-    
+
   ngOnInit() {
 
     this.activatedRoute.params.forEach((params: Params) => {
@@ -62,10 +61,8 @@ export class FooterComponent implements OnInit, OnChanges {
     });
   }
 
-
   ngOnChanges(): void {
 
-    console.log('footer change event');
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"]; this.activeLocationId = this.service.activeLocationId;
       this.service.getLocationById(this.activeLocationId)

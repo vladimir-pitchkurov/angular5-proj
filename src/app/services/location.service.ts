@@ -10,16 +10,11 @@ export class LocationService {
 
   getIdByName(name: any): any {
     let id ;
-
-    let list = LIST_OF_LOCATIONS;
     for(let i = 0; i< LIST_OF_LOCATIONS.length; i++){
       if( LIST_OF_LOCATIONS[i].nameUrl === name ){
-        console.log('equals');
         return LIST_OF_LOCATIONS[i].id;
       }
     }
-
-
     return id;
   }
 

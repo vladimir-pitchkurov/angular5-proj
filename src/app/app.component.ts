@@ -53,6 +53,11 @@ nullLocation(){
     this.activeLocationId = null;
 }
 
+initMenu(){
+  InitJsService.initMenu();
+  InitJsService.initMobileMenu();
+}
+
   ngAfterViewInit() {
     InitJsService.initMenu();
     // InitJsService.initLocScroll();

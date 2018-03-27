@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <!--<div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>-->
+      <div><a ng-href="javascript:void(0)" class="escape disabled" on-mouseover="initEscape">Escape rooms</a></div>
 
       <div  class="menu-about" routerLinkActive="active">
         About us
@@ -55,7 +55,7 @@
         Locations
         <div class="location-list">
           <div class="tramp-list--item " *ngFor="let loc of locations" >
-            <a (click)="setLocationById(loc.nameUrl)" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
+            <a (click)="setLocationById(loc.nameUrl); initMenu()" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
           </div>
         </div>
         <!--<div class="loc-list">
@@ -128,6 +128,5 @@
     <div id="startCity"></div>
   </div>
 </header>
-<h1>Active location of root:: {{activeLocationId}}</h1>
 <router-outlet></router-outlet>
 <app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId"  ></app-footer>
