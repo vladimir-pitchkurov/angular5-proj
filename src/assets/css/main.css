@@ -130,8 +130,9 @@ div.menu-active:after {
     background-color: #92dd02;
 }
 
-.menu-loc, .menu-tramp, .menu-locations{
+.menu-loc, div.menu-tramp, .menu-locations, .menu-about{
     cursor: pointer;
+  padding-bottom: 10px;
 }
 
 .menu-locations{
@@ -1630,7 +1631,7 @@ a.escape-add--link:focus, a.escape-add--link:active, a.escape-add--link:hover {
     margin-right: 11px;
     */
     margin-left: 24px;
-    padding: 0 11px 4px;
+    padding: 0 11px 10px;
 }
 
 header .menu > div > a {

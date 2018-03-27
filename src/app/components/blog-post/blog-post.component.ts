@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-blog-post',
@@ -9,7 +10,10 @@ import { Title }     from '@angular/platform-browser';
 })
 export class BlogPostComponent implements OnInit {
 
-    constructor(private meta: Meta, private titleService: Title) {
+    constructor(private meta: Meta,
+                private titleService: Title,
+                private route: Router,
+                ) {
     }
 
     ngOnInit() {

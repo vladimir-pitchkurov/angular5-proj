@@ -31,6 +31,8 @@ import {BaseHttpService} from './services/base-http.service';
 import {LocationService} from './services/location.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import {LocationMap} from './services/LocationMap';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { FooterComponent } from './footer/footer.component';
     PassComponent,
     PartiesComponent,
     FooterComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

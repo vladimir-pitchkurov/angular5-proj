@@ -19,20 +19,18 @@ import {GroupsComponent} from './components/locations/groups/groups.component';
 import {TrampolinesHomepageComponent} from './components/locations/trampolines-homepage/trampolines-homepage.component';
 import {PassComponent} from './components/locations/pass/pass.component';
 import {PartiesComponent} from './components/locations/parties/parties.component';
+import {WelcomeComponent} from './components/welcome/welcome.component';
 
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: '1',
-    pathMatch: 'full'
-  },
+  { path: '', component: WelcomeComponent },
   { path: ':id', component: HomeComponent },
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
-  { path: ':id/about/join-our-team', component: JoinourteamComponent },
-  { path: ':id/about/gallery', component: GalleryComponent },
-  { path: ':id/about/about', component: AboutComponent },
-  { path: ':id/about/contact', component: ContactComponent },
+  { path: 'about/join-our-team', component: JoinourteamComponent },
+  { path: 'about/gallery', component: GalleryComponent },
+  { path: 'about/about', component: AboutComponent },
+  { path: 'about/contact', component: ContactComponent },
   { path: ':id/trampoline-park', component: TrampolinesHomepageComponent },
   { path: ':id/trampoline-park/rules', component: RulesComponent },
   { path: ':id/trampoline-park/activities', component: ActivitiesComponent },
@@ -40,8 +38,8 @@ const routes: Routes = [
   { path: ':id/trampoline-park/groups', component: GroupsComponent },
   { path: ':id/trampoline-park/buy-a-pass', component: PassComponent },
   { path: ':id/trampoline-park/birthday-parties', component: PartiesComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'blog/:post', component: BlogPostComponent },
+  { path: ':id/blog', component: BlogComponent },
+  { path: ':id/blog/:post', component: BlogPostComponent },
   { path: 'coming-soon', component: ComingSoonComponent },
 ];
 

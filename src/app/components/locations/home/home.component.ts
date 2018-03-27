@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
 import { LocationService } from '../../../services/location.service';
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activeLocationId = this.service.getActiveLocationId();
+
     this.titleService.setTitle('Home title');
     this.meta.addTag({ name: 'meta-description', content: 'description' });
 
@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
       });*/
 
     this.activatedRoute.params.forEach((params: Params) => {
-      let id = +params["id"]; // конвертируем значение параметра id в тип number
+      /*this.activeLocationId = this.service.getActiveLocationId();*/
+      let id = +params["id"]; this.activeLocationId = id;
       this.service
         .getLocationHours(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
         .then(result => this.locationHours = result);  // как только Promise перейдет в состояние resolved присваиваем его значение свойству phrase
@@ -46,6 +47,8 @@ export class HomeComponent implements OnInit {
         .then(result => this.locationInf = result);
 
     });
+
+
 
     /* this.activatedRoute.params.forEach((params: Params) => {
        let id = +params["id"]; // конвертируем значение параметра id в тип number

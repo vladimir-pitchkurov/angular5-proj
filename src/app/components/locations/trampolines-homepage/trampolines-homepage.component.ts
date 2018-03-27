@@ -9,7 +9,9 @@ import { Title }     from '@angular/platform-browser';
 })
 export class TrampolinesHomepageComponent implements OnInit {
 
-    constructor(private meta: Meta, private titleService: Title) {
+    constructor(private meta: Meta,
+                private titleService: Title,
+                ) {
     }
 
     ngOnInit() {

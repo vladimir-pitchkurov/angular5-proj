@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import { NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
-import * as $ from 'jquery';
+import {LocationMap} from './services/LocationMap';
 
 declare var window: any;
 
@@ -13,9 +13,9 @@ declare var window: any;
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'app';
-  locations: any[];
+  locations: LocationMap[];
   activeLocationId: any;
-  locationInf: any[];
+  locationInf: any[] ;
   isDarkFooter = false;
 
   constructor(private router: Router
@@ -34,10 +34,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.defineIsFooterDark();
     });
 
-    this.service.getAllLocations()
+    this.locations = this.service.getLocationMap();
+
+
+    /*this.service.getAllLocations()
       .then((data: any[]) => {
         this.locations = data;
-      });
+      });*/
 
     this.service.getLocationById(this.activeLocationId)
       .then((data: any[]) => {
@@ -46,10 +49,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
-
+nullLocation(){
+    this.activeLocationId = null;
+}
 
   ngAfterViewInit() {
-    //InitJsService.initMenu();
+    InitJsService.initMenu();
     // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
     //InitJsService.initEscape();
@@ -137,3 +142,5 @@ export class AppComponent implements OnInit, AfterViewInit {
   // }
 
 }
+
+
