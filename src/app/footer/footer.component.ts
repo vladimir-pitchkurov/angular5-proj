@@ -1,5 +1,8 @@
 import {Component, OnChanges, OnInit} from '@angular/core';
 import {LocationService} from "../services/location.service";
+import {ActivatedRoute, Params, Router} from '@angular/router';
+
+
 
 @Component({
   selector: 'app-footer',
@@ -18,70 +21,82 @@ export class FooterComponent implements OnInit, OnChanges {
   locationInf: any[];
   socialInf: any[];
 
-  constructor(private service: LocationService) {  }
-
+  constructor(private service: LocationService
+    , private route: Router
+    , private activatedRoute: ActivatedRoute) {  }
+    
   ngOnInit() {
-    this.service.getLocationById(this.activeLocationId)
-      .then((data: any[]) => {
-        this.locationInf = data;
-      });
 
-    this.service.getLocationSocial(this.activeLocationId)
-      .then((data: any[]) => {
-        this.socialInf = data;
-      });
+    this.activatedRoute.params.forEach((params: Params) => {
+      let id = params["id"]; this.activeLocationId = id;
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-      .then((data: any[]) => {
-        this.facebook_link = data;
-      });
+      this.service.getLocationById(this.activeLocationId)
+        .then((data: any[]) => {
+          this.locationInf = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-      .then((data: any[]) => {
-        this.twitter_link = data;
-      });
+      this.service.getLocationSocial(this.activeLocationId)
+        .then((data: any[]) => {
+          this.socialInf = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-      .then((data: any[]) => {
-        this.instagram_link = data;
-      });
+      this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+        .then((data: any[]) => {
+          this.facebook_link = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'google')
-      .then((data: any[]) => {
-        this.google_link = data;
-      });
+      this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+        .then((data: any[]) => {
+          this.twitter_link = data;
+        });
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+        .then((data: any[]) => {
+          this.instagram_link = data;
+        });
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'google')
+        .then((data: any[]) => {
+          this.google_link = data;
+        });
+    });
   }
 
 
   ngOnChanges(): void {
-    this.service.getLocationById(this.activeLocationId)
-      .then((data: any[]) => {
-        this.locationInf = data;
-      });
 
-    this.service.getLocationSocial(this.activeLocationId)
-      .then((data: any[]) => {
-        this.socialInf = data;
-      });
+    console.log('footer change event');
+    this.activatedRoute.params.forEach((params: Params) => {
+      let id = params["id"]; this.activeLocationId = this.service.activeLocationId;
+      this.service.getLocationById(this.activeLocationId)
+        .then((data: any[]) => {
+          this.locationInf = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-      .then((data: any[]) => {
-        this.facebook_link = data;
-      });
+      this.service.getLocationSocial(this.activeLocationId)
+        .then((data: any[]) => {
+          this.socialInf = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-      .then((data: any[]) => {
-        this.twitter_link = data;
-      });
+      this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+        .then((data: any[]) => {
+          this.facebook_link = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-      .then((data: any[]) => {
-        this.instagram_link = data;
-      });
+      this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+        .then((data: any[]) => {
+          this.twitter_link = data;
+        });
 
-    this.service.getLocationSocialByName(this.activeLocationId, 'google')
-      .then((data: any[]) => {
-        this.google_link = data;
-      });
+      this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+        .then((data: any[]) => {
+          this.instagram_link = data;
+        });
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'google')
+        .then((data: any[]) => {
+          this.google_link = data;
+        });
+    });
   }
 }

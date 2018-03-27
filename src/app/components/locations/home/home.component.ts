@@ -18,11 +18,12 @@ export class HomeComponent implements OnInit {
   locationInf: any;
 
 
-  constructor(private meta: Meta
+  constructor(private route: Router
+    , private activatedRoute: ActivatedRoute,
+    private meta: Meta
     , private titleService: Title
     , private service: LocationService
-    , private route: Router
-    , private activatedRoute: ActivatedRoute) {
+    , ) {
   }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
 
     this.activatedRoute.params.forEach((params: Params) => {
       /*this.activeLocationId = this.service.getActiveLocationId();*/
-      let id = +params["id"]; this.activeLocationId = id;
+      let id = params["id"]; this.activeLocationId = id;
       this.service
         .getLocationHours(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
         .then(result => this.locationHours = result);  // как только Promise перейдет в состояние resolved присваиваем его значение свойству phrase

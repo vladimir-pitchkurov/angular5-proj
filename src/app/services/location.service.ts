@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import {BaseHttpService} from './base-http.service';
 import {LocationMap} from './LocationMap';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class LocationService {
 
   mapOfLoc: any[] = LIST_OF_LOCATIONS;
 
-  getIdByName(name: any): string {
-    let id: any =1;
-    for (let i; i < this.mapOfLoc; i++){
-      if(this.mapOfLoc[i].nameUrl == name){
-        id = this.mapOfLoc[i].id;
+  getIdByName(name: any): any {
+    let id ;
+
+    let list = LIST_OF_LOCATIONS;
+    for(let i = 0; i< LIST_OF_LOCATIONS.length; i++){
+      if( LIST_OF_LOCATIONS[i].nameUrl === name ){
+        console.log('equals');
+        return LIST_OF_LOCATIONS[i].id;
       }
     }
+
+
     return id;
   }
 
@@ -22,13 +28,11 @@ export class LocationService {
   public activeLocationId: any;
 
   getLocationMap(){
-
-
     return this.mapOfLoc;
   }
 
   getActiveLocationId(): any {
-    return this.activeLocationId == undefined?null:this.activeLocationId;
+    return (this.activeLocationId == undefined || this.activeLocationId == null || this.activeLocationId == '')?undefined:this.activeLocationId;
   }
 
   setActiveLocationId(value: any) {
@@ -107,31 +111,31 @@ export class LocationService {
 export const LIST_OF_LOCATIONS: LocationMap[]=
   [{
     id : 1,
-    nameUrl : "lake-worth/",
+    nameUrl : "lake-worth",
     title : "LAKE WORTH"
   },
     {
       id : 4,
-      nameUrl : "york/",
+      nameUrl : "york",
       title : "YORK"
     },
     {
       id : 5,
-      nameUrl : "fayetteville/",
+      nameUrl : "fayetteville",
       title : "FAYETTEVILLE"
     },
     {
       id : 7,
-      nameUrl : "woodbridge/",
+      nameUrl : "woodbridge",
       title : "WOODBRIDGE"
     },
     {
       id : 12,
-      nameUrl : "columbia/",
+      nameUrl : "columbia",
       title : "COLUMBIA"
     },
     {
       id : 13,
-      nameUrl : "cincinnati/",
+      nameUrl : "cincinnati",
       title : "CINCINNATI"
     }];

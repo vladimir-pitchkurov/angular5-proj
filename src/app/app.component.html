@@ -1,40 +1,9 @@
 <header>
   <div class="container">
     <div class="logo">
-      <a routerLink="{{activeLocationId}}"><img src="/assets/img/logo.png"></a>
     </div>
-    <!--<div class="menu" id='cssmenu1'>
-      <ul>
-        <li class='active'><a routerLink="{{activeLocationId}}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home</span></a></li>
-        <li  *ngIf="activeLocationId" class='has-sub'><a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active" >Trampoline park</a>
-          <ul>
-            &lt;!&ndash;<li><a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a></li>&ndash;&gt;
-            <li><a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a></li>
-            <li><a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a></li>
-            <li><a routerLink="{{activeLocationId}}/trampoline-park/groups/" routerLinkActive="active">Groups</a></li>
-            <li><a routerLink="{{activeLocationId}}/trampoline-park/activities/" routerLinkActive="active">Activities</a></li>
-            <li><a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a></li>
-            <li class='last' ><a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a></li>
-          </ul>
-        </li>
-        <li class='has-sub'><a routerLinkActive="active" >About us</a>
-          <ul>
-            <li><a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a></li>
-            <li><a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a></li>
-            <li><a routerLink="{{activeLocationId}}/about/about/" routerLinkActive="active">Why us</a></li>
-            <li class='last' ><a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active">Contact</a></li>
-          </ul>
-        </li>
-        <li class='has-sub'><a routerLinkActive="active" >Locations</a>
-          <ul>
-            <li class='last'*ngFor="let loc of locations" ><a (click)="setLocationById(loc.nameUrl)" routerLink="{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a></li>
-          </ul>
-        </li>
-        <li ><a routerLink="{{activeLocationId}}/blog" routerLinkActive="active">Blog</a></li>
-      </ul>
-    </div>-->
       <div class="menu ">
-        <div><a routerLink="" routerLinkActive="active" (click)="nullLocation()" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
+        <div><a routerLink="" routerLinkActive="active" (click)="nullLocation()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active">
         <a >Trampoline park</a>
@@ -86,7 +55,7 @@
         Locations
         <div class="location-list">
           <div class="tramp-list--item " *ngFor="let loc of locations" >
-            <a (click)="setLocationById(loc.nameUrl)" routerLink="{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
+            <a (click)="setLocationById(loc.nameUrl)" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
           </div>
         </div>
         <!--<div class="loc-list">
@@ -159,80 +128,6 @@
     <div id="startCity"></div>
   </div>
 </header>
-
+<h1>Active location of root:: {{activeLocationId}}</h1>
 <router-outlet></router-outlet>
-<app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId" ></app-footer>
-<!--
-<h1 color="red">Active location = {{activeLocationId}}</h1>
-<footer [ngClass]="{'footer-dark': isDarkFooter}">
-    <div class="container">
-        <div class="footer-logo">
-            <img src="/assets/img/footer-logo.png">
-        </div>
-        <div *ngFor="let locInf of locationInf" class="footer-text row">
-            <div class="col-md-4">
-                <p class="footer-name">Adrenaline Entertainment Centers
-                    CORPORATE HEADQUARTERS</p>
-                <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{locInf.address_street}}</p>
-                <p class="footer-contact-add-line">{{locInf.address_city}}, {{locInf.address_state}} {{locInf.address_zip}}</p>
-                <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{locInf.phone}}</p>
-                <p class="footer-contact"><img src="/assets/img/icon-email.png">email@domain.com</p>
-            </div>
-            <div class="col-md-2">
-                <p>home</p>
-                <p>trampoline park</p>
-                <p>escape rooms</p>
-                <p>locations</p>
-                <p>blog</p>
-            </div>
-            <div class="col-md-2">
-                <p>lorem ad astra</p>
-                <p>dolor elit</p>
-                <p>consectetuer</p>
-                <p>ipsum per</p>
-                <p>dura lex</p>
-            </div>
-            <div class="col-md-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor quis ante porta
-                venenatis. Suspendisse sollicitudin, dolor sed dignissim bibendum, sapien sem laoreet arcu, non mollis
-                neque odio porttitor purus.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-<div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12" >
-                <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
-                    <li *ngFor="let f of facebook_link" class="list-inline-item facebook">
-                        <a  href="{{f.url}}" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                        </a>
-                    </li>
-                    <li *ngFor="let t of twitter_link" class="list-inline-item twitter">
-                        <a href="{{t.url}}" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li *ngFor="let i of instagram_link" class="list-inline-item instagram">
-                        <a href="{{i.url}}" target="_blank">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li *ngFor="let g of google_link" class="list-inline-item youtube">
-                        <a href="{{g.url}}" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                      <p color="white">{{instagram_link | json }}{{instagram_link[0].url}}
-                        instagram link::    {{instagram_link[0].url }}</p>
-                    </li>
-                </ul>
-            </div>
-          <div class="col-md-6 col-sm-12 col-xs-12 cus-cent">
-            <p class="cus-cent" >Adrenaline Entertainment Centers © 2018</p>
-          </div>
-        </div>
-    </div>
-</div>
--->
+<app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId"  ></app-footer>
