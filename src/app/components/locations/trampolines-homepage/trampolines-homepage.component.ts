@@ -29,8 +29,9 @@ export class TrampolinesHomepageComponent implements OnInit {
       this.activatedRoute.params.forEach((params: Params) => {
 
         let id = params["id"]; this.activeLocationId = id;
+        if(this.activeLocationId == 0 || this.activeLocationId == '0'){this.activeLocationId = null;}
 
-        if(!this.activeLocationId && this.activeLocationId != 0 && this.activeLocationId != '0') {
+        if(this.activeLocationId != null) {
           this.service
             .getLocationHours(id)
             .then(result => this.locationHours = result);
