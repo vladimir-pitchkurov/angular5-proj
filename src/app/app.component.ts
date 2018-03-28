@@ -60,8 +60,6 @@ isMenuInit: boolean = false;
   isMobileMenuInit: boolean = false;
 
 initMenu(){
-  //if(!this.isMenuInit){ InitJsService.initMenu(); this.isMenuInit = true;}
-  //if(!this.isMobileMenuInit){InitJsService.initMobileMenu(); this.isMobileMenuInit = true;}
   InitJsService.afterViewMenuTramp();
 }
 

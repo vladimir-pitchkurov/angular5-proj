@@ -151,6 +151,10 @@ div.menu-active:after {
     display: none;
 }
 
+div.tramp-list{
+  width: -webkit-fill-available;
+}
+
 .about-list {
     padding-left:  20px;
     padding-right:  20px;
@@ -1615,7 +1619,7 @@ a.escape-add--link:focus, a.escape-add--link:active, a.escape-add--link:hover {
     margin-left: 0;
 }
 
-.menu .menu-loc {
+.menu .menu-locations {
     margin-left: 35px;
     margin-right: 22px;
 }

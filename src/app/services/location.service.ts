@@ -22,6 +22,17 @@ export class LocationService {
 
   public activeLocationId: any;
 
+  getActiveLocationTitle(){
+    let nameUrl = this.activeLocationId ;
+    for(let i = 0; i< LIST_OF_LOCATIONS.length; i++){
+      if( LIST_OF_LOCATIONS[i].nameUrl === nameUrl ){
+        return LIST_OF_LOCATIONS[i].title;
+      }
+    }
+    return 'Please, choose the location';
+    console.log();
+  }
+
   getLocationMap(){
     return this.mapOfLoc;
   }

@@ -27,7 +27,7 @@ export class FooterComponent implements OnInit, OnChanges {
   ngOnInit() {
 
     this.activatedRoute.params.forEach((params: Params) => {
-      let id = params["id"]; this.activeLocationId = id;
+      let id = params["id"]; this.activeLocationId = this.service.activeLocationId;
 
       if(this.activeLocationId) {
 

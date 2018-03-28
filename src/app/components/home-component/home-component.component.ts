@@ -20,7 +20,6 @@ export class HomeComponentComponent implements OnInit, AfterViewInit {
         this.meta.addTag({ name: 'meta-description', content: 'Home description' });
     }
 
-
     ngAfterViewInit() {
         InitJsService.initScroll();
         InitJsService.initBlockOne();

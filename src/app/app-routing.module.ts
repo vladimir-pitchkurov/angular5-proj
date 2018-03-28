@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: ':id/trampoline-park/birthday-parties', component: PartiesComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:post', component: BlogPostComponent },
-  { path: 'coming-soon', component: ComingSoonComponent },
+  { path: 'coming-soon', component: ComingSoonComponent }
 ];
 
 @NgModule({

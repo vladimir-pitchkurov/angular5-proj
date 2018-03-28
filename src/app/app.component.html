@@ -44,7 +44,7 @@
         </div>
       </div>
       <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
-        <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual RealityREALITY</a></div>
+        <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
 
       <div (click)="toggleState()" class="menu-about" routerLinkActive="active">
         About us
@@ -64,10 +64,10 @@
         </div>
       </div>
 
-      <div (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+      <div *ngIf="!activeLocationId" (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
         Locations
         <div class="location-list">
-          <div class="tramp-list--item " *ngFor="let loc of locations" >
+          <div class="location-list--item " *ngFor="let loc of locations" >
             <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
           </div>
         </div>

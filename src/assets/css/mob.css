@@ -199,7 +199,7 @@
         transform: rotate(-45deg) translate(6px, -7px);
     }
 
-    .menu div.loc-list, .menu div.tramp-list {
+    .menu div.location-list, .menu div.tramp-list {
         background: none;
         margin-bottom: 0;
         padding-top: 16px;
@@ -208,7 +208,7 @@
         width: auto !important;
     }
 
-    .menu div.loc-list--item:last-child, .menu div.tramp-list--item:last-child {
+    .menu div.location-list--item:last-child, .menu div.tramp-list--item:last-child, .menu div.about-list--item:last-child {
         margin-bottom: 0;
     }
 
