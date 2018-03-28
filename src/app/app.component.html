@@ -12,8 +12,10 @@
             <div class="tramp-list--item">
               <a routerLink="0/trampoline-park/" routerLinkActive="active">Park</a>
             </div>
+            <div class="tramp-list--item">
+              <a routerLink="trampoline-parties" routerLinkActive="active">Parties</a>
+            </div>
           </div>
-
         </div>
 
 
@@ -43,10 +45,12 @@
           </div>
         </div>
       </div>
+
       <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
+
         <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
 
-      <div (click)="toggleState()" class="menu-about" routerLinkActive="active">
+      <div *ngIf="activeLocationId" (click)="toggleState()" class="menu-about" routerLinkActive="active">
         About us
         <div class="about-list">
           <div class="about-list--item">
@@ -87,7 +91,9 @@
           <div class="loc-list--item" link="/locations/parties">parties</div>
         </div>-->
       </div>
+
       <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active">Blog</a></div>
+
     </div>
     <div id="ask">
       <div id="ask-contain" class="">

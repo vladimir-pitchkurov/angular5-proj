@@ -1,13 +1,13 @@
 <h1 style="color: white; font-size: 50px"></h1>
 
 
-<div class="mob_slider">
-  <div class="block-one">
+<div  class="mob_slider">
+  <div  class="block-one">
 
-    <div class="container">
+    <div *ngIf="activeLocationId" class="container">
       <div class="desc_slider">
         <h3>Come visit us at</h3>
-        <h1>lake worth</h1>
+        <h1>{{this.service.getActiveLocationTitle()}}</h1>
         <a class="green_up btn mt-30 theme_a_btn" href="/">Join us</a>
       </div>
     </div>
@@ -161,21 +161,40 @@
   </div>
 </section>
 
+
+
 <section class="homepage-locations-blue5 pv-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 class="green_up">Ready for an epic good time?</h1>
+        <h2 class="text-uppercase text_white_n">Adrenaline has the most action packed birthdays arround!</h2>
+        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--<section class="homepage-locations-blue5 pv-80">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1 class="green_up">Instance coupons?</h1>
         <h2 class="text-uppercase text_white_n">Receive 10% off your next party</h2>
-        <a class="green_up btn mt-30 theme_a_btn btn_pad" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Contact us</a>
+
+
+
+
+        &lt;!&ndash;<a class="green_up btn mt-30 theme_a_btn btn_pad" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Contact us</a>&ndash;&gt;
       </div>
 
     </div>
   </div>
-</section>
-<section class="homepage-locations-dark5 pt-80">
+</section>-->
+<!--<section class="homepage-locations-dark5 pt-80">
   <div class="container">
-    <div class="row">
+    &lt;!&ndash;<div class="row">
       <div class="col-md-12 text-center pb-40">
         <h1 class="green_up">Ready for an epic good time?</h1>
       </div>
@@ -241,7 +260,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>&ndash;&gt;
     <div class="row">
       <div class="col-sm-12 text-center">
         <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book your party</a>
@@ -250,4 +269,4 @@
       </div>
     </div>
   </div>
-</section>
+</section>-->

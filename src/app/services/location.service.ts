@@ -6,7 +6,31 @@ import {forEach} from '@angular/router/src/utils/collection';
 @Injectable()
 export class LocationService {
 
+  constructor(private http: BaseHttpService ) { }
+
+  public activeLocationId: any;
+  public infInFooter = false;
+
+  public contactInfoOfFooter: object = {};
   mapOfLoc: any[] = LIST_OF_LOCATIONS;
+
+  setContactInf(data: any){
+    let index = this.activeLocationId;
+    /*this.contactInfoOfFooter.index.data;*/
+    let asd;
+    if(data !== undefined){
+      asd = data[0];
+      this.contactInfoOfFooter[index] = asd;
+      this.infInFooter = true;
+    }
+
+    console.log( 'asd = ', asd);
+    console.log( 'contact info = ', this.contactInfoOfFooter);
+
+  }
+
+
+
 
   getIdByName(name: any): any {
     let id ;
@@ -18,10 +42,6 @@ export class LocationService {
     return id;
   }
 
-  constructor(private http: BaseHttpService ) { }
-
-  public activeLocationId: any;
-
   getActiveLocationTitle(){
     let nameUrl = this.activeLocationId ;
     for(let i = 0; i< LIST_OF_LOCATIONS.length; i++){
@@ -30,7 +50,6 @@ export class LocationService {
       }
     }
     return 'Please, choose the location';
-    console.log();
   }
 
   getLocationMap(){
@@ -43,6 +62,7 @@ export class LocationService {
 
   setActiveLocationId(value: any) {
     this.activeLocationId = value;
+    this.infInFooter = false;
   }
 
   public domain: string = 'https://dashboard.sem.run/api/website';

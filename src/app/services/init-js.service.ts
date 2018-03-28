@@ -268,7 +268,7 @@ export class InitJsService {
           menuAbout.onmouseover = function (ev) {
             aboutList.style.display = 'block';
             //aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
-            //aboutList.style.left = '-20px';
+            aboutList.style.left = '-20px';
             if (trampList) { trampList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };

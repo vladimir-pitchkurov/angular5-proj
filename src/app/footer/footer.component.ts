@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, DoCheck, OnChanges, OnInit} from '@angular/core';
 import {LocationService} from "../services/location.service";
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
@@ -9,7 +9,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
   styleUrls: ['./footer.component.css'],
   inputs: ['activeLocationId', 'isDarkFooter']
 })
-export class FooterComponent implements OnInit, OnChanges {
+export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   isDarkFooter = false;
   activeLocationId: any;
@@ -60,6 +60,8 @@ export class FooterComponent implements OnInit, OnChanges {
           .then((data: any[]) => {
             this.google_link = data;
           });
+
+        if(!this.service.infInFooter){this.service.setContactInf(this.locationInf);}
       }
 
     });
@@ -99,7 +101,17 @@ export class FooterComponent implements OnInit, OnChanges {
         .then((data: any[]) => {
           this.google_link = data;
         });
+
+        if(!this.service.infInFooter){this.service.setContactInf(this.locationInf);}
+
       }
     });
   }
+
+  ngDoCheck(){
+    if(!this.service.infInFooter && this.activeLocationId ){this.service.setContactInf(this.locationInf);}
+    //if(this.activeLocationId){this.service.setContactInf(this.locationInf);}
+  }
+
+
 }
