@@ -9,10 +9,26 @@ export class LocationService {
   constructor(private http: BaseHttpService ) { }
 
   public activeLocationId: any;
-  public infInFooter = false;
-
-  public contactInfoOfFooter: object = {};
   mapOfLoc: any[] = LIST_OF_LOCATIONS;
+
+  /*it is object-cashe of location-by-id*/
+  public infInFooter = false;
+  public contactInfoOfFooter: object = {};
+
+  public infSocial = false;
+  public infSocialOfFooter: object = {};
+
+  setInfSocial(data: any){
+    let index = this.activeLocationId;
+    /*this.contactInfoOfFooter.index.data;*/
+    let asd;
+    if(data !== undefined){
+      asd = data[0];
+      this.infSocialOfFooter[index] = asd;
+      this.infSocial = true;
+    }
+
+  }
 
   setContactInf(data: any){
     let index = this.activeLocationId;
@@ -23,10 +39,6 @@ export class LocationService {
       this.contactInfoOfFooter[index] = asd;
       this.infInFooter = true;
     }
-
-    console.log( 'asd = ', asd);
-    console.log( 'contact info = ', this.contactInfoOfFooter);
-
   }
 
 
@@ -63,6 +75,7 @@ export class LocationService {
   setActiveLocationId(value: any) {
     this.activeLocationId = value;
     this.infInFooter = false;
+    this.infSocial = false;
   }
 
   public domain: string = 'https://dashboard.sem.run/api/website';

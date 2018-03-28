@@ -71,7 +71,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"]; this.activeLocationId = this.service.activeLocationId;
-      if(this.activeLocationId){
+      if(this.activeLocationId ){
       this.service.getLocationById(this.activeLocationId)
         .then((data: any[]) => {
           this.locationInf = data;
@@ -109,8 +109,13 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngDoCheck(){
-    if(!this.service.infInFooter && this.activeLocationId ){this.service.setContactInf(this.locationInf);}
-    //if(this.activeLocationId){this.service.setContactInf(this.locationInf);}
+    if(!this.service.infInFooter && this.activeLocationId ) {this.service.setContactInf(this.locationInf); }
+
+    if(!this.activeLocationId){
+      if(this.activeLocationId != this.service.activeLocationId) {
+        this.activeLocationId = this.service.activeLocationId;
+      }
+    }
   }
 
 

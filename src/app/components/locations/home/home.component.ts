@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, DoCheck, Input, OnChanges, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
 import { LocationService } from '../../../services/location.service';
@@ -9,7 +9,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, DoCheck {
 
 
   isLeftVisible = 0;
@@ -38,6 +38,9 @@ export class HomeComponent implements OnInit {
     this.activatedRoute.params.forEach((params: Params) => {
       /*this.activeLocationId = this.service.getActiveLocationId();*/
       let id = params["id"]; this.activeLocationId = id;
+
+      this.service.activeLocationId = this.activeLocationId;
+
       this.service
         .getLocationHours(id)  // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
         .then(result => this.locationHours = result);  // как только Promise перейдет в состояние resolved присваиваем его значение свойству phrase
@@ -62,6 +65,12 @@ export class HomeComponent implements OnInit {
         this.locationInf = data;
       });
 */
+  }
+
+  ngDoCheck(){
+    if(this.activeLocationId !== this.service.activeLocationId){
+      this.service.activeLocationId = this.activeLocationId;
+    }
   }
 
 }

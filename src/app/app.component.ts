@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
 import { NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
@@ -11,7 +11,7 @@ declare var window: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   title = 'app';
   locations: LocationMap[];
   activeLocationId: any;
@@ -55,9 +55,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 nullLocation(){
     this.activeLocationId = null;
+    this.service.activeLocationId = undefined;
 }
-isMenuInit: boolean = false;
-  isMobileMenuInit: boolean = false;
 
 initMenu(){
   InitJsService.afterViewMenuTramp();
@@ -88,6 +87,14 @@ initMenu(){
   setLocationById(id: any) {
     this.service.setActiveLocationId(id);
     this.activeLocationId = this.service.getActiveLocationId();
+  }
+
+  ngDoCheck(){
+    if(!this.activeLocationId){
+      if(this.activeLocationId != this.service.activeLocationId){
+        this.activeLocationId = this.service.activeLocationId;
+      }
+    }
   }
 
   // getAddressInfoByZip(zip, device) {
