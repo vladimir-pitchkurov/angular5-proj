@@ -1,3 +1,7 @@
 .cus-hidden{
   display: none;
 }
+
+.menu .loc-list--item:hover > a, .menu .tramp-list--item:hover > a, .menu .about-list--item:hover > a, .menu .location-list--item:hover > a{
+  color: #92dd02;
+}

@@ -2,13 +2,14 @@ import {AfterContentInit, AfterViewInit, Component, DoCheck, OnChanges, OnInit} 
 import {LocationService} from '../services/location.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {isNullOrUndefined} from 'util';
+import {LocationMap} from '../services/LocationMap';
 
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  inputs: ['activeLocationId', 'isDarkFooter']
+  inputs: ['activeLocationId', 'isDarkFooter', 'locations']
 })
 export class FooterComponent implements OnInit, OnChanges, DoCheck {
 

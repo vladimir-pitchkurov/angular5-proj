@@ -3,8 +3,8 @@
     <div class="footer-logo">
       <img src="/assets/img/footer-logo.png">
     </div>
-    <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="footer-text row">
-      <div class="col-md-4">
+    <div  class="footer-text row">
+      <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="col-md-4">
         <p class="footer-name">Adrenaline Entertainment Centers
           CORPORATE HEADQUARTERS</p>
         <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
@@ -12,12 +12,30 @@
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
         <p class="footer-contact"><img src="/assets/img/icon-email.png">email@domain.com</p>
       </div>
-      <div class="col-md-2">
-        <p>home</p>
-        <p>trampoline park</p>
-        <p>escape rooms</p>
-        <p>locations</p>
-        <p>blog</p>
+      <div class="col-md-2 text-center custom-footer-menu">
+        <a routerLink="{{activeLocationId}}/trampoline-park/" class="dropdown-item" routerLinkActive="active">Home</a>
+
+        <!--<p>home</p>-->
+        <a routerLink="0/trampoline-park/" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
+
+        <!--<p>trampoline park</p>-->
+        <a routerLink="trampoline-parties" routerLinkActive="active" class="dropdown-item" >Parties</a>
+
+        <!--<p>escape rooms</p>-->
+        <!--<div class="location-list&#45;&#45;item "  >-->
+        <!--<div class="dropdown">-->
+          <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Locations
+          </button>-->
+          <!--<div class="dropdown-menu-in-footer" aria-labelledby="dropdownMenuButton">-->
+              <a *ngFor="let loc2 of locations" class="dropdown-item" (click)="setLocationById(loc2.nameUrl); initMenu(); toggleState()" routerLink="location/{{loc2.nameUrl}}" routerLinkActive="active" >{{loc2.title}}</a>
+          <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<p>locations</p>-->
+        <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active" class="dropdown-item" >Blog</a></div>
+        <!--<p>blog</p>-->
       </div>
       <div class="col-md-2">
         <p>lorem ad astra</p>
@@ -37,7 +55,7 @@
 <div class="copyright">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-sm-12 col-xs-12" >
+      <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="col-md-6 col-sm-12 col-xs-12" >
         <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
           <li *ngIf="this.service.infSocialOfFooterFacebook[this.activeLocationId]" class="list-inline-item facebook">
             <a  href="{{this.service.infSocialOfFooterFacebook[this.activeLocationId].url}}" target="_blank">
