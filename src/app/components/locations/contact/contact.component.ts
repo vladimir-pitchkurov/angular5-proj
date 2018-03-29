@@ -14,7 +14,7 @@ export class ContactComponent implements OnInit, DoCheck {
 
 
   activeLocationId: any;
-  locationInf: any[];
+  locationInf: any;
 
   socialInf: any[];
 
@@ -35,10 +35,6 @@ export class ContactComponent implements OnInit, DoCheck {
       let id = params["id"]; this.activeLocationId = id;
 
       this.service.activeLocationId = this.activeLocationId;
-
-      this.service
-        .getLocationHours(id)
-        .then(result => this.locationHours = result);
 
       this.service
         .getLocationById(id)

@@ -112,6 +112,8 @@ export class InitJsService {
                     trampList: any = document.getElementsByClassName('tramp-list')[0],
                     tramps: any = document.getElementsByClassName('tramp-list--item');
 
+                //menuTramp.style.paddingBottom = "4px";
+
               // active.pseudoStyle("after", "width", active.clientWidth + 22 + "px");
               // active.pseudoStyle("after", "left", "-11px");
               // menuLoc.onmouseover = function (ev) {

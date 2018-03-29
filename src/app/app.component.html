@@ -7,7 +7,7 @@
       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
 
         <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
-          Trampoline park
+          <a routerLinkActive="active" >Trampoline park</a>
           <div class="tramp-list" >
             <div class="tramp-list--item">
               <a routerLink="0/trampoline-park/" routerLinkActive="active">Park</a>
@@ -20,7 +20,7 @@
 
 
       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
-        <a >Trampoline park</a>
+        <a routerLinkActive="active" >Trampoline park</a>
         <div class="tramp-list" >
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
