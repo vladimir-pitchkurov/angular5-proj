@@ -14,12 +14,15 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   isDarkFooter = false;
   activeLocationId: any;
+
+  locationInf: any[];
+  socialInf: any[];
+
   facebook_link: any[];
   twitter_link: any[];
   instagram_link: any[];
   google_link: any[];
-  locationInf: any[];
-  socialInf: any[];
+
 
   constructor(private service: LocationService
     , private route: Router
@@ -76,7 +79,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
             this.google_link = data;
           });
 
-        if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }
+        /*if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }*/
       }
 
     });
@@ -84,9 +87,74 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges(): void {
 
-    this.activatedRoute.params.forEach((params: Params) => {
+    if(this.activeLocationId == undefined ) {
+      this.activeLocationId = this.service.activeLocationId;
+    }
+
+    if(this.activeLocationId){
+      this.service.getLocationById(this.activeLocationId)
+        .then((data: any[]) => {
+          this.locationInf = data;
+        });
+      this.service.setContactInf(this.locationInf);
+
+
+      this.service.getLocationSocial(this.activeLocationId)
+        .then((data: any[]) => {
+          this.socialInf = data;
+        });
+      this.service.setContactInf(this.locationInf);
+
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+        .then((data: any[]) => {
+          this.facebook_link = data;
+        });
+      this.service.setInfSocialFacebook(this.facebook_link);
+
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+        .then((data: any[]) => {
+          this.twitter_link = data;
+        });
+      this.service.setInfSocialTwitter(this.twitter_link);
+
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+        .then((data: any[]) => {
+          this.instagram_link = data;
+        });
+      this.service.setInfSocialInstagram(this.instagram_link);
+
+
+      this.service.getLocationSocialByName(this.activeLocationId, 'google')
+        .then((data: any[]) => {
+          this.google_link = data;
+        });
+      this.service.setInfSocialGoogle(this.google_link);
+
+
+
+
+
+      console.log('in if this.activeLocationId', this.activeLocationId);
+      console.log('in if this.locationInf = ', this.locationInf);
+
+
+    }
+
+    console.log('this.activeLocationId after ', this.activeLocationId);
+
+
+    /*this.activatedRoute.params.forEach((params: Params) => {
       if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
-        if (this.activeLocationId !== this.service.activeLocationId) {
+
+        /!*console.log('in clear method');*!/
+
+        if (this.activeLocationId != this.service.activeLocationId) {
+
+          /!*console.log('in clear method wrap');*!/
+
           this.facebook_link = [];
           this.twitter_link = [];
           console.log('twitter_link = ', this.twitter_link);
@@ -97,8 +165,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
           this.activeLocationId = this.service.activeLocationId;
         }
       }
-      
-      const id = params['id'];
+
 
       this.activeLocationId = this.service.activeLocationId;
 
@@ -113,7 +180,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
             this.socialInf = data;
           });
 
-        /*##  ##*/
+        /!*##  ##*!/
         if ( !this.service.infSocialOfFooterFacebook[this.activeLocationId]) {
           this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
             .then((data: any[]) => {
@@ -140,16 +207,27 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
             });
         }
 
-        if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }
+
+
+        /!*if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }*!/
+
+
+
 
       }
-    });
+    });*/
   }
 
   ngDoCheck() {
 
-    if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
-      if (this.activeLocationId !== this.service.activeLocationId) {
+    /*if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
+
+      console.log('in clear method');
+
+      if (this.activeLocationId != this.service.activeLocationId) {
+
+        console.log('in clear method wrap');
+
         this.facebook_link = [];
         this.twitter_link = [];
         this.instagram_link = [];
@@ -158,9 +236,14 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         this.socialInf = [];
         this.activeLocationId = this.service.activeLocationId;
       }
-    }
+      this.socialInf = [];
+    }*/
 
-    if (!this.service.infInFooter && this.activeLocationId ) {this.service.setContactInf(this.locationInf); }
+    if (this.activeLocationId  ) {
+
+      this.service.setContactInf(this.locationInf);
+
+    }
 
     if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && this.activeLocationId) {
       this.service.setInfSocialFacebook(this.facebook_link);

@@ -32,9 +32,11 @@
   </div>
 </section>
 
-<section class="contact-map ">
+<h1>Active loc = {{this.activeLocationId}}</h1>
+
+<section *ngIf="this.activeLocationId" class="contact-map ">
       <div class="map_desc">
-        <h2 class="green_up">Lake Worth</h2>
+        <h2 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}</h2>
         <p class="footer-contact"><img src="/assets/img/icon-loc.png">7645 Lake Worth Road </p>
         <p class="footer-contact-add-line">Lake Worth, FL 33467</p>
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">(561) 440-1400</p>
