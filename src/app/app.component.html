@@ -51,7 +51,7 @@
         <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
 
       <div *ngIf="activeLocationId" (click)="toggleState()" class="menu-about" routerLinkActive="active">
-        About us
+        <a >About us   </a>
         <div class="about-list">
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>

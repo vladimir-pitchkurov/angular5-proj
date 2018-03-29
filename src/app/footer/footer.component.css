@@ -16,3 +16,8 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+
+.text-center .custom-footer-menu > a.dropdown-item :hover {
+  color: #92dd02;
+}

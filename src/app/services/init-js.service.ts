@@ -125,7 +125,7 @@ export class InitJsService {
               if(menuAbout) {
                 menuAbout.onmouseover = function (ev) {
                   aboutList.style.display = 'block';
-                  //aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
+                  aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
                   aboutList.style.left = '-20px';
                   if (trampList) { trampList.style.display = 'none'; }
                   if (locationsList) { locationsList.style.display = 'none'; }
@@ -197,7 +197,6 @@ export class InitJsService {
                   }
                   if(aboutList){aboutList.style.display = 'none';}
                   if(trampList){trampList.style.display = 'none';}
-                  // locList.style.display = 'none';
                 };
               }
 
@@ -269,8 +268,8 @@ export class InitJsService {
         if(menuAbout) {
           menuAbout.onmouseover = function (ev) {
             aboutList.style.display = 'block';
-            //aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
-            aboutList.style.left = '-20px';
+            aboutList.style.width = menuAbout.clientWidth + 50 + 'px';
+            aboutList.style.left = '-16px';
             if (trampList) { trampList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };
