@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       // this.getAddressInfoByZip('72223', 'desktop');
       this.defineIsFooterDark();
 
-      if(this.activeLocationId) {
+      if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
         this.service.getLocationById(this.activeLocationId)
           .then((data: any[]) => {
             this.locationInf = data;
@@ -53,18 +53,18 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
 
   }
 
-nullLocation(){
-    this.activeLocationId = null;
+  nullLocation() {
+    this.activeLocationId = undefined;
     this.service.activeLocationId = undefined;
-}
+  }
 
-initMenu(){
-  InitJsService.afterViewMenuTramp();
-}
+  initMenu() {
+    InitJsService.afterViewMenuTramp();
+  }
 
   isIn = false;   // store state
   toggleState() { // click handler
-    let bool = this.isIn;
+    const bool = this.isIn;
     this.isIn = bool === false ? true : false;
   }
 
@@ -89,9 +89,9 @@ initMenu(){
     this.activeLocationId = this.service.getActiveLocationId();
   }
 
-  ngDoCheck(){
-    if(!this.activeLocationId){
-      if(this.activeLocationId != this.service.activeLocationId){
+  ngDoCheck() {
+    if (!this.activeLocationId) {
+      if (this.activeLocationId != this.service.activeLocationId) {
         this.activeLocationId = this.service.activeLocationId;
       }
     }
@@ -166,8 +166,7 @@ initMenu(){
 
 }
 
-export const activeAttract: any =
-  {
+export const activeAttract: any = {
     trampoline : false,
     escape: false,
     vr: false

@@ -39,23 +39,23 @@
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12" >
         <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
-          <li *ngFor="let f of facebook_link" class="list-inline-item facebook">
-            <a  href="{{f.url}}" target="_blank">
+          <li *ngIf="this.service.infSocialOfFooterFacebook[this.activeLocationId]" class="list-inline-item facebook">
+            <a  href="{{this.service.infSocialOfFooterFacebook[this.activeLocationId].url}}" target="_blank">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
-          <li *ngFor="let t of twitter_link" class="list-inline-item twitter">
-            <a href="{{t.url}}" target="_blank">
+          <li *ngIf="this.service.infSocialOfFooterTwitter[this.activeLocationId]" class="list-inline-item twitter">
+            <a href="{{this.service.infSocialOfFooterTwitter[this.activeLocationId].url}}" target="_blank">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
-          <li *ngFor="let i of instagram_link" class="list-inline-item instagram">
-            <a href="{{i.url}}" target="_blank">
+          <li *ngIf="this.service.infSocialOfFooterInstagram[this.activeLocationId]" class="list-inline-item instagram">
+            <a href="{{this.service.infSocialOfFooterInstagram[this.activeLocationId].url}}" target="_blank">
               <i class="fa fa-instagram"></i>
             </a>
           </li>
-          <li *ngFor="let g of google_link" class="list-inline-item youtube">
-            <a href="{{g.url}}" target="_blank">
+          <li *ngIf="this.service.infSocialOfFooterGoogle[this.activeLocationId]" class="list-inline-item youtube">
+            <a href="{{this.service.infSocialOfFooterGoogle[this.activeLocationId].url}}" target="_blank">
               <i class="fa fa-google-plus"></i>
             </a>
             <p color="white">
