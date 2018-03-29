@@ -77,8 +77,6 @@ export class LocationService {
   }
 
 
-
-
   getIdByName(name: any): any {
     let id ;
     for (let i = 0; i < LIST_OF_LOCATIONS.length; i++) {

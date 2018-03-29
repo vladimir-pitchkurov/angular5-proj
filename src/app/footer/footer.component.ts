@@ -36,7 +36,6 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         if (this.activeLocationId !== this.service.activeLocationId) {
           this.facebook_link = [];
           this.twitter_link = [];
-          console.log('twitter_link = ', this.twitter_link);
           this.instagram_link = [];
           this.google_link = [];
           this.locationInf = [];
@@ -79,7 +78,6 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
             this.google_link = data;
           });
 
-        /*if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }*/
       }
 
     });
@@ -133,111 +131,12 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         });
       this.service.setInfSocialGoogle(this.google_link);
 
-
-
-
-
-      console.log('in if this.activeLocationId', this.activeLocationId);
-      console.log('in if this.locationInf = ', this.locationInf);
-
-
     }
 
-    console.log('this.activeLocationId after ', this.activeLocationId);
-
-
-    /*this.activatedRoute.params.forEach((params: Params) => {
-      if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
-
-        /!*console.log('in clear method');*!/
-
-        if (this.activeLocationId != this.service.activeLocationId) {
-
-          /!*console.log('in clear method wrap');*!/
-
-          this.facebook_link = [];
-          this.twitter_link = [];
-          console.log('twitter_link = ', this.twitter_link);
-          this.instagram_link = [];
-          this.google_link = [];
-          this.locationInf = [];
-          this.socialInf = [];
-          this.activeLocationId = this.service.activeLocationId;
-        }
-      }
-
-
-      this.activeLocationId = this.service.activeLocationId;
-
-      if (this.activeLocationId ) {
-        this.service.getLocationById(this.activeLocationId)
-          .then((data: any[]) => {
-            this.locationInf = data;
-          });
-
-        this.service.getLocationSocial(this.activeLocationId)
-          .then((data: any[]) => {
-            this.socialInf = data;
-          });
-
-        /!*##  ##*!/
-        if ( !this.service.infSocialOfFooterFacebook[this.activeLocationId]) {
-          this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-            .then((data: any[]) => {
-              this.facebook_link = data;
-            });
-        }
-
-        if ( !this.service.infSocialOfFooterTwitter[this.activeLocationId]) {
-          this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-            .then((data: any[]) => {
-              this.twitter_link = data;
-            });
-        }
-        if ( !this.service.infSocialOfFooterInstagram[this.activeLocationId]) {
-          this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-            .then((data: any[]) => {
-              this.instagram_link = data;
-            });
-        }
-        if ( !this.service.infSocialOfFooterGoogle[this.activeLocationId]) {
-          this.service.getLocationSocialByName(this.activeLocationId, 'google')
-            .then((data: any[]) => {
-              this.google_link = data;
-            });
-        }
-
-
-
-        /!*if (!this.service.infInFooter) {this.service.setContactInf(this.locationInf); }*!/
-
-
-
-
-      }
-    });*/
   }
 
   ngDoCheck() {
 
-    /*if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
-
-      console.log('in clear method');
-
-      if (this.activeLocationId != this.service.activeLocationId) {
-
-        console.log('in clear method wrap');
-
-        this.facebook_link = [];
-        this.twitter_link = [];
-        this.instagram_link = [];
-        this.google_link = [];
-        this.locationInf = [];
-        this.socialInf = [];
-        this.activeLocationId = this.service.activeLocationId;
-      }
-      this.socialInf = [];
-    }*/
 
     if (this.activeLocationId  ) {
 
@@ -262,6 +161,5 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
     }
 
   }
-
 
 }
