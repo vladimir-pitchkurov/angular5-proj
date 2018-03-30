@@ -18,6 +18,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   locationInf: any[] ;
   isDarkFooter = false;
 
+  currentAmenities: any[];
+
   constructor(private router: Router
     , private service: LocationService) {
   }
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     InitJsService.initMenu();
     // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
+    InitJsService.afterViewMenuTramp()
     //InitJsService.initEscape();
   }
 
@@ -87,6 +90,15 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
         this.activeLocationId = this.service.activeLocationId;
       }
     }
+
+    /*if( !this.currentAmenities && this.service.contactInfoOfFooter && this.service.activeLocationId) {
+      let aaa: any;
+      let index1 = this.service.activeLocationId;
+      aaa = this.service.contactInfoOfFooter[index1];
+      console.log('in out main comp loc inf', aaa, this.service.activeLocationId);
+    }*/
+     /*temp1["york"].amenities*/
+
   }
 
   // getAddressInfoByZip(zip, device) {

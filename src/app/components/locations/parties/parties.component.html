@@ -87,22 +87,25 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" href="/">10 jumpers</a>
-            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" href="/">no food </a>
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="!this.boolPrivateRoom" (click)="setBoolPrivateRoom( false )" >without private room</a>
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="!this.bool20Jumpers" (click)="setBool20Jumpers( false )" >10 jumpers</a>
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block"  [class.choosed-party-plan]="!this.boolWithFood" (click)="setBoolWithFood ( false )" >no food </a>
           </div>
           <div class="col-md-6">
-            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" href="/">20 jumpers</a>
-            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" href="/">with food </a>
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolPrivateRoom"  >with private room</a>  <!--(click)="setBoolPrivateRoom( true )"-->
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.bool20Jumpers" (click)="setBool20Jumpers( true )" >20 jumpers</a>
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolWithFood" (click)="setBoolWithFood ( true )" >with food </a>
           </div>
 
         </div>
 
         <div class="row mt-20">
           <div class="col-12 text-center">
-            <h4 class="text-uppercase text_white_img fs_22 mt-sm-4">PARTY FOR 10 GUESTS with no food</h4>
-            <h1 class="green_up">$249</h1>
-            <h5 class="green_up">Mon - Thurs: $199</h5>
-            <a class="green_up btn mt-30 theme_a_btn btn_pad" href="/">Book a party</a>
+            <h4 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
+            <h1 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">${{this.getWeekend()}}</h1>
+            <h5 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">Mon - Thurs: ${{this.getWeekday()}}</h5>
+            <a *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up btn mt-30 theme_a_btn btn_pad"  >Book a party</a>    <!--[src]="'http://altitudewoodbridge.pfestore.com/events/' + this.getLinkLabel()"--> <!--[src]=" this.service.pricingBirthdayUrl |json "-->
+            <!--<h1 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" >{{this.getLinkLabel()}},  {{this.service.pricingBirthdayUrl | json }}</h1>-->
           </div>
         </div>
       </div>

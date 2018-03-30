@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseHttpService } from './base-http.service';
 import { LocationMap } from './LocationMap';
+import {log} from 'util';
 
 @Injectable()
 export class LocationService {
@@ -15,7 +16,6 @@ export class LocationService {
   public infInFooter = false;
   public contactInfoOfFooter: object = {};
 
-
   public infSocialFacebook = false;
   public infSocialTwitter = false;
   public infSocialInstagram = false;
@@ -26,7 +26,32 @@ export class LocationService {
   public infSocialOfFooterGoogle: object = {};
   public footerEmail: object = {};
   public pricingTrampolineGroups: any[] = [];
+  public pricingBirthday = [];
+  public pricingBirthdayUrl : any[];
 
+
+  /*setUrlBirthday(data: any) {
+    const index = this.activeLocationId;
+    let asd;
+    //console.log('in service', data, this.activeLocationId);
+    if (data && data !== undefined && this.activeLocationId ) {
+      asd = data[0];
+      this.pricingBirthdayUrl[index] = asd;
+      console.log('in in service', data, this.pricingBirthdayUrl);
+    }
+  }*/
+
+  setPricingBirthday(data: any, marker: string) {
+    const index = this.activeLocationId;
+    let asd;
+    let combineName;
+    //console.log('is setPricingBirthday ', data);
+    if (data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      combineName = index + "=>" + marker;
+      this.pricingBirthday[combineName] = asd;
+    }
+  }
 
   setPricingTrampolineGroups(data: any) {
     const index = this.activeLocationId;
@@ -55,7 +80,6 @@ export class LocationService {
   setEmail(data: any) {
     const index = this.activeLocationId;
     let asd;
-
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data;
       this.footerEmail[index] = asd;
@@ -215,6 +239,11 @@ export class LocationService {
 
   getLocationLinksByField(id: any, field: string) {
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links/' + field;
+    return this.http.get(url);
+  }
+
+  getLocationBirthdayParties(id: any, urlApi: string) {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + urlApi;
     return this.http.get(url);
   }
 

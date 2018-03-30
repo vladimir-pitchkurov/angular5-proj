@@ -2,6 +2,6 @@
   display: none;
 }
 
-.menu .loc-list--item:hover > a, .menu .tramp-list--item:hover > a, .menu .about-list--item:hover > a, .menu .location-list--item:hover > a{
+.menu .loc-list--item > a:hover, .menu .tramp-list--item > a:hover, .menu .about-list--item > a:hover, .menu .location-list--item > a:hover {
   color: #92dd02;
 }

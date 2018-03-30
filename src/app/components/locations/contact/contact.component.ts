@@ -12,14 +12,8 @@ import {isNullOrUndefined} from "util";
 })
 export class ContactComponent implements OnInit, DoCheck {
 
-
   activeLocationId: any;
   locationInf: any;
-
-  socialInf: any[];
-
-
-
 
   constructor(  private route: Router
               , private activatedRoute: ActivatedRoute
@@ -39,10 +33,10 @@ export class ContactComponent implements OnInit, DoCheck {
       this.service
         .getLocationById(id)
         .then(result => this.locationInf = result);
-
     });
 
   }
+
 
   ngDoCheck() {
 
@@ -51,6 +45,5 @@ export class ContactComponent implements OnInit, DoCheck {
     }
 
   }
-
 
 }

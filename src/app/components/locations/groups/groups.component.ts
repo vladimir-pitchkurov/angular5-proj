@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title } from '@angular/platform-browser';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -9,17 +9,19 @@ import {LocationService} from '../../../services/location.service';
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.css']
 })
-export class GroupsComponent implements OnInit, OnChanges, DoCheck {
+export class GroupsComponent implements OnInit, DoCheck {
+
   locationInf: any;
   activeLocationId: any;
-  pricing: any[];
+  pricing: any;
 
-  constructor(private meta: Meta,
-              private titleService: Title,
-              private route: Router
-    , private activatedRoute: ActivatedRoute
-    , private service: LocationService) {
-  }
+
+  constructor(  private meta: Meta
+              , private titleService: Title
+              , private route: Router
+              , private activatedRoute: ActivatedRoute
+              , private service: LocationService) {   }
+
 
   ngOnInit() {
     this.titleService.setTitle('Groups');
@@ -41,17 +43,13 @@ export class GroupsComponent implements OnInit, OnChanges, DoCheck {
 
       this.service.setPricingTrampolineGroups(this.pricing);
 
-      //console.log('on Init Groups', this.pricing);
-
     });
 
   }
 
-  ngOnChanges() {
-
-  }
 
   ngDoCheck() {
+
     if (this.activeLocationId !== this.service.activeLocationId) {
       this.service.activeLocationId = this.activeLocationId;
     }
@@ -59,12 +57,7 @@ export class GroupsComponent implements OnInit, OnChanges, DoCheck {
     if (this.pricing && !this.service.pricingTrampolineGroups[this.activeLocationId]) {
       this.service.setPricingTrampolineGroups(this.pricing);
     }
-    /*else if (!this.service.pricingTrampolineGroups[this.activeLocationId] && this.activeLocationId) {
-      this.service.setPricingTrampolineGroups(this.pricing);
-    }*/
 
-
-    //console.log('on DoCheck Groups', this.service.pricingTrampolineGroups);
   }
 
 }
