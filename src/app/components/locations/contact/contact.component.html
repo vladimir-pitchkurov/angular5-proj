@@ -38,7 +38,7 @@
         <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
         <p class="footer-contact-add-line">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}, {{this.service.contactInfoOfFooter[this.activeLocationId].address_state}} {{this.service.contactInfoOfFooter[this.activeLocationId].address_zip}}</p>
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
-        <p class="footer-contact"><img src="/assets/img/icon-email.png">lakeworth@adrenalime.com</p>
+        <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
       </div>
 
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.926051073305!2d-80.16874348443088!3d26.618816983254952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!3m2!1sru!2sua!4v1521097245125" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>

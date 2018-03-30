@@ -32,10 +32,8 @@ export class LocationService {
     const index = this.activeLocationId;
     let asd;
     if (data !== undefined && this.activeLocationId !== undefined ) {
-      console.log('in service set pricing', data);
       asd = data;
       this.pricingTrampolineGroups[index] = asd;
-      console.log('this.pricing in service', this.pricingTrampolineGroups);
     }
   }
 
