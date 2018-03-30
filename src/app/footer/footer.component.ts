@@ -23,6 +23,7 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
   twitter_link: any[];
   instagram_link: any[];
   google_link: any[];
+  email_link: any[];
 
 
   constructor(private service: LocationService
@@ -41,11 +42,14 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
           this.google_link = [];
           this.locationInf = [];
           this.socialInf = [];
+          this.email_link = [];
           this.activeLocationId = this.service.activeLocationId;
         }
       }
 
-      const id = params['id']; this.activeLocationId = this.service.activeLocationId;
+      const id = params['id'];
+
+      this.activeLocationId = this.service.activeLocationId;
 
       if (this.activeLocationId) {
 
@@ -77,6 +81,12 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         this.service.getLocationSocialByName(this.activeLocationId, 'google')
           .then((data: any[]) => {
             this.google_link = data;
+          });
+
+        this.service
+          .getLocationCustomPricingById(this.activeLocationId, '/field/email')
+          .then((result: any[]) => {
+            this.email_link = result;
           });
 
       }
@@ -132,35 +142,35 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         });
       this.service.setInfSocialGoogle(this.google_link);
 
+
+      this.service
+        .getLocationCustomPricingById(this.activeLocationId, '/field/email')
+        .then((result: any[]) => {
+          this.email_link = result;
+        });
+      this.service.setEmail(this.email_link);
+
     }
 
   }
 
   ngDoCheck() {
 
-
     if (this.activeLocationId  ) {
 
-      this.service.setContactInf(this.locationInf);
+        this.service.setContactInf(this.locationInf);
+
+        this.service.setInfSocialFacebook(this.facebook_link);
+
+        this.service.setInfSocialTwitter(this.twitter_link);
+
+        this.service.setInfSocialInstagram(this.instagram_link);
+
+        this.service.setInfSocialGoogle(this.google_link);
+
+        this.service.setEmail(this.email_link);
 
     }
-
-    if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && this.activeLocationId) {
-      this.service.setInfSocialFacebook(this.facebook_link);
-    }
-
-    if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && this.activeLocationId) {
-      this.service.setInfSocialTwitter(this.twitter_link);
-    }
-
-    if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && this.activeLocationId) {
-      this.service.setInfSocialInstagram(this.instagram_link);
-    }
-
-    if (!this.service.infSocialOfFooterGoogle[this.activeLocationId] && this.activeLocationId) {
-      this.service.setInfSocialGoogle(this.google_link);
-    }
-
   }
 
 }

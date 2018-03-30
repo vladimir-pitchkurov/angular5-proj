@@ -24,6 +24,48 @@ export class LocationService {
   public infSocialOfFooterTwitter: object = {};
   public infSocialOfFooterInstagram: object = {};
   public infSocialOfFooterGoogle: object = {};
+  public footerEmail: object = {};
+  public pricingTrampolineGroups: any[];
+
+  
+  setPricingTrampolineGroups(data: any) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.pricingTrampolineGroups = asd;
+      console.log('this.pricing in service', this.pricingTrampolineGroups);
+    }
+  }
+
+
+  findPricingTrampolineGroups(label: any) {
+    let price = '';
+
+    if (this.pricingTrampolineGroups){
+
+      if (this.pricingTrampolineGroups[0].location_id == this.getIdByName(this.activeLocationId)) {
+        //console.log('in for', this.getIdByName(this.activeLocationId), this.pricingTrampolineGroups[0].location_id);
+        for (let i = 0; i < this.pricingTrampolineGroups.length; i++) {
+          if (  this.pricingTrampolineGroups[i].label == label) {
+            return this.pricingTrampolineGroups[i].price;
+          }
+
+        }
+      }
+    }
+  }
+
+
+  setEmail(data: any) {
+    const index = this.activeLocationId;
+    let asd;
+
+    if (data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.footerEmail[index] = asd;
+    }
+  }
 
   /*it is object-cache method of link Google*/
   setInfSocialGoogle(data: any) {
@@ -113,6 +155,11 @@ export class LocationService {
 
   getAllLocations() {
     const url: string = this.domain + '/main/locations';
+    return this.http.get(url);
+  }
+
+  getLocationCustomPricingById(id: any, urlA: any) {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + urlA;
     return this.http.get(url);
   }
 

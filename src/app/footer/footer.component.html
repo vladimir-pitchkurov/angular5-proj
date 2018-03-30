@@ -10,7 +10,7 @@
         <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
         <p class="footer-contact-add-line">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}, {{this.service.contactInfoOfFooter[this.activeLocationId].address_state}} {{this.service.contactInfoOfFooter[this.activeLocationId].address_zip}}</p>
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
-        <p class="footer-contact"><img src="/assets/img/icon-email.png">email@domain.com</p>
+        <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
       </div>
       <div class="col-md-2 text-center custom-footer-menu">
         <a routerLink="{{activeLocationId}}/trampoline-park/" class="dropdown-item" routerLinkActive="active">Home</a>
@@ -21,19 +21,6 @@
         <!--<p>trampoline park</p>-->
         <a routerLink="trampoline-parties" routerLinkActive="active" class="dropdown-item" >Parties</a>
 
-        <!--<p>escape rooms</p>-->
-        <!--<div class="location-list&#45;&#45;item "  >-->
-        <!--<div class="dropdown">-->
-          <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Locations
-          </button>-->
-          <!--<div class="dropdown-menu-in-footer" aria-labelledby="dropdownMenuButton">-->
-              <!--<a *ngFor="let loc2 of locations" class="dropdown-item" (click)="setLocationById(loc2.nameUrl); initMenu(); toggleState()" routerLink="location/{{loc2.nameUrl}}" routerLinkActive="active" >{{loc2.title}}</a>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--<p>locations</p>-->
         <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active" class="dropdown-item" >Blog</a></div>
         <!--<p>blog</p>-->
       </div>

@@ -29,8 +29,8 @@
     <div class="row">
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div class="col-12>">
-            <h5>$18</h5>
+          <div *ngIf="this.one_hour" class="col-12>">
+            <h5>${{this.one_hour[0].price}}</h5>
           </div>
         </div>
         <div class="row person">
@@ -41,8 +41,8 @@
       </div>
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div class="col-12>">
-            <h5>$25</h5>
+          <div *ngIf="this.two_hours" class="col-12>">
+            <h5>${{this.two_hours[0].price}}</h5>
           </div>
         </div>
         <div class="row person">
@@ -53,8 +53,8 @@
       </div>
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div class="col-12>">
-            <h5>$13</h5>
+          <div *ngIf="this.a6_under" class="col-12>">
+            <h5>${{this.a6_under[0].price}}</h5>
           </div>
         </div>
         <div class="row person">
