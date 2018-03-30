@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BaseHttpService} from './base-http.service';
-import {LocationMap} from './LocationMap';
+import { BaseHttpService } from './base-http.service';
+import { LocationMap } from './LocationMap';
 
 @Injectable()
 export class LocationService {
@@ -25,15 +25,16 @@ export class LocationService {
   public infSocialOfFooterInstagram: object = {};
   public infSocialOfFooterGoogle: object = {};
   public footerEmail: object = {};
-  public pricingTrampolineGroups: any[];
+  public pricingTrampolineGroups: any[] = [];
 
-  
+
   setPricingTrampolineGroups(data: any) {
     const index = this.activeLocationId;
     let asd;
     if (data !== undefined && this.activeLocationId !== undefined ) {
+      console.log('in service set pricing', data);
       asd = data;
-      this.pricingTrampolineGroups = asd;
+      this.pricingTrampolineGroups[index] = asd;
       console.log('this.pricing in service', this.pricingTrampolineGroups);
     }
   }
@@ -41,16 +42,12 @@ export class LocationService {
 
   findPricingTrampolineGroups(label: any) {
     let price = '';
-
-    if (this.pricingTrampolineGroups){
-
-      if (this.pricingTrampolineGroups[0].location_id == this.getIdByName(this.activeLocationId)) {
-        //console.log('in for', this.getIdByName(this.activeLocationId), this.pricingTrampolineGroups[0].location_id);
-        for (let i = 0; i < this.pricingTrampolineGroups.length; i++) {
-          if (  this.pricingTrampolineGroups[i].label == label) {
-            return this.pricingTrampolineGroups[i].price;
+    if (this.pricingTrampolineGroups[this.activeLocationId]){
+      if (this.pricingTrampolineGroups[this.activeLocationId][0].location_id == this.getIdByName(this.activeLocationId)) {
+          for (let i = 0; i < this.pricingTrampolineGroups[this.activeLocationId].length; i++) {
+          if (  this.pricingTrampolineGroups[this.activeLocationId][i].label == label) {
+            return this.pricingTrampolineGroups[this.activeLocationId][i].price;
           }
-
         }
       }
     }

@@ -12,7 +12,7 @@ import {LocationService} from '../../../services/location.service';
 export class GroupsComponent implements OnInit, OnChanges, DoCheck {
   locationInf: any;
   activeLocationId: any;
-  pricing: any;
+  pricing: any[];
 
   constructor(private meta: Meta,
               private titleService: Title,
@@ -56,7 +56,7 @@ export class GroupsComponent implements OnInit, OnChanges, DoCheck {
       this.service.activeLocationId = this.activeLocationId;
     }
 
-    if (this.pricing && !this.service.pricingTrampolineGroups) {
+    if (this.pricing && !this.service.pricingTrampolineGroups[this.activeLocationId]) {
       this.service.setPricingTrampolineGroups(this.pricing);
     }
     /*else if (!this.service.pricingTrampolineGroups[this.activeLocationId] && this.activeLocationId) {
