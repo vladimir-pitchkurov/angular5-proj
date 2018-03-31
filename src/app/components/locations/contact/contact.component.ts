@@ -1,9 +1,8 @@
-import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import {Component, DoCheck,  OnInit} from '@angular/core';
+import { Meta} from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
 import {LocationService} from '../../../services/location.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +18,7 @@ export class ContactComponent implements OnInit, DoCheck {
               , private activatedRoute: ActivatedRoute
               , private meta: Meta
               , private titleService: Title
-              , private service: LocationService) {  }
+              , private service: LocationService ) {  }
 
 
   ngOnInit() {
