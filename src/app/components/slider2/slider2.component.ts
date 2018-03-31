@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
@@ -91,6 +91,8 @@ type PaneType = 'trampoline' | 'escape' | 'virtual';
     ])]
 })
 export class Slider2Component implements OnInit {
+
+  @Input () activePane: PaneType = 'trampoline';
 
   constructor() { }
 
