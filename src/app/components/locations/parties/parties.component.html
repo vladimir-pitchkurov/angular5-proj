@@ -104,8 +104,7 @@
             <h4 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
             <h1 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">${{this.getWeekend()}}</h1>
             <h5 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">Mon - Thurs: ${{this.getWeekday()}}</h5>
-            <a *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up btn mt-30 theme_a_btn btn_pad"  >Book a party</a>    <!--[src]="'http://altitudewoodbridge.pfestore.com/events/' + this.getLinkLabel()"--> <!--[src]=" this.service.pricingBirthdayUrl |json "-->
-            <!--<h1 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" >{{this.getLinkLabel()}},  {{this.service.pricingBirthdayUrl | json }}</h1>-->
+            <a *ngIf="this.service.pricingBirthdayUrl[this.service.activeLocationId]" href="{{this.service.pricingBirthdayUrl[this.service.activeLocationId].url}}{{this.getLinkLabel()}}" class="green_up btn mt-30 theme_a_btn btn_pad" target="_blank"  >Book a party</a>    <!--[src]="'http://altitudewoodbridge.pfestore.com/events/' + this.getLinkLabel()"--> <!--[src]=" this.service.pricingBirthdayUrl |json "-->
           </div>
         </div>
       </div>

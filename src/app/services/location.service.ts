@@ -27,25 +27,25 @@ export class LocationService {
   public footerEmail: object = {};
   public pricingTrampolineGroups: any[] = [];
   public pricingBirthday = [];
-  public pricingBirthdayUrl : any[];
+  public pricingBirthdayUrl = [];
 
 
-  /*setUrlBirthday(data: any) {
+  setUrlBirthday(data: any) {
     const index = this.activeLocationId;
     let asd;
-    //console.log('in service', data, this.activeLocationId);
-    if (data && data !== undefined && this.activeLocationId ) {
+    /*console.log('in service', data, this.activeLocationId);*/
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
       asd = data[0];
       this.pricingBirthdayUrl[index] = asd;
-      console.log('in in service', data, this.pricingBirthdayUrl);
+      /*console.log('in in service', data, this.pricingBirthdayUrl);*/
     }
-  }*/
+  }
 
   setPricingBirthday(data: any, marker: string) {
     const index = this.activeLocationId;
     let asd;
     let combineName;
-    //console.log('is setPricingBirthday ', data);
+
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data;
       combineName = index + "=>" + marker;
@@ -67,7 +67,7 @@ export class LocationService {
     let price = '';
     if (this.pricingTrampolineGroups[this.activeLocationId]){
       if (this.pricingTrampolineGroups[this.activeLocationId][0].location_id == this.getIdByName(this.activeLocationId)) {
-          for (let i = 0; i < this.pricingTrampolineGroups[this.activeLocationId].length; i++) {
+        for (let i = 0; i < this.pricingTrampolineGroups[this.activeLocationId].length; i++) {
           if (  this.pricingTrampolineGroups[this.activeLocationId][i].label == label) {
             return this.pricingTrampolineGroups[this.activeLocationId][i].price;
           }

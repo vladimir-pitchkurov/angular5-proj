@@ -12,8 +12,8 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 export class PartiesComponent implements OnInit, DoCheck {
 
   arrOfPricingNames = [ 'weekday', 'weekend', 'weekday_room', 'weekend_room' ];
-  arrWeekdayLabels = [ "ten_weekday", "twenty_weekday", "ten_weekday_food", "twenty_weekday_food" ];
-  arrWeekendLabels = [ "ten_weekend", "twenty_weekend", "ten_weekend_food", "twenty_weekend_food"  ];
+  arrWeekdayLabels = [ 'ten_weekday', 'twenty_weekday', 'ten_weekday_food', 'twenty_weekday_food' ];
+  arrWeekendLabels = [ 'ten_weekend', 'twenty_weekend', 'ten_weekend_food', 'twenty_weekend_food'  ];
 
   locationInf: any;
   activeLocationId: any;
@@ -32,37 +32,37 @@ export class PartiesComponent implements OnInit, DoCheck {
     , private service: LocationService) {  }
 
 
-    ngOnInit() {
-        this.meta.addTag({ name: 'meta-description', content: 'Parties description' });
-        this.titleService.setTitle('Parties');
+  ngOnInit() {
+    this.meta.addTag({ name: 'meta-description', content: 'Parties description' });
+    this.titleService.setTitle('Parties');
 
-      this.activatedRoute.params.forEach((params: Params) => {
+    this.activatedRoute.params.forEach((params: Params) => {
 
-        let id = params["id"];
+      const id = params['id'];
 
-        this.activeLocationId = id;
+      this.activeLocationId = id;
 
-        this.service
-          .getLocationById(id)
-          .then(result => this.locationInf = result);
+      this.service
+        .getLocationById(id)
+        .then(result => this.locationInf = result);
 
-        this.service
-          .getLocationBirthdayParties(this.activeLocationId, "/birthday/variables")
-          .then( (result) => {
-            this.partiesPricingWeekday = result;
-          } );
-        this.service.setPricingBirthday( this.partiesPricingWeekday, this.arrOfPricingNames[0] );
+      this.service
+        .getLocationBirthdayParties(this.activeLocationId, '/birthday/variables')
+        .then( (result) => {
+          this.partiesPricingWeekday = result;
+        } );
+      this.service.setPricingBirthday( this.partiesPricingWeekday, this.arrOfPricingNames[0] );
 
-        /*this.service
-          .getLocationBirthdayParties(this.activeLocationId, "/links/centeredge_events")
-          .then( (result) => {
-            this.urlOfBirth = result;
-          } );
-        this.service.setUrlBirthday( this.urlOfBirth );*/
+      this.service
+        .getLocationBirthdayParties(this.activeLocationId, "/links/centeredge_events")
+        .then( (result) => {
+          this.urlOfBirth = result;
+        } );
+      this.service.setUrlBirthday( this.urlOfBirth );
 
 
-      });
-    }
+    });
+  }
 
 
   ngDoCheck() {
@@ -71,7 +71,7 @@ export class PartiesComponent implements OnInit, DoCheck {
       this.service.activeLocationId = this.activeLocationId;
     }
 
-    if( this.partiesPricingWeekday && !this.service.pricingBirthday[this.concatIdAndArrName(0)] ) {
+    if ( this.partiesPricingWeekday && !this.service.pricingBirthday[this.concatIdAndArrName(0)] ) {
       this.service.setPricingBirthday( this.partiesPricingWeekday, this.arrOfPricingNames[0] );
 
       /*this.service.setUrlBirthday( this.urlOfBirth );*/
@@ -80,96 +80,96 @@ export class PartiesComponent implements OnInit, DoCheck {
 
     /*console.log('in do check', this.urlOfBirth );
 
+    console.log('in do check serv value: ', this.service.pricingBirthdayUrl[this.service.activeLocationId].url );*/
+
     if( this.urlOfBirth && !this.service.pricingBirthdayUrl[this.service.activeLocationId] ) {
 
       this.service.setUrlBirthday( this.urlOfBirth );
-    }*/
-
-
+    }
 
   }
 
 
-  getWeekday() : any {
+  getWeekday(): any {
     let tarif;
 
-    if( !this.boolPrivateRoom ) {
-      if( !this.bool20Jumpers ) {
-        if( !this.boolWithFood ) {
+    if ( !this.boolPrivateRoom ) {
+      if ( !this.bool20Jumpers ) {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekdayLabels[0];
-        }else { tarif = this.arrWeekdayLabels[2]; }
-      }else {
-        if( !this.boolWithFood ) {
+        } else { tarif = this.arrWeekdayLabels[2]; }
+      } else {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekdayLabels[1];
-        }else { tarif = this.arrWeekdayLabels[3]; }
+        } else { tarif = this.arrWeekdayLabels[3]; }
       }
-      let searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
+      const searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
       for (let i = 0; i < searchArr.length; i++) {
-        let a = searchArr[i];
+        const a = searchArr[i];
         if (a.label == tarif ) {  return a.price;  }
       }
     }
   }
 
-  getWeekend() : any {
+  getWeekend(): any {
     let tarif;
 
-    if( !this.boolPrivateRoom ) {
-      if( !this.bool20Jumpers ) {
-        if( !this.boolWithFood ) {
+    if ( !this.boolPrivateRoom ) {
+      if ( !this.bool20Jumpers ) {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekendLabels[0];
-        }else { tarif = this.arrWeekendLabels[2]; }
-      }else {
-        if( !this.boolWithFood ) {
+        } else { tarif = this.arrWeekendLabels[2]; }
+      } else {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekendLabels[1];
-        }else { tarif = this.arrWeekendLabels[3]; }
+        } else { tarif = this.arrWeekendLabels[3]; }
       }
-      let searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
+      const searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
       for (let i = 0; i < searchArr.length; i++) {
-        let a = searchArr[i];
+        const a = searchArr[i];
         if (a.label == tarif ) {  return a.price;  }
       }
     }
   }
 
-  getHumanLabel() : any {
+  getHumanLabel(): any {
     let tarif;
 
-    if( !this.boolPrivateRoom ) {
-      if( !this.bool20Jumpers ) {
-        if( !this.boolWithFood ) {
+    if ( !this.boolPrivateRoom ) {
+      if ( !this.bool20Jumpers ) {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekendLabels[0];
-        }else { tarif = this.arrWeekendLabels[2]; }
-      }else {
-        if( !this.boolWithFood ) {
+        } else { tarif = this.arrWeekendLabels[2]; }
+      } else {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekendLabels[1];
-        }else { tarif = this.arrWeekendLabels[3]; }
+        } else { tarif = this.arrWeekendLabels[3]; }
       }
-      let searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
+      const searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
       for (let i = 0; i < searchArr.length; i++) {
-        let a = searchArr[i];
+        const a = searchArr[i];
         if (a.label == tarif ) {  return a.human_label;  }
       }
     }
   }
 
-  getLinkLabel() : any {
+  getLinkLabel(): any {
     let tarif;
 
-    if( !this.boolPrivateRoom ) {
-      if( !this.bool20Jumpers ) {
-        if( !this.boolWithFood ) {
+    if ( !this.boolPrivateRoom ) {
+      if ( !this.bool20Jumpers ) {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekdayLabels[0];
-        }else { tarif = this.arrWeekdayLabels[2]; }
-      }else {
-        if( !this.boolWithFood ) {
+        } else { tarif = this.arrWeekdayLabels[2]; }
+      } else {
+        if ( !this.boolWithFood ) {
           tarif = this.arrWeekdayLabels[1];
-        }else { tarif = this.arrWeekdayLabels[3]; }
+        } else { tarif = this.arrWeekdayLabels[3]; }
       }
-      let searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
+      const searchArr = this.service.pricingBirthday[this.concatIdAndArrName(0)];
       for (let i = 0; i < searchArr.length; i++) {
-        let a = searchArr[i];
-        if (a.label == tarif ) {  return a.value + "/BookEvent.aspx";  }
+        const a = searchArr[i];
+        if (a.label == tarif ) {  return /*'http://altitudewoodbridge.pfestore.com/events/' +*/ a.value +'/BookEvent.aspx';  }
       }
     }
   }
