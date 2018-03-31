@@ -1,0 +1,5 @@
+<div class="panes" [@slide]="activePane">
+  <div><ng-content select="[trampolinePane]"></ng-content></div>
+  <div><ng-content select="[escapePane]"></ng-content></div>
+  <div><ng-content select="[virtualPane]"></ng-content></div>
+</div>

@@ -32,6 +32,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import {LocationMap} from './services/LocationMap';
+import { Slider2Component } from './components/slider2/slider2.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {LocationMap} from './services/LocationMap';
     PartiesComponent,
     FooterComponent,
     WelcomeComponent,
+    Slider2Component,
   ],
   imports: [
     BrowserModule,
