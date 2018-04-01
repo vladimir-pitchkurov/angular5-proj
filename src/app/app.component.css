@@ -5,3 +5,29 @@
 .menu .loc-list--item > a:hover, .menu .tramp-list--item > a:hover, .menu .about-list--item > a:hover, .menu .location-list--item > a:hover {
   color: #92dd02;
 }
+
+.menu .menu-tramp, .menu .escape, .menu .menu-locations, .menu .menu-about  {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.menu .menu-tramp > a, .menu .escape > a , .menu .menu-locations > a, .menu .menu-about > a {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.menu .menu-tramp > .tramp-list, .menu .menu-locations > .location-list , .menu .menu-about > .about-list {
+  left: 0;
+  right: 0;
+}
+
+.menu .menu-about > a {
+  padding-left: 27px;
+  padding-right: 27px;
+}
+
+.menu .menu-about > .about-list{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+

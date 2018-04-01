@@ -268,8 +268,8 @@ export class InitJsService {
         if(menuAbout) {
           menuAbout.onmouseover = function (ev) {
             aboutList.style.display = 'block';
-            aboutList.style.width = menuAbout.clientWidth + 50 + 'px';
-            aboutList.style.left = '-16px';
+           // aboutList.style.width = menuAbout.clientWidth + 50 + 'px';
+           // aboutList.style.left = '-16px';
             if (trampList) { trampList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };
@@ -279,7 +279,7 @@ export class InitJsService {
           menuLocations.onmouseover = function (ev) {
             locationsList.style.display = 'block';
             //locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
-            locationsList.style.left = '-20px';
+           // locationsList.style.left = '-20px';
             if (trampList) { trampList.style.display = 'none'; }
             if (aboutList) { aboutList.style.display = 'none'; }
           };
@@ -291,7 +291,7 @@ export class InitJsService {
         };
 
       })();
-    },0)
+    },0);
   }
 
   static afterViewMenuLocations(){
@@ -333,8 +333,8 @@ export class InitJsService {
         if(menuAbout) {
           menuAbout.onmouseover = function (ev) {
             aboutList.style.display = 'block';
-            aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
-            aboutList.style.left = '-20px';
+          //  aboutList.style.width = menuAbout.clientWidth + 44 + 'px';
+          //  aboutList.style.left = '-20px';
             if (trampList) { trampList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };
@@ -343,8 +343,8 @@ export class InitJsService {
         if(menuLocations) {
           menuLocations.onmouseover = function (ev) {
             locationsList.style.display = 'block';
-            locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
-            locationsList.style.left = '-20px';
+           // locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
+           // locationsList.style.left = '-20px';
             if (trampList) { trampList.style.display = 'none'; }
             if (aboutList) { aboutList.style.display = 'none'; }
           };
