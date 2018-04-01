@@ -24,8 +24,9 @@ import {WelcomeComponent} from './components/welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: ':id', component: HomeComponent },
+  { path: 'trampoline-park', component: TrampolinesHomepageComponent},
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
+  { path: ':id', component: HomeComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
   { path: ':id/about/join-our-team', component: JoinourteamComponent },
   { path: ':id/about/gallery', component: GalleryComponent },

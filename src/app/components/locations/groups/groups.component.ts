@@ -57,7 +57,6 @@ export class GroupsComponent implements OnInit, DoCheck {
     if (this.pricing && !this.service.pricingTrampolineGroups[this.activeLocationId]) {
       this.service.setPricingTrampolineGroups(this.pricing);
     }
-
   }
 
 }
