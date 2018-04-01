@@ -4,7 +4,7 @@
       <img src="/assets/img/logo.png">
     </div>
       <div class="menu " >
-        <div><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
+        <div *ngIf="!activeLocationId" ><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
 
         <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
