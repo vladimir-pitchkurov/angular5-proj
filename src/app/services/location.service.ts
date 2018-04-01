@@ -257,6 +257,11 @@ export class LocationService {
     return this.http.get(url);
   }
 
+  sendPostContact(data) {
+    const url = this.domain + '/location/contact';
+    return this.http.post(url, data);
+  }
+
 }
 
 

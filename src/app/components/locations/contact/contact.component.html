@@ -5,30 +5,35 @@
         <h1 class="green_up text-uppercase text-center mt-80"> Contact us</h1>
       </div>
     </div>
-    <form class="mt-120 form_contact" method="post" action="/">
+
+
+    <form class="mt-120 form_contact">  <!-- method="post" action="{{this.service.domain}}/location/contact"-->
       <div class="form-row">
+        <!--<input class="cus-hidden" type="text" id="location_id" name="location_id" value="{{this.service.getIdByName(this.activeLocationId)}}">-->
         <div class="form-group col-md-4">
-          <input type="text" class="form-control" placeholder="Name">
+          <input type="text" #userName class="form-control" placeholder="Name">
         </div>
         <div class="form-group col-md-4">
-          <input type="text" class="form-control" placeholder="Email">
+          <input type="text" #userEmail class="form-control" placeholder="Email">
         </div>
         <div class="form-group col-md-4">
-          <input type="text" class="form-control" placeholder="Phone">
+          <input type="text" #userPhone class="form-control" placeholder="Phone">
         </div>
       </div>
       <div class="form-row mt-80">
         <div class="form-group col-md-12">
           <label>Message</label>
-          <textarea class="form-control"  rows="3"></textarea>
+          <textarea class="form-control" #userMessage rows="3"></textarea>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="form-group col-md-3">
-          <button class="btn contact_form_btn mt-30">Submit</button>
+          <button (click)="sendPostContact(this.service.getIdByName(this.activeLocationId), userName.value, userEmail.value, userPhone.value, userMessage.value )" type="reset" class="btn contact_form_btn mt-30" >Submit</button>
         </div>
       </div>
     </form>
+
+
   </div>
 </section>
 

@@ -13,7 +13,7 @@ export class BaseHttpService {
       .then(data => {
         return data;
       })
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
 
@@ -21,7 +21,7 @@ export class BaseHttpService {
     return this.http.post(url, data)
       .toPromise()
       .then(this.handleData)
-      .catch(this.handleError)
+      .catch(this.handleError);
   }
 
 
