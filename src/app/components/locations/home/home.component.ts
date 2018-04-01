@@ -1,7 +1,7 @@
 import {Component, DoCheck, Input, OnChanges, OnInit} from '@angular/core';
-import { Meta } from '@angular/platform-browser';
-import { Title }     from '@angular/platform-browser';
-import { LocationService } from '../../../services/location.service';
+import {Meta} from '@angular/platform-browser';
+import {Title} from '@angular/platform-browser';
+import {LocationService} from '../../../services/location.service';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
@@ -13,26 +13,38 @@ export class HomeComponent implements OnInit, DoCheck {
 
 
   isLeftVisible = 0;
+  boolChanged = false;
+
   locationHours: any;
   activeLocationId: any;
   locationInf: any;
 
 
   constructor(private route: Router
-            , private activatedRoute: ActivatedRoute
-            , private meta: Meta
-            , private titleService: Title
-            , private service: LocationService ) {  }
+    , private activatedRoute: ActivatedRoute
+    , private meta: Meta
+    , private titleService: Title
+    , private service: LocationService) {
+  }
 
 
   ngOnInit() {
+    setInterval(() => {
+      if (!this.boolChanged) {
+        this.isLeftVisible++;
+        if (this.isLeftVisible == 3) {
+          this.isLeftVisible = 0;
+        }
+      }
+    }, 3000);
 
     this.titleService.setTitle('Home title');
-    this.meta.addTag({ name: 'meta-description', content: 'description' });
+    this.meta.addTag({name: 'meta-description', content: 'description'});
 
     this.activatedRoute.params.forEach((params: Params) => {
 
-      let id = params["id"]; this.activeLocationId = id;
+      let id = params["id"];
+      this.activeLocationId = id;
 
       this.service.activeLocationId = this.activeLocationId;
 
@@ -49,8 +61,8 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
 
-  ngDoCheck(){
-    if(this.activeLocationId !== this.service.activeLocationId){
+  ngDoCheck() {
+    if (this.activeLocationId !== this.service.activeLocationId) {
       this.service.activeLocationId = this.activeLocationId;
     }
   }

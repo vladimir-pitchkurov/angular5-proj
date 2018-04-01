@@ -35,23 +35,23 @@
 
 </app-slider2>
 
-<!--<div id="homepage-gaiety" class="homepage-gaiety  ">
+<div id="homepage-gaiety" class="homepage-gaiety  ">
   <div id="homepage-block-blackout" class="homepage-block-blackout pv-40">
 
     <div class="container h-100">
       <div class="row h-100 justify-content-center">
-        <div class="gaiety-button my-auto col-3" id="but_trampoline" (click)="isLeftVisible = 0">
-          &lt;!&ndash;<img src="/assets/img/homepage-trampoline.png">&ndash;&gt;
+        <div class="gaiety-button my-auto col-3 " id="but_trampoline" [class.green-light]="isLeftVisible == 0" (click)="isLeftVisible = 0; this.boolChanged = true;">
+          <!--<img src="/assets/img/homepage-trampoline.png">-->
           <div class="img_main img_homepage_trampoline"></div>
           <p class="homepage-gaiety-button-text">trampoline<br>park</p>
         </div>
-        <div class="gaiety-button my-auto col-3" id="but_escape" (click)="isLeftVisible = 1">
-          &lt;!&ndash;<img src="/assets/img/homepage-escape.png">&ndash;&gt;
+        <div class="gaiety-button my-auto col-3" id="but_escape" [class.green-light]="isLeftVisible == 1" (click)="isLeftVisible = 1; this.boolChanged = true;">
+          <!--<img src="/assets/img/homepage-escape.png">-->
           <div class="img_main img_homepage_escape"></div>
           <p class="homepage-gaiety-button-text">escape<br>rooms</p>
         </div>
-        <div class="gaiety-button my-auto col-3" id="but_virtual" (click)="isLeftVisible = 2">
-          &lt;!&ndash;<img src="/assets/img/homepage-virtual.png">&ndash;&gt;
+        <div class="gaiety-button my-auto col-3" id="but_virtual" [class.green-light]="isLeftVisible == 2" (click)="isLeftVisible = 2; this.boolChanged = true;">
+          <!--<img src="/assets/img/homepage-virtual.png">-->
           <div class="img_main img_homepage_virtual"></div>
           <p class="homepage-gaiety-button-text">virtual<br>reality</p>
         </div>
@@ -59,7 +59,7 @@
     </div>
 
   </div>
-</div>-->
+</div>
 <section class="homepage-locations-blue pv-40">
   <div class="container">
     <div class="row justify-content-between">

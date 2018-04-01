@@ -11,3 +11,21 @@
   display: inline-block;
   width: 100%;
 }
+
+.green-light p{
+   color: #92dd02;
+}
+
+.green-light div.img_homepage_trampoline {
+  background: url('../../../../assets/img/homepage-trampoline-green.png') no-repeat center top / cover;
+}
+
+.green-light div.img_homepage_escape {
+  background: url('../../../../assets/img/homepage-escape-green.png') no-repeat center top / cover;
+}
+
+.green-light div.img_homepage_virtual {
+  background: url('../../../../assets/img/homepage-virtual-green.png') no-repeat center top / cover;
+}
+
+

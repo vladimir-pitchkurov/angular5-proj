@@ -1,6 +1,7 @@
 <header>
   <div class="container">
     <div class="logo">
+      <img src="/assets/img/logo.png">
     </div>
       <div class="menu " >
         <div><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
@@ -46,9 +47,9 @@
         </div>
       </div>
 
-      <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
+      <div *ngIf="false" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
 
-        <div *ngIf="activeLocationId" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
+        <div *ngIf="false" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
 
       <div *ngIf="activeLocationId" (click)="toggleState()" class="menu-about" routerLinkActive="active">
         <a >About us   </a>
@@ -72,7 +73,7 @@
         Locations
         <div class="location-list">
           <div class="location-list--item " *ngFor="let loc of locations" >
-            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="location/{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
+            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
           </div>
         </div>
         <!--<div class="loc-list">
@@ -92,7 +93,7 @@
         </div>-->
       </div>
 
-      <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active">Blog</a></div>
+      <div *ngIf="false" (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active">Blog</a></div>
 
     </div>
     <div id="ask">

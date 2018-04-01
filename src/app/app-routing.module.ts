@@ -1,4 +1,4 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponentComponent} from './components/home-component/home-component.component';
 import {TrampolineParkComponent} from './components/trampoline-park/trampoline-park.component';
@@ -24,7 +24,7 @@ import {WelcomeComponent} from './components/welcome/welcome.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
-  { path: 'location/:id', component: HomeComponent },
+  { path: ':id', component: HomeComponent },
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
   { path: ':id/about/join-our-team', component: JoinourteamComponent },
