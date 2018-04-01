@@ -26,8 +26,11 @@ const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'trampoline-park', component: TrampolinesHomepageComponent},
   { path: 'trampoline-parties', component: TrampolinePartiesComponent },
-  { path: ':id', component: HomeComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'blog/:post', component: BlogPostComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
+  { path: ':id', component: HomeComponent },
+  { path: ':id/about/coming-soon', component: ComingSoonComponent },
   { path: ':id/about/join-our-team', component: JoinourteamComponent },
   { path: ':id/about/gallery', component: GalleryComponent },
   { path: ':id/about/about', component: AboutComponent },
@@ -39,9 +42,6 @@ const routes: Routes = [
   { path: ':id/trampoline-park/groups', component: GroupsComponent },
   { path: ':id/trampoline-park/buy-a-pass', component: PassComponent },
   { path: ':id/trampoline-park/birthday-parties', component: PartiesComponent },
-  { path: 'blog', component: BlogComponent },
-  { path: 'blog/:post', component: BlogPostComponent },
-  { path: 'coming-soon', component: ComingSoonComponent }
 ];
 
 @NgModule({

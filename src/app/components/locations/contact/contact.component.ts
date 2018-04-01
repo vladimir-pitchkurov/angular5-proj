@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    if (this.activeLocationId !== this.service.activeLocationId){
+    if (this.activeLocationId !== this.service.activeLocationId) {
       this.service.activeLocationId = this.activeLocationId;
     }
   }

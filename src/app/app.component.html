@@ -47,15 +47,18 @@
         </div>
       </div>
 
-      <div *ngIf="false" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
+      <div *ngIf="true" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
 
-        <div *ngIf="false" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
+        <div *ngIf="true" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
 
       <div *ngIf="activeLocationId" (click)="toggleState()" class="menu-about" routerLinkActive="active">
         <a >About us   </a>
         <div class="about-list">
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>
+          </div>
+          <div class="about-list--item">
+            <a routerLink="{{activeLocationId}}/about/coming-soon" routerLinkActive="active">coming soon</a>
           </div>
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a>

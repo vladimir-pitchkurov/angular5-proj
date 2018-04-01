@@ -262,6 +262,11 @@ export class LocationService {
     return this.http.post(url, data);
   }
 
+  sendPostComing(data) {
+    const url = this.domain + '/location/subscribe';
+    return this.http.post(url, data);
+  }
+
 }
 
 
