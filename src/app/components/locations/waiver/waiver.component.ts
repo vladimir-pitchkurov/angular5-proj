@@ -38,12 +38,6 @@ export class WaiverComponent implements OnInit, DoCheck {
       if ( this.activeLocationId !== this.service.activeLocationId ) {
         this.service.activeLocationId = this.activeLocationId;
       }
-
-      //console.log("this.service.allLinksCenteredge_waiver[this.activeLocationId].url: ", this.service.allLinksCenteredge_waiver[this.activeLocationId].url);
-      /*console.log("this.activeLocationId: ", this.activeLocationId);
-      console.log("this.service.allLinksCenteredge_waiver: ", this.service.allLinksCenteredge_waiver);*/
-
-
     }
 
     goToWaiver(){

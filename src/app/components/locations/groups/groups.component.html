@@ -71,7 +71,7 @@
     </div>
     <div class="row group-button">
       <div class="col-12 waiver-desc_slider_button">
-        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px">call to reverse</button>
+        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px"><a routerLink="../../about/coming-soon" routerLinkActive="active" >call to reverse</a></button>
       </div>
     </div>
   </div>
@@ -91,7 +91,8 @@
         </h2>
         <div class="row group-button" style="margin-top: 0">
           <div class="col-12 waiver-desc_slider_button">
-            <button *ngFor="let locationI of locationInf " type="button" class="btn btn-outline-success btn-block" style="max-width: 360px" >call {{locationI.phone}}</button>
+            <button *ngFor="let locationI of locationInf " type="button" class="btn btn-outline-success btn-block" style="max-width: 360px" >
+              <a href="tel:{{locationI.phone}}">call {{locationI.phone}}</a></button>
           </div>
         </div>
       </div>

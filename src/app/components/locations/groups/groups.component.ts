@@ -28,11 +28,8 @@ export class GroupsComponent implements OnInit, DoCheck {
     this.meta.addTag({ name: 'meta-description', content: 'Groups description' });
 
     this.activatedRoute.params.forEach((params: Params) => {
-
       let id = params["id"];
-
       this.activeLocationId = id;
-
       this.service
         .getLocationById(id)
         .then(result => this.locationInf = result);

@@ -21,7 +21,7 @@
     <div id="by-pass-block" class="row justify-content-center">
       <div class="col-sm-12 a-desc_slider_button">
         <h1>READY TO HAVE FUN?</h1>
-        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px">BUY A PASS</button>
+        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px"><a *ngIf="this.service.allLinksCenteredge_waiver[this.activeLocationId]" target="_blank" href="{{this.service.allLinksCenteredge_waiver[this.activeLocationId].url}}">BUY A PASS</a></button>
       </div>
     </div>
   </div>
