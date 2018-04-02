@@ -1643,7 +1643,7 @@ header .menu > div > a {
     padding: 0 11px 7px;
 }
 
-header .menu > div > a.active, header .menu .menu-tramp.active {
+header .menu > div > a.active, header .menu .menu-tramp.active, .menu .menu-about.active {
     border-bottom: 3px solid #91dd00;
 }
 

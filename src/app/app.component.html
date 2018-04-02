@@ -3,27 +3,25 @@
     <div class="logo">
       <img src="/assets/img/logo.png">
     </div>
-     <div class="menu " >
-       <div *ngIf="!activeLocationId" >
-         <a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a>
-       </div>
-
-       <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()" >
-         <a routerLinkActive="active" >Trampoline park</a>
-         <div class="tramp-list" >
-           <div class="tramp-list--item">
-             <a routerLink="trampoline-park" routerLinkActive="active">Park</a>
-           </div>
-           <div class="tramp-list--item">
-             <a routerLink="trampoline-parties" routerLinkActive="active">Parties</a>
-           </div>
-         </div>
-       </div>
-
-       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()" >
-        <a routerLinkActive="active" >Trampoline park</a>
-
-        <div class="tramp-list" >
+    <div class="menu ">
+      <div *ngIf="!activeLocationId">
+        <a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()"
+           [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      </div>
+      <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()">
+        <a routerLinkActive="active">Trampoline park</a>
+        <div class="tramp-list">
+          <div class="tramp-list--item">
+            <a routerLink="trampoline-park" routerLinkActive="active">Park</a>
+          </div>
+          <div class="tramp-list--item">
+            <a routerLink="trampoline-parties" routerLinkActive="active">Parties</a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()">
+        <a routerLinkActive="active">Trampoline park</a>
+        <div class="tramp-list">
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
           </div>
@@ -31,7 +29,8 @@
             <a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active">Buy a Pass</a>
           </div>
           <div class="tramp-list--item">
-            <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday Parties</a>
+            <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active">Birthday
+              Parties</a>
           </div>
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/groups/" routerLinkActive="active">Groups</a>
@@ -47,13 +46,12 @@
           </div>
         </div>
       </div>
-
-      <div *ngIf="true" (click)="initMenu()" ><a routerLink="escape-room" routerLinkActive="active" class="escape" >Escape rooms</a></div>
-
-        <div *ngIf="true" (click)="toggleState(); initMenu()" ><a class="escape" >Virtual Reality</a></div>
-
+      <div *ngIf="true" (click)="initMenu()">
+        <a routerLink="escape-room" routerLinkActive="active" class="escape">Escape rooms</a>
+      </div>
+      <div *ngIf="true" (click)="toggleState(); initMenu()"><a class="escape">Virtual Reality</a></div>
       <div *ngIf="activeLocationId" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
-        <a >About us   </a>
+        About us
         <div class="about-list">
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>
@@ -72,33 +70,16 @@
           </div>
         </div>
       </div>
-
-      <div *ngIf="!activeLocationId" (click)="toggleState(); initMenu()" class="menu-locations" routerLinkActive="active">
-        Locations
+      <div *ngIf="!activeLocationId" (click)="toggleState(); initMenu()" class="menu-locations"
+           routerLinkActive="active">Locations
         <div class="location-list">
-          <div class="location-list--item " *ngFor="let loc of locations" >
-            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="{{loc.nameUrl}}" routerLinkActive="active" >{{loc.title}}</a>
+          <div class="location-list--item " *ngFor="let loc of locations">
+            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="{{loc.nameUrl}}"
+               routerLinkActive="active">{{loc.title}}</a>
           </div>
         </div>
-        <!--<div class="loc-list">
-          <div id="find-park" class="loc-list--item" link="/">FIND A PARK</div>
-          <div class="loc-list--item" link="/locations/home">Home</div>
-          <div class="loc-list--item" link="/locations/join-our-team">join our team</div>
-          <div class="loc-list--item" link="/cincinnati/">CINCINNATI</div>
-          <div class="loc-list--item" link="/locations/about/">About</div>
-          <div class="loc-list--item" link="/locations/gallery/">Gallery</div>
-          <div class="loc-list--item" link="/locations/contact/">Contact</div>
-          <div class="loc-list--item" link="/locations/activities">activities</div>
-          <div class="loc-list--item" link="/locations/waiver">waiver</div>
-          <div class="loc-list--item" link="/locations/groups">groups</div>
-          <div class="loc-list--item" link="/locations/trampolines-homepage">trampolines-homepage</div>
-          <div class="loc-list--item" link="/locations/pass">pass</div>
-          <div class="loc-list--item" link="/locations/parties">parties</div>
-        </div>-->
       </div>
-
-      <div *ngIf="false" (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active">Blog</a></div>
-
+      <div *ngIf="false" (click)="toggleState()"><a routerLink="blog" routerLinkActive="active">Blog</a></div>
     </div>
     <div id="ask">
       <div id="ask-contain" class="">
@@ -153,4 +134,4 @@
   </div>
 </header>
 <router-outlet></router-outlet>
-<app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId" [locations]="locations" ></app-footer>
+<app-footer [isDarkFooter]="isDarkFooter" [activeLocationId]="activeLocationId" [locations]="locations"></app-footer>

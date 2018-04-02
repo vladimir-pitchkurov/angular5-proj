@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, DoCheck, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
-import { NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
 import {LocationMap} from './services/LocationMap';
 
@@ -15,10 +15,9 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   title = 'app';
   locations: LocationMap[];
   activeLocationId: any;
-  locationInf: any[] ;
+  locationInf: any[];
   isDarkFooter = false;
-
-  currentAmenities: any[];
+  amenities = [];
 
   constructor(private router: Router
     , private service: LocationService) {
@@ -56,18 +55,16 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     InitJsService.afterViewMenuTramp();
   }
 
-  isIn = false;   // store state
-  toggleState() { // click handler
+  isIn = false;
+
+  toggleState() {
     const bool = this.isIn;
     this.isIn = bool === false ? true : false;
   }
 
   ngAfterViewInit() {
     InitJsService.initMenu();
-    // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
-    //InitJsService.afterViewMenuTramp();
-    //InitJsService.initEscape();
   }
 
   defineIsFooterDark() {
@@ -75,7 +72,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       '/escape-room',
       'trampoline-parties'
     ];
-
     this.isDarkFooter = pagesWithDarkFooter.indexOf(this.router.url) !== -1 || this.router.url.indexOf('/blog/') !== -1;
   }
 
@@ -90,89 +86,19 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
         this.activeLocationId = this.service.activeLocationId;
       }
     }
-
-    /*if( !this.currentAmenities && this.service.contactInfoOfFooter && this.service.activeLocationId) {
-      let aaa: any;
-      let index1 = this.service.activeLocationId;
-      aaa = this.service.contactInfoOfFooter[index1];
-      console.log('in out main comp loc inf', aaa, this.service.activeLocationId);
-    }*/
-     /*temp1["york"].amenities*/
-
+    if (this.service.activeLocationId) {
+      if (this.service.contactInfoOfFooter) {
+        if (this.service.contactInfoOfFooter[this.service.activeLocationId]) {
+          this.amenities = JSON.parse(this.service.contactInfoOfFooter[this.service.activeLocationId].amenities);
+        }
+      }
+    }
+    //console.log("this.amenities;", this.amenities)
   }
-
-  // getAddressInfoByZip(zip, device) {
-  //     if (zip.length >= 5 && typeof google != 'undefined') {
-  //         var addr = {};
-  //         var geocoder = new google.maps.Geocoder();
-  //         geocoder.geocode({
-  //             'address': zip
-  //         }, function(results, status) {
-  //             if (status == google.maps.GeocoderStatus.OK) {
-  //                 if (results.length >= 1) {
-  //                     var lat = results[0].geometry.location.lat();
-  //                     var lng = results[0].geometry.location.lng();
-
-  //                     var curLocation = new google.maps.LatLng(lat, lng);
-
-  //                     for (var i = 0; i < locations.length; i++) {
-  //                         pointLocation = new google.maps.LatLng(locations[i].lat, locations[i].lng);
-  //                         distance = calcDistance(curLocation, pointLocation);
-  //                         locations[i].distance = (distance);
-  //                     }
-
-
-  //                     var sorted = locations.sort(function(a, b) {
-  //                         return a.distance - b.distance;
-  //                     });
-
-  //                       document.getElementById('desktop_zip_result').innerHTML = "";
-
-  //                       for (var i = 0; i < 3; i++) {
-  //                           // change ID to zip_result from zip_parks
-  //                           var mydiv = document.getElementById("desktop_zip_result");
-  //                           var column = document.createElement("div");
-  //                           var aTag = document.createElement('a');
-  //                           ///if(i < 3){
-  //                           aTag.className = "active";
-  //                           //}
-  //                           column.setAttribute('class', "column");
-  //                           aTag.setAttribute('href', sorted[i].permalink);
-  //                           aTag.setAttribute('class', "find_park_result_button");
-  //                           aTag.setAttribute('class', "button");
-  //                           aTag.setAttribute('class', "button is-rounded");
-  //                           aTag.setAttribute('onclick', "setUserLocation('" + sorted[i].permalink + "')");
-
-  //                           if (sorted[i].external_url == "Yes") {
-  //                               aTag.setAttribute('rel', "nofollow");
-  //                           }
-
-  //                           aTag.innerHTML = "<strong>" + sorted[i].title + ", " + sorted[i].abbr + "</strong> <span>" + sorted[i].distance + " mi from you</span>";
-  //                           mydiv.appendChild(column);
-  //                           column.appendChild(aTag);
-  //                           console.log('done');
-  //                       }
-
-
-  //                 } else {
-  //                     response({
-  //                         success: false
-  //                     });
-
-  //         };
-
-  //     } else {
-  //         response({
-  //             success: false
-  //         });
-  //     }
-  // }
-
 }
 
 export const activeAttract: any = {
-    trampoline : false,
+    trampoline: false,
     escape: false,
     vr: false
   }
-;

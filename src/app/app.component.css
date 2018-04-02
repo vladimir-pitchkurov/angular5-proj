@@ -21,9 +21,9 @@
   right: 0;
 }
 
-.menu .menu-about > a {
-  padding-left: 27px;
-  padding-right: 27px;
+.menu .menu-about {
+  padding-left: 28px;
+  padding-right: 28px;
 }
 
 .menu .menu-about > .about-list{
