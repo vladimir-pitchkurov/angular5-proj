@@ -31,3 +31,13 @@
   padding-right: 0px;
 }
 
+.menu .menu-locations > a {
+  padding-left: 27px;
+  padding-right: 27px;
+}
+
+.menu .menu-locations > .location-list{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
