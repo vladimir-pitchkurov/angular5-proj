@@ -36,7 +36,10 @@
     <div class="row justify-content-center">
       <div class="col-sm-12 waiver-desc_slider_button">
         <h1>SAVE TIME, SIGN ONLINE</h1>
-        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px">sign a waiver</button>
+        <button type="button" *ngIf="this.service.allLinksCenteredge_waiver[this.activeLocationId]" (click)="goToWaiver()" class="btn btn-outline-success btn-block"  style="max-width: 360px">sign a waiver</button>
+
+
+
       </div>
     </div>
   </div>

@@ -16,8 +16,6 @@ export class PassComponent implements OnInit, DoCheck {
   one_hour: any;
   two_hours: any;
   a6_under: any;
-  crew_socks: any;
-  unkel_socks: any;
 
   constructor(private route: Router
     , private activatedRoute: ActivatedRoute
@@ -52,8 +50,6 @@ export class PassComponent implements OnInit, DoCheck {
       this.service
         .getLocationCustomPricingById(this.activeLocationId, '/pricing/trampoline/general/six_and_under')
         .then(result => this.a6_under = result);
-
-
 
     });
   }
