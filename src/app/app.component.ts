@@ -66,7 +66,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     InitJsService.initMenu();
     // InitJsService.initLocScroll();
     InitJsService.initMobileMenu();
-    InitJsService.afterViewMenuTramp()
+    //InitJsService.afterViewMenuTramp();
     //InitJsService.initEscape();
   }
 

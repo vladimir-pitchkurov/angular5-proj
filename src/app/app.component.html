@@ -4,9 +4,11 @@
       <img src="/assets/img/logo.png">
     </div>
      <div class="menu " >
-       <div *ngIf="!activeLocationId" ><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div>
-       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
-       <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
+       <div *ngIf="!activeLocationId" >
+         <a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a>
+       </div>
+
+       <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()" >
          <a routerLinkActive="active" >Trampoline park</a>
          <div class="tramp-list" >
            <div class="tramp-list--item">
@@ -17,8 +19,10 @@
            </div>
          </div>
        </div>
-       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
+
+       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()" >
         <a routerLinkActive="active" >Trampoline park</a>
+
         <div class="tramp-list" >
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/" routerLinkActive="active">Home</a>
@@ -44,11 +48,11 @@
         </div>
       </div>
 
-      <div *ngIf="true" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Escape rooms</a></div>
+      <div *ngIf="true" (click)="initMenu()" ><a routerLink="escape-room" routerLinkActive="active" class="escape" >Escape rooms</a></div>
 
-        <div *ngIf="true" (click)="toggleState()" ><a ng-href="javascript:void(0)" class="escape" >Virtual Reality</a></div>
+        <div *ngIf="true" (click)="toggleState(); initMenu()" ><a class="escape" >Virtual Reality</a></div>
 
-      <div *ngIf="activeLocationId" (click)="toggleState()" class="menu-about" routerLinkActive="active">
+      <div *ngIf="activeLocationId" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
         <a >About us   </a>
         <div class="about-list">
           <div class="about-list--item">
@@ -69,7 +73,7 @@
         </div>
       </div>
 
-      <div *ngIf="!activeLocationId" (click)="toggleState()" class="menu-locations" routerLinkActive="active">  <!--class="menu-loc" (click)="toggleState()"-->
+      <div *ngIf="!activeLocationId" (click)="toggleState(); initMenu()" class="menu-locations" routerLinkActive="active">
         Locations
         <div class="location-list">
           <div class="location-list--item " *ngFor="let loc of locations" >

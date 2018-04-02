@@ -1,20 +1,5 @@
 <h1 style="color: white; font-size: 50px"></h1>
 
-
-<div *ngIf="this.service.activeLocationId" class="mob_slider">
-  <div  class="block-one">
-
-    <div *ngIf="activeLocationId" class="container">
-      <div class="desc_slider">
-        <h3>Come visit us at</h3>
-        <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <a class="green_up btn mt-30 theme_a_btn" href="/">Join us</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!--trampolines-homepage-->
-
 <section *ngIf="activeLocationId" class="homepage-locations-blue homepage-locations-dark2 pv-40">
   <div class="container">
     <div class="row justify-content-between">
@@ -103,7 +88,7 @@
   <div class="container">
     <div class="row ">
       <div class="col-md-12 text-center pv-40">
-        <h1 class="green_up">Right now in {{this.service.getActiveLocationTitle()}}</h1>
+        <h1 class="green_up">Right now</h1>
       </div>
       <div class="col-md-4 text-center align-self-center custom-top-pad">
         <div class="block_trampolines_homepages ">
@@ -161,112 +146,14 @@
   </div>
 </section>
 
-
-
 <section class="homepage-locations-blue5 pv-80">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1 class="green_up">Ready for an epic good time?</h1>
         <h2 class="text-uppercase text_white_n">Adrenaline has the most action packed birthdays arround!</h2>
-        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="../../{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book now</a>
+        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="../trampoline-parties" routerLinkActive="active" >Book now</a>
       </div>
     </div>
   </div>
 </section>
-
-
-<!--<section class="homepage-locations-blue5 pv-80">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h1 class="green_up">Instance coupons?</h1>
-        <h2 class="text-uppercase text_white_n">Receive 10% off your next party</h2>
-
-
-
-
-        &lt;!&ndash;<a class="green_up btn mt-30 theme_a_btn btn_pad" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Contact us</a>&ndash;&gt;
-      </div>
-
-    </div>
-  </div>
-</section>-->
-<!--<section class="homepage-locations-dark5 pt-80">
-  <div class="container">
-    &lt;!&ndash;<div class="row">
-      <div class="col-md-12 text-center pb-40">
-        <h1 class="green_up">Ready for an epic good time?</h1>
-      </div>
-      <div class="col-sm-4 align-items-center">
-        <div class="row justify-content-center rec_blue ">
-          <div class="col-12>">
-            <h5>$18</h5>
-          </div>
-        </div>
-        <div class="row person">
-          <div class="col-12">
-            one hour
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 align-items-center">
-        <div class="row justify-content-center rec_blue ">
-          <div class="col-12>">
-            <h5>$25</h5>
-          </div>
-        </div>
-        <div class="row person">
-          <div class="col-12">
-            two hours
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 align-items-center">
-        <div class="row justify-content-center rec_blue ">
-          <div class="col-12>">
-            <h5>$13</h5>
-          </div>
-        </div>
-        <div class="row person">
-          <div class="col-12">
-            6 & under
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-sm-4  align-items-center">
-        <div class="row justify-content-center rec_blue_small">
-          <div class="col-12>">
-            <h5>$4</h5>
-          </div>
-        </div>
-        <div class="row person_small">
-          <div class="col-12">
-            crew socks
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4  align-items-center">
-        <div class="row justify-content-center rec_blue_small">
-          <div class="col-12>">
-            <h5>$2</h5>
-          </div>
-        </div>
-        <div class="row person_small">
-          <div class="col-12">
-            unkel socks
-          </div>
-        </div>
-      </div>
-    </div>&ndash;&gt;
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book your party</a>
-        <p class="text-muted fs_12">Jumpers are required to wear Altitude Trampoline Socks for sanitation
-          adn safety purpose. You are also allowed to reuse your socks.</p>
-      </div>
-    </div>
-  </div>
-</section>-->

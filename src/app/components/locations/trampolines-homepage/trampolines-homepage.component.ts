@@ -26,23 +26,6 @@ export class TrampolinesHomepageComponent implements OnInit {
         this.titleService.setTitle('GrTrampolines Homepageoups');
         this.meta.addTag({ name: 'meta-description', content: 'Trampolines Homepage description' });
 
-      /*this.activatedRoute.params.forEach((params: Params) => {
-
-        let id = params["id"]; this.activeLocationId = id;
-        if(this.activeLocationId == 0 || this.activeLocationId == '0'){this.activeLocationId = null;}
-
-        if(this.activeLocationId != null) {
-          this.service
-            .getLocationHours(id)
-            .then(result => this.locationHours = result);
-
-          this.service
-            .getLocationById(id)
-            .then(result => this.locationInf = result);
-        }
-
-      });*/
-
       this.activatedRoute.params.forEach((params: Params) => {
 
         let id = params["id"];
