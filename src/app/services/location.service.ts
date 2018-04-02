@@ -27,11 +27,30 @@ export class LocationService {
   public pricingTrampolineGroups: any[] = [];
   public pricingBirthday = [];
   public pricingBirthdayUrl = [];
+  public allLinksCenteredge_waiver = [];
+  public allLinksCenteredge_tickets = [];
 
 
   constructor(private http: BaseHttpService ) { }
 
 
+  setAllLinksCenteredge_tickets ( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data[0];
+      this.allLinksCenteredge_tickets[index] = asd;
+    }
+  }
+
+  setAllLinksCenteredge_waiver ( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data[0];
+      this.allLinksCenteredge_waiver[index] = asd;
+    }
+  }
 
   setUrlBirthday(data: any) {
     const index = this.activeLocationId;
@@ -242,8 +261,8 @@ export class LocationService {
     return this.http.get(url);
   }
 
-  getLocationLinks(id: any) {
-    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links';
+  getLocationLinksCenteredge_waiver(id: any) {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links/centeredge_waiver';
     return this.http.get(url);
   }
 

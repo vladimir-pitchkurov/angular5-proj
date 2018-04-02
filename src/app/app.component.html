@@ -3,24 +3,21 @@
     <div class="logo">
       <img src="/assets/img/logo.png">
     </div>
-      <div class="menu " >
-        <div *ngIf="!activeLocationId" ><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div> <!--[routerLinkActiveOptions]="{ exact: true }"-->
-      <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
-
-        <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
-          <a routerLinkActive="active" >Trampoline park</a>
-          <div class="tramp-list" >
-            <div class="tramp-list--item">
-              <a routerLink="trampoline-park" routerLinkActive="active">Park</a>
-            </div>
-            <div class="tramp-list--item">
-              <a routerLink="trampoline-parties" routerLinkActive="active">Parties</a>
-            </div>
-          </div>
-        </div>
-
-
-      <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
+     <div class="menu " >
+       <div *ngIf="!activeLocationId" ><a routerLink="" routerLinkActive="active" (click)="nullLocation(); toggleState(); initMenu()" [routerLinkActiveOptions]="{ exact: true }" >Home</a></div>
+       <!--<div><a routerLink="/trampoline-park" routerLinkActive="active">Trampoline park</a></div>-->
+       <div *ngIf="!activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
+         <a routerLinkActive="active" >Trampoline park</a>
+         <div class="tramp-list" >
+           <div class="tramp-list--item">
+             <a routerLink="trampoline-park" routerLinkActive="active">Park</a>
+           </div>
+           <div class="tramp-list--item">
+             <a routerLink="trampoline-parties" routerLinkActive="active">Parties</a>
+           </div>
+         </div>
+       </div>
+       <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState()" >
         <a routerLinkActive="active" >Trampoline park</a>
         <div class="tramp-list" >
           <div class="tramp-list--item">

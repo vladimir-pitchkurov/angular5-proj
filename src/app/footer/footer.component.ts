@@ -24,11 +24,14 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
   instagram_link: any[];
   google_link: any[];
   email_link: any[];
+  allLinksCenteredge_waiver: any;
+  allLinksCenteredge_tickets: any;
 
 
   constructor(private service: LocationService
     , private route: Router
     , private activatedRoute: ActivatedRoute) {  }
+
 
   ngOnInit() {
 
@@ -89,6 +92,18 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
             this.email_link = result;
           });
 
+        this.service
+          .getLocationLinksCenteredge_waiver( this.activeLocationId )
+          .then((data) => {
+            this.allLinksCenteredge_waiver = data;
+          });
+
+        this.service
+          .getLocationLinksByField( this.activeLocationId, 'centeredge_tickets' )
+          .then((data) => {
+            this.allLinksCenteredge_tickets = data;
+          });
+
       }
 
     });
@@ -96,11 +111,11 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges(): void {
 
-    if(this.activeLocationId == undefined ) {
+    if (this.activeLocationId == undefined ) {
       this.activeLocationId = this.service.activeLocationId;
     }
 
-    if(this.activeLocationId){
+    if (this.activeLocationId) {
       this.service.getLocationById(this.activeLocationId)
         .then((data: any[]) => {
           this.locationInf = data;
@@ -150,6 +165,20 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         });
       this.service.setEmail(this.email_link);
 
+      this.service
+        .getLocationLinksCenteredge_waiver( this.activeLocationId )
+        .then((data) => {
+          this.allLinksCenteredge_waiver = data;
+        });
+      this.service.setAllLinksCenteredge_waiver( this.allLinksCenteredge_waiver );
+
+      this.service
+        .getLocationLinksByField( this.activeLocationId, 'centeredge_tickets' )
+        .then((data) => {
+          this.allLinksCenteredge_tickets = data;
+        });
+      this.service.setAllLinksCenteredge_tickets( this.allLinksCenteredge_tickets );
+
     }
 
   }
@@ -169,6 +198,10 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
         this.service.setInfSocialGoogle(this.google_link);
 
         this.service.setEmail(this.email_link);
+
+        this.service.setAllLinksCenteredge_waiver( this.allLinksCenteredge_waiver );
+
+        this.service.setAllLinksCenteredge_tickets( this.allLinksCenteredge_tickets );
 
     }
   }
