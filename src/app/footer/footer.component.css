@@ -14,10 +14,11 @@
 
 .custom-footer-menu .dropdown-item{
   color: white;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0);
+  display: block;
 }
 
 
-.text-center .custom-footer-menu > a.dropdown-item :hover {
+ .custom-footer-menu > a.dropdown-item.active:hover  {
   color: #92dd02;
 }

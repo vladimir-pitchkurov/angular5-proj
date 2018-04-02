@@ -13,10 +13,10 @@
         <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
       </div>
       <div class="col-md-2 text-center custom-footer-menu">
-        <a routerLink="{{activeLocationId}}/trampoline-park/" class="dropdown-item" routerLinkActive="active">Home</a>
-        <a routerLink="0/trampoline-park/" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
+        <a routerLink="/" class="dropdown-item" routerLinkActive="active">Home</a>
+        <a routerLink="trampoline-park" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
         <a routerLink="trampoline-parties" routerLinkActive="active" class="dropdown-item" >Parties</a>
-        <div (click)="toggleState()" ><a routerLink="blog" routerLinkActive="active" class="dropdown-item" >Blog</a></div>
+        <a routerLink="escape-room" routerLinkActive="active" class="dropdown-item" >Escape room</a>
       </div>
       <div class="col-md-2">
         <p>lorem ad astra</p>
