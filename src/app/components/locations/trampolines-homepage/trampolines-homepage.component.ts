@@ -15,7 +15,6 @@ export class TrampolinesHomepageComponent implements OnInit {
   locationInf: any;
   activeLocationId: any;
 
-
     constructor( private route: Router
                , private activatedRoute: ActivatedRoute
                , private meta: Meta
@@ -42,8 +41,6 @@ export class TrampolinesHomepageComponent implements OnInit {
           .then(result => this.locationInf = result);
 
       });
-
-
     }
 
 }

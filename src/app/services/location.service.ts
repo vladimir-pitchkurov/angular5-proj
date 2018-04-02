@@ -6,15 +6,11 @@ import { LocationMap } from './LocationMap';
 @Injectable()
 export class LocationService {
   public domain = 'https://dashboard.sem.run/api/website';
-
-
   public activeLocationId: any;
   mapOfLoc: any[] = LIST_OF_LOCATIONS;
-
   /*it is object-cache of location-by-id*/
   public infInFooter = false;
   public contactInfoOfFooter: object = {};
-
   public infSocialFacebook = false;
   public infSocialTwitter = false;
   public infSocialInstagram = false;
@@ -95,7 +91,6 @@ export class LocationService {
     }
   }
 
-
   setEmail(data: any) {
     const index = this.activeLocationId;
     let asd;
@@ -165,7 +160,6 @@ export class LocationService {
     }
     return id;
   }
-
 
   getIdByName(name: any): any {
     let id ;
@@ -287,7 +281,6 @@ export class LocationService {
   }
 
 }
-
 
 export const LIST_OF_LOCATIONS: LocationMap[] =
   [{

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponentComponent} from './components/home-component/home-component.component';
-import {TrampolineParkComponent} from './components/trampoline-park/trampoline-park.component';
 import {EscapeRoomComponent} from './components/escape-room/escape-room.component';
 import {BlogComponent} from './components/blog/blog.component';
 import {BlogPostComponent} from './components/blog-post/blog-post.component';

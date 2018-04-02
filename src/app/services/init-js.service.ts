@@ -11,7 +11,6 @@ export class InitJsService {
     constructor() {
     }
 
-
     static initRules() {
         setTimeout(function () {
             (function () {
@@ -55,12 +54,9 @@ export class InitJsService {
                             element.innerHTML = 'Escape Rooms';
                         };
                     }
-
-
             })();
         }, 0);
     }
-
 
     static initMenu() {
         setTimeout(function () {
@@ -79,9 +75,7 @@ export class InitJsService {
                     var _sheet: any = document.getElementById(_sheetId) || document.createElement('style');
                     _sheet.id = _sheetId;
                     var className = 'pseudoStyle' + UID.getNew();
-
                     _this.className += ' ' + className;
-
                     _sheet.innerHTML += ' .' + className + ':' + element + '{' + prop + ':' + value + '}';
                     _head.appendChild(_sheet);
                     return this;
@@ -140,7 +134,6 @@ export class InitJsService {
               }
 
               header.onmouseout = function (ev) {
-                // locList.style.display = 'none';
                 if ( trampList ) { trampList.style.display = 'none'; }
                 if ( aboutList ) { aboutList.style.display = 'none'; }
                 if ( locationsList ) { locationsList.style.display = 'none'; }
@@ -159,7 +152,6 @@ export class InitJsService {
                   }
                   if ( aboutList ) { aboutList.style.display = 'none'; }
                   if ( locationsList ) { locationsList.style.display = 'none'; }
-                  // locList.style.display = 'none';
                 };
               }
 
@@ -203,12 +195,9 @@ export class InitJsService {
     setTimeout(function () {
       (function () {
         var active: any = document.getElementsByClassName('menu-active')[0],
-          // locList: any = document.getElementsByClassName('loc-list')[0],
           askContain: any = document.getElementById('ask-contain'),
           askNo: any = document.getElementById('ask-no'),
-          // menuLoc: any = document.getElementsByClassName('menu-loc')[0],
           header: any = document.getElementsByTagName('header')[0],
-          // locs: any = document.getElementsByClassName('loc-list--item'),
           menu: any = document.getElementsByClassName('menu')[0],
           menuLinks: any = document.getElementsByTagName('a'),
 
@@ -227,8 +216,6 @@ export class InitJsService {
         if(menuTramp) {
           menuTramp.onmouseover = function (ev) {
             trampList.style.display = 'block';
-            //trampList.style.width = menuTramp.clientWidth + 44 + 'px';
-            //trampList.style.left = '-20px';
             if (aboutList) { aboutList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };
@@ -237,8 +224,6 @@ export class InitJsService {
         if(menuAbout) {
           menuAbout.onmouseover = function (ev) {
             aboutList.style.display = 'block';
-           // aboutList.style.width = menuAbout.clientWidth + 50 + 'px';
-           // aboutList.style.left = '-16px';
             if (trampList) { trampList.style.display = 'none'; }
             if (locationsList) { locationsList.style.display = 'none'; }
           };
@@ -247,8 +232,6 @@ export class InitJsService {
         if(menuLocations) {
           menuLocations.onmouseover = function (ev) {
             locationsList.style.display = 'block';
-            //locationsList.style.width = menuLocations.clientWidth + 44 + 'px';
-           // locationsList.style.left = '-20px';
             if (trampList) { trampList.style.display = 'none'; }
             if (aboutList) { aboutList.style.display = 'none'; }
           };
@@ -342,8 +325,7 @@ export class InitJsService {
                             window.scrollTo(0, scrollTargetY);
                         }
                     }
-
-                    // call it once to get started
+               // call it once to get started
                     tick();
                 }
                 var arrow: any = document.getElementById('arrow');

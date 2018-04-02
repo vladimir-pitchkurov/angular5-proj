@@ -15,10 +15,8 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   isDarkFooter = false;
   activeLocationId: any;
-
   locationInf: any[];
   socialInf: any[];
-
   facebook_link: any[];
   twitter_link: any[];
   instagram_link: any[];

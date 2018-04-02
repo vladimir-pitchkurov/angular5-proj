@@ -21,7 +21,6 @@ export class TrampolinePartiesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit()
   {
     InitJsService.initBlockOne();
-    // InitJsService.initLoc();
     InitJsService.initRules();
   }
 

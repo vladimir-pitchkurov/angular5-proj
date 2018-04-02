@@ -18,6 +18,9 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   locationInf: any[];
   isDarkFooter = false;
   amenities = [];
+  isTrampoline = true;
+  isEscape = true;
+  isVr = true;
 
   constructor(private router: Router
     , private service: LocationService) {
@@ -31,7 +34,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
         return;
       }
       window.scrollTo(0, 0);
-      // this.getAddressInfoByZip('72223', 'desktop');
       this.defineIsFooterDark();
 
       if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
@@ -41,9 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
           });
       }
     });
-
     this.locations = this.service.getLocationMap();
-
   }
 
   nullLocation() {
@@ -88,17 +88,35 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     }
     if (this.service.activeLocationId) {
       if (this.service.contactInfoOfFooter) {
-        if (this.service.contactInfoOfFooter[this.service.activeLocationId]) {
+        if (this.service.contactInfoOfFooter[this.service.activeLocationId] ) {
           this.amenities = JSON.parse(this.service.contactInfoOfFooter[this.service.activeLocationId].amenities);
+          this.getActiveAmenities();
         }
       }
     }
-    //console.log("this.amenities;", this.amenities)
   }
+
+  getActiveAmenities(): void {
+    this.isTrampoline = false;
+    this.isEscape = false;
+    this.isVr = false;
+    for (let i = 0; i < this.amenities.length; i++) {
+      if (+this.amenities[i] == 1) {
+        this.isTrampoline = true;
+      }
+      if (+this.amenities[i] == 2) {
+        this.isEscape = true;
+      }
+      if (+this.amenities[i] == 3) {
+        this.isVr = true;
+      }
+    }
+  }
+
 }
 
 export const activeAttract: any = {
-    trampoline: false,
-    escape: false,
-    vr: false
-  }
+  trampoline: false,
+  escape: false,
+  vr: false
+};

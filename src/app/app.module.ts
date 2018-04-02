@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -31,7 +30,6 @@ import {LocationService} from './services/location.service';
 import {HttpClientModule} from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import {LocationMap} from './services/LocationMap';
 import { Slider2Component } from './components/slider2/slider2.component';
 import { TrampolineHomeComponent } from './components/locations/trampoline-home/trampoline-home.component';
 
