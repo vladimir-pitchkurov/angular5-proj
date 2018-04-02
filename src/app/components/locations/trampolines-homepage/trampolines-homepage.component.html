@@ -17,9 +17,13 @@
     <div class="row justify-content-between">
       <div class="col-md-3">
         <h2 class="green_up">Open Hours</h2>
-        <ul *ngFor="let hour of locationHours" class="list-unstyled open_hours text-uppercase">
-          <li class=" cus-lft ">{{hour.label}}</li>
-          <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
+        <ul  class="list-unstyled open_hours text-uppercase">
+
+          <div *ngFor="let hour of locationHours" class="wrap-li" >
+            <li class=" cus-lft ">{{hour.label}}</li>
+            <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
+          </div>
+
         </ul>
       </div>
       <div class="col-md-8">

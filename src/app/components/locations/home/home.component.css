@@ -1,12 +1,3 @@
-.cus-lft{
-  /*float: left;
-  align-content: flex-start;*/
-}
-.cus-rght{
-  /*float: right;
-  align-content: flex-end;*/
-}
-
 .wrap-li{
   display: inline-block;
   width: 100%;
