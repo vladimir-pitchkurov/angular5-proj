@@ -68,11 +68,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   defineIsFooterDark() {
-    const pagesWithDarkFooter: string[] = [
-      '/escape-room',
-      'trampoline-parties'
-    ];
-    this.isDarkFooter = pagesWithDarkFooter.indexOf(this.router.url) !== -1 || this.router.url.indexOf('/blog/') !== -1;
+    this.isDarkFooter = false;
+    let arrRoute = this.router.url.split('/');
+    let lastRouteName = arrRoute[arrRoute.length -1];
+    if (lastRouteName == 'gallery'){this.isDarkFooter = true; }
+    if (lastRouteName == 'buy-a-pass'){this.isDarkFooter = true; }
+    if (lastRouteName == 'groups'){this.isDarkFooter = true; }
+    if (lastRouteName == 'activities'){this.isDarkFooter = true; }
+    if (lastRouteName == 'waiver'){this.isDarkFooter = true; }
   }
 
   setLocationById(id: any) {
@@ -112,7 +115,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       }
     }
   }
-
 }
 
 export const activeAttract: any = {

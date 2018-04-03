@@ -2881,9 +2881,9 @@ a.btn_pad_20 {
 .girls_parties{
     margin-top: -40px;
     right: 0px;
-    position: absolute;
+    /*position: absolute;*/
     z-index: 50;
-    height: 694px;
+    /*height: 113%;*/ /*698px;*/
 }
 
 @media (max-width: 799px) {

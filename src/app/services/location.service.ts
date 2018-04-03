@@ -25,10 +25,20 @@ export class LocationService {
   public pricingBirthdayUrl = [];
   public allLinksCenteredge_waiver = [];
   public allLinksCenteredge_tickets = [];
+  public locationPricings = [];
 
 
   constructor(private http: BaseHttpService ) { }
 
+
+  setLocationPricings( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.locationPricings[index] = asd;
+    }
+  }
 
   setAllLinksCenteredge_tickets ( data ) {
     const index = this.activeLocationId;

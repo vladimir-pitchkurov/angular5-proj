@@ -10,7 +10,9 @@
       "assets": [
         "assets",
         "favicon.ico",
-        ".htaccess"
+        ".htaccess",
+        "robot.txt",
+        "googlewebmaster.html"
       ],
       "index": "index.html",
       "main": "main.ts",
