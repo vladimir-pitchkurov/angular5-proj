@@ -18,7 +18,6 @@ import { TrampolinesHomepageComponent } from './components/locations/trampolines
 import { PassComponent } from './components/locations/pass/pass.component';
 import { PartiesComponent } from './components/locations/parties/parties.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { TrampolineHomeComponent } from './components/locations/trampoline-home/trampoline-home.component';
 import { TrampolineParkComponent } from './components/trampoline-park/trampoline-park.component';
 
 

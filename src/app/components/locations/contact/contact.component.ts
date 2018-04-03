@@ -24,9 +24,7 @@ export class ContactComponent implements OnInit, DoCheck {
   ngOnInit() {
 
     this.activatedRoute.params.forEach((params: Params) => {
-
       let id = params["id"]; this.activeLocationId = id;
-
       this.service.activeLocationId = this.activeLocationId;
 
       this.service

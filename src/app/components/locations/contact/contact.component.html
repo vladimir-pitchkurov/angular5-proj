@@ -7,9 +7,11 @@
     </div>
 
 
-    <form class="mt-120 form_contact">  <!-- method="post" action="{{this.service.domain}}/location/contact"-->
+    <form class="mt-120 form_contact">
+      <div *ngIf="this.validation_msg" class="alert col-md-12" style="background-color: #00000000; color: rgb(146, 221, 2); text-align: center;" >
+        <strong>Success!</strong> your message was sent successfully
+      </div>
       <div class="form-row">
-        <!--<input class="cus-hidden" type="text" id="location_id" name="location_id" value="{{this.service.getIdByName(this.activeLocationId)}}">-->
         <div class="form-group col-md-4">
           <input type="text" #userName class="form-control" placeholder="Name">
         </div>
