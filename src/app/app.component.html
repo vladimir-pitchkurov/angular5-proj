@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <div *ngIf="activeLocationId" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()">
+      <div *ngIf="activeLocationId  && !isComingSoon" class="menu-tramp" routerLinkActive="active" (click)="toggleState(); initMenu()">
         <a routerLinkActive="active">Trampoline park</a>
         <div class="tramp-list">
           <div class="tramp-list--item">
@@ -46,11 +46,11 @@
           </div>
         </div>
       </div>
-      <div *ngIf="!this.activeLocationId || (this.activeLocationId && isEscape)" (click)="initMenu()">
+      <div *ngIf="(!this.activeLocationId && !isComingSoon) || (!isComingSoon && this.activeLocationId && isEscape)" (click)="initMenu()">
         <a class="escape">Escape rooms</a>
       </div>
-      <div *ngIf="!this.activeLocationId || (this.activeLocationId && isVr)" (click)="toggleState(); initMenu()"><a class="escape">Virtual Reality</a></div>
-      <div *ngIf="activeLocationId" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
+      <div *ngIf="(!this.activeLocationId && !isComingSoon) || (this.activeLocationId && isVr && !isComingSoon)" (click)="toggleState(); initMenu()"><a class="escape">Virtual Reality</a></div>
+      <div *ngIf="activeLocationId && !isComingSoon" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
         About us
         <div class="about-list">
           <div class="about-list--item">
@@ -74,8 +74,8 @@
            routerLinkActive="active">Locations
         <div class="location-list">
           <div class="location-list--item " *ngFor="let loc of locations">
-            <a (click)="setLocationById(loc.nameUrl); initMenu();" routerLink="{{loc.nameUrl}}"
-               routerLinkActive="active">{{loc.title}}</a>
+            <a (click)="setLocationById(loc.slug); initMenu();" routerLink="{{loc.slug}}"
+               routerLinkActive="active">{{loc.menu_name}}</a>
           </div>
         </div>
       </div>

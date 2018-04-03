@@ -2,7 +2,6 @@ import {AfterViewInit, Component, DoCheck, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
-import {LocationMap} from './services/LocationMap';
 
 declare var window: any;
 
@@ -13,7 +12,7 @@ declare var window: any;
 })
 export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   title = 'app';
-  locations: LocationMap[];
+  locations = [];
   activeLocationId: any;
   locationInf: any[];
   isDarkFooter = false;
@@ -21,6 +20,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   isTrampoline = true;
   isEscape = true;
   isVr = true;
+  isComingSoonChecked = false;
+  isComingSoon = false;
 
   constructor(private router: Router
     , private service: LocationService) {
@@ -42,8 +43,16 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
             this.locationInf = data;
           });
       }
+
+      this.service.getAllLocations()
+        .then((data: any[]) => {
+          this.locations = data;
+        });
+      if(this.service.LIST_OF_LOCATIONS.length == 0 && this.locations.length > 0){
+        this.service.setMapOfLoc(this.locations);
+      }
     });
-    this.locations = this.service.getLocationMap();
+
   }
 
   nullLocation() {
@@ -56,7 +65,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   isIn = false;
-
   toggleState() {
     const bool = this.isIn;
     this.isIn = bool === false ? true : false;
@@ -97,6 +105,20 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
         }
       }
     }
+
+    if(this.service.LIST_OF_LOCATIONS.length == 0 && this.locations.length > 0){
+      this.service.setMapOfLoc(this.locations);
+    }
+
+    if(!this.isComingSoonChecked && this.service.LIST_OF_LOCATIONS.length > 0) {
+      this.isComingSoon = this.service.isComingSoon();
+      if(this.isComingSoon ){
+         this.isComingSoonChecked = true;
+         let url = this.activeLocationId + '/about/coming-soon';
+         this.router.navigate([url])
+      }
+    }
+
   }
 
   getActiveAmenities(): void {
@@ -116,9 +138,3 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     }
   }
 }
-
-export const activeAttract: any = {
-  trampoline: false,
-  escape: false,
-  vr: false
-};
