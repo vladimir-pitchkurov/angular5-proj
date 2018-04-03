@@ -6,7 +6,7 @@
       <div class="desc_slider">
         <h3>Come visit us at</h3>
         <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <a class="green_up btn mt-30 theme_a_btn" href="/">Join us</a>
+        <a class="green_up btn mt-30 theme_a_btn" >Join us</a>
       </div>
     </div>
   </div>
@@ -18,12 +18,10 @@
       <div class="col-md-3">
         <h2 class="green_up">Open Hours</h2>
         <ul  class="list-unstyled open_hours text-uppercase">
-
           <div *ngFor="let hour of locationHours" class="wrap-li" >
             <li class=" cus-lft ">{{hour.label}}</li>
             <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
           </div>
-
         </ul>
       </div>
       <div class="col-md-8">
@@ -40,7 +38,6 @@
       </div>
     </div>
   </div>
-
 </section>
 <section class="homepage-locations-blue2 pv-120">
   <div class="container">
@@ -95,7 +92,6 @@
       </div>
     </div>
   </div>
-
 </section>
 <section class="homepage-locations-dark4 pv-40">
   <div class="container">

@@ -12,11 +12,17 @@
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
         <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
       </div>
-      <div class="col-md-2 text-center custom-footer-menu">
+      <div *ngIf="!activeLocationId" class="col-md-2 text-center custom-footer-menu">
         <a routerLink="/" class="dropdown-item" routerLinkActive="active">Home</a>
         <a routerLink="trampoline-park" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
         <a routerLink="trampoline-parties" routerLinkActive="active" class="dropdown-item" >Parties</a>
         <a routerLink="escape-room" routerLinkActive="active" class="dropdown-item" >Escape room</a>
+      </div>
+      <div *ngIf="activeLocationId" class="col-md-2 text-center custom-footer-menu">
+        <a routerLink="{{activeLocationId}}/trampoline-park/" class="dropdown-item" routerLinkActive="active">Home</a>
+        <a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
+        <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" class="dropdown-item" >Parties</a>
+        <a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active" class="dropdown-item" >Contact</a>
       </div>
       <div class="col-md-2">
         <p>lorem ad astra</p>
