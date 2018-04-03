@@ -15,8 +15,10 @@ export class TrampolinesHomepageComponent implements OnInit, DoCheck {
   locationInf: any;
   activeLocationId: any;
   locationPricings: any;
+  locationDeals: any;
 
-    constructor( private route: Router
+
+  constructor( private route: Router
                , private activatedRoute: ActivatedRoute
                , private meta: Meta
                , private titleService: Title
@@ -46,6 +48,13 @@ export class TrampolinesHomepageComponent implements OnInit, DoCheck {
           .then( result => this.locationPricings = result);
         if(this.locationPricings){
           this.service.setLocationPricings(this.locationPricings);
+        }
+
+        this.service
+          .getLocationDeals(id)
+          .then( result => this.locationDeals = result);
+        if(this.locationPricings){
+          this.service.setLocationDeals(this.locationDeals);
         }
 
       });
@@ -93,27 +102,17 @@ export class TrampolinesHomepageComponent implements OnInit, DoCheck {
     return '';
   }
 
-  getSocks(){
-    if(this.service.locationPricings[this.service.activeLocationId]){
-      let arr = this.service.locationPricings[this.service.activeLocationId];
-      for (let  i = 0; i < arr.length; i++) {
-        let iter = arr[i];
-        if( iter.category == "trampoline" && iter.name == "apparel" && iter.label == "socks" ){
-          return iter.price;
-        }
-      }
-
-    }
-    return '';
-  }
-
-
     ngDoCheck(){
       if (this.activeLocationId  ){
         if(this.locationPricings && !this.service.locationPricings[this.service.activeLocationId]){
           this.service.setLocationPricings(this.locationPricings);
         }
+
+        if(this.locationDeals && !this.service.locationDeals[this.service.activeLocationId]){
+          this.service.setLocationDeals(this.locationDeals);
+        }
       }
+
     }
 
 }

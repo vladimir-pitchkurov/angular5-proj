@@ -26,10 +26,20 @@ export class LocationService {
   public allLinksCenteredge_waiver = [];
   public allLinksCenteredge_tickets = [];
   public locationPricings = [];
+  public locationDeals = [];
 
 
   constructor(private http: BaseHttpService ) { }
 
+
+  setLocationDeals( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.locationDeals[index] = asd;
+    }
+  }
 
   setLocationPricings( data ) {
     const index = this.activeLocationId;
@@ -227,6 +237,11 @@ export class LocationService {
 
   getLocationPricing(id: any) {
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/pricing';
+    return this.http.get(url);
+  }
+
+  getLocationDeals(id: any) {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/deals';
     return this.http.get(url);
   }
 
