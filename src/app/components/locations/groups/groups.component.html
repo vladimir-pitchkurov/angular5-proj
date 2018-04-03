@@ -24,7 +24,8 @@
         <h1>CUSTOMIZE YOUR PARTY</h1>
         <h2>20+ Jumpers</h2>
         <p>
-          Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias sea cu. Id sonet congue mediocrem vel. Eu nec alii senserit, per rebum audire assentior ad, te vel soluta saperet conceptam.
+          Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias sea cu. Id sonet congue
+          mediocrem vel. Eu nec alii senserit, per rebum audire assentior ad, te vel soluta saperet conceptam.
         </p>
       </div>
     </div>
@@ -71,34 +72,37 @@
     </div>
     <div class="row group-button">
       <div *ngIf="!needCallToReverse" class="col-12 waiver-desc_slider_button">
-        <button (click)="reverseCall();" type="button" class="btn btn-outline-success btn-block" style="max-width: 360px">call to reverse</button>
+        <button (click)="reverseCall();" type="button" class="btn btn-outline-success btn-block"
+                style="max-width: 360px">call to reverse
+        </button>
       </div>
     </div>
   </div>
 
-
-
   <div *ngIf="needCallToReverse" class="homepage-gaiety coming-soon-email">
-    <div  class=" ">
+    <div class=" ">
       <div class="container h-30">
         <div class="row h-100 justify-content-center">
           <div class="col">
-            <form id="coming-soon-form" class="form-inline justify-content-center coming-soon-form" >
+            <div *ngIf="this.validation_msg" class="alert" style="background-color: #00000000; color: rgb(146, 221, 2);" >
+              <strong>Success!</strong> your message was sent successfully
+            </div>
+            <form id="coming-soon-form" class="form-inline justify-content-center coming-soon-form">
               <div class="col-md-6">
                 <input class="form-control" #userPhone placeholder="Your Phone">
               </div>
               <div class="col-md-4">
-                <button (click)="sendPostComing(this.service.getIdByName(this.activeLocationId), userPhone.value); reverseCall() " type="reset" >subscribe</button>
+                <button
+                  (click)="sendPostComing(this.service.getIdByName(this.activeLocationId), userPhone.value)"
+                  type="reset">subscribe
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
-
 
 </section>
 <section class="group-block-3">
@@ -109,14 +113,16 @@
           WE’LL HOST YOUR EVENT
         </h1>
         <p>
-          Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias sea cu. Id sonet congue mediocrem vel. Eu nec alii senserit, per rebum audire assentior ad, te vel soluta saperet conceptam.
+          Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias sea cu. Id sonet congue
+          mediocrem vel. Eu nec alii senserit, per rebum audire assentior ad, te vel soluta saperet conceptam.
         </p>
         <h2>
           have a question lorem dolor sonsectetuer?
         </h2>
         <div class="row group-button" style="margin-top: 0">
           <div class="col-12 waiver-desc_slider_button">
-            <button *ngFor="let locationI of locationInf " type="button" class="btn btn-outline-success btn-block" style="max-width: 360px" >
+            <button *ngFor="let locationI of locationInf " type="button" class="btn btn-outline-success btn-block"
+                    style="max-width: 360px">
               <a href="tel:{{locationI.phone}}">call {{locationI.phone}}</a></button>
           </div>
         </div>
