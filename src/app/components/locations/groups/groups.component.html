@@ -70,11 +70,36 @@
       </div>
     </div>
     <div class="row group-button">
-      <div class="col-12 waiver-desc_slider_button">
-        <button type="button" class="btn btn-outline-success btn-block" style="max-width: 360px"><a routerLink="../../about/coming-soon" routerLinkActive="active" >call to reverse</a></button>
+      <div *ngIf="!needCallToReverse" class="col-12 waiver-desc_slider_button">
+        <button (click)="reverseCall();" type="button" class="btn btn-outline-success btn-block" style="max-width: 360px">call to reverse</button>
       </div>
     </div>
   </div>
+
+
+
+  <div *ngIf="needCallToReverse" class="homepage-gaiety coming-soon-email">
+    <div  class=" ">
+      <div class="container h-30">
+        <div class="row h-100 justify-content-center">
+          <div class="col">
+            <form id="coming-soon-form" class="form-inline justify-content-center coming-soon-form" >
+              <div class="col-md-6">
+                <input class="form-control" #userPhone placeholder="Your Phone">
+              </div>
+              <div class="col-md-4">
+                <button (click)="sendPostComing(this.service.getIdByName(this.activeLocationId), userPhone.value); reverseCall() " type="reset" >subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
 </section>
 <section class="group-block-3">
   <div class="container">

@@ -14,6 +14,9 @@ export class GroupsComponent implements OnInit, DoCheck {
   locationInf: any;
   activeLocationId: any;
   pricing: any;
+  validation_msg: any;
+  needCallToReverse = false;
+
 
 
   constructor(  private meta: Meta
@@ -54,6 +57,21 @@ export class GroupsComponent implements OnInit, DoCheck {
     if (this.pricing && !this.service.pricingTrampolineGroups[this.activeLocationId]) {
       this.service.setPricingTrampolineGroups(this.pricing);
     }
+  }
+
+  reverseCall(){
+    this.needCallToReverse = !this.needCallToReverse;
+  }
+
+  sendPostComing(id, userPhone) {
+    let data = new FormData();
+    data.append('location_id', id);
+    data.append('user_phone', userPhone);
+    this.service
+      .sendPostComing(data)
+      .then(result => {
+        this.validation_msg = result;
+      });
   }
 
 }
