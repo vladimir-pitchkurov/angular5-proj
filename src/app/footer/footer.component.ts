@@ -16,7 +16,6 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
   isDarkFooter = false;
   activeLocationId: any;
   locationInf: any[];
-  socialInf: any[];
   facebook_link: any[];
   twitter_link: any[];
   instagram_link: any[];
@@ -28,80 +27,104 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   constructor(private service: LocationService
     , private route: Router
-    , private activatedRoute: ActivatedRoute) {  }
+    , private activatedRoute: ActivatedRoute) {
+  }
 
 
   ngOnInit() {
 
     this.activatedRoute.params.forEach((params: Params) => {
 
-      if (!this.activeLocationId || isNullOrUndefined(this.activeLocationId) ) {
-        if (this.activeLocationId !== this.service.activeLocationId) {
-          this.facebook_link = [];
-          this.twitter_link = [];
-          this.instagram_link = [];
-          this.google_link = [];
-          this.locationInf = [];
-          this.socialInf = [];
-          this.email_link = [];
-          this.activeLocationId = this.service.activeLocationId;
-        }
-      }
-
-      const id = params['id'];
-
       this.activeLocationId = this.service.activeLocationId;
 
       if (this.activeLocationId) {
 
-        this.service.getLocationById(this.activeLocationId)
-          .then((data: any[]) => {
-            this.locationInf = data;
-          });
+        if (!this.service.contactInfoOfFooter[this.service.activeLocationId] && !this.locationInf) {
+          this.service.getLocationById(this.activeLocationId)
+            .then((data: any[]) => {
+              this.locationInf = data;
+            });
+        }
+        if (!this.service.contactInfoOfFooter[this.service.activeLocationId] && this.locationInf) {
+          this.service.setContactInf(this.locationInf);
+        }
 
-        this.service.getLocationSocial(this.activeLocationId)
-          .then((data: any[]) => {
-            this.socialInf = data;
-          });
+        if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && !this.facebook_link) {
+          this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+            .then((data: any[]) => {
+              this.facebook_link = data;
+            });
+        }
+        if (!this.service.infSocialOfFooterFacebook[this.activeLocationId]) {
+          this.service.setInfSocialFacebook(this.facebook_link);
+        }
 
-        this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-          .then((data: any[]) => {
-            this.facebook_link = data;
-          });
 
-        this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-          .then((data: any[]) => {
-            this.twitter_link = data;
-          });
+        if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && !this.twitter_link) {
+          this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+            .then((data: any[]) => {
+              this.twitter_link = data;
+            });
+        }
+        if (!this.service.infSocialOfFooterTwitter[this.activeLocationId]) {
+          this.service.setInfSocialTwitter(this.twitter_link);
+        }
 
-        this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-          .then((data: any[]) => {
-            this.instagram_link = data;
-          });
 
-        this.service.getLocationSocialByName(this.activeLocationId, 'google')
-          .then((data: any[]) => {
-            this.google_link = data;
-          });
+        if (!this.service.infSocialOfFooterInstagram[this.activeLocationId] && !this.instagram_link) {
+          this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+            .then((data: any[]) => {
+              this.instagram_link = data;
+            });
+        }
+        if (!this.service.infSocialOfFooterInstagram[this.activeLocationId]) {
+          this.service.setInfSocialInstagram(this.instagram_link);
+        }
 
-        this.service
-          .getLocationCustomPricingById(this.activeLocationId, '/field/email')
-          .then((result: any[]) => {
-            this.email_link = result;
-          });
 
-        this.service
-          .getLocationLinksCenteredge_waiver( this.activeLocationId )
-          .then((data) => {
-            this.allLinksCenteredge_waiver = data;
-          });
+        if (!this.service.infSocialOfFooterGoogle[this.activeLocationId] && !this.google_link) {
+          this.service.getLocationSocialByName(this.activeLocationId, 'google')
+            .then((data: any[]) => {
+              this.google_link = data;
+            });
+        }
+        if (!this.service.infSocialOfFooterGoogle[this.activeLocationId]) {
+          this.service.setInfSocialGoogle(this.google_link);
+        }
 
-        this.service
-          .getLocationLinksByField( this.activeLocationId, 'centeredge_tickets' )
-          .then((data) => {
-            this.allLinksCenteredge_tickets = data;
-          });
 
+        if (!this.service.footerEmail[this.activeLocationId] && !this.email_link) {
+          this.service
+            .getLocationCustomPricingById(this.activeLocationId, '/field/email')
+            .then((result: any[]) => {
+              this.email_link = result;
+            });
+        }
+        if (!this.service.footerEmail[this.activeLocationId]) {
+          this.service.setEmail(this.email_link);
+        }
+
+        if (!this.service.allLinksCenteredge_waiver[this.activeLocationId] && !this.allLinksCenteredge_waiver) {
+          this.service
+            .getLocationLinksCenteredge_waiver(this.activeLocationId)
+            .then((data) => {
+              this.allLinksCenteredge_waiver = data;
+            });
+        }
+        if (!this.service.allLinksCenteredge_waiver[this.activeLocationId]) {
+          this.service.setAllLinksCenteredge_waiver(this.allLinksCenteredge_waiver);
+        }
+
+        if (!this.service.allLinksCenteredge_tickets[this.activeLocationId] && !this.allLinksCenteredge_tickets) {
+          this.service
+            .getLocationLinksByField(this.activeLocationId, 'centeredge_tickets')
+            .then((data) => {
+              this.allLinksCenteredge_tickets = data;
+            });
+        }
+        if (!this.service.allLinksCenteredge_tickets[this.activeLocationId]) {
+          this.service.setAllLinksCenteredge_tickets(this.allLinksCenteredge_tickets);
+        }
       }
 
     });
@@ -109,73 +132,99 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges(): void {
 
-    if (this.activeLocationId == undefined ) {
+    if (this.activeLocationId == undefined) {
       this.activeLocationId = this.service.activeLocationId;
     }
 
     if (this.activeLocationId) {
-      this.service.getLocationById(this.activeLocationId)
-        .then((data: any[]) => {
-          this.locationInf = data;
-        });
-      this.service.setContactInf(this.locationInf);
 
 
-      this.service.getLocationSocial(this.activeLocationId)
-        .then((data: any[]) => {
-          this.socialInf = data;
-        });
-      this.service.setContactInf(this.locationInf);
+      if (!this.service.contactInfoOfFooter[this.service.activeLocationId] && !this.locationInf) {
+        this.service.getLocationById(this.activeLocationId)
+          .then((data: any[]) => {
+            this.locationInf = data;
+          });
+      }
+      if (!this.service.contactInfoOfFooter[this.service.activeLocationId] && this.locationInf) {
+        this.service.setContactInf(this.locationInf);
+      }
+
+      if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && !this.facebook_link) {
+        this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
+          .then((data: any[]) => {
+            this.facebook_link = data;
+          });
+      }
+      if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && this.facebook_link) {
+        this.service.setInfSocialFacebook(this.facebook_link);
+      }
 
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'facebook')
-        .then((data: any[]) => {
-          this.facebook_link = data;
-        });
-      this.service.setInfSocialFacebook(this.facebook_link);
+      if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && !this.twitter_link) {
+        this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
+          .then((data: any[]) => {
+            this.twitter_link = data;
+          });
+      }
+      if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && this.twitter_link) {
+        this.service.setInfSocialTwitter(this.twitter_link);
+      }
 
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'twitter')
-        .then((data: any[]) => {
-          this.twitter_link = data;
-        });
-      this.service.setInfSocialTwitter(this.twitter_link);
+      if (!this.service.infSocialOfFooterInstagram[this.activeLocationId] && !this.instagram_link) {
+        this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
+          .then((data: any[]) => {
+            this.instagram_link = data;
+          });
+      }
+      if (!this.service.infSocialOfFooterInstagram[this.activeLocationId] && this.instagram_link) {
+        this.service.setInfSocialInstagram(this.instagram_link);
+      }
 
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'instagram')
-        .then((data: any[]) => {
-          this.instagram_link = data;
-        });
-      this.service.setInfSocialInstagram(this.instagram_link);
+      if (!this.service.infSocialOfFooterGoogle[this.activeLocationId] && !this.google_link) {
+        this.service.getLocationSocialByName(this.activeLocationId, 'google')
+          .then((data: any[]) => {
+            this.google_link = data;
+          });
+      }
+      if (!this.service.infSocialOfFooterGoogle[this.activeLocationId] && this.google_link) {
+        this.service.setInfSocialGoogle(this.google_link);
+      }
 
 
-      this.service.getLocationSocialByName(this.activeLocationId, 'google')
-        .then((data: any[]) => {
-          this.google_link = data;
-        });
-      this.service.setInfSocialGoogle(this.google_link);
+      if (!this.service.footerEmail[this.activeLocationId] && !this.email_link) {
+        this.service
+          .getLocationCustomPricingById(this.activeLocationId, '/field/email')
+          .then((result: any[]) => {
+            this.email_link = result;
+          });
+      }
+      if (!this.service.footerEmail[this.activeLocationId] && this.email_link) {
+        this.service.setEmail(this.email_link);
+      }
 
+      if (!this.service.allLinksCenteredge_waiver[this.activeLocationId] && !this.allLinksCenteredge_waiver) {
+        this.service
+          .getLocationLinksCenteredge_waiver(this.activeLocationId)
+          .then((data) => {
+            this.allLinksCenteredge_waiver = data;
+          });
+      }
+      if (!this.service.allLinksCenteredge_waiver[this.activeLocationId] && this.allLinksCenteredge_waiver) {
+        this.service.setAllLinksCenteredge_waiver(this.allLinksCenteredge_waiver);
+      }
 
-      this.service
-        .getLocationCustomPricingById(this.activeLocationId, '/field/email')
-        .then((result: any[]) => {
-          this.email_link = result;
-        });
-      this.service.setEmail(this.email_link);
-
-      this.service
-        .getLocationLinksCenteredge_waiver( this.activeLocationId )
-        .then((data) => {
-          this.allLinksCenteredge_waiver = data;
-        });
-      this.service.setAllLinksCenteredge_waiver( this.allLinksCenteredge_waiver );
-
-      this.service
-        .getLocationLinksByField( this.activeLocationId, 'centeredge_tickets' )
-        .then((data) => {
-          this.allLinksCenteredge_tickets = data;
-        });
-      this.service.setAllLinksCenteredge_tickets( this.allLinksCenteredge_tickets );
+      if (!this.service.allLinksCenteredge_tickets[this.activeLocationId] && !this.allLinksCenteredge_tickets) {
+        this.service
+          .getLocationLinksByField(this.activeLocationId, 'centeredge_tickets')
+          .then((data) => {
+            this.allLinksCenteredge_tickets = data;
+          });
+      }
+      if (!this.service.allLinksCenteredge_tickets[this.activeLocationId] && this.allLinksCenteredge_tickets) {
+        this.service.setAllLinksCenteredge_tickets(this.allLinksCenteredge_tickets);
+      }
 
     }
 
@@ -183,25 +232,68 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck {
 
   ngDoCheck() {
 
-    if (this.activeLocationId  ) {
+    if (this.activeLocationId != undefined) {
 
-        this.service.setContactInf(this.locationInf);
+      if (!this.service.contactInfoOfFooter[this.service.activeLocationId] && this.locationInf ) {
+        if (this.locationInf.length > 0) {
+          this.service.setContactInf(this.locationInf);
+        }
+      }
 
-        this.service.setInfSocialFacebook(this.facebook_link);
+      if (!this.service.infSocialOfFooterFacebook[this.activeLocationId] && this.facebook_link) {
+        if (this.facebook_link.length > 0) {
+          this.service.setInfSocialFacebook(this.facebook_link);
+        }
+      }
 
-        this.service.setInfSocialTwitter(this.twitter_link);
 
-        this.service.setInfSocialInstagram(this.instagram_link);
+      if (!this.service.infSocialOfFooterTwitter[this.activeLocationId] && this.twitter_link) {
+        if (this.twitter_link.length > 0) {
+          this.service.setInfSocialTwitter(this.twitter_link);
+        }
+      }
 
-        this.service.setInfSocialGoogle(this.google_link);
+      if (!this.service.infSocialOfFooterInstagram[this.activeLocationId] && this.instagram_link) {
+        if (this.instagram_link.length > 0) {
+          this.service.setInfSocialInstagram(this.instagram_link);
+        }
+      }
 
-        this.service.setEmail(this.email_link);
 
-        this.service.setAllLinksCenteredge_waiver( this.allLinksCenteredge_waiver );
+      if (!this.service.infSocialOfFooterGoogle[this.activeLocationId] && this.google_link) {
+        if (this.google_link.length > 0) {
+          this.service.setInfSocialGoogle(this.google_link);
+        }
+      }
 
-        this.service.setAllLinksCenteredge_tickets( this.allLinksCenteredge_tickets );
 
+      if (!this.service.footerEmail[this.activeLocationId] && this.email_link) {
+        if (this.email_link.length > 0) {
+          this.service.setEmail(this.email_link);
+        }
+      }
+
+
+      if (!this.service.allLinksCenteredge_waiver[this.activeLocationId] && this.allLinksCenteredge_waiver) {
+        if (this.allLinksCenteredge_waiver.length > 0) {
+          this.service.setAllLinksCenteredge_waiver(this.allLinksCenteredge_waiver);
+        }
+      }
+
+
+      if (!this.service.allLinksCenteredge_tickets[this.activeLocationId] && this.allLinksCenteredge_tickets) {
+        if (this.allLinksCenteredge_tickets.length > 0) {
+          this.service.setAllLinksCenteredge_tickets(this.allLinksCenteredge_tickets);
+        }
+      }
+
+      if (!this.service.locationInformation[this.activeLocationId] && this.locationInf) {
+        if (this.locationInf.length > 0) {
+          this.service.setLocationInformation(this.locationInf);
+        }
+      }
     }
+
   }
 
 }

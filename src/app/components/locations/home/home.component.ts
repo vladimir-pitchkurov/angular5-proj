@@ -3,6 +3,7 @@ import {Meta} from '@angular/platform-browser';
 import {Title} from '@angular/platform-browser';
 import {LocationService} from '../../../services/location.service';
 import {ActivatedRoute, Params, Router} from "@angular/router";
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
 
   ngOnInit() {
+
     setInterval(() => {
       if (!this.boolChanged) {
         this.isLeftVisible++;
@@ -43,18 +45,28 @@ export class HomeComponent implements OnInit, DoCheck {
 
     this.activatedRoute.params.forEach((params: Params) => {
 
+
       let id = params["id"];
       this.activeLocationId = id;
 
       this.service.activeLocationId = this.activeLocationId;
 
-      this.service
-        .getLocationHours(id)
-        .then(result => this.locationHours = result);
+      if (!this.service.locationHours[this.activeLocationId]) {
 
-      this.service
-        .getLocationById(id)
-        .then(result => this.locationInf = result);
+        if(!isNullOrUndefined(this.activeLocationId) ) {
+           this.service
+            .getLocationHours(id)
+            .then(result => this.locationHours = result);
+          this.service.setLocationHours( this.locationHours );
+        }
+
+      }
+
+      if (!this.service.contactInfoOfFooter[this.activeLocationId]) {
+        this.service
+          .getLocationById(id)
+          .then(result => this.locationInf = result);
+      }
 
     });
 
@@ -64,6 +76,17 @@ export class HomeComponent implements OnInit, DoCheck {
   ngDoCheck() {
     if (this.activeLocationId !== this.service.activeLocationId) {
       this.service.activeLocationId = this.activeLocationId;
+    } else {
+      if (!this.service.locationHours[this.activeLocationId] && !this.locationHours) {
+        this.service
+          .getLocationHours(this.activeLocationId)
+          .then(result => this.locationHours = result);
+      }
+      if (!this.service.locationHours[this.activeLocationId] && this.locationHours) {
+        if(this.locationHours.length > 0){
+           this.service.setLocationHours( this.locationHours );
+        }
+      }
     }
   }
 

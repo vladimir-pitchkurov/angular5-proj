@@ -44,10 +44,15 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
           });
       }
 
-      this.service.getAllLocations()
-        .then((data: any[]) => {
-          this.locations = data;
-        });
+      if(this.service.LIST_OF_LOCATIONS.length == 0){
+        this.service.getAllLocations()
+          .then((data: any[]) => {
+            this.locations = data;
+          });
+      }else {
+        this.locations = this.service.LIST_OF_LOCATIONS;
+      }
+
       if(this.service.LIST_OF_LOCATIONS.length == 0 && this.locations.length > 0){
         this.service.setMapOfLoc(this.locations);
       }

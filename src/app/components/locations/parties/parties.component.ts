@@ -66,33 +66,15 @@ export class PartiesComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
 
-    /*console.log('this.partiesPricingWeekday ', this.partiesPricingWeekday);
-
-    console.log('this.urlOfBirth ', this.urlOfBirth);
-
-    console.log('this.service.pricingBirthday[this.concatIdAndArrName(0)]  ', this.service.pricingBirthday[this.concatIdAndArrName(0)] );
-
-*/
     if (this.activeLocationId !== this.service.activeLocationId) {
       this.service.activeLocationId = this.activeLocationId;
     }
 
-    if ( this.partiesPricingWeekday && !this.service.pricingBirthday[this.concatIdAndArrName(0)] ) {
+    if ( this.partiesPricingWeekday && !this.service.pricingBirthday[this.service.activeLocationId] ) {
       this.service.setPricingBirthday( this.partiesPricingWeekday );
-
-      /*this.service.setUrlBirthday( this.urlOfBirth );*/
-
     }
 
-    let a = this.getWeekend();
-    console.log('a ', a);
-
-    /*console.log('in do check', this.urlOfBirth );
-
-    console.log('in do check serv value: ', this.service.pricingBirthdayUrl[this.service.activeLocationId].url );*/
-
     if ( this.urlOfBirth && !this.service.pricingBirthdayUrl[this.service.activeLocationId] ) {
-
       this.service.setUrlBirthday( this.urlOfBirth );
     }
 
@@ -112,7 +94,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekdayLabels[1];
           } else { tarif = this.arrWeekdayLabels[3]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.price;  }
@@ -127,7 +109,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekdayLabels[5];
           } else { tarif = this.arrWeekdayLabels[7]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.price;  }
@@ -149,7 +131,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekendLabels[1];
           } else { tarif = this.arrWeekendLabels[3]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.price;  }
@@ -164,7 +146,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekendLabels[5];
           } else { tarif = this.arrWeekendLabels[7]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.price;  }
@@ -187,7 +169,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekendLabels[1];
           } else { tarif = this.arrWeekendLabels[3]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.human_label;  }
@@ -202,7 +184,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekendLabels[5];
           } else { tarif = this.arrWeekendLabels[7]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.human_label;  }
@@ -224,7 +206,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekdayLabels[1];
           } else { tarif = this.arrWeekdayLabels[3]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return /*'http://altitudewoodbridge.pfestore.com/events/' +*/ a.value +'/BookEvent.aspx';  }
@@ -239,7 +221,7 @@ export class PartiesComponent implements OnInit, DoCheck {
             tarif = this.arrWeekdayLabels[5];
           } else { tarif = this.arrWeekdayLabels[7]; }
         }
-        const searchArr = this.service.pricingBirthday[this.service.activeLocationId];
+        const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
           if (a.label == tarif ) {  return a.value +'/BookEvent.aspx';  }
@@ -259,10 +241,6 @@ export class PartiesComponent implements OnInit, DoCheck {
 
   setBoolWithFood (boo: boolean) {
     this.boolWithFood = boo;
-  }
-
-  concatIdAndArrName(indexOfArr: number) {
-    return this.activeLocationId + '=>' + this.arrOfPricingNames[indexOfArr];
   }
 
 }

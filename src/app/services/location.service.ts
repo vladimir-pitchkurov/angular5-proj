@@ -6,14 +6,11 @@ import { BaseHttpService } from './base-http.service';
 export class LocationService {
   public domain = 'https://dashboard.sem.run/api/website';
   public activeLocationId: any;
+  public locationInformation = [];
+  public locationHours = [];
   public LIST_OF_LOCATIONS = [];
   mapOfLoc = [];
-  public infInFooter = false;
   public contactInfoOfFooter: object = {};
-  public infSocialFacebook = false;
-  public infSocialTwitter = false;
-  public infSocialInstagram = false;
-  public infSocialGoogle = false;
   public infSocialOfFooterFacebook: object = {};
   public infSocialOfFooterTwitter: object = {};
   public infSocialOfFooterInstagram: object = {};
@@ -29,6 +26,24 @@ export class LocationService {
 
 
   constructor(private http: BaseHttpService ) { }
+
+  setLocationHours( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.locationHours[index] = asd;
+    }
+  }
+
+  setLocationInformation( data ) {
+    const index = this.activeLocationId;
+    let asd;
+    if (data && data !== undefined && this.activeLocationId !== undefined ) {
+      asd = data;
+      this.locationInformation[index] = asd;
+    }
+  }
 
   isComingSoon(){
     let active = this.activeLocationId;
@@ -64,6 +79,7 @@ export class LocationService {
     let asd;
     if (data && data !== undefined && this.activeLocationId !== undefined ) {
       asd = data;
+      console.log('in service loc pricing ', data);
       this.locationPricings[index] = asd;
     }
   }
@@ -145,7 +161,7 @@ export class LocationService {
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data[0];
       this.infSocialOfFooterGoogle[index] = asd;
-      this.infSocialGoogle = true;
+      //this.infSocialGoogle = true;
     }
   }
   /*it is object-cache method of link Instagram*/
@@ -155,7 +171,7 @@ export class LocationService {
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data[0];
       this.infSocialOfFooterInstagram[index] = asd;
-      this.infSocialInstagram = true;
+      //this.infSocialInstagram = true;
     }
   }
   /*it is object-cache method of link Twitter*/
@@ -165,7 +181,7 @@ export class LocationService {
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data[0];
       this.infSocialOfFooterTwitter[index] = asd;
-      this.infSocialTwitter = true;
+      //this.infSocialTwitter = true;
     }
   }
   /*it is object-cache method of link Facebook*/
@@ -175,7 +191,7 @@ export class LocationService {
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data[0];
       this.infSocialOfFooterFacebook[index] = asd;
-      this.infSocialFacebook = true;
+      //this.infSocialFacebook = true;
     }
   }
   /*it is object-cache method of location-by-id*/
@@ -185,7 +201,7 @@ export class LocationService {
     if (data !== undefined) {
       asd = data[0];
       this.contactInfoOfFooter[index] = asd;
-      this.infInFooter = true;
+      //this.infInFooter = true;
     }
   }
 
@@ -229,8 +245,8 @@ export class LocationService {
 
   setActiveLocationId(value: any) {
     this.activeLocationId = value;
-    this.infInFooter = false;
-    this.infSocialFacebook = false;
+    //this.infInFooter = false;
+    //this.infSocialFacebook = false;
   }
 
   getAllLocations() {

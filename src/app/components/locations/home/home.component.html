@@ -67,7 +67,7 @@
         <h2 class="green_up text-center">Open Hours</h2>
         <ul  class="list-unstyled open_hours text-uppercase">
 
-          <div *ngFor="let hour of locationHours" class="wrap-li" >
+          <div *ngFor="let hour of this.service.locationHours[this.activeLocationId]" class="wrap-li" >
             <li class=" cus-lft ">{{hour.label}}</li>
             <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
           </div>
@@ -80,8 +80,8 @@
           Suspendisse sagittis nunc id risus facilisis, vel venenatis ex tincidunt. Morbi vel laoreet nisl. Duis pulvinar leo quis mauris cursus mollis.
           Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
         </p>
-        <h3 *ngFor="let locationI of locationInf " class="green_up text-center">Call us right now: {{locationI.phone}}</h3>
-        <p *ngFor="let locationDesc of locationInf ">{{locationDesc.description}}</p>
+        <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center">Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3>
+        <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" >{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>
       </div>
     </div>
   </div>
