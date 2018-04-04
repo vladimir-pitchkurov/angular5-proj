@@ -24,8 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   isComingSoon = false;
 
   constructor(private router: Router
-    , private service: LocationService) {
-  }
+    , private service: LocationService) { }
 
   ngOnInit() {
     this.activeLocationId = this.service.getActiveLocationId();
@@ -48,6 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
         this.service.getAllLocations()
           .then((data: any[]) => {
             this.locations = data;
+            this.service.LIST_OF_LOCATIONS = this.locations;
           });
       }else {
         this.locations = this.service.LIST_OF_LOCATIONS;

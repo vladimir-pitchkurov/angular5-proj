@@ -23,9 +23,27 @@ export class LocationService {
   public allLinksCenteredge_tickets = [];
   public locationPricings = [];
   public locationDeals = [];
+  public locationTitles =[];
+  public locationDesc = [];
 
 
   constructor(private http: BaseHttpService ) { }
+
+
+  setLocationDesc(data){
+    const index = this.activeLocationId;
+    if (data && data != undefined && index != undefined){
+      this.locationDesc[index] = data;
+    }
+  }
+
+
+  setLocationTitles(data){
+    const index = this.activeLocationId;
+    if (data && data != undefined && index != undefined){
+      this.locationTitles[index] = data;
+    }
+  }
 
   setLocationHours( data ) {
     const index = this.activeLocationId;
@@ -245,8 +263,6 @@ export class LocationService {
 
   setActiveLocationId(value: any) {
     this.activeLocationId = value;
-    //this.infInFooter = false;
-    //this.infSocialFacebook = false;
   }
 
   getAllLocations() {
@@ -255,76 +271,140 @@ export class LocationService {
   }
 
   getLocationCustomPricingById(id: any, urlA: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + urlA;
     return this.http.get(url);
   }
 
   getLocationById(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id);
     return this.http.get(url);
   }
 
   getLocationAttribute(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/name';
     return this.http.get(url);
   }
 
   getLocationPricing(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/pricing';
     return this.http.get(url);
   }
 
   getLocationDeals(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/deals';
     return this.http.get(url);
   }
 
   getLocationPricingByCategory(id: any, category: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/pricing/' + category;
     return this.http.get(url);
   }
 
   getLocationPricingByCategoryArea(id: any, category: string, area: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/pricing/' + category + '/' + area;
     return this.http.get(url);
   }
 
   getLocationPricingByCategoryAreaByLabel(id: any, category: string, area: string, label: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/pricing/' + category + '/' + area + '/' + label;
     return this.http.get(url);
   }
 
+  getLocationDesc(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/descriptions';
+    return this.http.get(url);
+  }
+
+
+  getLocationTitles(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/titles';
+    return this.http.get(url);
+  }
+
+
   getLocationSocial(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
+
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/social';
     return this.http.get(url);
   }
 
   getLocationSocialByName(id: any, name: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/social/' + name;
     return this.http.get(url);
   }
 
   getLocationHours(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/hours';
     return this.http.get(url);
   }
 
   getLocationHoursByLabel(id: any, label: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/hours/' + label;
     return this.http.get(url);
   }
 
   getLocationLinksCenteredge_waiver(id: any) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links/centeredge_waiver';
     return this.http.get(url);
   }
 
   getLocationLinksByField(id: any, field: string) {
+    if(!this.getIdByName(id)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links/' + field;
     return this.http.get(url);
   }
 
   getLocationBirthdayParties( urlApi: string) {
+    if(!this.getIdByName(this.activeLocationId)){
+      return;
+    }
     const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + urlApi;
     return this.http.get(url);
   }
