@@ -32,7 +32,6 @@ export class TrampolinesHomepageComponent implements OnInit, DoCheck {
 
         let id = params["id"];
         this.activeLocationId = id;
-
         this.service.activeLocationId = this.activeLocationId;
 
         this.service

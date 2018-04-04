@@ -94,16 +94,16 @@
             <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block"  [class.choosed-party-plan]="!this.boolWithFood" (click)="setBoolWithFood ( false )" >no food </a>
           </div>
           <div class="col-md-6">
-            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolPrivateRoom"  >with private room</a>  <!--(click)="setBoolPrivateRoom( true )"-->
+            <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolPrivateRoom" (click)="setBoolPrivateRoom( true )" >with private room</a>
             <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.bool20Jumpers" (click)="setBool20Jumpers( true )" >20 jumpers</a>
             <a class="green_up btn mt-30 theme_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolWithFood" (click)="setBoolWithFood ( true )" >with food </a>
           </div>
         </div>
         <div class="row mt-20">
           <div class="col-12 text-center"  >
-            <h4 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
-            <h1 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">${{this.getWeekend()}}</h1>
-            <h5 *ngIf="this.service.pricingBirthday[this.concatIdAndArrName(0)]" class="green_up">Mon - Thurs: ${{this.getWeekday()}}</h5>
+            <h4 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
+            <h1 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="green_up">${{this.getWeekend()}}</h1>
+            <h5 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="green_up">Mon - Thurs: ${{this.getWeekday()}}</h5>
             <a *ngIf="this.service.pricingBirthdayUrl[this.service.activeLocationId]" href="{{this.service.pricingBirthdayUrl[this.service.activeLocationId].url}}{{this.getLinkLabel()}}" class="green_up btn mt-30 theme_a_btn btn_pad" target="_blank"  >Book a party</a>
           </div>
         </div>

@@ -45,7 +45,8 @@ export class LocationService {
 
   setMapOfLoc(data) {
     if(data) {
-      this.mapOfLoc = this.LIST_OF_LOCATIONS = data;
+      this.mapOfLoc = data;
+      this.LIST_OF_LOCATIONS = data;
     }
   }
 
@@ -94,14 +95,14 @@ export class LocationService {
     }
   }
 
-  setPricingBirthday(data: any, marker: string) {
+  setPricingBirthday(data: any) {
     const index = this.activeLocationId;
     let asd;
     let combineName;
 
     if (data !== undefined && this.activeLocationId !== undefined ) {
       asd = data;
-      combineName = index + "=>" + marker;
+      combineName = index;
       this.pricingBirthday[combineName] = asd;
     }
   }
@@ -307,8 +308,8 @@ export class LocationService {
     return this.http.get(url);
   }
 
-  getLocationBirthdayParties(id: any, urlApi: string) {
-    const url: string = this.domain + '/location/' + this.getIdByName(id) + urlApi;
+  getLocationBirthdayParties( urlApi: string) {
+    const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + urlApi;
     return this.http.get(url);
   }
 
