@@ -4,37 +4,22 @@
       <img src="/assets/img/footer-logo.png">
     </div>
     <div  class="footer-text row">
-      <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="col-md-4">
+      <div class="col-md-4">
+      </div>
+      <div *ngIf="!activeLocationId" class="col-md-4 text-center">
         <p class="footer-name">Adrenaline Entertainment Centers
           CORPORATE HEADQUARTERS</p>
+        <p class="footer-contact"><img src="/assets/img/icon-loc.png">16603 Cantrell Road<br>Suite 3</p>
+        <p class="footer-contact-add-line">Little Rock, AR 72223</p>
+      </div>
+      <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="col-md-4 text-center">
+        <p class="footer-name">Adrenaline Entertainment Centers</p>
         <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
         <p class="footer-contact-add-line">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}, {{this.service.contactInfoOfFooter[this.activeLocationId].address_state}} {{this.service.contactInfoOfFooter[this.activeLocationId].address_zip}}</p>
         <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
         <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
       </div>
-      <div *ngIf="!activeLocationId" class="col-md-2 text-center custom-footer-menu">
-        <a routerLink="/" class="dropdown-item" routerLinkActive="active">Home</a>
-        <a routerLink="trampoline-park" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
-        <a routerLink="trampoline-parties" routerLinkActive="active" class="dropdown-item" >Parties</a>
-        <a routerLink="escape-room" routerLinkActive="active" class="dropdown-item" >Escape room</a>
-      </div>
-      <div *ngIf="activeLocationId" class="col-md-2 text-center custom-footer-menu">
-        <a routerLink="{{activeLocationId}}/trampoline-park/" class="dropdown-item" routerLinkActive="active">Home</a>
-        <a routerLink="{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active" class="dropdown-item" >Trampoline park</a>
-        <a routerLink="{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" class="dropdown-item" >Parties</a>
-        <a routerLink="{{activeLocationId}}/about/contact/" routerLinkActive="active" class="dropdown-item" >Contact</a>
-      </div>
-      <div class="col-md-2">
-        <p>lorem ad astra</p>
-        <p>dolor elit</p>
-        <p>consectetuer</p>
-        <p>ipsum per</p>
-        <p>dura lex</p>
-      </div>
       <div class="col-md-4">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sodales tortor quis ante porta
-          venenatis. Suspendisse sollicitudin, dolor sed dignissim bibendum, sapien sem laoreet arcu, non mollis
-          neque odio porttitor purus.</p>
       </div>
     </div>
   </div>
@@ -42,6 +27,9 @@
 <div class="copyright">
   <div class="container">
     <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12 ">
+        <p class="cus-cent" >Adrenaline Entertainment Centers © 2018</p>
+      </div>
       <div *ngIf="(this.service.contactInfoOfFooter[this.activeLocationId])" class="col-md-6 col-sm-12 col-xs-12" >
         <ul  class="list-inline text-lg-right text-sm-center social_icons circle cus-cent">
           <li *ngIf="this.service.infSocialOfFooterFacebook[this.activeLocationId]" class="list-inline-item facebook">
@@ -66,9 +54,6 @@
             <p color="white">
           </li>
         </ul>
-      </div>
-      <div class="col-md-6 col-sm-12 col-xs-12 ">
-        <p class="cus-cent" >Adrenaline Entertainment Centers © 2018</p>
       </div>
     </div>
   </div>

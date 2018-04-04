@@ -2875,7 +2875,7 @@ a.btn_pad_20 {
 .text_white_img{
     letter-spacing: 1.82px;
     font-family: Anton;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .girls_parties{
