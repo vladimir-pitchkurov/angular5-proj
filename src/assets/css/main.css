@@ -342,7 +342,7 @@ div.tramp-list{
     border: 2px solid #cbad66;
     color: #cbad66;
 }
-@media (max-width: 579px){
+@media (max-width: 767px){
     .desc_slider {
         margin: 50px 0 50px 0px;
         padding-bottom: 10px;
@@ -1774,7 +1774,7 @@ header .menu .menu-tramp.active{
     border: none;
 }
 
-@media (max-width: 579px){
+@media (max-width: 767px){
     .coming-soon-email .container p {
         font-size: 14px;
         line-height: 16px;
@@ -2896,4 +2896,49 @@ a.btn_pad_20 {
   background-color: #00000000;
   height: 500px;
   width: 100%;
+}
+
+
+/*
+Первичные стили:
+С ними работает слайд шоу
+*/
+
+#slides {
+  position: relative;
+  height: 644px;
+  padding: 0px;
+  padding-top: 70px;
+  margin: 0px;
+  list-style-type: none;
+}
+
+@media (max-width: 767px){
+  #slides {
+    height: 300px;
+  }
+
+  .coming-soon-email .container p{
+    font-size: 0.8em;
+  }
+}
+
+.slide {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.showing {
+  opacity: 1;
+  z-index: 2;
 }

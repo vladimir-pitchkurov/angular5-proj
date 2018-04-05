@@ -104,6 +104,26 @@ export class ComingSoonComponent implements OnInit, DoCheck {
         this.comingSoonFeatures = data;
 
         this.availableSlides = this.comingSoonFeatures.map(el => el.category);
+
+        this.runSlider();
       })
   }
+
+
+  runSlider ()
+  {
+    setTimeout(()=>{
+      let slides = document.querySelectorAll('#slides .slide');
+      let currentSlide = 0;
+
+      let nextSlide = () => {
+        slides[currentSlide].className = 'slide';
+        currentSlide = (currentSlide+1)%slides.length;
+        slides[currentSlide].className = 'slide showing';
+      };
+
+      let slideInterval = setInterval(nextSlide,2000);
+    }, 0);
+  }
+
 }

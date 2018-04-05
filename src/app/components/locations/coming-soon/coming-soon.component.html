@@ -1,44 +1,40 @@
-<app-main-slider
-  [availableSlides]="availableSlides"
-  *ngIf="availableSlides.length"
-  [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'"
-  class="mob_slider">
-
+<ul id="slides">
+  <li class="slide showing" *ngIf="availableSlides.indexOf('trampoline') !== -1">
     <div trampolinePane class="block-one">
-
-        <div class="container">
-            <div class="desc_slider">
-                <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
-                <h1>MAY 2018</h1>
-                <button type="button">Coming Soon</button>
-            </div>
+      <div class="container">
+        <div class="desc_slider">
+          <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
+          <h1>MAY 2018</h1>
+          <button type="button">Coming Soon</button>
         </div>
-        <div class="home-arrow floating">
-            <img id="arrow" class="anim-op" src="/assets/img/home-arrow.svg">
-        </div>
+      </div>
     </div>
+  </li>
 
+  <li class="slide" *ngIf="availableSlides.indexOf('escape') !== -1">
     <div class="block-two" escapePane>
-        <div class="container">
-            <div class="desc_slider gold">
-                <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
-                <h1>MAY 2018</h1>
-                <button type="button">Coming Soon</button>
-            </div>
+      <div class="container">
+        <div class="desc_slider gold">
+          <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
+          <h1>MAY 2018</h1>
+          <button type="button">Coming Soon</button>
         </div>
-
+      </div>
     </div>
+  </li>
+
+  <li class="slide" *ngIf="availableSlides.indexOf('virtual') !== -1">
     <div class="block-three" virtualPane>
-        <div class="container">
-            <div class="desc_slider gold">
-                <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
-                <h1>MAY 2018</h1>
-                <button type="button">Coming Soon</button>
-            </div>
+      <div class="container">
+        <div class="desc_slider gold">
+          <h3>TRAMPOLINE PARK & ENTERTAINMENT CENTERS COMING</h3>
+          <h1>MAY 2018</h1>
+          <button type="button">Coming Soon</button>
         </div>
+      </div>
     </div>
-
-</app-main-slider>
+  </li>
+</ul>
 
 
 <div  class="homepage-gaiety coming-soon-email">
