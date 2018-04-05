@@ -22,6 +22,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     isVr = true;
     comingSoonFeatures: any;
     availableSlides: any[] = [];
+    currentCity: any = {};
 
     constructor(private route: Router
       , private activatedRoute: ActivatedRoute
@@ -86,6 +87,10 @@ export class ComingSoonComponent implements OnInit, DoCheck {
         this.comingSoonFeatures = data;
 
         this.availableSlides = this.comingSoonFeatures.map(el => el.category);
+
+        this.currentCity = JSON.parse(localStorage.getItem('all-locations')).find(city => city.slug == id);
+
+        console.log('currentCity', this.currentCity);
 
         this.runSlider();
       })
