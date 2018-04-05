@@ -54,17 +54,12 @@ export class HomeComponentComponent implements OnInit, AfterViewInit, DoCheck {
       }*/
     });
 
-    console.log('in home init: ', this.service.LIST_OF_LOCATIONS);
-
-
   }
 
   ngAfterViewInit() {
     InitJsService.initScroll();
     InitJsService.initBlockOne();
     InitJsService.initLoc();
-    console.log('in home after view init: ', this.service.LIST_OF_LOCATIONS);
-
   }
 
   ngDoCheck(){

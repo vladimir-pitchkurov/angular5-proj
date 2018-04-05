@@ -457,7 +457,8 @@ export class InitJsService {
         var lat = document.getElementById('startLat').innerHTML,
           lon = document.getElementById('startLon').innerHTML;
 
-        if (!lat) {
+        // if (!lat) {
+        if (true) {
           getLoc();
         } else {
           useLoc();
@@ -506,10 +507,20 @@ export class InitJsService {
         function getLoc() {
           var geoOptions = {
             maximumAge: 5 * 60 * 1000,
-            timeout: 30 * 1000
+            timeout: 1 * 1000
           };
 
-          var geoSuccess = function (position) {
+          var geoSuccess = function (position, isCallFromGeoError) {
+
+            if(!isCallFromGeoError) {
+              localStorage.setItem('position', JSON.stringify({
+                coords: {
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                }
+              }));
+            }
+
             document.getElementById('startLat').innerHTML = position.coords.latitude;
             document.getElementById('startLon').innerHTML = position.coords.longitude;
 
@@ -519,12 +530,15 @@ export class InitJsService {
           };
 
           var geoError = function (error) {
-            // Ошибки:
+            // Error status code explanation:
             //   0: unknown error
             //   1: permission denied
             //   2: position unavailable (error response from location provider)
             //   3: timed out
-            console.log('Error occurred. Error code: ' + error.code);
+
+            if (localStorage.hasOwnProperty('position')) {
+              return geoSuccess(JSON.parse(localStorage.getItem('position')), true)
+            }
 
             var locContain: any = document.getElementById('ask-loc-contain'),
               locClose: any = document.getElementById('ask-button-close'),
