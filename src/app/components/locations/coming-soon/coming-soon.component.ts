@@ -59,7 +59,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
       if (this.service.contactInfoOfFooter) {
         if (this.service.contactInfoOfFooter[this.service.activeLocationId] ) {
           this.amenities = JSON.parse(this.service.contactInfoOfFooter[this.service.activeLocationId].amenities);
-          this.getActiveAmenities();
+
         }
       }
     }
@@ -76,24 +76,6 @@ export class ComingSoonComponent implements OnInit, DoCheck {
       });
   }
 
-  getActiveAmenities(): void {
-    this.isTrampoline = false;
-    this.isEscape = false;
-    this.isVr = false;
-
-    for (let i = 0; i < this.amenities.length; i++) {
-      if (+this.amenities[i] == 1) {
-        this.isTrampoline = true;
-      }
-      if (+this.amenities[i] == 2) {
-        this.isEscape = true;
-      }
-      if (+this.amenities[i] == 3) {
-        this.isVr = true;
-        console.log(this.isVr);
-      }
-    }
-  }
 
 
   loadFeatures(id: any)
