@@ -310,6 +310,7 @@ div.tramp-list{
     display:block;
     margin: 0 auto;
     margin-bottom: 10px;
+    padding: 0 10px;
 }
 .desc_slider h1 {
     color: #92dd02;
