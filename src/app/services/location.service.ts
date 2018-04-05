@@ -8,7 +8,7 @@ export class LocationService {
   public activeLocationId: any;
   public locationInformation = [];
   public locationHours = [];
-  public LIST_OF_LOCATIONS = [];
+  public LIST_OF_LOCATIONS = localStorage.hasOwnProperty('all-locations') ? JSON.parse(localStorage.getItem('all-locations')) : [];
   mapOfLoc = [];
   public contactInfoOfFooter = [];
   public infSocialOfFooterFacebook: object = {};
@@ -297,8 +297,17 @@ export class LocationService {
   }
 
   getAllLocations() {
+
+    if(localStorage.hasOwnProperty('all-locations')) {
+      Promise.resolve(JSON.parse(localStorage.getItem('all-locations')));
+    }
+
     const url: string = this.domain + '/main/locations';
-    return this.http.get(url);
+    return this.http.get(url)
+      .then(allLocations => {
+        localStorage.setItem('all-locations', JSON.stringify(allLocations));
+        return allLocations;
+      })
   }
 
   getLocationCustomPricingById(id: any, urlA: any) {
@@ -338,6 +347,14 @@ export class LocationService {
       return;
     }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/deals';
+    return this.http.get(url);
+  }
+
+  loadFeatures(id: any) {
+    if(!this.getIdByName(id)){
+      return Promise.resolve('TRY-AGAIN');
+    }
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/features';
     return this.http.get(url);
   }
 

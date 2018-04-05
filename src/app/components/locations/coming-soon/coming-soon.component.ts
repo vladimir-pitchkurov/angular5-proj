@@ -20,6 +20,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     isTrampoline = true;
     isEscape = true;
     isVr = true;
+    comingSoonFeatures: any[] = [];
 
     constructor(private route: Router
       , private activatedRoute: ActivatedRoute
@@ -36,6 +37,8 @@ export class ComingSoonComponent implements OnInit, DoCheck {
       this.activatedRoute.params.forEach((params: Params) => {
         let id = params["id"]; this.activeLocationId = id;
         this.service.activeLocationId = this.activeLocationId;
+
+        this.loadFeatures(id);
       });
       setInterval(() => {
         if (!this.boolChanged) {
@@ -89,5 +92,15 @@ export class ComingSoonComponent implements OnInit, DoCheck {
         console.log(this.isVr);
       }
     }
+  }
+
+
+  loadFeatures(id: any)
+  {
+    this.service.loadFeatures(id)
+      .then(data => {
+        console.log('loadFeatures', data);
+        this.comingSoonFeatures = data;
+      })
   }
 }
