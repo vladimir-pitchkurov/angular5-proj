@@ -31,7 +31,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Coming Soon!Adrenaline Entertainment Centers');
+        this.titleService.setTitle('Coming Soon! Adrenaline Entertainment Centers');
         this.meta.addTag({ name: 'meta-keywords', content: 'coming keywords' });
         this.meta.addTag({ name: 'meta-description', content: 'Adrenaline Entertainment Centers is coming soon! Our trampoline parks, escape rooms, and virtual reality rooms are sure to entertain the entire family!' });
 
