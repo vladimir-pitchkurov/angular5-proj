@@ -39,23 +39,21 @@ export class HomeComponent implements OnInit {
 
     this.activatedRoute.params.forEach((params: Params) => {
 
-
       let id = params["id"];
       this.activeLocationId = id;
-
       this.service.activeLocationId = this.activeLocationId;
 
       if (!this.service.contactInfoOfFooter[this.activeLocationId]) {
-        this.service
-          .getLocationById(id)
-          .then((result ) => {
-            this.locationInf = result;
-            this.service.setLocationInformation(this.locationInf);
-          });
+        if (this.service.getIdByName(this.activeLocationId)) {
+
+          this.service
+            .getLocationById(id)
+            .then((result) => {
+              this.locationInf = result;
+              this.service.setLocationInformation(this.locationInf);
+            });
+        }
       }
-
     });
-
   }
-
 }

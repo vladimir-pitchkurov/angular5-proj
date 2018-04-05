@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title } from '@angular/platform-browser';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -9,22 +9,18 @@ import {LocationService} from '../../../services/location.service';
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.css']
 })
-export class GroupsComponent implements OnInit, DoCheck {
+export class GroupsComponent implements OnInit {
 
-  locationInf: any;
   activeLocationId: any;
   pricing: any;
   validation_msg: any;
   needCallToReverse = false;
 
-
-
   constructor(  private meta: Meta
-              , private titleService: Title
-              , private route: Router
-              , private activatedRoute: ActivatedRoute
-              , private service: LocationService) {   }
-
+    , private titleService: Title
+    , private route: Router
+    , private activatedRoute: ActivatedRoute
+    , private service: LocationService) {   }
 
   ngOnInit() {
     this.titleService.setTitle('Groups');
@@ -33,30 +29,9 @@ export class GroupsComponent implements OnInit, DoCheck {
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"];
       this.activeLocationId = id;
-      this.service
-        .getLocationById(id)
-        .then(result => this.locationInf = result);
-
-      this.service
-        .getLocationCustomPricingById(this.activeLocationId, '/pricing/trampoline/groups')
-        .then(result => this.pricing = result);
-
-      this.service.setPricingTrampolineGroups(this.pricing);
+      this.service.activeLocationId = this.activeLocationId;
 
     });
-
-  }
-
-
-  ngDoCheck() {
-
-    if (this.activeLocationId !== this.service.activeLocationId) {
-      this.service.activeLocationId = this.activeLocationId;
-    }
-
-    if (this.pricing && !this.service.pricingTrampolineGroups[this.activeLocationId]) {
-      this.service.setPricingTrampolineGroups(this.pricing);
-    }
   }
 
   reverseCall(){
@@ -73,5 +48,4 @@ export class GroupsComponent implements OnInit, DoCheck {
         this.validation_msg = result;
       });
   }
-
 }

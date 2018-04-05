@@ -12,7 +12,7 @@ declare var window: any;
 })
 export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   title = 'app';
-  locations = [];
+  public locations = [];
   activeLocationId: any;
   locationInf: any[];
   isDarkFooter = false;
@@ -23,10 +23,11 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   isComingSoonChecked = false;
   isComingSoon = false;
 
-  constructor(private router: Router
-    , private service: LocationService) { }
+  constructor( private router: Router
+             , private service: LocationService ) { }
 
   ngOnInit() {
+
     this.activeLocationId = this.service.getActiveLocationId();
 
     this.router.events.subscribe((evt) => {
@@ -97,7 +98,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   ngDoCheck() {
-    if (!this.activeLocationId) {
+
+ if (!this.activeLocationId) {
       if (this.activeLocationId != this.service.activeLocationId) {
         this.activeLocationId = this.service.activeLocationId;
       }
@@ -115,14 +117,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       this.service.setMapOfLoc(this.locations);
     }
 
-    if(!this.isComingSoonChecked && this.service.LIST_OF_LOCATIONS.length > 0) {
+   /* if(!this.isComingSoonChecked && this.service.LIST_OF_LOCATIONS.length > 0) {
       this.isComingSoon = this.service.isComingSoon();
       if(this.isComingSoon ){
-         this.isComingSoonChecked = true;
-         let url = this.activeLocationId + '/about/coming-soon';
-         this.router.navigate([url])
+        this.isComingSoonChecked = true;
+        let url = this.activeLocationId + '/about/coming-soon';
+        this.router.navigate([url])
       }
-    }
+    }*/
 
   }
 

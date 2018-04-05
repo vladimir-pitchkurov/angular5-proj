@@ -430,4 +430,173 @@ export class InitJsService {
         })();
     }
 
+
+
+  static initLoc() {
+    setTimeout(function () {
+      (function () {
+        locCont();
+
+        var locsNew: any = document.getElementsByClassName('loc-name'),
+          askContain: any = document.getElementById('ask-contain'),
+          askNo: any = document.getElementById('ask-no');
+
+        for (var i = 0; i < locsNew.length; i++) {
+          locsNew[i].onclick = function (ev) {
+            console.log(ev.target.getAttribute('link'));
+            askContain.getElementsByTagName('h3')[0].innerHTML = 'Go Adrenaline ' + ev.target.innerHTML + '?';
+            askContain.getElementsByTagName('a')[0].setAttribute('href', ev.target.getAttribute('link'));
+            askContain.classList.add('slideDown');
+          };
+        }
+
+        askNo.onclick = function (ev) {
+          askContain.classList.remove('slideDown');
+        };
+
+        var lat = document.getElementById('startLat').innerHTML,
+          lon = document.getElementById('startLon').innerHTML;
+
+        if (!lat) {
+          getLoc();
+        } else {
+          useLoc();
+        }
+
+        function locCont() {
+          var wh: any = 1140,
+            locs = document.getElementsByClassName('all-loc--content'),
+            arrow = document.getElementsByClassName('all-loc--green')[0],
+            contents = document.getElementsByClassName('all-loc--contents')[0],
+            locsWidth = 0;
+
+
+          if (locs) {
+            for (var i: any = 0; i < locs.length; i++) {
+              locsWidth += locs[i].clientWidth;
+            }
+
+            if (locsWidth < wh) {
+              var mgr: any = (wh - locsWidth) / (locs.length - 1) - 20;
+              for (i = 0; i < locs.length - 1; i++) {
+                locs[i].style.marginRight = mgr + 'px';
+              }
+            }
+          }
+
+          arrow.onclick = function (e) {
+            var isOpen: any = false;
+            for (var i = 0; i < arrow.classList.length; i++) {
+              if ('open' == arrow.classList[i]) {
+                isOpen = true;
+                break;
+              }
+            }
+
+            if (isOpen) {
+              arrow.classList.remove('open');
+              contents.classList.remove('locEntrance');
+            } else {
+              arrow.classList.add('open');
+              contents.classList.add('locEntrance');
+            }
+          };
+        }
+
+        function getLoc() {
+          var geoOptions = {
+            maximumAge: 5 * 60 * 1000,
+            timeout: 30 * 1000
+          };
+
+          var geoSuccess = function (position) {
+            document.getElementById('startLat').innerHTML = position.coords.latitude;
+            document.getElementById('startLon').innerHTML = position.coords.longitude;
+
+            // Сюда вставить запросы к гуглу, что бы определить ближайший город.
+            document.getElementById('startCity').innerHTML = findCity(lat, lon);
+            useLoc();
+          };
+
+          var geoError = function (error) {
+            // Ошибки:
+            //   0: unknown error
+            //   1: permission denied
+            //   2: position unavailable (error response from location provider)
+            //   3: timed out
+            console.log('Error occurred. Error code: ' + error.code);
+
+            var locContain: any = document.getElementById('ask-loc-contain'),
+              locClose: any = document.getElementById('ask-button-close'),
+              locClick: any = document.getElementById('click-find'),
+              locFind: any = document.getElementById('ask-button-find');
+
+            locClick.onclick = function (ev) {
+              locContain.classList.add('slideDown');
+            };
+
+            locClose.onclick = function (ev) {
+              locContain.classList.remove('slideDown');
+            };
+
+            locFind.onclick = function (ev) {
+              locContain.classList.remove('slideDown');
+            };
+
+            document.getElementsByClassName('loc-four')[0].style.display = 'none';
+            document.getElementsByClassName('loc-three')[0].style.display = 'block';
+          };
+
+          navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
+        }
+
+        function useLoc() {
+          var city = document.getElementById('startCity').innerHTML;
+          document.getElementsByClassName('loc-two')[0].innerHTML = '<img src="/assets/img/loc-icon.png"><span>' + city + '</span>';
+          document.getElementsByClassName('loc-two')[0].style.display = 'block';
+          document.getElementsByClassName('loc-four')[0].style.display = 'none';
+          document.getElementsByClassName('loc-three')[0].style.display = 'none';
+        }
+
+        function findCity(lat, lon) {
+          var arr = [{city: 'Lake Worth', lat: 26.618817, lon: -80.166555},
+            {city: 'York', lat: 39.966142, lon: -76.766978},
+            {city: 'Columbia', lat: 33.966766, lon: -80.946087},
+            {city: 'Lexington', lat: 38.024807, lon: -84.421124},
+            {city: 'Cincinnati', lat: 39.293702, lon: -84.311807}];
+          var min = distance(arr[0].lat, arr[0].lon, lat, lon, 'M');
+          var q = 0;
+          for (var i = 1; i < arr.length; i++) {
+            var d = distance(arr[i].lat, arr[i].lon, lat, lon, 'M');
+
+            if (d > min) {
+              min = d;
+              q = i;
+            }
+          }
+          return arr[q].city;
+        }
+
+        function distance(lat1, lon1, lat2, lon2, unit) {
+          var radlat1 = Math.PI * lat1 / 180;
+          var radlat2 = Math.PI * lat2 / 180;
+          var theta = lon1 - lon2;
+          var radtheta = Math.PI * theta / 180;
+          var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+          dist = Math.acos(dist);
+          dist = dist * 180 / Math.PI;
+          dist = dist * 60 * 1.1515;
+          if (unit == 'K') {
+            dist = dist * 1.609344;
+          }
+          if (unit == 'N') {
+            dist = dist * 0.8684;
+          }
+          return dist;
+        }
+
+      })();
+    }, 0);
+  }
+
 }

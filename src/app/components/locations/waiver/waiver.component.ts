@@ -9,39 +9,28 @@ import {LocationService} from '../../../services/location.service';
   templateUrl: './waiver.component.html',
   styleUrls: ['./waiver.component.css']
 })
-export class WaiverComponent implements OnInit, DoCheck {
+export class WaiverComponent implements OnInit {
 
   activeLocationId: any;
 
-    constructor( private route: Router
-      , private activatedRoute: ActivatedRoute
-      , private meta: Meta
-      , private titleService: Title
-      , private service: LocationService ) { }
+  constructor( private route: Router
+    , private activatedRoute: ActivatedRoute
+    , private meta: Meta
+    , private titleService: Title
+    , private service: LocationService ) { }
 
-    ngOnInit() {
-        this.titleService.setTitle('Waiver');
-        this.meta.addTag({ name: 'meta-description', content: 'Waiver description' });
+  ngOnInit() {
+    this.titleService.setTitle('Waiver');
+    this.meta.addTag({ name: 'meta-description', content: 'Waiver description' });
 
-      this.activatedRoute.params.forEach((params: Params) => {
+    this.activatedRoute.params.forEach((params: Params) => {
+      let id = params["id"];
+      this.activeLocationId = id;
+      this.service.activeLocationId = this.activeLocationId;
+    });
+  }
 
-        let id = params["id"];
-
-        this.activeLocationId = id;
-
-        this.service.activeLocationId = this.activeLocationId;
-
-      });
-    }
-
-    ngDoCheck() {
-      if ( this.activeLocationId !== this.service.activeLocationId ) {
-        this.service.activeLocationId = this.activeLocationId;
-      }
-    }
-
-    goToWaiver(){
-      window.open(this.service.allLinksCenteredge_waiver[this.activeLocationId]? this.service.allLinksCenteredge_waiver[this.activeLocationId].url : '/', "_blank");
-    }
-
+  goToWaiver(){
+    window.open(this.service.allLinksCenteredge_waiver[this.activeLocationId]? this.service.allLinksCenteredge_waiver[this.activeLocationId].url : '/', "_blank");
+  }
 }

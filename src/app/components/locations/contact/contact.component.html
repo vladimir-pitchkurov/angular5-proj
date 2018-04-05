@@ -40,22 +40,17 @@
 </section>
 
 <section *ngIf="this.activeLocationId" class="contact-map ">
-      <div *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="map_desc">
-        <h2  class="green_up">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}</h2>
-        <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
-        <p class="footer-contact-add-line">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}, {{this.service.contactInfoOfFooter[this.activeLocationId].address_state}} {{this.service.contactInfoOfFooter[this.activeLocationId].address_zip}}</p>
-        <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
-        <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
-      </div>
+  <div *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="map_desc">
+    <h2  class="green_up">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}</h2>
+    <p class="footer-contact"><img src="/assets/img/icon-loc.png">{{this.service.contactInfoOfFooter[this.activeLocationId].address_street}}</p>
+    <p class="footer-contact-add-line">{{this.service.contactInfoOfFooter[this.activeLocationId].address_city}}, {{this.service.contactInfoOfFooter[this.activeLocationId].address_state}} {{this.service.contactInfoOfFooter[this.activeLocationId].address_zip}}</p>
+    <p class="footer-contact"><img src="/assets/img/icon-phone.png">{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</p>
+    <p *ngIf="this.service.footerEmail[this.activeLocationId]" class="footer-contact"><img src="/assets/img/icon-email.png">{{ this.service.footerEmail[this.activeLocationId].email }}</p>
+  </div>
   <iframe  *ngIf="this.activeLocationId == 'lake-worth'" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3566.925901444166!2d-80.16874904897321!3d26.618821779004943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9266aeb2aebbf%3A0xc4ba2723db676c80!2sAdrenaline+Entertainment+Center!5e0!3m2!1sru!2sua!4v1522488220538" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-
   <iframe  *ngIf="this.activeLocationId == 'york'" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.080213238313!2d-76.77244968461787!3d39.961959279420604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c88c7a49beea5d%3A0xaf3dbed6072d53b1!2zMjE1MCBXaGl0ZSBTdCwgWW9yaywgUEEgMTc0MDQsINCh0KjQkA!5e0!3m2!1sru!2sua!4v1522488460439" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-
   <iframe  *ngIf="this.activeLocationId == 'fayetteville'" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12891.85182833356!2d-94.1479715!3d36.1187602!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xac05e519348406df!2sAltitude+Trampoline+Park!5e0!3m2!1sru!2sua!4v1522488551504" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-
   <iframe  *ngIf="this.activeLocationId == 'woodbridge'" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12124.573369822634!2d-74.2977564!3d40.5605117!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x71a47f11f3d03746!2sAltitude+Trampoline+Park!5e0!3m2!1sru!2sua!4v1522488632228" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-
   <iframe  *ngIf="this.activeLocationId == 'columbia'" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13236.006286157855!2d-80.9460968!3d33.9667991!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfcb6705facd41c43!2sAdrenaline+Entertainment+Center!5e0!3m2!1sru!2sua!4v1522488718408" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-
   <iframe  *ngIf="this.activeLocationId == 'cincinnati'" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3087.7595841401!2d-84.31399538463793!3d39.29370247951142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884056587ea980db%3A0xc44be41d45442352!2sAdrenaline+Entertainment+Center!5e0!3m2!1sru!2sua!4v1522488871298" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
 </section>

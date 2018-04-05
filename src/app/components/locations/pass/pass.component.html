@@ -29,8 +29,8 @@
     <div class="row">
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div *ngIf="this.one_hour" class="col-12>">
-            <h5>${{this.one_hour[0].price}}</h5>
+          <div *ngIf="this.service.one_hour[ this.activeLocationId ]" class="col-12>">
+            <h5>${{this.service.one_hour[ this.activeLocationId ].price}}</h5>
           </div>
         </div>
         <div class="row person">
@@ -41,8 +41,8 @@
       </div>
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div *ngIf="this.two_hours" class="col-12>">
-            <h5>${{this.two_hours[0].price}}</h5>
+          <div *ngIf="this.service.two_hours[ this.activeLocationId ]" class="col-12>">
+            <h5>${{this.service.two_hours[ this.activeLocationId ].price}}</h5>
           </div>
         </div>
         <div class="row person">
@@ -53,8 +53,8 @@
       </div>
       <div class="col-sm-4 align-items-center">
         <div class="row justify-content-center rec ">
-          <div *ngIf="this.a6_under" class="col-12>">
-            <h5>${{this.a6_under[0].price}}</h5>
+          <div *ngIf="this.service.a6_under[ this.activeLocationId ]" class="col-12>">
+            <h5>${{this.service.a6_under[ this.activeLocationId ].price}}</h5>
           </div>
         </div>
         <div class="row person">
@@ -163,5 +163,4 @@
       </div>
     </div>
   </div>
-
 </section>

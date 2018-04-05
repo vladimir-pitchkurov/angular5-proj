@@ -10,7 +10,7 @@ export class LocationService {
   public locationHours = [];
   public LIST_OF_LOCATIONS = [];
   mapOfLoc = [];
-  public contactInfoOfFooter: object = {};
+  public contactInfoOfFooter = [];
   public infSocialOfFooterFacebook: object = {};
   public infSocialOfFooterTwitter: object = {};
   public infSocialOfFooterInstagram: object = {};
@@ -25,9 +25,33 @@ export class LocationService {
   public locationDeals = [];
   public locationTitles =[];
   public locationDesc = [];
+  one_hour =[];
+  two_hours =[];
+  a6_under =[];
 
 
   constructor(private http: BaseHttpService ) { }
+
+  setA6_under(data){
+    const index = this.activeLocationId;
+    if (data && data != undefined && index != undefined){
+      this.a6_under[index] = data;
+    }
+  }
+
+  setTwo_hours(data){
+    const index = this.activeLocationId;
+    if (data && data != undefined && index != undefined){
+      this.two_hours[index] = data;
+    }
+  }
+
+  setOne_hour(data){
+    const index = this.activeLocationId;
+    if (data && data != undefined && index != undefined){
+      this.one_hour[index] = data;
+    }
+  }
 
 
   setLocationDesc(data){
@@ -97,7 +121,6 @@ export class LocationService {
     let asd;
     if (data && data !== undefined && this.activeLocationId !== undefined ) {
       asd = data;
-      console.log('in service loc pricing ', data);
       this.locationPricings[index] = asd;
     }
   }
@@ -220,6 +243,14 @@ export class LocationService {
       asd = data[0];
       this.contactInfoOfFooter[index] = asd;
       //this.infInFooter = true;
+    }
+  }
+
+  setContactInfAll(data: any, index: string) {
+    let asd;
+    if (data !== undefined) {
+      asd = data[0];
+      this.contactInfoOfFooter[index] = asd;
     }
   }
 
@@ -402,9 +433,6 @@ export class LocationService {
   }
 
   getLocationBirthdayParties( urlApi: string) {
-    if(!this.getIdByName(this.activeLocationId)){
-      return;
-    }
     const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + urlApi;
     return this.http.get(url);
   }
@@ -417,6 +445,45 @@ export class LocationService {
   sendPostComing(data) {
     const url = this.domain + '/location/subscribe';
     return this.http.post(url, data);
+  }
+
+  getOneHour() {
+    if (this.locationPricings[this.activeLocationId]) {
+      let arr = this.locationPricings[this.activeLocationId];
+      for (let i = 0; i < arr.length; i++) {
+        let iter = arr[i];
+        if (iter.category == 'trampoline' && iter.name == 'general' && iter.label == 'one_hour') {
+          return iter.price;
+        }
+      }
+    }
+    return '';
+  }
+
+  getTwoHours() {
+    if (this.locationPricings[this.activeLocationId]) {
+      let arr = this.locationPricings[this.activeLocationId];
+      for (let i = 0; i < arr.length; i++) {
+        let iter = arr[i];
+        if (iter.category == 'trampoline' && iter.name == 'general' && iter.label == 'two_hour') {
+          return iter.price;
+        }
+      }
+    }
+    return '';
+  }
+
+  get6Hours() {
+    if (this.locationPricings[this.activeLocationId]) {
+      let arr = this.locationPricings[this.activeLocationId];
+      for (let i = 0; i < arr.length; i++) {
+        let iter = arr[i];
+        if (iter.category == 'trampoline' && iter.name == 'general' && iter.label == 'six_and_under') {
+          return iter.price;
+        }
+      }
+    }
+    return '';
   }
 
 }

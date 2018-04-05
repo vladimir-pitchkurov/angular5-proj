@@ -9,7 +9,7 @@ import {LocationService} from '../../../services/location.service';
   templateUrl: './pass.component.html',
   styleUrls: ['./pass.component.css']
 })
-export class PassComponent implements OnInit, DoCheck {
+export class PassComponent implements OnInit {
 
   activeLocationId: any;
   locationInf: any;
@@ -30,36 +30,10 @@ export class PassComponent implements OnInit, DoCheck {
     this.activatedRoute.params.forEach((params: Params) => {
 
       let id = params["id"];
-
       this.activeLocationId = id;
-
       this.service.activeLocationId = this.activeLocationId;
-
-      this.service
-        .getLocationById(id)
-        .then(result => this.locationInf = result);
-
-      this.service
-        .getLocationCustomPricingById(this.activeLocationId, '/pricing/trampoline/general/one_hour')
-        .then(result => this.one_hour = result);
-
-      this.service
-        .getLocationCustomPricingById(this.activeLocationId, '/pricing/trampoline/general/two_hour')
-        .then(result => this.two_hours = result);
-
-      this.service
-        .getLocationCustomPricingById(this.activeLocationId, '/pricing/trampoline/general/six_and_under')
-        .then(result => this.a6_under = result);
 
     });
-  }
-
-  ngDoCheck() {
-
-    if ( this.activeLocationId !== this.service.activeLocationId ) {
-      this.service.activeLocationId = this.activeLocationId;
-    }
-
   }
 
 }
