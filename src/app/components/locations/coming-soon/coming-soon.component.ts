@@ -16,6 +16,10 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     activeLocationId: any;
     locationInf: any;
     validation_msg: any;
+    amenities = [];
+    isTrampoline = true;
+    isEscape = true;
+    isVr = true;
 
     constructor(private route: Router
       , private activatedRoute: ActivatedRoute
@@ -25,9 +29,9 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('coming soon');
+        this.titleService.setTitle('Coming Soon!Adrenaline Entertainment Centers');
         this.meta.addTag({ name: 'meta-keywords', content: 'coming keywords' });
-        this.meta.addTag({ name: 'meta-description', content: 'coming description' });
+        this.meta.addTag({ name: 'meta-description', content: 'Adrenaline Entertainment Centers is coming soon! Our trampoline parks, escape rooms, and virtual reality rooms are sure to entertain the entire family!' });
 
       this.activatedRoute.params.forEach((params: Params) => {
         let id = params["id"]; this.activeLocationId = id;
@@ -47,16 +51,43 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     if (this.activeLocationId !== this.service.activeLocationId){
       this.service.activeLocationId = this.activeLocationId;
     }
+    if (this.service.activeLocationId) {
+      if (this.service.contactInfoOfFooter) {
+        if (this.service.contactInfoOfFooter[this.service.activeLocationId] ) {
+          this.amenities = JSON.parse(this.service.contactInfoOfFooter[this.service.activeLocationId].amenities);
+          this.getActiveAmenities();
+        }
+      }
+    }
   }
 
   sendPostComing(id, userPhone) {
     let data = new FormData();
     data.append('location_id', id);
-    data.append('user_phone', userPhone);
+    data.append('phone', userPhone);
     this.service
       .sendPostComing(data)
       .then(result => {
         this.validation_msg = result;
       });
+  }
+
+  getActiveAmenities(): void {
+    this.isTrampoline = false;
+    this.isEscape = false;
+    this.isVr = false;
+    
+    for (let i = 0; i < this.amenities.length; i++) {
+      if (+this.amenities[i] == '1') {
+        this.isTrampoline = true;
+      }
+      if (+this.amenities[i] == '2') {
+        this.isEscape = true;
+      }
+      if (+this.amenities[i] == '3') {
+        this.isVr = true;
+        console.log(this.isVr);
+      }
+    }
   }
 }

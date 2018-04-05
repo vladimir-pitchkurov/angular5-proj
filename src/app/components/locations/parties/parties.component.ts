@@ -41,6 +41,9 @@ export class PartiesComponent implements OnInit, DoCheck {
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
 
+      console.log(this.service
+        .getLocationById(id));
+
       this.service
         .getLocationById(id)
         .then(result => this.locationInf = result);

@@ -119,7 +119,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       this.isComingSoon = this.service.isComingSoon();
       if(this.isComingSoon ){
          this.isComingSoonChecked = true;
-         let url = this.activeLocationId + '/about/coming-soon';
+         let url = this.activeLocationId + '/coming-soon';
          this.router.navigate([url])
       }
     }

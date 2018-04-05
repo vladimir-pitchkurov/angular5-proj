@@ -6,7 +6,7 @@
       <div class="desc_slider">
         <h3>Come visit us at</h3>
         <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <a class="green_up btn mt-30 theme_a_btn" >Join us</a>
+        <a class="green_up btn mt-30 theme_a_btn" routerLink="../../{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book a Party</a>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 <section *ngIf="activeLocationId" class="homepage-locations-blue homepage-locations-dark2 pv-40">
   <div class="container">
     <div class="row justify-content-between">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <h2 class="green_up">Open Hours</h2>
         <ul  class="list-unstyled open_hours text-uppercase">
           <div *ngFor="let hour of this.service.locationHours[this.activeLocationId]" class="wrap-li" >
@@ -25,10 +25,9 @@
         </ul>
       </div>
       <div class="col-md-8">
-        <h2 class="green_up">Lorem Ipsum</h2>
+        <h2 class="green_up">Planning for a group?</h2>
         <p>
-          Suspendisse sagittis nunc id risus facilisis, vel venenatis ex tincidunt. Morbi vel laoreet nisl. Duis pulvinar leo quis mauris cursus mollis.
-          Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
+          With epic fun and games and event hosting, it doesn't matter if you're hosting a birthday party or a corporate teambuilding event-we've got you covered!
         </p>
         <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center">Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3>
         <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" >{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>
@@ -42,14 +41,7 @@
       <div class="col-md-6">
         <h1 class="green_up">Play & complete</h1>
         <p>
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form, by injected humour,
-          or
-        </p>
-        <p>
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form, by injected humour,
-          or randomised words which don't look even slightly believable.
+          Put your jumping skills to the test with our unique spins on classic games and sports like dodgeball, basketball, parkour, and gymnastics!
         </p>
       </div>
       <div class="col-md-6">
@@ -181,7 +173,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="../../{{activeLocationId}}/trampoline-park/birthday-parties/" routerLinkActive="active" >Book your party</a>
+        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="../../{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active" >Buy a pass</a>
         <p class="text-muted fs_12">Jumpers are required to purchase $2 socks for sanitation and safety purposes. You are also allowed to reuse your socks.</p>
       </div>
     </div>

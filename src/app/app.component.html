@@ -1,7 +1,8 @@
 <header>
   <div class="container">
     <div class="logo">
-      <img src="/assets/img/logo.png">
+      <a *ngIf="activeLocationId" routerLink="/{{activeLocationId}}/"><img src="/assets/img/logo.png"></a>
+      <a *ngIf="!activeLocationId" routerLink="/"><img src="/assets/img/logo.png"></a>
     </div>
     <div class="menu ">
       <div *ngIf="!activeLocationId">
