@@ -20,7 +20,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     isTrampoline = true;
     isEscape = true;
     isVr = true;
-    comingSoonFeatures: any[] = [];
+    comingSoonFeatures: any;
     availableSlides: any[] = [];
 
     constructor(private route: Router
