@@ -47,7 +47,7 @@
         </div>
       </div>
       <div *ngIf="(!this.activeLocationId && !isComingSoon) || (!isComingSoon && this.activeLocationId && isEscape)" (click)="initMenu()">
-        <a class="escape">Escape rooms</a>
+        <a routerLink="escape-room" routerLinkActive="active" class="escape">Escape rooms</a>
       </div>
       <div *ngIf="(!this.activeLocationId && !isComingSoon) || (this.activeLocationId && isVr && !isComingSoon)" (click)="toggleState(); initMenu()"><a class="escape">Virtual Reality</a></div>
       <div *ngIf="activeLocationId && !isComingSoon" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
