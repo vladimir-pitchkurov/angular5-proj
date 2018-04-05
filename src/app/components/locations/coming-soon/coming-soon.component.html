@@ -1,4 +1,8 @@
-<app-main-slider [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">
+<app-main-slider
+  [availableSlides]="availableSlides"
+  *ngIf="availableSlides.length"
+  [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'"
+  class="mob_slider">
 
     <div trampolinePane class="block-one">
 

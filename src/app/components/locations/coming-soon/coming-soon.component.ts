@@ -21,6 +21,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     isEscape = true;
     isVr = true;
     comingSoonFeatures: any[] = [];
+    availableSlides: any[] = [];
 
     constructor(private route: Router
       , private activatedRoute: ActivatedRoute
@@ -99,8 +100,10 @@ export class ComingSoonComponent implements OnInit, DoCheck {
   {
     this.service.loadFeatures(id)
       .then(data => {
-        console.log('loadFeatures', data);
+
         this.comingSoonFeatures = data;
+
+        this.availableSlides = this.comingSoonFeatures.map(el => el.category);
       })
   }
 }

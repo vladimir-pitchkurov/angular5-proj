@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { ChangeDetectionStrategy, Input } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 type PaneType = 'trampoline' | 'escape' | 'virtual';
@@ -15,11 +15,30 @@ type PaneType = 'trampoline' | 'escape' | 'virtual';
       transition('* => *', animate(300))
     ])]
 })
-export class MainSliderComponent implements OnInit {
+export class MainSliderComponent implements OnInit, AfterViewInit {
   @Input () activePane: PaneType = 'trampoline';
-  constructor() { }
+
+  _availableSlides: any;
+
+  @Input('availableSlides') set availableSlides (el) {
+    this._availableSlides = el;
+    console.log('this._availableSlides',this._availableSlides)
+  };
+
+  get availableSlides() {
+    return this._availableSlides;
+  }
+
+  constructor() {
+  }
 
   ngOnInit() {
+
+  }
+
+
+  ngAfterViewInit() {
+
   }
 
 }
