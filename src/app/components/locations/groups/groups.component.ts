@@ -41,7 +41,7 @@ export class GroupsComponent implements OnInit {
   sendPostComing(id, userPhone) {
     let data = new FormData();
     data.append('location_id', id);
-    data.append('user_phone', userPhone);
+    data.append('phone', userPhone);
     this.service
       .sendPostComing(data)
       .then(result => {

@@ -5,9 +5,9 @@
 
     <div class="container">
       <div class="desc_slider">
-        <h3>come visit us at</h3>
-        <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <button type="button">I’m ready</button>
+        <h3>come visit our</h3>
+        <h1>Trampoline Park</h1>
+        <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
       </div>
     </div>
   </div>
@@ -15,9 +15,9 @@
   <div class="block-two" escapePane>
     <div class="container">
       <div class="desc_slider gold">
-        <h3>come visit us at</h3>
-        <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <button type="button">I’m ready</button>
+        <h3>come visit our</h3>
+        <h1>Escape Rooms</h1>
+        <button type="button">Coming Soon</button>
       </div>
     </div>
 
@@ -25,9 +25,9 @@
   <div class="block-three" virtualPane>
     <div class="container">
       <div class="desc_slider gold">
-        <h3>come visit us at</h3>
-        <h1>{{this.service.getActiveLocationTitle()}}</h1>
-        <button type="button">I’m ready</button>
+        <h3>come visit our</h3>
+        <h1>VR Rooms</h1>
+        <button type="button">I'm ready</button>
       </div>
     </div>
 
@@ -75,10 +75,9 @@
         </ul>
       </div>
       <div class="col-md-8">
-        <h2 class="green_up text-center">Lorem Ipsum</h2>
+        <h2 class="green_up text-center">Planning for a group?</h2>
         <p>
-          Suspendisse sagittis nunc id risus facilisis, vel venenatis ex tincidunt. Morbi vel laoreet nisl. Duis pulvinar leo quis mauris cursus mollis.
-          Praesent eget quam vitae enim faucibus rutrum sed ultrices elit. Aenean eu est mollis, commodo felis sed, porta urna. Quisque in posuere enim.
+          With epic fun and games and event hosting, it doesn't matter if you're hosting a birthday party or a corporate teambuilding event-we've got you covered!
         </p>
         <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center">Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3>
         <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" >{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>

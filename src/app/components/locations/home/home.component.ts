@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       }
     }, 3000);
 
-    this.titleService.setTitle('Home title');
+    this.titleService.setTitle('Adrenaline Entertainment Centers');
     this.meta.addTag({name: 'meta-description', content: 'description'});
 
     this.activatedRoute.params.forEach((params: Params) => {

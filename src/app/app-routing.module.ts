@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'blog/:post', component: BlogPostComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
   { path: ':id', component: HomeComponent },
-  { path: ':id/about/coming-soon', component: ComingSoonComponent },
+  { path: ':id/coming-soon', component: ComingSoonComponent },
   { path: ':id/about/join-our-team', component: JoinourteamComponent },
   { path: ':id/about/gallery', component: GalleryComponent },
   { path: ':id/about/about', component: AboutComponent },
