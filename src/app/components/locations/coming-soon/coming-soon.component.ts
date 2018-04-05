@@ -76,15 +76,15 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     this.isTrampoline = false;
     this.isEscape = false;
     this.isVr = false;
-    
+
     for (let i = 0; i < this.amenities.length; i++) {
-      if (+this.amenities[i] == '1') {
+      if (+this.amenities[i] == 1) {
         this.isTrampoline = true;
       }
-      if (+this.amenities[i] == '2') {
+      if (+this.amenities[i] == 2) {
         this.isEscape = true;
       }
-      if (+this.amenities[i] == '3') {
+      if (+this.amenities[i] == 3) {
         this.isVr = true;
         console.log(this.isVr);
       }

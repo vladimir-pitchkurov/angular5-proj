@@ -457,8 +457,7 @@ export class InitJsService {
         var lat = document.getElementById('startLat').innerHTML,
           lon = document.getElementById('startLon').innerHTML;
 
-        // if (!lat) {
-        if (true) {
+        if (!lat) {
           getLoc();
         } else {
           useLoc();
