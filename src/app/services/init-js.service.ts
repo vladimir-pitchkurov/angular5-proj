@@ -443,9 +443,8 @@ export class InitJsService {
 
         for (var i = 0; i < locsNew.length; i++) {
           locsNew[i].onclick = function (ev) {
-            console.log(ev.target.getAttribute('link'));
             askContain.getElementsByTagName('h3')[0].innerHTML = 'Go Adrenaline ' + ev.target.innerHTML + '?';
-            askContain.getElementsByTagName('a')[0].setAttribute('href', ev.target.getAttribute('link'));
+            askContain.getElementsByTagName('a')[0].setAttribute('href', '/'+document.getElementById('startSlug').innerHTML);
             askContain.classList.add('slideDown');
           };
         }
@@ -524,7 +523,8 @@ export class InitJsService {
             document.getElementById('startLon').innerHTML = position.coords.longitude;
 
             // Сюда вставить запросы к гуглу, что бы определить ближайший город.
-            document.getElementById('startCity').innerHTML = findCity(lat, lon);
+            document.getElementById('startCity').innerHTML = findCity(lat, lon).city;
+            document.getElementById('startSlug').innerHTML = findCity(lat, lon).slug;
             useLoc();
           };
 
@@ -572,11 +572,13 @@ export class InitJsService {
         }
 
         function findCity(lat, lon) {
-          var arr = [{city: 'Lake Worth', lat: 26.618817, lon: -80.166555},
-            {city: 'York', lat: 39.966142, lon: -76.766978},
-            {city: 'Columbia', lat: 33.966766, lon: -80.946087},
-            {city: 'Lexington', lat: 38.024807, lon: -84.421124},
-            {city: 'Cincinnati', lat: 39.293702, lon: -84.311807}];
+          var arr = [
+            {city: 'Lake Worth', lat: 26.618817, lon: -80.166555, slug: 'lake-worth'},
+            {city: 'York', lat: 39.966142, lon: -76.766978, slug: 'york'},
+            {city: 'Columbia', lat: 33.966766, lon: -80.946087, slug: 'columbia'},
+            {city: 'Lexington', lat: 38.024807, lon: -84.421124, slug: 'lexington'},
+            {city: 'Cincinnati', lat: 39.293702, lon: -84.311807, slug: 'cincinnati'}
+          ];
           var min = distance(arr[0].lat, arr[0].lon, lat, lon, 'M');
           var q = 0;
           for (var i = 1; i < arr.length; i++) {
@@ -587,7 +589,7 @@ export class InitJsService {
               q = i;
             }
           }
-          return arr[q].city;
+          return arr[q];
         }
 
         function distance(lat1, lon1, lat2, lon2, unit) {
