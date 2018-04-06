@@ -32,6 +32,7 @@ import { FooterComponent } from './footer/footer.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { Slider2Component } from './components/slider2/slider2.component';
 import { TrampolineHomeComponent } from './components/locations/trampoline-home/trampoline-home.component';
+import { AllLocationsComponent } from './components/partials/all-locations/all-locations.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { TrampolineHomeComponent } from './components/locations/trampoline-home/
     WelcomeComponent,
     Slider2Component,
     TrampolineHomeComponent,
+    AllLocationsComponent,
   ],
   imports: [
     BrowserModule,
