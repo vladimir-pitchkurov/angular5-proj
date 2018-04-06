@@ -444,7 +444,7 @@ export class InitJsService {
         for (var i = 0; i < locsNew.length; i++) {
           locsNew[i].onclick = function (ev) {
             askContain.getElementsByTagName('h3')[0].innerHTML = 'Go Adrenaline ' + ev.target.innerHTML + '?';
-            askContain.getElementsByTagName('a')[0].setAttribute('href', '/'+document.getElementById('startSlug').innerHTML);
+            askContain.getElementsByTagName('a')[0].setAttribute('href', ev.target.getAttribute('link'));
             askContain.classList.add('slideDown');
           };
         }
