@@ -22,7 +22,7 @@ export class EscapeRoomComponent implements OnInit, AfterViewInit {
   ngAfterViewInit()
   {
     InitJsService.initCarousel();
-    // InitJsService.initLoc();
+    InitJsService.initLoc();
     InitJsService.initRules();
   }
 

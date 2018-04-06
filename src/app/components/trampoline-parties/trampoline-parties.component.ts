@@ -22,6 +22,7 @@ export class TrampolinePartiesComponent implements OnInit, AfterViewInit {
   {
     InitJsService.initBlockOne();
     InitJsService.initRules();
+    InitJsService.initLoc();
   }
 
 }
