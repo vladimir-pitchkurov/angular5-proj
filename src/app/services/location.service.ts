@@ -530,4 +530,11 @@ export class LocationService {
     return '';
   }
 
+
+  loadGallery (id: any)
+  {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/gallery';
+    return this.http.get(url);
+  }
+
 }

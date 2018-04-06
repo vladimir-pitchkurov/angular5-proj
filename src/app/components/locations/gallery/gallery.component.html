@@ -29,9 +29,10 @@
 <section id="gallery-block">
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 col-md-6">
+
+      <div *ngFor="let item of galleryItems" class="col-lg-4 col-md-6">
         <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-1.png" alt="image">
+          <img class="card-img-top" [src]="item.img_url" alt="image">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-12">
@@ -43,118 +44,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-2.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-3.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-4.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-5.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-6.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-7.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-8.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class = "card bg-transparent">
-          <img class="card-img-top" src="../../../../assets/img/locations-gallery/locs-gallery-9.png" alt="image">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class = "card-text">
-                  Ipsum dicta consequuntur has ad, ea eum congue urbanitas. Melius meliore dissentias.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
