@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -9,7 +9,7 @@ import {LocationService} from '../../../services/location.service';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, OnDestroy {
 
   activeLocationId: any;
   locationInf: any;
@@ -30,9 +30,9 @@ export class GalleryComponent implements OnInit {
       let id = params["id"];
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
-    });
 
-    this.listenToAllLocationsLoaded();
+      this.listenToAllLocationsLoaded();
+    });
   }
 
 
@@ -54,6 +54,12 @@ export class GalleryComponent implements OnInit {
       .then(data =>{
         this.galleryItems = data;
       })
+  }
+
+
+  ngOnDestroy()
+  {
+    this.allLocationListener.unsubscribe();
   }
 
 }

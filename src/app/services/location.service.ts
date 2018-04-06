@@ -537,4 +537,10 @@ export class LocationService {
     return this.http.get(url);
   }
 
+  loadActivityItems (id: any)
+  {
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/activities';
+    return this.http.get(url);
+  }
+
 }
