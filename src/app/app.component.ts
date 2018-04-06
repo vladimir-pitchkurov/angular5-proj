@@ -2,7 +2,7 @@ import {AfterViewInit, Component, DoCheck, OnDestroy, OnInit} from '@angular/cor
 import {InitJsService} from './services/init-js.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
-import {Title} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 declare var window: any;
 
@@ -27,13 +27,20 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   titleListener: any;
   locationTitles: any = {};
 
+  allLocationListener: any;
+  locationDescriptions: any = {};
+
+  pageDescriptions: any;
+
   constructor( private router: Router
              , private titleService: Title
+             , private meta: Meta
              , private service: LocationService ) { }
 
   ngOnInit() {
 
     this.listenToTitles();
+    this.listenToAllLocationsLoaded();
 
     this.activeLocationId = this.service.getActiveLocationId();
 
@@ -53,12 +60,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
           });
       }
 
+      this.service.getAllLocations()
+        .then((data: any[]) => {
+          this.locations = data;
+          this.service.LIST_OF_LOCATIONS = this.locations;
+        });
+
       if(this.service.LIST_OF_LOCATIONS.length == 0){
-        this.service.getAllLocations()
-          .then((data: any[]) => {
-            this.locations = data;
-            this.service.LIST_OF_LOCATIONS = this.locations;
-          });
+
       }else {
         this.locations = this.service.LIST_OF_LOCATIONS;
       }
@@ -73,7 +82,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
   ngOnDestroy()
   {
-    this.titleListener.unsibscribe();
+    this.titleListener.unsubscribe();
+    this.allLocationListener.unsubscribe();
   }
 
   listenToTitles ()
@@ -83,6 +93,54 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       this.setTitle();
     });
   }
+
+
+  listenToAllLocationsLoaded()
+  {
+    this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
+      this.locations = data;
+      this.loadPageDescriptions()
+    })
+  }
+
+
+  loadPageDescriptions()
+  {
+
+    if (!this.activeLocationId) {
+      return;
+    }
+
+    this.service.loadPageDescriptions(this.activeLocationId)
+      .then(data => {
+        this.pageDescriptions = data;
+        this.setPageMetaDescription();
+      })
+  }
+
+
+  setPageMetaDescription ()
+  {
+    if (!this.activeLocationId) {
+      return;
+    }
+
+    let arrRoute = this.router.url.split('/');
+    let lastRouteName = arrRoute[arrRoute.length -1];
+
+    let descriptionProp = this.mapRouteToProps[lastRouteName];
+
+    let description = this.pageDescriptions[descriptionProp] ? this.pageDescriptions[descriptionProp] : 'Adrenaline';
+
+    let allLocationHomePageSlugs = this.service.LIST_OF_LOCATIONS.map(loc => loc.slug);
+
+    description = allLocationHomePageSlugs.indexOf(lastRouteName) !== -1 ? this.pageDescriptions['HomeComponent'] : description;
+
+    setTimeout(()=>{
+      this.meta.updateTag({ name: 'meta-description', content: description });
+    },0);
+  }
+
 
   setTitle()
   {

@@ -103,6 +103,9 @@ export class LocationService {
   setMapOfLoc(data) {
     if(data) {
       this.mapOfLoc = data;
+
+      console.log('LIST_OF_LOCATIONS',data);
+
       this.LIST_OF_LOCATIONS = data;
     }
   }
@@ -296,6 +299,8 @@ export class LocationService {
     this.activeLocationId = value;
   }
 
+  allLocationListEmitter: EventEmitter<any> = new EventEmitter();
+
   getAllLocations() {
 
     if(localStorage.hasOwnProperty('all-locations')) {
@@ -305,6 +310,8 @@ export class LocationService {
     const url: string = this.domain + '/main/locations';
     return this.http.get(url)
       .then(allLocations => {
+        this.LIST_OF_LOCATIONS = allLocations;
+        this.allLocationListEmitter.emit(allLocations);
         localStorage.setItem('all-locations', JSON.stringify(allLocations));
         return allLocations;
       })
@@ -398,6 +405,20 @@ export class LocationService {
       return;
     }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/titles';
+    return this.http.get(url)
+      .then((data) => {
+        this.locationTitlesEmitter.emit(data);
+        return data;
+      })
+  }
+
+
+  loadPageDescriptions(id: any)
+  {
+    if(!this.getIdByName(id)){
+      return;
+    }
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/descriptions';
     return this.http.get(url)
       .then((data) => {
         this.locationTitlesEmitter.emit(data);
