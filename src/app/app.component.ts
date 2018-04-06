@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, DoCheck, OnInit} from '@angular/core';
+import {AfterViewInit, Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import {InitJsService} from './services/init-js.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {LocationService} from './services/location.service';
+import {Title} from '@angular/platform-browser';
 
 declare var window: any;
 
@@ -10,7 +11,7 @@ declare var window: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit, DoCheck {
+export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   title = 'app';
   public locations = [];
   activeLocationId: any;
@@ -23,10 +24,16 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
   isComingSoonChecked = false;
   isComingSoon = false;
 
+  titleListener: any;
+  locationTitles: any = {};
+
   constructor( private router: Router
+             , private titleService: Title
              , private service: LocationService ) { }
 
   ngOnInit() {
+
+    this.listenToTitles();
 
     this.activeLocationId = this.service.getActiveLocationId();
 
@@ -36,6 +43,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
       }
       window.scrollTo(0, 0);
       this.defineIsFooterDark();
+
+      this.setTitle();
 
       if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
         this.service.getLocationById(this.activeLocationId)
@@ -60,6 +69,59 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck {
     });
 
   }
+
+
+  ngOnDestroy()
+  {
+    this.titleListener.unsibscribe();
+  }
+
+  listenToTitles ()
+  {
+    this.titleListener = this.service.locationTitlesEmitter.subscribe(data => {
+      this.locationTitles = data;
+      this.setTitle();
+    });
+  }
+
+  setTitle()
+  {
+    if (!this.activeLocationId) {
+      return;
+    }
+
+    let arrRoute = this.router.url.split('/');
+    let lastRouteName = arrRoute[arrRoute.length -1];
+
+    let titleProp = this.mapRouteToProps[lastRouteName];
+
+    let title = this.locationTitles[titleProp] ? this.locationTitles[titleProp] : 'Adrenaline';
+
+    let allLocationHomePageSlugs = this.service.LIST_OF_LOCATIONS.map(loc => loc.slug);
+
+    title = allLocationHomePageSlugs.indexOf(lastRouteName) !== -1 ? this.locationTitles['HomeComponent'] : title;
+
+    setTimeout(()=>{
+      this.titleService.setTitle(title);
+    },0);
+  }
+
+  mapRouteToProps = {
+    'about': 'AboutComponent',
+    'activities': 'ActivitiesComponent',
+    'coming-soon': 'ComingSoonComponent',
+    'contact': 'ContactComponent',
+    'gallery': 'GalleryComponent',
+    'groups': 'GroupsComponent',
+    'join-our-team': 'JoinourteamComponent',
+    'trampoline-parties': 'PartiesComponent',
+    'birthday-parties': 'PartiesComponent',
+    'buy-a-pass': 'PassComponent',
+    'rules': 'RulesComponent',
+    'trampoline-park': 'TrampolinesHomepageComponent',
+    'waiver': 'WaiverComponent',
+    'escape-room': 'EscapeRoomComponent'
+  };
 
   nullLocation() {
     this.activeLocationId = undefined;

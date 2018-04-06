@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { BaseHttpService } from './base-http.service';
 
 
@@ -391,12 +391,18 @@ export class LocationService {
   }
 
 
+  locationTitlesEmitter: EventEmitter<any> = new EventEmitter();
+
   getLocationTitles(id: any) {
     if(!this.getIdByName(id)){
       return;
     }
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/titles';
-    return this.http.get(url);
+    return this.http.get(url)
+      .then((data) => {
+        this.locationTitlesEmitter.emit(data);
+        return data;
+      })
   }
 
 
