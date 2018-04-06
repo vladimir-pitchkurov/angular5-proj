@@ -8,9 +8,9 @@
 }
 
 @media (max-height: 820px) {
-    .block-one {
-        height: 900px;
-    }
+    /*.block-one {*/
+        /*height: 900px;*/
+    /*}*/
 
     .right-rect {
         top: 300px;

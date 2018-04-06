@@ -90,8 +90,6 @@ export class ComingSoonComponent implements OnInit, DoCheck {
 
         this.currentCity = JSON.parse(localStorage.getItem('all-locations')).find(city => city.slug == id);
 
-        console.log('currentCity', this.currentCity);
-
         this.runSlider();
       })
   }
@@ -109,7 +107,7 @@ export class ComingSoonComponent implements OnInit, DoCheck {
         slides[currentSlide].className = 'slide showing';
       };
 
-      let slideInterval = setInterval(nextSlide,2000);
+      let slideInterval = setInterval(nextSlide,3000);
     }, 0);
   }
 
