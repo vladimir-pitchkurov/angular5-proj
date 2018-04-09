@@ -30,7 +30,7 @@ export class ComingSoonComponent implements OnInit, DoCheck, OnDestroy {
       , private activatedRoute: ActivatedRoute
       , private meta: Meta
       , private titleService: Title
-      , private service: LocationService) {
+      , public service: LocationService) {
     }
 
     ngOnInit() {
