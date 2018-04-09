@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
 import {LocationService} from '../../../services/location.service';
@@ -9,7 +9,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
   templateUrl: './parties.component.html',
   styleUrls: ['./parties.component.css']
 })
-export class PartiesComponent implements OnInit, DoCheck {
+export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
 
   arrOfPricingNames = [ 'weekday', 'weekend', 'weekday_room', 'weekend_room' ];
   arrWeekdayLabels = [ 'ten_weekday', 'twenty_weekday', 'ten_weekday_food', 'twenty_weekday_food', 'ten_weekday_private', 'twenty_weekday_private', 'ten_weekday_food_private', 'twenty_weekday_food_private' ];
@@ -22,6 +22,7 @@ export class PartiesComponent implements OnInit, DoCheck {
   bool20Jumpers = false;
   boolWithFood = false;
   urlOfBirth: any;
+  allLocationListener: any;
 
 
   constructor(  private route: Router
@@ -41,12 +42,7 @@ export class PartiesComponent implements OnInit, DoCheck {
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
 
-      console.log(this.service
-        .getLocationById(id));
 
-      this.service
-        .getLocationById(id)
-        .then(result => this.locationInf = result);
 
       this.service
         .getLocationBirthdayParties('/birthday/variables')
@@ -66,6 +62,14 @@ export class PartiesComponent implements OnInit, DoCheck {
     });
   }
 
+  listenToAllLocationsLoaded(id)
+  {
+    this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
+      this.service
+        .getLocationById(id)
+        .then(result => this.locationInf = result);
+    })
+  }
 
   ngDoCheck() {
 
@@ -246,4 +250,8 @@ export class PartiesComponent implements OnInit, DoCheck {
     this.boolWithFood = boo;
   }
 
+  ngOnDestroy ()
+  {
+    this.allLocationListener.unsubscribe();
+  }
 }
