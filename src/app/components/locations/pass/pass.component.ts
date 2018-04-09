@@ -16,6 +16,7 @@ export class PassComponent implements OnInit {
   one_hour: any;
   two_hours: any;
   a6_under: any;
+  locationHours: any;
 
   constructor(private route: Router
     , private activatedRoute: ActivatedRoute
@@ -29,9 +30,29 @@ export class PassComponent implements OnInit {
 
     this.activatedRoute.params.forEach((params: Params) => {
 
-      let id = params["id"];
+      let id = params['id'];
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
+
+      if (this.service.getIdByName(this.activeLocationId)) {
+
+        if (!this.service.locationHours[this.activeLocationId]) {
+          this.service
+            .getLocationHours(id)
+            .then(result => {
+              this.locationHours = result;
+              this.service.setLocationHours(this.locationHours);
+            }).catch();
+        }
+
+        if (!this.service.contactInfoOfFooter[this.activeLocationId]) {
+          this.service
+            .getLocationById(id)
+            .then(result => {
+              this.locationInf = result;
+            }).catch();
+        }
+      }
 
     });
   }
