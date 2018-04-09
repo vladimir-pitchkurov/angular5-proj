@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
+import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
 import {ActivatedRoute, Params, Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {LocationService} from "../../../services/location.service";
     templateUrl: './coming-soon.component.html',
     styleUrls: ['./coming-soon.component.css']
 })
-export class ComingSoonComponent implements OnInit, DoCheck {
+export class ComingSoonComponent implements OnInit, DoCheck, OnDestroy {
 
     isLeftVisible = 0;
     boolChanged = false;
@@ -23,6 +23,8 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     comingSoonFeatures: any;
     availableSlides: any[] = [];
     currentCity: any = {};
+    allLocationListener: any;
+
 
     constructor(private route: Router
       , private activatedRoute: ActivatedRoute
@@ -33,14 +35,20 @@ export class ComingSoonComponent implements OnInit, DoCheck {
 
     ngOnInit() {
         this.titleService.setTitle('Coming Soon! Adrenaline Entertainment Centers');
-        this.meta.addTag({ name: 'meta-keywords', content: 'coming keywords' });
-        this.meta.addTag({ name: 'meta-description', content: 'Adrenaline Entertainment Centers is coming soon! Our trampoline parks, escape rooms, and virtual reality rooms are sure to entertain the entire family!' });
 
       this.activatedRoute.params.forEach((params: Params) => {
         let id = params["id"]; this.activeLocationId = id;
         this.service.activeLocationId = this.activeLocationId;
 
-        this.loadFeatures(id);
+        let currLocId = id;
+
+        if(this.service.LIST_OF_LOCATIONS.length)
+        {
+          this.loadFeatures(currLocId);
+        }
+        else {
+          this.listenToAllLocationsLoaded(currLocId);
+        }
       });
       setInterval(() => {
         if (!this.boolChanged) {
@@ -51,6 +59,13 @@ export class ComingSoonComponent implements OnInit, DoCheck {
         }
       }, 3000);
     }
+
+  listenToAllLocationsLoaded(currLocId)
+  {
+    this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
+      this.loadFeatures(currLocId);
+    })
+  }
 
   ngDoCheck() {
     if (this.activeLocationId !== this.service.activeLocationId){
@@ -111,4 +126,11 @@ export class ComingSoonComponent implements OnInit, DoCheck {
     }, 0);
   }
 
+
+  ngOnDestroy ()
+  {
+    if(this.allLocationListener) {
+      this.allLocationListener.unsubscribe();
+    }
+  }
 }

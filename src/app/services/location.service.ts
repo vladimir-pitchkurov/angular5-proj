@@ -304,15 +304,31 @@ export class LocationService {
   getAllLocations() {
 
     if(localStorage.hasOwnProperty('all-locations')) {
-      Promise.resolve(JSON.parse(localStorage.getItem('all-locations')));
+
+      let allLocations = Promise.resolve(JSON.parse(localStorage.getItem('all-locations')));
+
+      this.allLocationListEmitter.emit(allLocations);
+
+      this._getAllLocations(true);
+
+      return allLocations;
     }
 
+    return this._getAllLocations();
+  }
+
+  _getAllLocations(isEmitted = false)
+  {
     const url: string = this.domain + '/main/locations';
     return this.http.get(url)
       .then(allLocations => {
         this.LIST_OF_LOCATIONS = allLocations;
-        this.allLocationListEmitter.emit(allLocations);
         localStorage.setItem('all-locations', JSON.stringify(allLocations));
+
+        if (!isEmitted) {
+          this.allLocationListEmitter.emit(allLocations);
+        }
+
         return allLocations;
       })
   }
@@ -413,6 +429,8 @@ export class LocationService {
   }
 
 
+  locationDescriptionEmitter: EventEmitter<any> = new EventEmitter();
+
   loadPageDescriptions(id: any)
   {
     if(!this.getIdByName(id)){
@@ -421,7 +439,7 @@ export class LocationService {
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/descriptions';
     return this.http.get(url)
       .then((data) => {
-        this.locationTitlesEmitter.emit(data);
+        this.locationDescriptionEmitter.emit(data);
         return data;
       })
   }

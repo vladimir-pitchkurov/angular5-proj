@@ -31,6 +31,10 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   locationDescriptions: any = {};
 
   pageDescriptions: any;
+  descriptionListener:any;
+
+  isNewTitleSet: boolean = false;
+  isNewMetaDescriptionSet: boolean = false;
 
   constructor( private router: Router
              , private titleService: Title
@@ -39,8 +43,9 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
   ngOnInit() {
 
-    this.listenToTitles();
     this.listenToAllLocationsLoaded();
+    this.listenToTitles();
+    this.listenToDescription();
 
     this.activeLocationId = this.service.getActiveLocationId();
 
@@ -50,8 +55,11 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       }
       window.scrollTo(0, 0);
       this.defineIsFooterDark();
+      this.isNewTitleSet = false;
+      this.isNewMetaDescriptionSet = false;
 
       this.setTitle();
+      this.setPageMetaDescription();
 
       if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
         this.service.getLocationById(this.activeLocationId)
@@ -84,6 +92,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   {
     this.titleListener.unsubscribe();
     this.allLocationListener.unsubscribe();
+    this.descriptionListener.unsubscribe();
   }
 
   listenToTitles ()
@@ -94,12 +103,19 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
     });
   }
 
+  listenToDescription()
+  {
+    this.descriptionListener = this.service.locationDescriptionEmitter.subscribe(data => {
+      this.pageDescriptions = data;
+      this.setPageMetaDescription();
+    });
+  }
 
   listenToAllLocationsLoaded()
   {
     this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
       this.locations = data;
-      this.loadPageDescriptions()
+      this.loadPageDescriptions();
     })
   }
 
@@ -115,13 +131,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       .then(data => {
         this.pageDescriptions = data;
         this.setPageMetaDescription();
+        this.setTitle();
       })
   }
 
 
   setPageMetaDescription ()
   {
-    if (!this.activeLocationId) {
+    if (!this.activeLocationId || this.isNewMetaDescriptionSet || !this.pageDescriptions) {
       return;
     }
 
@@ -136,15 +153,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
     description = allLocationHomePageSlugs.indexOf(lastRouteName) !== -1 ? this.pageDescriptions['HomeComponent'] : description;
 
-    setTimeout(()=>{
       this.meta.updateTag({ name: 'meta-description', content: description });
-    },0);
+      this.isNewMetaDescriptionSet = true;
   }
 
 
   setTitle()
   {
-    if (!this.activeLocationId) {
+    if (!this.activeLocationId || this.isNewTitleSet || !Object.keys(this.locationTitles).length) {
       return;
     }
 
@@ -161,7 +177,8 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
 
     setTimeout(()=>{
       this.titleService.setTitle(title);
-    },0);
+      this.isNewTitleSet = true;
+    },0)
   }
 
   mapRouteToProps = {
