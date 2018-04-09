@@ -2773,6 +2773,15 @@ a.btn_pad_20 {
     font-size: 13px;
     font-weight: 400;
 }
+
+.hidden-until-hover{
+  display: none;
+}
+
+.block_trampolines_homepages:hover .block_trampolines_homepages_small .text_white_norm.hidden-until-hover {
+  display: initial;
+}
+
 .block_trampolines_homepages_small .text_green_small {
     font-size: 13px;
 }
@@ -2947,3 +2956,5 @@ a.btn_pad_20 {
 .card-img-top{
   height: 240px;
 }
+
+

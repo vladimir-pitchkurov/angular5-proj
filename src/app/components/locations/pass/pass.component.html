@@ -88,55 +88,13 @@
       <div class="col-md-12 text-center pv-40">
         <h1 class="green_up">WEEKLY DEALS & SPECIALS</h1>
       </div>
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
+      <div *ngFor="let deal of this.service.locationDeals[this.service.activeLocationId]" class="col-md-4 text-center align-self-center custom-top-pad">
         <div class="block_trampolines_homepages ">
           <div class="block_trampolines_homepages_small">
-            <h3 class="green_up pt-80">Toddler time</h3>
-            <h4 class="text_white_norm text-uppercase ">Mon - fri: 10AM - 1PM</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
-        <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
-            <h3 class="green_up pt-80">Toddler time extended</h3>
-            <h4 class="text_white_norm text-uppercase ">1 sun of each month: 10AM - 12PM</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
-        <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
-            <h3 class="green_up pt-80">Family pack</h3>
-            <h4 class="text_white_norm text-uppercase ">24/7</h4>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
-        <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
-            <h3 class="green_up pt-80">FRIDAY NIGHT FRENZY</h3>
-            <h4 class="text_white_norm text-uppercase ">6PM - 9PM, FRIDAYS</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
-        <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
-            <h3 class="green_up pt-80">Teen night</h3>
-            <h4 class="text_white_norm text-uppercase ">7PM - 10PM saturday</h4>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 text-center align-self-center custom-top-pad">
-        <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
-            <h3 class="green_up mt-20">SENSORY SUNDAY</h3>
-            <h4 class="text_white_norm">1ST SUN OF EACH MONTH: 10AM - 12PM</h4>
-            <p class="mt-20">For Just $10 We Provide A Quiet, Toned-down Jumping Experience</p>
-            <p class="text_green_small text-uppercase mt-60">No music will be played during this time</p>
+            <h3 class="green_up pt-80">{{deal.name}}</h3>
+            <h4 class="text_white_norm text-uppercase ">{{deal.values.days}}: {{this.service.locationDeals[this.service.activeLocationId][0].values.times}}</h4>
+            <p class="text_white_norm hidden-until-hover" >{{deal.values.description}}</p>
+            <p class="text_white_norm hidden-until-hover" >Toddler price: {{deal.values.toddler_price}}<br>Parent price: {{deal.values.parent_price}}<br>Ages: {{deal.values.ages}}</p>
           </div>
         </div>
       </div>
