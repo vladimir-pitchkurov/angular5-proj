@@ -252,6 +252,8 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnDestroy ()
   {
-    this.allLocationListener.unsubscribe();
+    if(this.allLocationListener) {
+      this.allLocationListener.unsubscribe();
+    }
   }
 }
