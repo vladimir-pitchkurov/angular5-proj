@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'escape-room', component: EscapeRoomComponent },
   { path: ':id', component: HomeComponent },
   { path: ':id/coming-soon', component: ComingSoonComponent },
-  { path: ':id/about', component: AboutComponent },
+  { path: ':id/about/why-us', component: AboutComponent },
   { path: ':id/about/join-our-team', component: JoinourteamComponent },
   { path: ':id/about/gallery', component: GalleryComponent },
   { path: ':id/about/contact', component: ContactComponent },
