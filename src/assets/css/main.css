@@ -1792,7 +1792,7 @@ header .menu .menu-tramp.active{
 .theme_a_btn {
     border: 2px solid rgb(146, 221, 2);
     font-family: "Open Sans";
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 30px;
     text-transform: uppercase;
@@ -2893,6 +2893,8 @@ a.btn_pad_20 {
     right: 0px;
     /*position: absolute;*/
     z-index: 50;
+    max-height:747px;
+    width:auto;
     /*height: 113%;*/ /*698px;*/
 }
 
