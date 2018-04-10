@@ -12,6 +12,7 @@ import {LocationService} from '../../../services/location.service';
 export class GroupsComponent implements OnInit {
 
   activeLocationId: any;
+  locationInf: any[];
   pricing: any;
   validation_msg: any;
   needCallToReverse = false;
@@ -32,13 +33,20 @@ export class GroupsComponent implements OnInit {
       this.service.activeLocationId = this.activeLocationId;
 
     });
+
+    if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
+      this.service.getLocationById(this.activeLocationId)
+        .then((data: any[]) => {
+          this.locationInf = data;
+        });
+    }
   }
 
-  reverseCall(){
+  /*reverseCall(){
     this.needCallToReverse = !this.needCallToReverse;
-  }
+  }*/
 
-  sendPostComing(id, userPhone) {
+  /*sendPostComing(id, userPhone) {
     let data = new FormData();
     data.append('location_id', id);
     data.append('phone', userPhone);
@@ -47,5 +55,5 @@ export class GroupsComponent implements OnInit {
       .then(result => {
         this.validation_msg = result;
       });
-  }
+  }*/
 }

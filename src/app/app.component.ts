@@ -227,6 +227,14 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
     if (lastRouteName == 'groups'){this.isDarkFooter = true; }
     if (lastRouteName == 'activities'){this.isDarkFooter = true; }
     if (lastRouteName == 'waiver'){this.isDarkFooter = true; }
+    /*if (lastRouteName == 'columbia'){this.isDarkFooter = true; }
+    if (lastRouteName == 'york'){this.isDarkFooter = true; }
+    if (lastRouteName == 'lake-worth'){this.isDarkFooter = true; }
+    if (lastRouteName == 'cincinnati'){this.isDarkFooter = true; }
+    if (lastRouteName == 'lexington'){this.isDarkFooter = true; }*/
+    for (let loc of this.locations){
+      if(lastRouteName == loc.slug) {this.isDarkFooter = true; };
+    }
   }
 
   setLocationById(id: any) {
@@ -253,9 +261,9 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       this.service.setMapOfLoc(this.locations);
     }
 
-    if(!this.isComingSoonChecked && this.service.LIST_OF_LOCATIONS.length > 0) {
-      this.isComingSoon = this.service.isComingSoon();
-      if(this.isComingSoon ){
+     if(!this.isComingSoonChecked && this.service.LIST_OF_LOCATIONS.length > 0) {
+       this.isComingSoon = this.service.isComingSoon();
+       if(this.isComingSoon ){
          this.isComingSoonChecked = true;
          let url = this.activeLocationId + '/coming-soon';
          this.router.navigate([url])

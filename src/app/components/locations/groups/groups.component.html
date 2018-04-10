@@ -71,14 +71,14 @@
     </div>
     <div class="row group-button">
       <div *ngIf="!needCallToReverse" class="col-12 waiver-desc_slider_button">
-        <button (click)="reverseCall();" type="button" class="btn btn-outline-success btn-block"
-                style="max-width: 360px">call to reverse
+        <button *ngFor="let locationI of locationInf " type="button" class="btn btn-outline-success btn-block"
+                style="max-width: 360px"><a href="tel:{{locationI.phone}}"> call to reverse </a>
         </button>
       </div>
     </div>
   </div>
 
-  <div *ngIf="needCallToReverse" class="homepage-gaiety coming-soon-email">
+  <!--<div *ngIf="needCallToReverse" class="homepage-gaiety coming-soon-email">
     <div class=" ">
       <div class="container h-30">
         <div class="row h-100 justify-content-center">
@@ -101,7 +101,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 </section>
 <section class="group-block-3">

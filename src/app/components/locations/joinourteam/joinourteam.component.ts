@@ -11,17 +11,34 @@ import {LocationService} from "../../../services/location.service";
 })
 export class JoinourteamComponent implements OnInit {
 
+  allLocationListener: any;
+  activeLocationId: any;
+  link: any;
+
   constructor(private activatedRoute: ActivatedRoute
     , private meta: Meta
     , private titleService: Title
-    , private service: LocationService) { }
+    , private service: LocationService) {
+    this.listenToAllLocationsLoaded();
+  }
 
   ngOnInit() {
     this.meta.addTag({name: 'meta-description', content: 'description'});
     this.titleService.setTitle('Join our team title');
     this.activatedRoute.params.forEach((params: Params) => {
       let id = params["id"];
-      this.service.activeLocationId = id;
+      this.activeLocationId = id;
+      this.service.activeLocationId = this.activeLocationId;
+    });
+  }
+
+  listenToAllLocationsLoaded()
+  {
+    this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
+      this.service.getLocationLinksByField(this.activeLocationId, 'jobs')
+        .then(data => {
+          this.link = data;
+        })
     });
   }
 }

@@ -5,7 +5,9 @@
       <div class="desc_slider">
         <h3>LOOKING TO JOIN THE</h3>
         <h1>Adrenaline team?</h1>
-        <a class="green_up btn mt-30 theme_a_btn" >Join us</a>
+
+          <a *ngFor="let l of link " href ="{{l.url}}" class="green_up btn mt-30 theme_a_btn" >Join us</a>
+
       </div>
     </div>
   </div>
@@ -16,7 +18,8 @@
     <div class="row justify-content-center">
       <div class="col-md-8 text-center">
         <p class="txt_team">If you think you’ve got what it takes to join the altitude team, sendus an application!</p>
-        <a class="green_up btn mt-30 theme_a_btn" routerLink="../contact" >complete the application form</a>
+        <!--<a class="green_up btn mt-30 theme_a_btn" routerLink="../contact" >complete the application form</a>-->
+        <a *ngFor="let l of link " href ="{{l.url}}" class="green_up btn mt-30 theme_a_btn" >complete the application form</a>
       </div>
 
     </div>

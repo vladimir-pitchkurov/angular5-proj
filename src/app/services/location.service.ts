@@ -303,17 +303,6 @@ export class LocationService {
 
   getAllLocations() {
 
-    if(localStorage.hasOwnProperty('all-locations')) {
-
-      let allLocations = Promise.resolve(JSON.parse(localStorage.getItem('all-locations')));
-
-      this.allLocationListEmitter.emit(allLocations);
-
-      this._getAllLocations(true);
-
-      return allLocations;
-    }
-
     return this._getAllLocations();
   }
 
@@ -493,6 +482,17 @@ export class LocationService {
     const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links/' + field;
     return this.http.get(url);
   }
+
+  /*getLocationLinks(id: any)
+  {
+    /*if(!this.getIdByName(id)){
+      return;
+    }
+
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links';
+
+    return this.http.get(url);
+  }*/
 
   getLocationBirthdayParties( urlApi: string) {
     const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + urlApi;

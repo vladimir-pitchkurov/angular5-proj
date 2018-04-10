@@ -21,6 +21,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     , private meta: Meta
     , private titleService: Title
     , private service: LocationService) {
+    this.listenToAllLocationsLoaded();
   }
 
   ngOnInit() {
@@ -30,8 +31,6 @@ export class GalleryComponent implements OnInit, OnDestroy {
       let id = params["id"];
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
-
-      this.listenToAllLocationsLoaded();
     });
   }
 
