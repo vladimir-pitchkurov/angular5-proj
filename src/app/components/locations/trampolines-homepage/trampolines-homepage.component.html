@@ -74,9 +74,7 @@
     <div class="row justify-content-between">
       <div class="col-md-6">
         <h1 class="green_up">Play & complete</h1>
-        <p>
-          Put your jumping skills to the test with our unique spins on classic games and sports like dodgeball, basketball, parkour, and gymnastics!
-        </p>
+        <p>Put your jumping skills to the test with our unique spins on classic games and sports like dodgeball, basketball, parkour, and gymnastics!</p>
       </div>
       <div class="col-md-6">
         <img src="../../../../assets/img/trampolines_homepage/boy.png" class="d-none d-sm-block boy_trampolines_homepages">
@@ -92,9 +90,7 @@
       </div>
       <div class="col-md-6 pv-40">
         <h1 class="green_up">Get fit</h1>
-        <p>There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form, by injected humour,
-          or</p>
+        <p>There's no better way to get your heart rate going than with some epic trampoline action!</p>
       </div>
     </div>
   </div>
@@ -105,9 +101,7 @@
       <div class="col-md-6 pv-80">
         <h1 class="green_up">Have fun</h1>
         <p>
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form, by injected humour,
-          or randomised words which don't look even slightly believable.
+          Whether you're hosting a birthday party, a fun teambuilding activity, or just trying something new with some close friends, our epic trampolines and awesome new games will be sure to bring a smile to your face.
         </p>
       </div>
       <div class="col-md-6">
@@ -207,7 +201,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 text-center">
-        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" routerLink="../../{{activeLocationId}}/trampoline-park/buy-a-pass/" routerLinkActive="active" >Buy a pass</a>
+        <a class="green_up btn mb-30 theme_a_btn btn_pad mt-80" *ngIf="this.service.allLinksCenteredge_waiver[this.activeLocationId]" href="{{this.service.allLinksCenteredge_tickets[this.activeLocationId].url}}" target="_blank">Buy a pass</a>
         <p class="text-muted fs_12">Jumpers are required to purchase $2 socks for sanitation and safety purposes. You are also allowed to reuse your socks.</p>
       </div>
     </div>

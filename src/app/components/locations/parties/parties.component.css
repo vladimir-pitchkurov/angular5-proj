@@ -1,3 +1,9 @@
 .choosed-party-plan{
-  background-color: #92dd02;
+  background-color: #021a67;
+}
+
+@media screen and (max-width: 768px) {
+	.row .col-md-6:nth-child(2) .green_up {
+		margin-top:10px;
+	}
 }

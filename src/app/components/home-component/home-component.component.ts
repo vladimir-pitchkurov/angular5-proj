@@ -24,7 +24,7 @@ export class HomeComponentComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   ngOnInit() {
-    this.titleService.setTitle('Main');
+    this.titleService.setTitle('Trampoline Park, Escape Rooms, Virtual Reality - Adrenaline Entertainment Centers');
     this.meta.addTag({name: 'meta-keywords', content: 'Home keywords'});
     this.meta.addTag({name: 'meta-description', content: 'Home description'});
 

@@ -216,7 +216,7 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
         const searchArr = this.service.pricingBirthday[this.service.activeLocationId] ? this.service.pricingBirthday[this.service.activeLocationId] : [];
         for (let i = 0; i < searchArr.length; i++) {
           const a = searchArr[i];
-          if (a.label == tarif ) {  return /*'http://altitudewoodbridge.pfestore.com/events/' +*/ a.value +'/BookEvent.aspx';  }
+          if (a.label == tarif ) {  return /*'http://altitudewoodbridge.pfestore.com/eventss/' +*/ a.value +'/BookEvent.aspx';  }
         }
       } else {
         if ( !this.bool20Jumpers ) {
