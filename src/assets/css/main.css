@@ -2900,6 +2900,9 @@ a.btn_pad_20 {
     text-transform: uppercase;
     letter-spacing: 1.82px;
   }
+    .parties-locations-dark {
+        background:none !important;
+    }
 }
 
 
