@@ -483,6 +483,24 @@ export class LocationService {
     return this.http.get(url);
   }
 
+  getLocationBlogs(id: any) {
+    if(!this.getIdByName(id)) {
+      return;
+    }
+
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/blog ';
+    return this.http.get(url);
+  }
+
+  getLocationPost(id: any, postId: any) {
+    if(!this.getIdByName(id)) {
+      return;
+    }
+
+    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/blog/' + postId;
+    return this.http.get(url);
+  }
+
   /*getLocationLinks(id: any)
   {
     /*if(!this.getIdByName(id)){

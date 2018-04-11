@@ -16,6 +16,7 @@ export class GroupsComponent implements OnInit {
   pricing: any;
   validation_msg: any;
   needCallToReverse = false;
+  allLocationListener: any;
 
   constructor(  private meta: Meta
     , private titleService: Title
@@ -31,15 +32,39 @@ export class GroupsComponent implements OnInit {
       let id = params["id"];
       this.activeLocationId = id;
       this.service.activeLocationId = this.activeLocationId;
+      this.listenToAllLocationsLoaded(); //my
 
     });
 
-    if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
+    /*if (this.activeLocationId && !this.service.contactInfoOfFooter[this.activeLocationId]) {
+      this.service.getLocationById(this.activeLocationId)
+        .then((data: any[]) => {
+          console.log(data);
+          this.locationInf = data;
+        });
+    }*/
+  }
+
+  //my
+  listenToAllLocationsLoaded()
+  {
+    this.allLocationListener = this.service.allLocationListEmitter.subscribe(data => {
+      this.getLocationInf(this.activeLocationId);
+    })
+  }
+
+  getLocationInf(id: any){
+
+    if(!id){
+      return;
+    }
+
       this.service.getLocationById(this.activeLocationId)
         .then((data: any[]) => {
           this.locationInf = data;
         });
-    }
+
+
   }
 
   /*reverseCall(){

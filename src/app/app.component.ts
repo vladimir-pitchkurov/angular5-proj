@@ -222,16 +222,13 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
     this.isDarkFooter = false;
     let arrRoute = this.router.url.split('/');
     let lastRouteName = arrRoute[arrRoute.length -1];
+    let beforeLastRouteName = arrRoute[arrRoute.length -2];
     if (lastRouteName == 'gallery'){this.isDarkFooter = true; }
     if (lastRouteName == 'buy-a-pass'){this.isDarkFooter = true; }
     if (lastRouteName == 'groups'){this.isDarkFooter = true; }
     if (lastRouteName == 'activities'){this.isDarkFooter = true; }
     if (lastRouteName == 'waiver'){this.isDarkFooter = true; }
-    /*if (lastRouteName == 'columbia'){this.isDarkFooter = true; }
-    if (lastRouteName == 'york'){this.isDarkFooter = true; }
-    if (lastRouteName == 'lake-worth'){this.isDarkFooter = true; }
-    if (lastRouteName == 'cincinnati'){this.isDarkFooter = true; }
-    if (lastRouteName == 'lexington'){this.isDarkFooter = true; }*/
+    if (beforeLastRouteName == 'blog'){this.isDarkFooter = true; }
     for (let loc of this.locations){
       if(lastRouteName == loc.slug) {this.isDarkFooter = true; };
     }
