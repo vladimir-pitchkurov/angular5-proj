@@ -501,17 +501,6 @@ export class LocationService {
     return this.http.get(url);
   }
 
-  /*getLocationLinks(id: any)
-  {
-    /*if(!this.getIdByName(id)){
-      return;
-    }
-
-    const url: string = this.domain + '/location/' + this.getIdByName(id) + '/links';
-
-    return this.http.get(url);
-  }*/
-
   getLocationBirthdayParties( urlApi: string) {
     const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + urlApi;
     return this.http.get(url);

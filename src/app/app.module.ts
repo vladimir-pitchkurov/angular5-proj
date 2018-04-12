@@ -33,6 +33,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { Slider2Component } from './components/slider2/slider2.component';
 import { TrampolineHomeComponent } from './components/locations/trampoline-home/trampoline-home.component';
 import { AllLocationsComponent } from './components/partials/all-locations/all-locations.component';
+import { PaginanationService } from './paginanation.service';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { AllLocationsComponent } from './components/partials/all-locations/all-l
   providers: [
     InitJsService,
     BaseHttpService,
-    LocationService
+    LocationService,
+    PaginanationService
   ],
   bootstrap: [AppComponent]
 })

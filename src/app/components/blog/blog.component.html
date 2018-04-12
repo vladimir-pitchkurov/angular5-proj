@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="blogs-container">
-      <div *ngFor="let blog of mockBlogs" class="blog">
+      <div *ngFor="let blog of pagedItems" class="blog">
         <a routerLink="/{{activeLocationId}}/blog/{{blog.id}}" routerLinkActive="active">
           <img src="{{blog.img_url}}" class="col-md-6">
         </a>
@@ -20,97 +20,17 @@
         </div>
         <div style="clear: both"></div>
       </div>
-      <!--<div class="blog">-->
-        <!--<a routerLink="/{{activeLocationId}}/blog/nice-post" routerLinkActive="active">-->
-          <!--<img src="/assets/img/blog1.png" class="col-md-6">-->
-        <!--</a>-->
-        <!--<div class="blog-text col-md-6">-->
-          <!--<p class="blog-name"><a routerLink="/{{activeLocationId}}/blog/nice-post">10 Reasons You Should Visit a Trampoline Park Today</a></p>-->
-          <!--<p class="blog-date">FEB 10 2018</p>-->
-          <!--<p class="blog-decl">The trampoline park is a modern phenomenon that is growing in popularity. Like other methods of entertainment, they are usually open to the public for a small fee. However, trampoline parks are different...</p>-->
-          <!--<p class="blog-read"><a routerLink="/{{activeLocationId}}/blog/nice-post">Read More</a></p>-->
-        <!--</div>-->
-        <!--<div style="clear: both"></div>-->
-      <!--</div>-->
-      <!--<div class="blog">-->
-        <!--<a routerLink="/{{activeLocationId}}/blog/nice-post">-->
-          <!--<img src="/assets/img/blog2.png" class="col-md-6">-->
-        <!--</a>-->
-        <!--<div class="blog-text col-md-6">-->
-          <!--<p class="blog-name"><a routerLink="/{{activeLocationId}}/blog/nice-post">Lorem Dolor</a></p>-->
-          <!--<p class="blog-date">FEB 10 2018</p>-->
-          <!--<p class="blog-decl">Sed in augue minim suscipit. Ipsum libris labitur qui eu, aliquid menandri-->
-            <!--adversarium nam et, ius quot reprimique eu. Autem partem populo eu eam, ex mea elitr soleat-->
-            <!--accusam, te cum soleat graece.-->
-            <!--Nam ei vide dolorum, vel illud ponderum iracundia ea, vim choro clita ignota ad. Est quot-->
-            <!--elaboraret an.</p>-->
-          <!--<p class="blog-read"><a routerLink="/{{activeLocationId}}/blog/nice-post">Read More</a></p>-->
-        <!--</div>-->
-        <!--<div style="clear: both"></div>-->
-      <!--</div>-->
-      <!--<div class="blog">-->
-        <!--<a routerLink="/{{activeLocationId}}/blog/nice-post">-->
-          <!--<img src="/assets/img/blog3.png" class="col-md-6">-->
-        <!--</a>-->
-        <!--<div class="blog-text col-md-6">-->
-          <!--<p class="blog-name"><a routerLink="/{{activeLocationId}}/blog/nice-post">Lorem Dolor</a></p>-->
-          <!--<p class="blog-date">FEB 10 2018</p>-->
-          <!--<p class="blog-decl">Sed in augue minim suscipit. Ipsum libris labitur qui eu, aliquid menandri-->
-            <!--adversarium nam et, ius quot reprimique eu. Autem partem populo eu eam, ex mea elitr soleat-->
-            <!--accusam, te cum soleat graece.-->
-            <!--Nam ei vide dolorum, vel illud ponderum iracundia ea, vim choro clita ignota ad. Est quot-->
-            <!--elaboraret an.</p>-->
-          <!--<p class="blog-read"><a routerLink="/{{activeLocationId}}/blog/nice-post">Read More</a></p>-->
-        <!--</div>-->
-        <!--<div style="clear: both"></div>-->
-      <!--</div>-->
-      <!--<div class="blog">-->
-        <!--<a routerLink="/{{activeLocationId}}/blog/nice-post">-->
-          <!--<img src="/assets/img/blog4.png" class="col-md-6">-->
-        <!--</a>-->
-        <!--<div class="blog-text col-md-6">-->
-          <!--<p class="blog-name"><a routerLink="/{{activeLocationId}}/blog/nice-post">Lorem Dolor</a></p>-->
-          <!--<p class="blog-date">FEB 10 2018</p>-->
-          <!--<p class="blog-decl">Sed in augue minim suscipit. Ipsum libris labitur qui eu, aliquid menandri-->
-            <!--adversarium nam et, ius quot reprimique eu. Autem partem populo eu eam, ex mea elitr soleat-->
-            <!--accusam, te cum soleat graece.-->
-            <!--Nam ei vide dolorum, vel illud ponderum iracundia ea, vim choro clita ignota ad. Est quot-->
-            <!--elaboraret an.</p>-->
-          <!--<p class="blog-read"><a routerLink="/{{activeLocationId}}/blog/nice-post">Read More</a></p>-->
-        <!--</div>-->
-        <!--<div style="clear: both"></div>-->
-      <!--</div>-->
-      <!--<div class="blog">-->
-        <!--<a routerLink="/{{activeLocationId}}/blog/nice-post">-->
-          <!--<img src="/assets/img/blog5.png" class="col-md-6">-->
-        <!--</a>-->
-        <!--<div class="blog-text col-md-6">-->
-          <!--<p class="blog-name"><a routerLink="/{{activeLocationId}}/blog/nice-post">Lorem Dolor</a></p>-->
-          <!--<p class="blog-date">FEB 10 2018</p>-->
-          <!--<p class="blog-decl">Sed in augue minim suscipit. Ipsum libris labitur qui eu, aliquid menandri-->
-            <!--adversarium nam et, ius quot reprimique eu. Autem partem populo eu eam, ex mea elitr soleat-->
-            <!--accusam, te cum soleat graece.-->
-            <!--Nam ei vide dolorum, vel illud ponderum iracundia ea, vim choro clita ignota ad. Est quot-->
-            <!--elaboraret an.</p>-->
-          <!--<p class="blog-read"><a routerLink="/{{activeLocationId}}/blog/nice-post">Read More</a></p>-->
-        <!--</div>-->
-        <!--<div style="clear: both"></div>-->
-      <!--</div>-->
-      <!--<div style="clear: both"></div>-->
-    <!--</div>-->
+    </div>
+
+          <!-- pager -->
     <div class="blog-links-container">
-      <div class="blog-links">
-        <a class="blog-link-text" href="">Newer</a>
-        <a class="blog-link-number blog-link-active" href="/{{activeLocationId}}">1</a>
-        <a class="blog-link-number" href="">2</a>
-        <a class="blog-link-number" href="">3</a>
-        <a class="blog-link-number" href="">4</a>
-        <a class="blog-link-number" href="">5</a>
-        <a class="blog-link-number" href="">...</a>
-        <a class="blog-link-number" href="">9</a>
-        <a class="blog-link-text" href="">Older</a>
+      <div class="blog-links" *ngIf="pager.pages && pager.pages.length">
+            <a (click)="setPage(1)" class="blog-link-text" [ngClass]="{disabled:pager.currentPage === 1}">Newer</a>
+            <a (click)="setPage(page)" class="blog-link-number" *ngFor="let page of pager.pages" [ngClass]="{'blog-link-active':pager.currentPage === page}">{{page}}</a>
+            <a (click)="setPage(pager.totalPages)" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="blog-link-text">Older</a>
       </div>
     </div>
+
     <div style="clear: both"></div>
   </div>
 </div>
