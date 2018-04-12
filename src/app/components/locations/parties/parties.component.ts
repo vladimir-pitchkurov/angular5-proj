@@ -26,12 +26,14 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
 
   // retrieve from 
   // /api/website/location/13/birthday/pricing
+  basePrice = 25;
   jumperPrice = 17.5;
   pizzaPrice = 15;
 
   totalJumpers = 0;
   totalPizzas = 0;
-  humanLabel = '';
+  jumperLabel = '';
+  pizzaLabel = '';
 
 
   constructor(  private route: Router
@@ -273,7 +275,7 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
     document.getElementById('numberOfJumpers').innerHTML = this.totalJumpers;
     document.getElementById('numberOfJumpers').style.color = '#92dd02';
 
-    this.humanLabel = "Party for <span style='color:#92dd02'>"+this.totalJumpers+"</span> guests";
+    this.jumperLabel = "Party for <span style='color:#92dd02'>"+this.totalJumpers+"</span> guests";
     
     this.setPricing();
 
@@ -294,7 +296,7 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
     document.getElementById('numberOfPizzas').innerHTML = this.totalPizzas;
     document.getElementById('numberOfPizzas').style.color = '#92dd02';
 
-    this.humanLabel = this.humanLabel + " & <span style='color:#92dd02'>"+this.totalPizzas+"</span> pizzas";
+    this.pizzaLabel = " & <span style='color:#92dd02'>"+this.totalPizzas+"</span> pizzas";
 
     this.setPricing();
 
@@ -304,13 +306,13 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   setPricing () {
-    var basePrice = this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice;
+    var basePrice = this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice + this.basePrice;
     var wkdayPrice = document.getElementById('weekdayPrice');
     var wkendPrice = document.getElementById('weekendPrice');
     document.getElementById('weekendPrice').innerHTML = "$"+(basePrice + 50).toFixed(2);
     wkdayPrice.innerHTML = "<small>Mon - Thurs</small><br><span style='color:#92dd02'>$"+(basePrice).toFixed(2)+"</span>";
 
-    document.getElementById('totalGuests').innerHTML = this.humanLabel;
+    document.getElementById('totalGuests').innerHTML = this.jumperLabel + this.pizzaLabel;
   }
 
   ngOnDestroy ()
