@@ -79,42 +79,84 @@
 
 <section class="parties-locations-dark " style="padding-top: 40px;padding-bottom: 40px;">
   <div class="container">
-    <div class="row pb-16">
-      <div class="col-md-6">
+    <div class="row pb-16 justify-content-center">
+      <div class="col-md-8">
         <div class="row">
           <div class="col-12">
             <h1 class="green_up text-center">Customize your party</h1>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="!this.boolPrivateRoom" (click)="setBoolPrivateRoom( false )" >without private room</a>
           </div>
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolPrivateRoom" (click)="setBoolPrivateRoom( true )" >with private room</a>
           </div>
+        </div> -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" id="jumpers">
+              <div class="row">
+                <div class="col-12 pv-20" (click)="slideJumperNumber()">
+                  <span id="numberOfJumpers">Add</span> Jumpers
+                </div>
+                <div class="col-12 pb-20" id="jumperInputContainer" style="display:none;">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="number" min="1" max="100" value="18" class="num-jumpers-input" id="numberOfJumpersInput">
+                    </div>
+                    <div class="col-6">
+                      <a id="submitAddJumpers" class="num-jumpers-submit" (click)="submitJumperNumber()" >Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="row">
+          <div class="col-md-12">
+            <div class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" id="pizza">
+              <div class="row">
+                <div class="col-12 pv-20" (click)="slidePizzaNumber()">
+                  <span id="numberOfPizzas">Add</span> Pizzas
+                </div>
+                <div class="col-12 pb-20" id="pizzaInputContainer" style="display:none;">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="number" min="0" max="100" value="4" class="num-jumpers-input" id="numberOfPizzasInput">
+                    </div>
+                    <div class="col-6">
+                      <a id="submitAddPizzas" class="num-jumpers-submit" (click)="submitPizzaNumber()" >Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="!this.bool20Jumpers" (click)="setBool20Jumpers( false )" >10 jumpers</a>
           </div>
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.bool20Jumpers" (click)="setBool20Jumpers( true )" >20 jumpers</a>
           </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block"  [class.choosed-party-plan]="!this.boolWithFood" (click)="setBoolWithFood ( false )" >no food </a>
           </div>
           <div class="col-md-6">
             <a class="green_up btn mt-30 p_a_btn btn_pad_20 d-block" [class.choosed-party-plan]="this.boolWithFood" (click)="setBoolWithFood ( true )" >with food </a>
           </div>
-        </div>
-        <div class="row mt-20">
+        </div> -->
+        <div class="row mt-20" id="resultBox" style="display:none;">
           <div class="col-12 text-center"  >
-            <h4 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
-            <h1 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="green_up">${{this.getWeekend()}}</h1>
-            <h5 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" class="green_up">Mon - Thurs: ${{this.getWeekday()}}</h5>
+            <h4 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="totalGuests" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
+            <h1 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="weekendPrice" class="green_up">${{this.getWeekend()}}</h1>
+            <h5 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="weekdayPrice" class="green_up" style="color:#FFF;">Mon - Thurs: ${{this.getWeekday()}}</h5>
             <a *ngIf="this.service.pricingBirthdayUrl[this.service.activeLocationId]" href="{{this.service.pricingBirthdayUrl[this.service.activeLocationId].url}}{{this.getLinkLabel()}}" class="green_up btn mt-30 theme_a_btn btn_pad" target="_blank"  >Book a party</a>
           </div>
         </div>

@@ -24,6 +24,15 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   urlOfBirth: any;
   allLocationListener: any;
 
+  // retrieve from 
+  // /api/website/location/13/birthday/pricing
+  jumperPrice = 17.5;
+  pizzaPrice = 15;
+
+  totalJumpers = 0;
+  totalPizzas = 0;
+  humanLabel = '';
+
 
   constructor(  private route: Router
     , private activatedRoute: ActivatedRoute
@@ -248,6 +257,60 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
 
   setBoolWithFood (boo: boolean) {
     this.boolWithFood = boo;
+  }
+
+  
+ 
+
+  slideJumperNumber () {
+    var ele = document.getElementById('jumperInputContainer');
+    ele.style.display = 'block';
+  }
+
+  submitJumperNumber () {
+    var ele = document.getElementById('jumperInputContainer');
+    this.totalJumpers = document.getElementById('numberOfJumpersInput').value;
+    document.getElementById('numberOfJumpers').innerHTML = this.totalJumpers;
+    document.getElementById('numberOfJumpers').style.color = '#92dd02';
+
+    this.humanLabel = "Party for <span style='color:#92dd02'>"+this.totalJumpers+"</span> guests";
+    
+    this.setPricing();
+
+    document.getElementById('resultBox').style.display = 'block';
+
+    ele.style.display = 'none';
+  }
+
+  slidePizzaNumber () {
+    var ele = document.getElementById('pizzaInputContainer');
+    ele.style.display = 'block';
+  }
+
+  submitPizzaNumber () {
+    var pizza = 15;
+    var ele = document.getElementById('pizzaInputContainer');
+    this.totalPizzas = document.getElementById('numberOfPizzasInput').value;
+    document.getElementById('numberOfPizzas').innerHTML = this.totalPizzas;
+    document.getElementById('numberOfPizzas').style.color = '#92dd02';
+
+    this.humanLabel = this.humanLabel + " & <span style='color:#92dd02'>"+this.totalPizzas+"</span> pizzas";
+
+    this.setPricing();
+
+    document.getElementById('resultBox').style.display = 'block';
+
+    ele.style.display = 'none';
+  }
+
+  setPricing () {
+    var basePrice = this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice;
+    var wkdayPrice = document.getElementById('weekdayPrice');
+    var wkendPrice = document.getElementById('weekendPrice');
+    document.getElementById('weekendPrice').innerHTML = "$"+(basePrice + 50).toFixed(2);
+    wkdayPrice.innerHTML = "<small>Mon - Thurs</small><br><span style='color:#92dd02'>$"+(basePrice).toFixed(2)+"</span>";
+
+    document.getElementById('totalGuests').innerHTML = this.humanLabel;
   }
 
   ngOnDestroy ()

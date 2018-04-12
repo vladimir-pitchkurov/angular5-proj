@@ -71,6 +71,9 @@ a, a:focus, a:active, a:hover {
 .pt-100 {
     padding-top: 100px;
 }
+.pb-20 {
+    padding-bottom: 20px;
+}
 .pb-30 {
     padding-bottom: 30px;
 }
@@ -2860,6 +2863,42 @@ a.btn_pad_20 {
   color: rgb(126, 221, 0);
 }
 
+.green_up .col-12.pv-20 {
+    color: #FFF;
+}
+
+#resultBox a.green_up.btn.mt-30.theme_a_btn.btn_pad {
+    /*border-color: #FFF;*/
+    color: #FFF;
+}
+
+.num-jumpers-input {
+    /*width: 459px;*/
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: #92dd02;
+    font-size: 24px;
+    /*line-height: 30px;*/
+    font-family: Anton;
+    text-align: center;
+    width:70%;
+    float:right;
+}
+
+.num-jumpers-submit {
+    line-height: 30px;
+    font-size: 14px;
+    border: 3px solid #FFF;
+    padding: 0px 0px;
+    font-family: 'Open Sans';
+    display: block;
+    width: 70%;
+    font-weight: 700;
+    color: #FFF !important;
+}
+
 @media(max-width: 579px){
   .p_a_btn {
     border: 2px solid rgb(146, 221, 2);
@@ -2891,7 +2930,7 @@ a.btn_pad_20 {
 @media(max-width: 768px) {
   .p_a_btn {
     border: 2px solid rgb(146, 221, 2);
-    font-size: 12px;
+    font-size: 15px;
     line-height: 20px;
     border-radius: 0px;
     color: #92dd02;
@@ -2901,7 +2940,8 @@ a.btn_pad_20 {
     letter-spacing: 1.82px;
   }
     .parties-locations-dark {
-        background:none !important;
+        /*background:none !important;*/
+        background-image:url(../img/parties/parties-back-sm.jpg);
     }
 }
 
@@ -2946,7 +2986,8 @@ a.btn_pad_20 {
     background: url("../img/parties/loc_parties_blue.jpg") no-repeat center top / cover;
 }
 .parties-locations-dark {
-    background: url("../img/parties/parties-back.png") no-repeat center top / cover;
+    background: url("../img/parties/parties-back.jpg") no-repeat center top / cover;
+    background-attachment: fixed;
   }
 .parties-locations-dark > a {
   link: #3b5998;
