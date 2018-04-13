@@ -24,11 +24,13 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   urlOfBirth: any;
   allLocationListener: any;
 
-  // retrieve from 
+  // retrieve from
   // /api/website/location/13/birthday/pricing
-  basePrice = 25;
-  jumperPrice = 17.5;
-  pizzaPrice = 15;
+  pricing: any;
+
+  basePrice: number;
+  jumperPrice: number;
+  pizzaPrice: number;
 
   totalJumpers = 0;
   totalPizzas = 0;
@@ -68,6 +70,8 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
           this.urlOfBirth = result;
         } );
       this.service.setUrlBirthday( this.urlOfBirth );
+
+      this.getBirthdayPricing();
 
 
     });
@@ -261,8 +265,8 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
     this.boolWithFood = boo;
   }
 
-  
- 
+
+
 
   slideJumperNumber () {
     var ele = document.getElementById('jumperInputContainer');
@@ -271,12 +275,12 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
 
   submitJumperNumber () {
     var ele = document.getElementById('jumperInputContainer');
-    this.totalJumpers = document.getElementById('numberOfJumpersInput').value;
-    document.getElementById('numberOfJumpers').innerHTML = this.totalJumpers;
+    this.totalJumpers = +(<HTMLInputElement>document.getElementById('numberOfJumpersInput')).value;
+    document.getElementById('numberOfJumpers').innerHTML = this.totalJumpers.toString();
     document.getElementById('numberOfJumpers').style.color = '#92dd02';
 
     this.jumperLabel = "Party for <span style='color:#92dd02'>"+this.totalJumpers+"</span> guests";
-    
+
     this.setPricing();
 
     document.getElementById('resultBox').style.display = 'block';
@@ -292,8 +296,8 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   submitPizzaNumber () {
     var pizza = 15;
     var ele = document.getElementById('pizzaInputContainer');
-    this.totalPizzas = document.getElementById('numberOfPizzasInput').value;
-    document.getElementById('numberOfPizzas').innerHTML = this.totalPizzas;
+    this.totalPizzas = +(<HTMLInputElement>document.getElementById('numberOfPizzasInput')).value;
+    document.getElementById('numberOfPizzas').innerHTML = this.totalPizzas.toString();
     document.getElementById('numberOfPizzas').style.color = '#92dd02';
 
     this.pizzaLabel = " & <span style='color:#92dd02'>"+this.totalPizzas+"</span> pizzas";
@@ -306,13 +310,23 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   setPricing () {
-    var basePrice = this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice + this.basePrice;
+    var basePrice = +(this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice + +this.basePrice);
     var wkdayPrice = document.getElementById('weekdayPrice');
     var wkendPrice = document.getElementById('weekendPrice');
     document.getElementById('weekendPrice').innerHTML = "$"+(basePrice + 50).toFixed(2);
     wkdayPrice.innerHTML = "<small>Mon - Thurs</small><br><span style='color:#92dd02'>$"+(basePrice).toFixed(2)+"</span>";
 
     document.getElementById('totalGuests').innerHTML = this.jumperLabel + this.pizzaLabel;
+  }
+
+  getBirthdayPricing() {
+    this.service.getLocationBirthdayPricing()
+      .then(pricing => {
+        this.pricing = pricing;
+        this.basePrice = this.pricing.base_price;
+        this.jumperPrice = this.pricing.jumper;
+        this.pizzaPrice = this.pricing.pizza;
+      });
   }
 
   ngOnDestroy ()

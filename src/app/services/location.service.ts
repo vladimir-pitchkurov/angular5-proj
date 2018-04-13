@@ -506,6 +506,11 @@ export class LocationService {
     return this.http.get(url);
   }
 
+  getLocationBirthdayPricing () {
+    const url: string = this.domain + '/location/' + this.getIdByName(this.activeLocationId) + '/birthday/pricing';
+    return this.http.get(url);
+  }
+
   sendPostContact(data) {
     const url = this.domain + '/location/contact';
     return this.http.post(url, data);
