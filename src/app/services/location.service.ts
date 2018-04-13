@@ -104,8 +104,6 @@ export class LocationService {
     if(data) {
       this.mapOfLoc = data;
 
-      console.log('LIST_OF_LOCATIONS',data);
-
       this.LIST_OF_LOCATIONS = data;
     }
   }
@@ -330,7 +328,7 @@ export class LocationService {
     return this.http.get(url);
   }
 
-  getLocationById(id: any) {
+   getLocationById(id: any) {
     if(!this.getIdByName(id)){
       return;
     }
