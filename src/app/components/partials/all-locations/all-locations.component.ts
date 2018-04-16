@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LocationService} from '../../../services/location.service';
+import {InitJsService} from '../../../services/init-js.service';
 
 @Component({
   selector: 'app-all-locations',
@@ -13,7 +14,7 @@ export class AllLocationsComponent implements OnInit {
 
   @Input() bgColor;
 
-  constructor(private service:LocationService) {
+  constructor(private service:LocationService, public  initService: InitJsService) {
 
   }
 
@@ -21,39 +22,21 @@ export class AllLocationsComponent implements OnInit {
   ngOnInit() {
     this.listOfLocations = this.service.LIST_OF_LOCATIONS;
 
-
-
-
     this.listOfLocations.forEach(loc => {
       this.service.getLocationById(loc.slug)
         .then((data) => {
-          // console.log(data);
+
           loc.info = data[0];
 
-          console.log('this.listOfLocations',this.listOfLocations);
         });
-    })
-  }
+      this.service.getLocationLinksByField(loc.slug, 'home').
+      then( links => {
 
-  getLocationInf(id: any){
+        loc.link = links[0];
 
-    if(!id){
-      return;
-    }
+      });
 
-    let dataI;
-
-    this.service.getLocationById(id)
-      .then((data: any[]) => {
-        dataI = data;
-        return dataI;
     });
-
-
-
-
   }
-
-
 
 }

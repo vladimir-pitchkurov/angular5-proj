@@ -8,7 +8,14 @@ declare var navigator: any;
 @Injectable()
 export class InitJsService {
 
+  private static link:string = '';
+
     constructor() {
+    }
+
+    setLink(link: string){
+      InitJsService.link = link;
+      InitJsService.initLoc();
     }
 
     static initRules() {
@@ -444,7 +451,7 @@ export class InitJsService {
         for (var i = 0; i < locsNew.length; i++) {
           locsNew[i].onclick = function (ev) {
             askContain.getElementsByTagName('h3')[0].innerHTML = 'Go Adrenaline ' + ev.target.innerHTML + '?';
-            askContain.getElementsByTagName('a')[0].setAttribute('href', ev.target.getAttribute('link'));
+            askContain.getElementsByTagName('a')[0].setAttribute('href', InitJsService.link);
             askContain.classList.add('slideDown');
           };
         }
