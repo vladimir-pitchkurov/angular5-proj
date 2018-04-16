@@ -32,6 +32,9 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   jumperPrice: number;
   pizzaPrice: number;
 
+  end: number;
+  day: number;
+
   totalJumpers = 0;
   totalPizzas = 0;
   jumperLabel = '';
@@ -310,11 +313,13 @@ export class PartiesComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   setPricing () {
-    var basePrice = +(this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice + +this.basePrice);
+    var basePrice = (this.totalJumpers * this.jumperPrice + this.totalPizzas * this.pizzaPrice + +this.basePrice);
     var wkdayPrice = document.getElementById('weekdayPrice');
     var wkendPrice = document.getElementById('weekendPrice');
-    document.getElementById('weekendPrice').innerHTML = "$"+(basePrice + 50).toFixed(2);
-    wkdayPrice.innerHTML = "<small>Mon - Thurs</small><br><span style='color:#92dd02'>$"+(basePrice).toFixed(2)+"</span>";
+    this.day = Number(basePrice - 25);
+    this.end = Number(basePrice + 25);
+    document.getElementById('weekendPrice').innerHTML = "$"+(this.end).toFixed(2);
+    wkdayPrice.innerHTML = "<small>Mon - Thurs</small><br><span style='color:#92dd02'>$"+(this.day).toFixed(2)+"</span>";
 
     document.getElementById('totalGuests').innerHTML = this.jumperLabel + this.pizzaLabel;
   }

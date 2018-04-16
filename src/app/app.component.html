@@ -42,9 +42,9 @@
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a>
           </div>
-          <div class="tramp-list--item">
+          <!-- <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a>
-          </div>
+          </div> -->
         </div>
       </div>
       <div *ngIf="(!this.activeLocationId && !isComingSoon) || (!isComingSoon && this.activeLocationId && isEscape)" (click)="initMenu()">
@@ -57,9 +57,9 @@
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/join-our-team" routerLinkActive="active">join our team</a>
           </div>
-          <div class="about-list--item">
+          <!-- <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/coming-soon" routerLinkActive="active">coming soon</a>
-          </div>
+          </div> -->
           <div class="about-list--item">
             <a routerLink="{{activeLocationId}}/about/gallery/" routerLinkActive="active">Gallery</a>
           </div>
@@ -81,6 +81,7 @@
         </div>
       </div>
       <div *ngIf="false" (click)="toggleState()"><a routerLink="blog" routerLinkActive="active">Blog</a></div>
+      <div *ngIf="(this.activeLocationId && !isComingSoon)" (click)="toggleState()"><a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a></div>
     </div>
     <div id="ask">
       <div id="ask-contain" class="">

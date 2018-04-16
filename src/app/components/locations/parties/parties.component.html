@@ -157,7 +157,7 @@
             <h4 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="totalGuests" class="text-uppercase text_white_img fs_22 mt-sm-4">{{this.getHumanLabel()}}</h4>
             <h1 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="weekendPrice" class="green_up">${{this.getWeekend()}}</h1>
             <h5 *ngIf="this.service.pricingBirthday[this.service.activeLocationId]" id="weekdayPrice" class="green_up" style="color:#FFF;">Mon - Thurs: ${{this.getWeekday()}}</h5>
-            <a *ngIf="this.service.pricingBirthdayUrl[this.service.activeLocationId]" href="{{this.service.pricingBirthdayUrl[this.service.activeLocationId].url}}{{this.getLinkLabel()}}" class="green_up btn mt-30 theme_a_btn btn_pad" target="_blank"  >Book a party</a>
+            <a *ngIf="this.service.pricingBirthdayUrl[this.service.activeLocationId]" href="{{this.service.pricingBirthdayUrl[this.service.activeLocationId].url}}?children={{this.totalJumpers}}" class="green_up btn mt-30 theme_a_btn btn_pad" target="_blank"  >Book a party</a>
           </div>
         </div>
       </div>

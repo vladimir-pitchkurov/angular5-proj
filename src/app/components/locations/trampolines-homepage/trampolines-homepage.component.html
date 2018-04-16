@@ -118,11 +118,13 @@
       </div>
       <div *ngFor="let deal of this.service.locationDeals[this.service.activeLocationId]" class="col-md-4 text-center align-self-center custom-top-pad">
         <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
+          <div class="block_trampolines_homepages_small" [ngStyle]="{'background-image':'url('+deal.deal_img+')'}">
             <h3 class="green_up pt-80">{{deal.name}}</h3>
-            <h4 class="text_white_norm text-uppercase ">{{deal.values.days}}: {{this.service.locationDeals[this.service.activeLocationId][0].values.times}}</h4>
-            <p class="text_white_norm hidden-until-hoer" >{{deal.values.description}}</p>
-            <p class="text_white_norm hidden-until-hover" >Toddler price: {{deal.values.toddler_price}}<br>Parent price: {{deal.values.parent_price}}<br>Ages: {{deal.values.ages}}</p>
+            <h4 class="text_white_norm text-uppercase ">{{deal.values.days}}: {{deal.values.times}}</h4>
+            <p *ngIf="(deal.values.deal)" class="text_white_norm" >{{deal.values.deal}}</p>
+            <p *ngIf="(deal.values.toddler_price)" class="text_white_norm mb-2">Toddler price: ${{deal.values.toddler_price}}<br>Parent price: ${{deal.values.parent_price}}</p>
+            <p *ngIf="(deal.values.jump_time)" class="text_white_norm mb-2">{{deal.values.jump_time}} hours for ${{deal.values.price}}</p>
+            <p *ngIf="(deal.values.ages)" class="text_white_norm mb-2">Ages: {{deal.values.ages}}</p>
           </div>
         </div>
       </div>

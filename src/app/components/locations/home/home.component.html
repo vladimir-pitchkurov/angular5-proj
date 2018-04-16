@@ -76,9 +76,7 @@
       </div>
       <div class="col-md-8">
         <h2 class="green_up text-center">Planning for a group?</h2>
-        <p>
-          With epic fun and games and event hosting, it doesn't matter if you're hosting a birthday party or a corporate teambuilding event-we've got you covered!
-        </p>
+
         <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center">Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3>
         <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" >{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>
       </div>
