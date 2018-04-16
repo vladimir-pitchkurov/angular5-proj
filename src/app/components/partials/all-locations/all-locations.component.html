@@ -7,9 +7,10 @@
     <div class="container">
       <div class="row justify-content-center">
         <div *ngFor="let loc of listOfLocations" class="col-md-auto location_block">
-          <p class="loc-name" (click)="initService.setLink(loc.link.url)">{{loc.name}}</p>
+          <p class="loc-name" (click)="initService.setLink(loc.link.url)">
+            {{loc.menu_name}}{{loc.name.toLowerCase().replace(loc.menu_name.toLowerCase(), ',')}}</p>
           <p class="loc-addr"><img src="/assets/img/icon-loc.png"> <span *ngIf="loc.info">{{loc.info.address_street}},
-          {{loc.name}} {{loc.info.address_zip}}</span></p>
+          {{loc.info.address_city}}{{loc.name.toLowerCase().replace(loc.menu_name.toLowerCase(), ',').toUpperCase()}} {{loc.info.address_zip}}</span></p>
           <p class="loc-phone" ><img src="/assets/img/icon-phone.png"><span *ngIf="loc.info">{{loc.info.phone}}</span></p>
         </div>
       </div>

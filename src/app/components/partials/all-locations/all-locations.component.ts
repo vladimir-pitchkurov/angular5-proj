@@ -20,6 +20,9 @@ export class AllLocationsComponent implements OnInit {
 
 
   ngOnInit() {
+    let name = "Lake Worth FL".replace("Lake Worth", ',');
+    console.log(name);
+
     this.listOfLocations = this.service.LIST_OF_LOCATIONS;
 
     this.listOfLocations.forEach(loc => {
