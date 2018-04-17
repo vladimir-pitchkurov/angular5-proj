@@ -735,6 +735,10 @@ div.tramp-list{
     font-size: 14px;
 }
 
+.location_block {
+    text-align: center;
+}
+
 .location_block p.loc-name {
     text-transform: uppercase;
     font-size: 18px;
@@ -1055,7 +1059,7 @@ footer {
 .block-park {
     position: relative;
     /* The image used */
-    background-image: url("../img/park.png");
+    background-image: url("../img/homepage-main.jpg");
 
     /* Set a specific height */
     min-height: 535px;
@@ -1064,7 +1068,7 @@ footer {
     background-attachment: fixed;
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
     padding-top: 143px;
 }
 

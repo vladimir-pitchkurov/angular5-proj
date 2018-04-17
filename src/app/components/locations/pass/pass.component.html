@@ -90,11 +90,13 @@
       </div>
       <div *ngFor="let deal of this.service.locationDeals[this.service.activeLocationId]" class="col-md-4 text-center align-self-center custom-top-pad">
         <div class="block_trampolines_homepages ">
-          <div class="block_trampolines_homepages_small">
+          <div class="block_trampolines_homepages_small" [ngStyle]="{'background-image':'url('+deal.deal_img+')'}">
             <h3 class="green_up pt-80">{{deal.name}}</h3>
-            <h4 class="text_white_norm text-uppercase ">{{deal.values.days}}: {{this.service.locationDeals[this.service.activeLocationId][0].values.times}}</h4>
-            <p class="text_white_norm hidden-until-hover" >{{deal.values.description}}</p>
-            <p class="text_white_norm hidden-until-hover" >Toddler price: {{deal.values.toddler_price}}<br>Parent price: {{deal.values.parent_price}}<br>Ages: {{deal.values.ages}}</p>
+            <h4 class="text_white_norm text-uppercase ">{{deal.values.days}}: {{deal.values.times}}</h4>
+            <p *ngIf="(deal.values.deal)" class="text_white_norm" >{{deal.values.deal}}</p>
+            <p *ngIf="(deal.values.toddler_price)" class="text_white_norm mb-2">Toddler price: ${{deal.values.toddler_price}}<br>Parent price: ${{deal.values.parent_price}}</p>
+            <p *ngIf="(deal.values.jump_time)" class="text_white_norm mb-2">{{deal.values.jump_time}} hours for ${{deal.values.price}}</p>
+            <p *ngIf="(deal.values.ages)" class="text_white_norm mb-2">Ages: {{deal.values.ages}}</p>
           </div>
         </div>
       </div>
@@ -108,10 +110,7 @@
         <h1 class="green_up">Got a large Group?</h1>
         <h1 class="text-uppercase text_white_n">Throw your party at Adrenaline!</h1>
         <p class="pv-30">
-          Whether you’ve got a birthday, massive event, or just have a lot of friends.
-          There are many variations of passages of Lorem Ipsum available,
-          but the majority have suffered alteration in some form, by injected humour,
-          or randomised words which don't look even slightly believable.
+         Whether it's for your or someone else, we'll help you get your idea off the ground and make sure everybody has a memorable day of fun!
         </p>
 
         <a class="green_up btn theme_a_btn btn_pad" routerLink="../../../{{activeLocationId}}/trampoline-park/birthday-parties/">Book now</a>
