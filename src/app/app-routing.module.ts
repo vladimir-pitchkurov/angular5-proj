@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'blog/:post', component: BlogPostComponent },
   { path: 'escape-room', component: EscapeRoomComponent },
+  { path: ':id/escape-room', component: EscapeRoomComponent },
   { path: ':id', component: HomeComponent },
   { path: ':id/coming-soon', component: ComingSoonComponent },
   { path: ':id/about/why-us', component: AboutComponent },

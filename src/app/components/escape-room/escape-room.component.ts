@@ -2,6 +2,8 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {InitJsService} from '../../services/init-js.service';
 import { Meta } from '@angular/platform-browser';
 import { Title }     from '@angular/platform-browser';
+import {LocationService} from '../../services/location.service';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-escape-room',
@@ -10,12 +12,24 @@ import { Title }     from '@angular/platform-browser';
 })
 export class EscapeRoomComponent implements OnInit, AfterViewInit {
 
-    constructor(private meta: Meta, private titleService: Title) {
+  isDisplayed: any;
+
+  activatedRoute: string;
+
+    constructor(private meta: Meta, private titleService: Title, private locationService: LocationService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.titleService.setTitle('Escape-room');
         this.meta.addTag({ name: 'meta-description', content: 'Test' });
+        this.activatedRoute = this.route.snapshot.paramMap.get('id');
+        this.isDisplayed = this.setIsDisplayed();
+    }
+
+    setIsDisplayed() :any {
+
+      return (this.activatedRoute);
     }
 
 

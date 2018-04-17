@@ -15,7 +15,6 @@ export class InitJsService {
 
     setLink(link: string){
       InitJsService.link = link;
-      InitJsService.initLoc();
     }
 
     static initRules() {
@@ -458,6 +457,7 @@ export class InitJsService {
 
         askNo.onclick = function (ev) {
           askContain.classList.remove('slideDown');
+          getLoc();
         };
 
         var lat = document.getElementById('startLat').innerHTML,
@@ -531,7 +531,10 @@ export class InitJsService {
 
             // Сюда вставить запросы к гуглу, что бы определить ближайший город.
             document.getElementById('startCity').innerHTML = findCity(lat, lon).city;
-            document.getElementById('startSlug').innerHTML = findCity(lat, lon).slug;
+            let citySlug = findCity(lat, lon).slug;
+            document.getElementById('startSlug').innerHTML = citySlug;
+            InitJsService.link = `https://jumpadrenaline.com/${citySlug}`;
+            document.getElementById('ask-yes').setAttribute('href', InitJsService.link);
             useLoc();
           };
 

@@ -1,61 +1,105 @@
 
-<app-slider2 [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">
+<!--<app-slider2 [activePane]="isLeftVisible==0 ? 'trampoline' : isLeftVisible==1 ? 'escape': 'virtual'" class="mob_slider">-->
 
-  <div trampolinePane class="block-one">
+  <!--<div trampolinePane class="block-one">-->
 
-    <div class="container">
-      <div class="desc_slider">
-        <h3>come visit our</h3>
-        <h1>Trampoline Park</h1>
-        <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+    <!--<div class="container">-->
+      <!--<div class="desc_slider">-->
+        <!--<h3>come visit our</h3>-->
+        <!--<h1>Trampoline Park</h1>-->
+        <!--<button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="block-two" [ngClass]="{'d-none': isEscapeRoomDisplayed}" escapePane>-->
+    <!--<div class="container">-->
+      <!--<div class="desc_slider gold">-->
+        <!--<h3>come visit our</h3>-->
+        <!--<h1>Escape Rooms</h1>-->
+        <!--<button type="button">Coming Soon</button>-->
+      <!--</div>-->
+    <!--</div>-->
+
+  <!--</div>-->
+  <!--<div class="block-three" [ngClass]="{'d-none': isDisplayed}" virtualPane>-->
+    <!--<div class="container">-->
+      <!--<div class="desc_slider gold">-->
+        <!--<h3>come visit our</h3>-->
+        <!--<h1>VR Rooms</h1>-->
+        <!--<button type="button">I'm ready</button>-->
+      <!--</div>-->
+    <!--</div>-->
+
+  <!--</div>-->
+
+<!--</app-slider2>-->
+
+<ul id="slides">
+  <li class="slide showing" *ngIf="availableSlides.indexOf('trampoline') !== -1">
+    <div trampolinePane class="block-one">
+      <div class="container">
+        <div class="desc_slider">
+          <h3>come visit our</h3>
+          <h1>Trampoline Park</h1>
+          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+        </div>
       </div>
     </div>
-  </div>
+  </li>
 
-  <div class="block-two" escapePane>
-    <div class="container">
-      <div class="desc_slider gold">
-        <h3>come visit our</h3>
-        <h1>Escape Rooms</h1>
-        <button type="button">Coming Soon</button>
+  <li class="slide" *ngIf="availableSlides.indexOf('escape') !== -1">
+    <div class="block-two" escapePane>
+      <div class="container">
+        <div class="desc_slider gold">
+          <h3>come visit our</h3>
+          <h1>Escape Rooms</h1>
+          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+        </div>
       </div>
     </div>
+  </li>
 
-  </div>
-  <div class="block-three" virtualPane>
-    <div class="container">
-      <div class="desc_slider gold">
-        <h3>come visit our</h3>
-        <h1>VR Rooms</h1>
-        <button type="button">I'm ready</button>
+  <li class="slide" *ngIf="availableSlides.indexOf('vr') !== -1">
+    <div class="block-three" virtualPane>
+      <div class="container">
+        <div class="desc_slider gold">
+          <h3>come visit our</h3>
+          <h1>VR Rooms</h1>
+          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+        </div>
       </div>
     </div>
-
-  </div>
-
-</app-slider2>
+  </li>
+</ul>
 
 <div id="homepage-gaiety" class="homepage-gaiety  ">
   <div id="homepage-block-blackout" class="homepage-block-blackout pv-40">
 
     <div class="container h-100">
-      <div class="row h-100 justify-content-center">
-        <div class="gaiety-button my-auto col-3 " id="but_trampoline" [class.green-light]="isLeftVisible == 0" (click)="isLeftVisible = 0; this.boolChanged = true;">
-          <!--<img src="/assets/img/homepage-trampoline.png">-->
+
+      <div class="row h-100 justify-content-center" id="buttonSlides">
+
+        <div class="gaiety-button my-auto col-3 buttonSlide green-light" id="but_trampoline" *ngIf="availableSlides.indexOf('trampoline') !== -1"
+              (click)="setSlide(0);" >
           <div class="img_main img_homepage_trampoline"></div>
           <p class="homepage-gaiety-button-text">trampoline<br>park</p>
         </div>
-        <div class="gaiety-button my-auto col-3" id="but_escape" [class.green-light]="isLeftVisible == 1" (click)="isLeftVisible = 1; this.boolChanged = true;">
-          <!--<img src="/assets/img/homepage-escape.png">-->
+
+        <div class="gaiety-button my-auto col-3 buttonSlide" id="but_escape" *ngIf="availableSlides.indexOf('escape') !== -1"
+              (click)="setSlide(1);" >
           <div class="img_main img_homepage_escape"></div>
           <p class="homepage-gaiety-button-text">escape<br>rooms</p>
         </div>
-        <div class="gaiety-button my-auto col-3" id="but_virtual" [class.green-light]="isLeftVisible == 2" (click)="isLeftVisible = 2; this.boolChanged = true;">
-          <!--<img src="/assets/img/homepage-virtual.png">-->
+
+        <div class="gaiety-button my-auto col-3 buttonSlide" id="but_virtual" *ngIf="availableSlides.indexOf('vr') !== -1"
+              (click)="setSlide(2);" >
           <div class="img_main img_homepage_virtual"></div>
           <p class="homepage-gaiety-button-text">virtual<br>reality</p>
         </div>
+
       </div>
+
     </div>
 
   </div>

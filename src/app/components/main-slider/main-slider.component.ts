@@ -22,7 +22,6 @@ export class MainSliderComponent implements OnInit, AfterViewInit {
 
   @Input('availableSlides') set availableSlides (el) {
     this._availableSlides = el;
-    console.log('this._availableSlides',this._availableSlides)
   };
 
   get availableSlides() {

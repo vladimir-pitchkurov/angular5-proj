@@ -42,13 +42,10 @@
           <div class="tramp-list--item">
             <a routerLink="{{activeLocationId}}/trampoline-park/rules" routerLinkActive="active">Rules</a>
           </div>
-          <!-- <div class="tramp-list--item">
-            <a routerLink="{{activeLocationId}}/trampoline-park/waiver" routerLinkActive="active">Waiver</a>
-          </div> -->
         </div>
       </div>
       <div *ngIf="(!this.activeLocationId && !isComingSoon) || (!isComingSoon && this.activeLocationId && isEscape)" (click)="initMenu()">
-        <a routerLink="escape-room" routerLinkActive="active" class="escape">Escape rooms</a>
+        <a routerLink="{{activeLocationId}}/escape-room" routerLinkActive="active" class="escape">Escape rooms</a>
       </div>
       <div *ngIf="(!this.activeLocationId && !isComingSoon) || (this.activeLocationId && isVr && !isComingSoon)" (click)="toggleState(); initMenu()"><a class="escape">Virtual Reality</a></div>
       <div *ngIf="activeLocationId && !isComingSoon" (click)="toggleState(); initMenu()" class="menu-about" routerLinkActive="active">
@@ -89,7 +86,7 @@
         <div style="width: 100%; text-align: center;">
           <div style="display: inline-block">
             <div id="ask-no">No</div>
-            <a id="ask-yes" href="/">Yes</a>
+            <a id="ask-yes">Yes</a>
           </div>
         </div>
       </div>

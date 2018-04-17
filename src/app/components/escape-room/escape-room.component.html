@@ -54,43 +54,17 @@
   -->
 </div>
 
-<div class="block-loc brown">
+<div class="block-loc brown" [ngClass]="{'d-none': isDisplayed}">
   <p class="loc-one">Nearest park to your location</p>
   <p class="loc-name loc-two" link="/"><img src="/assets/img/loc-icon.png">Vista, California</p>
   <p class="loc-three">
     <img src="/assets/img/loc-icon.png">
     <span id="click-find">Find your park</span>
-    <!--
-    <span class="loc-zip">
-        Input your zip
-        <input class="input-zip" list="zip" maxlength="5">
-        <datalist id="zip">
-            <option>90001</option>
-            <option>90002</option>
-            <option>90003</option>
-            <option>90004</option>
-            <option>90005</option>
-            <option>90006</option>
-        </datalist>
-    </span>
-    <span class="loc-city">
-        or city
-        <input class="input-city" list="city" maxlength="25">
-        <datalist id="city">
-            <option>Vista</option>
-            <option>New Jersey</option>
-            <option>New York</option>
-            <option>Boston</option>
-            <option>Memphis</option>
-        </datalist>
-    </span>
-    <button class="button-find">Find</button>
-    -->
   </p>
   <p class="loc-four"><img src="/assets/img/loc-icon.png">Please, allow to use your location</p>
 </div>
 
-<app-all-locations [bgColor]="'brown'"></app-all-locations>
+<app-all-locations [bgColor]="'brown'" [ngClass]="{'d-none': isDisplayed}"></app-all-locations>
 
 <div class="block-escs">
   <div class="esc">
