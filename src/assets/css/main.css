@@ -168,7 +168,10 @@ div.tramp-list{
     cursor: pointer;
 }
 
+.btn-outline-success:hover {
+    background-color: rgb(146, 221, 2);
 
+}
 
 #ask, #ask-loc {
     position: fixed;
@@ -2946,6 +2949,9 @@ a.btn_pad_20 {
     .parties-locations-dark {
         /*background:none !important;*/
         background-image:url(../img/parties/parties-back-sm.jpg);
+    }
+    .play-one {
+
     }
 }
 

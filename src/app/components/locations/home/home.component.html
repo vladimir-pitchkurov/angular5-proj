@@ -54,7 +54,7 @@
         <div class="desc_slider gold">
           <h3>come visit our</h3>
           <h1>Escape Rooms</h1>
-          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">Coming Soon</button>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
         <div class="desc_slider gold">
           <h3>come visit our</h3>
           <h1>VR Rooms</h1>
-          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">I'm ready</button>
+          <button type="button" routerLink="/{{activeLocationId}}/trampoline-park/">Coming Soon</button>
         </div>
       </div>
     </div>
@@ -108,21 +108,30 @@
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-md-4">
-        <h2 class="green_up text-center">Open Hours</h2>
-        <ul  class="list-unstyled open_hours text-uppercase">
+        <div class="row justify-content-between align-items-center h-100">
+          <div class="col-12">
+            <h2 class="green_up text-center">Open Hours</h2>
+            <ul  class="list-unstyled open_hours text-uppercase">
 
-          <div *ngFor="let hour of this.service.locationHours[this.activeLocationId]" class="wrap-li" >
-            <li class=" cus-lft ">{{hour.label}}</li>
-            <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
+              <div *ngFor="let hour of this.service.locationHours[this.activeLocationId]" class="wrap-li" >
+                <li class=" cus-lft ">{{hour.label}}</li>
+                <li class=" cus-rght txt_col ">{{hour.time_start}} - {{hour.time_end}}</li>
+              </div>
+              <div *ngIf="(this.service.locationHours[this.activeLocationId] == 0)" >
+                <h3 class="text-center">COMING SOON</h3>
+              </div>
+
+            </ul>
           </div>
-
-        </ul>
+        </div>
       </div>
       <div class="col-md-8">
         <h2 class="green_up text-center">Planning for a group?</h2>
-
-        <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center">Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3>
-        <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" >{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>
+        <button *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="btn btn-outline-success btn-block mb-20 btn-sm" style="max-width: 360px;margin: 0 auto;border:2px solid rgb(146, 221, 2);" type="button">
+          <a style="display:block;" href="tel:{{this.service.contactInfoOfFooter[this.activeLocationId].phone}}" > Call {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</a>
+        </button>
+        <!-- <h3 *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="green_up text-center" >Call us right now: {{this.service.contactInfoOfFooter[this.activeLocationId].phone}}</h3> -->
+        <p *ngIf="this.service.contactInfoOfFooter[this.activeLocationId]" class="mt-20">{{this.service.contactInfoOfFooter[this.activeLocationId].description}}</p>
       </div>
     </div>
   </div>

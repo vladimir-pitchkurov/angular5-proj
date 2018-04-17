@@ -1,6 +1,6 @@
 
 @media (max-width: 844px) {
-  h1, h2, h3, h4, h5, p{
+  h1, h2, h4, h5, {
     text-align: center;
   }
 }

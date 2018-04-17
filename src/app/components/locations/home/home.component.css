@@ -1,3 +1,9 @@
+@media (max-width: 844px) {
+  p{
+    text-align: center;
+  }
+}
+
 .wrap-li{
   display: inline-block;
   width: 100%;
