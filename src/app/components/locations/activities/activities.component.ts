@@ -59,7 +59,6 @@ export class ActivitiesComponent implements OnInit, OnDestroy {
     this.service.loadActivityItems(this.activeLocationId)
       .then(data =>{
         this.activityImages = data;
-        //console.log('activityImages', this.activityImages);
       })
   }
 

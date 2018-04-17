@@ -84,10 +84,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
         this.service.setMapOfLoc(this.locations);
       }
     });
-
-    console.log('on init');
-    console.log(this.service.LIST_OF_LOCATIONS);
-
   }
 
 
@@ -224,8 +220,6 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   defineIsFooterDark() {
     this.isDarkFooter = false;
     let arrRoute = this.router.url.split('/');
-    console.log(arrRoute);
-    console.log(this.service.LIST_OF_LOCATIONS);
     let lastRouteName = arrRoute[arrRoute.length -1];
     let beforeLastRouteName = arrRoute[arrRoute.length -2];
     if (lastRouteName == 'gallery'){this.isDarkFooter = true; }

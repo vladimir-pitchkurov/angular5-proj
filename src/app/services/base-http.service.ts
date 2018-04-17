@@ -31,7 +31,6 @@ export class BaseHttpService {
 
 
   handleError(error: HttpErrorResponse) {
-    console.log('handle error', error);
     throw error;
   }
 
