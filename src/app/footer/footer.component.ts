@@ -35,7 +35,7 @@ export class FooterComponent implements OnInit, OnChanges {
   urlOfBirth: any;
   pricing: any;
 
-  constructor(private service: LocationService
+  constructor(public service: LocationService
     , private route: Router
     , private activatedRoute: ActivatedRoute) {
   }

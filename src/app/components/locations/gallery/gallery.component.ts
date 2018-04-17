@@ -20,7 +20,7 @@ export class GalleryComponent implements OnInit, OnDestroy {
     , private activatedRoute: ActivatedRoute
     , private meta: Meta
     , private titleService: Title
-    , private service: LocationService) {
+    , public service: LocationService) {
     this.listenToAllLocationsLoaded();
   }
 

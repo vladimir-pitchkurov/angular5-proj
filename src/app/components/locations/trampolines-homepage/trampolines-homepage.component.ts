@@ -22,7 +22,7 @@ export class TrampolinesHomepageComponent implements OnInit {
     , private activatedRoute: ActivatedRoute
     , private meta: Meta
     , private titleService: Title
-    , private service: LocationService ) { }
+    , public service: LocationService ) { }
 
   ngOnInit() {
     this.titleService.setTitle('GrTrampolines Homepageoups');

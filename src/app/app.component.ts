@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   constructor( private router: Router
              , private titleService: Title
              , private meta: Meta
-             , private service: LocationService ) { }
+             , public service: LocationService ) { }
 
   ngOnInit() {
 

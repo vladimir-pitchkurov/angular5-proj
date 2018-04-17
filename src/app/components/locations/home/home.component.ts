@@ -17,11 +17,11 @@ export class HomeComponent implements OnInit {
   activeLocationId: any;
   locationInf: any;
   isDisplayed: boolean;
-  private isEscapeRoomDisplayed: boolean;
-  private comingSoonFeatures: any;
-  private availableSlides: any[] = [];
+  isEscapeRoomDisplayed: boolean;
+  comingSoonFeatures: any;
+  availableSlides: any[] = [];
   amenities = [];
-  private currentCity: any = {};
+  currentCity: any = {};
   allLocationListener: any;
   currentSlide = 0;
 

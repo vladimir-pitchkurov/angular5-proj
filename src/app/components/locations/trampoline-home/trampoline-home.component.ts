@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocationService} from '../../../services/location.service';
 
 @Component({
   selector: 'app-trampoline-home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrampolineHomeComponent implements OnInit {
 
-  constructor() { }
+  activeLocationId: any;
+
+  constructor(public service : LocationService) { }
 
   ngOnInit() {
+    this.activeLocationId = this.service.activeLocationId;
   }
 
 }

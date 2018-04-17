@@ -19,7 +19,7 @@ export class ContactComponent implements OnInit {
     , private activatedRoute: ActivatedRoute
     , private meta: Meta
     , private titleService: Title
-    , private service: LocationService ) {  }
+    , public service: LocationService ) {  }
 
   ngOnInit() {
     this.activatedRoute.params.forEach((params: Params) => {

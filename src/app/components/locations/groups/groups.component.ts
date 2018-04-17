@@ -22,7 +22,7 @@ export class GroupsComponent implements OnInit {
     , private titleService: Title
     , private route: Router
     , private activatedRoute: ActivatedRoute
-    , private service: LocationService) {   }
+    , public service: LocationService) {   }
 
   ngOnInit() {
     this.titleService.setTitle('Groups');
