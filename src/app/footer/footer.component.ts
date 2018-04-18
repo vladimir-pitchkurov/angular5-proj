@@ -9,11 +9,12 @@ import {LocationMap} from '../services/LocationMap';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
-  inputs: ['activeLocationId', 'isDarkFooter', 'locations']
+  inputs: ['activeLocationId', 'isDarkFooter', 'locations', 'isLocByPass']
 })
 export class FooterComponent implements OnInit, OnChanges {
 
   isDarkFooter = false;
+  isLocByPass = false;
   activeLocationId: any;
   locationInf: any[];
   facebook_link: any[];

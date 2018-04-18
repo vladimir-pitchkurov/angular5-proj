@@ -2686,8 +2686,22 @@ a.btn_pad_20 {
 
 }
 .homepage-locations-blue4 {
-    background: url("../img/trampolines_homepage/loc_home_blue4.jpg") no-repeat center top / cover;
+    background: url(../img/pass/bay_a_pass_back.png) no-repeat center top / cover;
+    padding-top: 158px;
+    margin-top: -59px;
+    padding-bottom: 203px;
+    position: relative;
 
+}
+
+@media (max-width: 992px) {
+ .homepage-locations-blue4 {
+     background: url(../img/pass/by_pass_blue.png) no-repeat center top / cover;
+     margin-top: 0;
+     padding-top: 99px;
+     padding-bottom: 203px;
+     position: unset;
+ }
 }
 .homepage-locations-blue5 {
     background: url("../img/trampolines_homepage/loc_home_blue5.jpg") no-repeat center top / cover;
@@ -3077,6 +3091,15 @@ a.btn_pad_20 {
 
 .card-img-top{
   height: 240px;
+}
+
+.girls_block {
+    background: url("../img/trampolines_homepage/girls.png") no-repeat center top / cover;
+}
+
+
+.by_a_pass_footer{
+    margin-top: -104px;
 }
 
 

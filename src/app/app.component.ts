@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
   activeLocationId: any;
   locationInf: any[];
   isDarkFooter = false;
+  isLocByPass = false;
   amenities = [];
   isTrampoline = true;
   isEscape = true;
@@ -55,6 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       }
       window.scrollTo(0, 0);
       this.defineIsFooterDark();
+      this.defineIsLocationByAPass();
       this.isNewTitleSet = false;
       this.isNewMetaDescriptionSet = false;
 
@@ -235,6 +237,13 @@ export class AppComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy {
       }
     }
   }
+
+  defineIsLocationByAPass() {
+    this.isLocByPass = false;
+    let arrRoute = this.router.url.split('/');
+      let lastRouteName = arrRoute[arrRoute.length -1];
+      if (lastRouteName == 'buy-a-pass'){this.isLocByPass = true; }
+  };
 
   setLocationById(id: any) {
     this.service.setActiveLocationId(id);
