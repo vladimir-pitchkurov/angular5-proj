@@ -2783,6 +2783,7 @@ a.btn_pad_20 {
     background: #021a67;
 }
 .block_trampolines_homepages_small {
+    background-size:cover;
     margin: 20px;
     height: 280px;
     padding: 5px;
@@ -2790,6 +2791,7 @@ a.btn_pad_20 {
 .block_trampolines_homepages:hover .block_trampolines_homepages_small{
     background: #01103e;
     cursor: pointer;
+    background-size:cover;
 }
 .block_trampolines_homepages_small p{
     font-size: 22px;
@@ -2804,7 +2806,7 @@ a.btn_pad_20 {
 }
 
 .block_trampolines_homepages:hover .block_trampolines_homepages_small .text_white_norm.hidden-until-hover {
-  display: initial;
+  /*display: initial;*/
 }
 
 .block_trampolines_homepages_small .text_green_small {

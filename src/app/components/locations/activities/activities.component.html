@@ -33,7 +33,7 @@
 
       <div class="col-lg-4 col-md-6" *ngFor="let item of activityImages">
         <div class = "card bg-transparent">
-          <img class="card-img-top" [src]="item.img_url" alt="image">
+          <img *ngIf="item.img_url" class="card-img-top" [src]="item.img_url" alt="image">
           <div class="card-body">
             <div class="row">
               <div class="col-sm-12">
