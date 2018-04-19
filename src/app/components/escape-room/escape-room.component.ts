@@ -31,6 +31,7 @@ export class EscapeRoomComponent implements OnInit, AfterViewInit {
         this.isDisplayed = this.setIsDisplayed();
 
             let currLocId = this.activatedRoute;
+            this.locationService.activeLocationId = currLocId;
 
             if(this.locationService.LIST_OF_LOCATIONS.length)
             {
